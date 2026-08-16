@@ -1,0 +1,66 @@
+"""BISHI113 【模板】二维差分 —— q 次子矩阵加，最后输出整个矩阵。
+
+这题考什么：
+    二维差分 = 二维前缀和的逆运算。给子矩阵 (x1,y1)-(x2,y2) 整体加 k，
+    在差分数组 d 上只需**四次单点修改**：
+        d[x1][y1]   += k      d[x1][y2+1]   -= k
+        d[x2+1][y1] -= k      d[x2+1][y2+1] += k
+    最后对 d 做一次二维前缀和，得到的就是每个格子的累计增量。
+    四个符号的来源就是容斥：右边多加的减掉、下边多加的减掉、右下角被减了两次要补回。
+
+数据规模与复杂度：
+    n, m <= 1000，q <= 1e5。暴力每次改一个子矩阵是 O(q·nm) = 1e11；
+    二维差分是 O(nm + q)。
+
+Python 实现要点：
+  1. d 用扁平数组，宽度 W = m + 2（要能写下 y2+1 = m+1），
+     行数 n + 2（要能写下 x2+1 = n+1）；
+  2. 求二维前缀和时先做**行内 accumulate**，再和**上一行**逐项 map(add)，
+     全程 C 层，1e6 个格子只有 n 次 Python 层循环；
+  3. 输出 1e6 个数：每行 " ".join，最后 "\\n".join 一次性写出。
+     逐个 print 会慢到超时。
+
+坑在哪：
+    差分数组的下标偏移。这里 d 的第 i 行第 j 列直接对应矩阵的 (i, j)，
+    但为了容纳 x2+1 / y2+1 必须多开一行一列，切片时注意别把哨兵行算进输出。
+"""
+import sys
+from itertools import accumulate
+from operator import add
+
+
+def main() -> None:
+    data = sys.stdin.buffer.read().split()
+    n = int(data[0]); m = int(data[1]); q = int(data[2])
+    W = m + 2                                # 多留一列给 y2+1
+    d = [0] * ((n + 2) * W)                  # 多留一行给 x2+1
+    p = 3 + n * m                            # 跳过矩阵本体，先读操作
+    for _ in range(q):
+        x1 = int(data[p]); y1 = int(data[p + 1])
+        x2 = int(data[p + 2]); y2 = int(data[p + 3]); k = int(data[p + 4])
+        p += 5
+        r1 = x1 * W
+        r2 = (x2 + 1) * W
+        d[r1 + y1] += k
+        d[r1 + y2 + 1] -= k
+        d[r2 + y1] -= k
+        d[r2 + y2 + 1] += k
+
+    p = 3
+    out = []
+    push = out.append
+    prev = [0] * W                           # 第 0 行（全 0）的列前缀和
+    for i in range(1, n + 1):
+        base = i * W
+        # 先行内前缀和，再与上一行相加 -> 二维前缀和
+        cur = [0]
+        cur.extend(accumulate(d[base + 1:base + W]))
+        prev = list(map(add, prev, cur))
+        # 加回原矩阵
+        row = map(int, data[p:p + m])
+        p += m
+        push(" ".join(map(str, map(add, row, prev[1:m + 1]))))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+main()

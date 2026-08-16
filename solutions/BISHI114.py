@@ -1,0 +1,45 @@
+"""BISHI114 【模板】滑动窗口 —— 每个长度为 k 的窗口的最大值。
+
+这题考什么：
+    单调队列的裸模板。维护一个**下标递增、对应值单调递减**的双端队列：
+      - 新元素 a[i] 进来时，把队尾所有 <= a[i] 的下标弹掉
+        （它们比 a[i] 小又比 a[i] 早过期，永远不可能再当最大值）；
+      - 队首下标 <= i - k 说明已经滑出窗口，弹掉；
+      - 队首就是当前窗口最大值。
+    每个下标最多进队一次、出队一次，总复杂度 O(n)。
+
+数据规模与复杂度：
+    n <= 2e5，时限「其他语言 6 秒」，O(n) 非常宽裕。
+    注意 max(a[i:i+k]) 那种「切片 + max」写法虽然是 C 层循环，
+    复杂度仍是 O(nk) = 2e10，**不是优化**，会 TLE。
+
+坑在哪：
+  1. **输出是一行、用单个空格分隔**（看样例），不是每行一个；
+  2. 队首过期判断是 `q[0] <= i - k`，写成 `<` 会让窗口变成 k+1 长；
+     样例 2 是 k=1、样例 3 是 k=n，出题人专门给了两个边界，写完必须都测；
+  3. 队尾弹出用 `<=`（相等也弹）能让队列更短，本题求最大值两种写法答案相同。
+"""
+import sys
+from collections import deque
+
+
+def main() -> None:
+    data = sys.stdin.buffer.read().split()
+    n = int(data[0]); k = int(data[1])
+    a = list(map(int, data[2:2 + n]))
+    q = deque()                              # 存下标，对应值单调递减
+    res = []
+    push = res.append
+    for i in range(n):
+        x = a[i]
+        while q and a[q[-1]] <= x:           # 队尾比新元素小 -> 永远轮不到它
+            q.pop()
+        q.append(i)
+        if q[0] <= i - k:                    # 队首过期
+            q.popleft()
+        if i >= k - 1:
+            push(a[q[0]])
+    sys.stdout.write(" ".join(map(str, res)) + "\n")
+
+
+main()

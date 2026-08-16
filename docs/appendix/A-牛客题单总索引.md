@@ -3,7 +3,7 @@
 > 由 `scripts/gen_index.py` 自动生成，数据来自题单 JSON、章节映射与验证报告，
 > 因此始终与仓库实际状态一致。
 
-**共 165 题　已写题解 128 题　通过官方样例 128 题**
+**共 165 题　已写题解 142 题　通过官方样例 138 题**
 
 题目来源：[牛客在线编程](https://www.nowcoder.com/exam/oj?questionJobId=10&subTabName=online_coding_page) 的「笔试模板必刷」（BISHI1–147）与「输入输出练习」（PIO1–18）。
 
@@ -119,20 +119,20 @@
 | [BISHI108](https://www.nowcoder.com/practice/83101a4f624042b59a629089e83b6dd1) | 最优乘车 | 简单 | — | 91-最短路、117-图论进阶：k短路与关键路径 | [✅ 已验证](../../solutions/BISHI108.py) |
 | [BISHI109](https://www.nowcoder.com/practice/2b0c636cf77d441fa96d40ac64290d39) | 邮递员送信 | 中等 | — | 91-最短路、117-图论进阶：k短路与关键路径 | [✅ 已验证](../../solutions/BISHI109.py) |
 | [BISHI110](https://www.nowcoder.com/practice/ac79a1a4a66646cc87525d6faa86e021) | 【模板】静态区间和（前缀和） | 简单 | — | 42-前缀和与差分 | [✅ 已验证](../../solutions/BISHI110.py) |
-| [BISHI111](https://www.nowcoder.com/practice/4bbc401a5df140309edd6f14debdba42) | 【模板】差分 | 简单 | — | 42-前缀和与差分 | — |
-| [BISHI112](https://www.nowcoder.com/practice/99eb8040d116414ea3296467ce81cbbc) | 【模板】二维前缀和 | 中等 | — | 42-前缀和与差分 | — |
-| [BISHI113](https://www.nowcoder.com/practice/50e1a93989df42efb0b1dec386fb4ccc) | 【模板】二维差分 | 中等 | — | 42-前缀和与差分 | — |
-| [BISHI114](https://www.nowcoder.com/practice/be419f584a3f4c5b818833f1ce856626) | 【模板】滑动窗口 | 简单 | 双指针 | 37-单调栈与单调队列、43-双指针与滑动窗口 | — |
-| [BISHI115](https://www.nowcoder.com/practice/cfc8ae6269cd445d83686f12da66023c) | 可匹配子段计数 | 简单 | 双指针 | 43-双指针与滑动窗口 | — |
-| [BISHI116](https://www.nowcoder.com/practice/a2fd81391e1e4177aa6d506da895381b) | 【模板】双指针 | 中等 | 双指针 | 43-双指针与滑动窗口 | — |
-| [BISHI117](https://www.nowcoder.com/practice/0a526c7863474220aaef082ab5f2a00a) | 小苯的IDE括号问题（easy） | 中等 | 双指针 | 32-栈、43-双指针与滑动窗口 | — |
-| [BISHI118](https://www.nowcoder.com/practice/562630ca90ac40ce89443c91060574c6) | 相差不超过k的最多数 | 中等 | 双指针 | 41-桶计数与离散化、43-双指针与滑动窗口 | — |
-| [BISHI119](https://www.nowcoder.com/practice/ee0b6c6baa2642c182df8b4390126f9a) | 小红的01子序列构造（easy） | 中等 | 双指针 | 43-双指针与滑动窗口 | — |
-| [BISHI120](https://www.nowcoder.com/practice/b6b8bfcde03841e4880c2b9ef00329c6) | ？？？ | 较难 | 双指针 | 43-双指针与滑动窗口 | — |
-| [BISHI121](https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68) | 数列后缀极大位置统计 | 简单 | — | 37-单调栈与单调队列、104-DP优化 | — |
-| [BISHI122](https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235) | 区间后缀极大位置计数 | 简单 | — | 37-单调栈与单调队列 | — |
-| [BISHI123](https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339) | 环形字符串跃迁 | 中等 | — | 70-字符串处理 | — |
-| [BISHI124](https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217) | 【模板】最近公共祖先（LCA） | 中等 | — | 45-倍增、94-树上算法、113-树链剖分 | — |
+| [BISHI111](https://www.nowcoder.com/practice/4bbc401a5df140309edd6f14debdba42) | 【模板】差分 | 简单 | — | 42-前缀和与差分 | [✅ 已验证](../../solutions/BISHI111.py) |
+| [BISHI112](https://www.nowcoder.com/practice/99eb8040d116414ea3296467ce81cbbc) | 【模板】二维前缀和 | 中等 | — | 42-前缀和与差分 | [✅ 已验证](../../solutions/BISHI112.py) |
+| [BISHI113](https://www.nowcoder.com/practice/50e1a93989df42efb0b1dec386fb4ccc) | 【模板】二维差分 | 中等 | — | 42-前缀和与差分 | [✅ 已验证](../../solutions/BISHI113.py) |
+| [BISHI114](https://www.nowcoder.com/practice/be419f584a3f4c5b818833f1ce856626) | 【模板】滑动窗口 | 简单 | 双指针 | 37-单调栈与单调队列、43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI114.py) |
+| [BISHI115](https://www.nowcoder.com/practice/cfc8ae6269cd445d83686f12da66023c) | 可匹配子段计数 | 简单 | 双指针 | 43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI115.py) |
+| [BISHI116](https://www.nowcoder.com/practice/a2fd81391e1e4177aa6d506da895381b) | 【模板】双指针 | 中等 | 双指针 | 43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI116.py) |
+| [BISHI117](https://www.nowcoder.com/practice/0a526c7863474220aaef082ab5f2a00a) | 小苯的IDE括号问题（easy） | 中等 | 双指针 | 32-栈、43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI117.py) |
+| [BISHI118](https://www.nowcoder.com/practice/562630ca90ac40ce89443c91060574c6) | 相差不超过k的最多数 | 中等 | 双指针 | 41-桶计数与离散化、43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI118.py) |
+| [BISHI119](https://www.nowcoder.com/practice/ee0b6c6baa2642c182df8b4390126f9a) | 小红的01子序列构造（easy） | 中等 | 双指针 | 43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI119.py) |
+| [BISHI120](https://www.nowcoder.com/practice/b6b8bfcde03841e4880c2b9ef00329c6) | ？？？ | 较难 | 双指针 | 43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI120.py) |
+| [BISHI121](https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68) | 数列后缀极大位置统计 | 简单 | — | 37-单调栈与单调队列、104-DP优化 | [📝 已写](../../solutions/BISHI121.py) |
+| [BISHI122](https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235) | 区间后缀极大位置计数 | 简单 | — | 37-单调栈与单调队列 | [📝 已写](../../solutions/BISHI122.py) |
+| [BISHI123](https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339) | 环形字符串跃迁 | 中等 | — | 70-字符串处理 | [📝 已写](../../solutions/BISHI123.py) |
+| [BISHI124](https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217) | 【模板】最近公共祖先（LCA） | 中等 | — | 45-倍增、94-树上算法、113-树链剖分 | [📝 已写](../../solutions/BISHI124.py) |
 | [BISHI125](https://www.nowcoder.com/practice/831a314449d44ea0b1db90ca626bcd1a) | 【模板】静态区间最值 | 中等 | — | 39-树状数组与线段树、45-倍增 | — |
 | [BISHI126](https://www.nowcoder.com/practice/ef7a50cf0377447b9b435b0f95e48e70) | 【模板】动态区间和Ⅱ ‖ 区间修改 + 区间查询 | 较难 | — | 39-树状数组与线段树、113-树链剖分 | — |
 | [BISHI127](https://www.nowcoder.com/practice/56547df6934f4048a80ec75838d60c8f) | 区间根号与区间求和 | 中等 | — | 39-树状数组与线段树 | — |

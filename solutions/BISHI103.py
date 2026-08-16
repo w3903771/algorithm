@@ -22,10 +22,11 @@ Python 的关键优化（本题的核心，四条一起上）：
      `for j in range(w, c-1, -1)` 快一个数量级以上。
      注意 0/1 背包必须「用旧的 dp 去更新新的 dp」，
      切片天然复制了一份旧值，所以不会出现完全背包那样的重复选取；
-  2. **相同 (价格, 价值) 的组去重 + 二进制拆分**：把 k 个完全一样的组
-     合成 1, 2, 4, ..., 剩余 这 O(log k) 个「打包物品」。
-     这不改变可达的方案集合（任意 0..k 个都能被这些幂次凑出），
-     却能把「大量廉价同款小组」这种最容易卡人的数据从 1e4 件压到几十件；
+  2. **同价剪枝 + 相同 (价格, 价值) 去重 + 二进制拆分**：
+     - 价格为 c 的组最多只能买 w//c 个，按交换论证只保留价值最大的那 w//c 个；
+     - 把 k 个完全一样的组合成 1, 2, 4, ..., 剩余 这 O(log k) 个「打包物品」。
+       这不改变可达的方案集合（任意 0..k 个都能被这些幂次凑出），
+       却能把「大量廉价同款小组」这种最容易卡人的数据从 1e4 件压到几十件；
   3. **按价格升序处理 + dp 数组按 reach 动态增长**：处理完前 k 件后，
      能花出去的钱不会超过这 k 件的价格之和 reach = min(w, Σc)，
      容量再大也只是同一个答案。于是让 dp 的长度始终只有 reach+1，
@@ -90,13 +91,24 @@ def main() -> None:
         gc[r] += cost[i]
         gv[r] += val[i]
 
-    # 相同 (价格, 价值) 的组合并计数，再做二进制拆分，减少物品件数
-    bag = {}
+    # 按价格分桶。价格为 c 的组最多只能买 w//c 个，
+    # 由交换论证，留下价值最大的那 w//c 个就够了，其余永远用不上。
+    by_cost = {}
     for i in range(1, n + 1):
         if parent[i] != i or gc[i] > w:        # 只处理代表元，且买得起的
             continue
-        key = (gc[i], gv[i])
-        bag[key] = bag.get(key, 0) + 1
+        by_cost.setdefault(gc[i], []).append(gv[i])
+
+    # 剪完之后再把相同 (价格, 价值) 的组合并计数，做二进制拆分
+    bag = {}
+    for c, vals in by_cost.items():
+        keep = w // c
+        if len(vals) > keep:
+            vals.sort(reverse=True)
+            del vals[keep:]
+        for v in vals:
+            key = (c, v)
+            bag[key] = bag.get(key, 0) + 1
 
     items = []
     for (c, v), k in bag.items():

@@ -1,17 +1,55 @@
 {
-  "BISHI26": {"mode": "spj"},
-  "BISHI27": {"mode": "spj"},
-  "BISHI28": {"mode": "spj"},
-  "BISHI29": {"mode": "spj"},
-  "BISHI32": {"mode": "spj"},
-  "BISHI37": {"mode": "spj"},
-  "BISHI38": {"mode": "spj"},
-  "BISHI40": {"mode": "spj"},
-  "BISHI52": {"mode": "spj"},
-  "BISHI83": {"mode": "spj"},
-  "BISHI86": {"mode": "float", "eps": 1e-06},
-  "PIO14": {"mode": "exact"},
-  "PIO16": {"mode": "spj"},
-  "PIO17": {"mode": "float", "eps": 0.001},
-  "PIO18": {"mode": "spj"}
+  "BISHI119": {
+    "mode": "spj"
+  },
+  "BISHI120": {
+    "mode": "spj"
+  },
+  "BISHI26": {
+    "mode": "spj"
+  },
+  "BISHI27": {
+    "mode": "spj"
+  },
+  "BISHI28": {
+    "mode": "spj"
+  },
+  "BISHI29": {
+    "mode": "spj"
+  },
+  "BISHI32": {
+    "mode": "spj"
+  },
+  "BISHI37": {
+    "mode": "spj"
+  },
+  "BISHI38": {
+    "mode": "spj"
+  },
+  "BISHI40": {
+    "mode": "spj"
+  },
+  "BISHI52": {
+    "mode": "spj"
+  },
+  "BISHI83": {
+    "mode": "spj"
+  },
+  "BISHI86": {
+    "mode": "float",
+    "eps": 1e-06
+  },
+  "PIO14": {
+    "mode": "exact"
+  },
+  "PIO16": {
+    "mode": "spj"
+  },
+  "PIO17": {
+    "mode": "float",
+    "eps": 0.001
+  },
+  "PIO18": {
+    "mode": "spj"
+  }
 }
