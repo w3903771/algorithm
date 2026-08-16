@@ -1,0 +1,12 @@
+# 依赖与缓存
+.venv/
+__pycache__/
+*.pyc
+uv.lock
+
+# 登录凭据，绝对不要提交
+.auth/
+
+# 抓取来源与脚本（按要求不入库）
+sources/
+scripts/

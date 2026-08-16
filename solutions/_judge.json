@@ -1,0 +1,6 @@
+{
+  "PIO14": {"mode": "exact"},
+  "PIO16": {"mode": "spj"},
+  "PIO17": {"mode": "float", "eps": 1e-3},
+  "PIO18": {"mode": "spj"}
+}
