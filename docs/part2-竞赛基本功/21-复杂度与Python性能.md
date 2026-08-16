@@ -281,6 +281,7 @@ def sieve(n):
 前者的解释器开销就足以 TLE。换成：
 
 ```python
+# [片段]
 data = sys.stdin.buffer.read().split()
 ```
 

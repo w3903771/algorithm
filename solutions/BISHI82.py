@@ -1,0 +1,69 @@
+"""BISHI82 没挡住洪水 —— N*N 网格，问有多少个 '#' 四连通区域会在一天后被「完全」淹没。
+
+这题考什么：
+    连通块搜索 + 读题。洪水上涨的规则是：
+        「所有与 '.' 上下左右相邻的 '#' 都会被淹」。
+    注意这是**一次性、同时**发生的一轮，不是反复扩散到收敛。
+    所以一个区域被「完全」淹没 <=> 区域里的**每一个**格子都至少有一个
+    四方向邻居是 '.'。于是只要在遍历连通块时对每个格子检查一遍邻居即可。
+
+    常见错解：以为洪水会一轮轮往里渗，于是判定成「区域全被淹」总是成立；
+    或者只判「区域边界挨着水」就算完全淹没——那只淹掉了外壳，
+    厚度 >= 3 的实心块中心是淹不到的。
+
+数据规模与复杂度：
+    N <= 1000 -> 1e6 格。每格入队一次、看 4 个邻居，O(N^2)。
+
+Python 的坑：
+  1. 队列用 collections.deque，1e6 规模下 list.pop(0) 必然退化；
+  2. 网格压一维 + 四周补 '.' 哨兵。题面已保证四条边界全是被淹区域，
+     补 '.' 与题意一致，同时消除了越界判断；
+  3. 入队即标记（把 '#' 改写成已访问标记 'x'），避免重复入队；
+  4. 判定「该格是否会被淹」时要用**原始**地图的 '.'，
+     所以已访问标记不能也写成 '.'，否则会把同区域的兄弟格误判成水。
+     这里用第三种字符 'x' 区分。
+"""
+import sys
+from collections import deque
+
+
+def main() -> None:
+    data = sys.stdin.buffer.read().split()
+    n = int(data[0])
+    rows = data[1:1 + n]
+
+    W = n + 2
+    LAND = ord('#')
+    WATER = ord('.')
+    SEEN = ord('x')                       # 第三种字符：已访问的陆地
+    grid = bytearray(b'.' * W)
+    for r in rows:
+        grid += b'.' + r + b'.'
+    grid += b'.' * W
+
+    ans = 0
+    q = deque()
+    for start in range(W, len(grid) - W):
+        if grid[start] != LAND:
+            continue
+        grid[start] = SEEN
+        q.append(start)
+        all_flooded = True
+        while q:
+            u = q.popleft()
+            touched = False               # 本格是否挨着水
+            for v in (u - W, u + W, u - 1, u + 1):
+                c = grid[v]
+                if c == WATER:
+                    touched = True
+                elif c == LAND:
+                    grid[v] = SEEN
+                    q.append(v)
+            if not touched:
+                all_flooded = False       # 有一格淹不到，整块就不算完全消失
+        if all_flooded:
+            ans += 1
+    sys.stdout.write("%d\n" % ans)
+
+
+main()

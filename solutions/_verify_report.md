@@ -2,50 +2,42 @@
 
 > 由 `scripts/verify.py` 生成，数据为各题**官方样例**。
 
-**43 通过　0 失败　0 其它**（共 43 题）
+**35 通过　0 失败　0 其它**（共 35 题）
 
 | 题号 | 结果 | 判定方式 | 样例数 | 耗时 |
 | --- | --- | --- | --- | --- |
-| BISHI1 | ✅ PASS | exact | 2 | 0.09s |
-| BISHI2 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI3 | ✅ PASS | exact | 1 | 0.04s |
-| BISHI4 | ✅ PASS | exact | 2 | 0.09s |
-| BISHI5 | ✅ PASS | exact | 2 | 0.08s |
-| BISHI6 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI7 | ✅ PASS | exact | 1 | 0.04s |
-| BISHI8 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI9 | ✅ PASS | exact | 2 | 0.08s |
-| BISHI10 | ✅ PASS | exact | 2 | 0.09s |
-| BISHI11 | ✅ PASS | exact | 2 | 0.08s |
-| BISHI12 | ✅ PASS | exact | 1 | 0.04s |
-| BISHI13 | ✅ PASS | exact | 1 | 0.04s |
-| BISHI14 | ✅ PASS | exact | 2 | 0.10s |
-| BISHI15 | ✅ PASS | exact | 1 | 0.06s |
-| BISHI16 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI17 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI18 | ✅ PASS | exact | 2 | 0.09s |
-| BISHI19 | ✅ PASS | exact | 1 | 0.04s |
-| BISHI20 | ✅ PASS | exact | 2 | 0.09s |
-| BISHI21 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI22 | ✅ PASS | exact | 1 | 0.04s |
-| BISHI23 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI24 | ✅ PASS | exact | 1 | 0.05s |
-| BISHI25 | ✅ PASS | exact | 1 | 0.04s |
-| PIO1 | ✅ PASS | exact | 1 | 0.05s |
-| PIO2 | ✅ PASS | exact | 1 | 0.05s |
-| PIO3 | ✅ PASS | exact | 1 | 0.05s |
-| PIO4 | ✅ PASS | exact | 1 | 0.04s |
-| PIO5 | ✅ PASS | exact | 1 | 0.04s |
-| PIO6 | ✅ PASS | exact | 1 | 0.05s |
-| PIO7 | ✅ PASS | exact | 1 | 0.04s |
-| PIO8 | ✅ PASS | exact | 1 | 0.04s |
-| PIO9 | ✅ PASS | exact | 1 | 0.04s |
-| PIO10 | ✅ PASS | exact | 1 | 0.05s |
-| PIO11 | ✅ PASS | exact | 1 | 0.05s |
-| PIO12 | ✅ PASS | exact | 1 | 0.05s |
-| PIO13 | ✅ PASS | exact | 1 | 0.05s |
-| PIO14 | ✅ PASS | exact | 3 | 0.14s |
-| PIO15 | ✅ PASS | exact | 2 | 0.08s |
-| PIO16 | ✅ PASS | spj | 2 | 0.09s |
-| PIO17 | ✅ PASS | float | 1 | 0.05s |
-| PIO18 | ✅ PASS | spj | 1 | 0.05s |
+| BISHI76 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI77 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI78 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI79 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI80 | ✅ PASS | exact | 3 | 0.14s |
+| BISHI81 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI82 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI83 | ✅ PASS | spj | 2 | 0.09s |
+| BISHI84 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI85 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI86 | ✅ PASS | float | 2 | 0.09s |
+| BISHI87 | ✅ PASS | exact | 2 | 0.09s |
+| BISHI88 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI89 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI90 | ✅ PASS | exact | 1 | 0.18s |
+| BISHI91 | ✅ PASS | exact | 1 | 0.06s |
+| BISHI92 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI93 | ✅ PASS | exact | 1 | 0.04s |
+| BISHI94 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI95 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI96 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI97 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI98 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI99 | ✅ PASS | exact | 1 | 0.04s |
+| BISHI100 | ✅ PASS | exact | 2 | 0.09s |
+| BISHI101 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI102 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI103 | ✅ PASS | exact | 1 | 0.04s |
+| BISHI104 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI105 | ✅ PASS | exact | 2 | 0.09s |
+| BISHI106 | ✅ PASS | exact | 2 | 0.09s |
+| BISHI107 | ✅ PASS | exact | 2 | 0.09s |
+| BISHI108 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI109 | ✅ PASS | exact | 1 | 0.05s |
+| BISHI110 | ✅ PASS | exact | 1 | 0.04s |
