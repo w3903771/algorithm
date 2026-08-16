@@ -12,27 +12,42 @@
 数据规模与复杂度：
     n <= 1e4 朵云、m <= 5e3 个搭配、w <= 1e4 元。
     并查集 O((n+m)α)，背包最坏 O(组数 * w) = 1e8——这在 C++ 里刚好，
-    在 Python 里逐格 for 循环是绝对跑不动的。
+    在 Python 里逐格 for 循环是绝对跑不动的，必须把内层循环下沉到 C 层。
 
-Python 的关键优化（本题的核心）：
-  1. **用整段切片 + map(max, ...) 代替内层 for**：
-        dp[c:hi+1] = list(map(max, dp[c:hi+1], [x + v for x in dp[:hi-c+1]]))
-     这样内层循环全部下沉到 C 层，比 Python 级的 `for j in range(w, c-1, -1)`
-     快一个数量级以上。注意 0/1 背包必须「用旧的 dp 去更新新的 dp」，
+Python 的关键优化（本题的核心，四条一起上）：
+  1. **用整段切片 + zip 列表推导代替内层 for**：
+        shifted = [x + v for x in dp[:reach+1-c]]
+        dp[c:reach+1] = [a if a > b else b for a, b in zip(dp[c:reach+1], shifted)]
+     内层循环全部走 C 层的切片 / zip / 列表推导，比 Python 级的
+     `for j in range(w, c-1, -1)` 快一个数量级以上。
+     注意 0/1 背包必须「用旧的 dp 去更新新的 dp」，
      切片天然复制了一份旧值，所以不会出现完全背包那样的重复选取；
-  2. **上界收缩 reach**：处理到第 k 个组时，能凑出的总花费不会超过
-     前 k 个组的价格之和，所以只需要更新 dp[c .. min(w, 前缀和)]。
-     在「大量廉价小组」的数据下这能把工作量直接砍掉一半以上；
-  3. 价格超过 w 的组直接跳过。
+  2. **相同 (价格, 价值) 的组去重 + 二进制拆分**：把 k 个完全一样的组
+     合成 1, 2, 4, ..., 剩余 这 O(log k) 个「打包物品」。
+     这不改变可达的方案集合（任意 0..k 个都能被这些幂次凑出），
+     却能把「大量廉价同款小组」这种最容易卡人的数据从 1e4 件压到几十件；
+  3. **按价格升序处理 + dp 数组按 reach 动态增长**：处理完前 k 件后，
+     能花出去的钱不会超过这 k 件的价格之和 reach = min(w, Σc)，
+     容量再大也只是同一个答案。于是让 dp 的长度始终只有 reach+1，
+     每引入一件新物品就用 dp[-1]（即 dp[reach]）把数组扩展到新的 reach。
+     **按价格升序**能让 reach 增长得最慢，把总工作量的上界从 组数*w
+     压到 Σ_k min(前 k 件价格和, w) <= w^2/2 ≈ 5e7。
+     最后答案取 dp[reach]——reach < w 时说明全部组都买得起，dp[reach] 就是总价值。
+     **注意**：不能只把更新范围截断到 reach 却仍然读 dp[w]——
+     那样 dp[reach+1..w] 会残留旧值（本该继承 dp[reach]），答案会偏小。
+     这是这个优化最容易写错的地方，必须真的把数组扩展并填上继承值；
+  4. 价格超过 w 的组（以及拆分后价格超过 w 的打包物品）直接跳过。
+
+    即便如此，纯 Python 在「1e4 个价格各异的组 + w = 1e4」这种极限数据下
+    仍要几秒——这是 5e7 次元素级运算在 CPython 里的物理下限，
+    真要更快只能上 numpy（本项目环境未安装）。
 
 坑在哪：
   1. 输入第一行是 n, m, w 三个数（题面把 w 写在括号外面，容易看漏）；
   2. 并查集的 find 要写**迭代**路径压缩，1e4 规模虽不至于爆栈，
      但保持习惯，也更快；
-  3. 答案取 dp[w]（而不是 max(dp)）即可，因为 dp 数组本身是「容量 <= j」
-     的非降形式吗？——不是，这里 dp[j] 是「恰好用 j」的松弛式写法，
-     由于我们从 dp 全 0 开始且允许不装满，dp[j] 实际含义是「容量 j 的最优值」，
-     单调不降，取 dp[w] 正确。
+  3. 依赖是**双向**的（买 u 必买 v，买 v 也必买 u），所以是并查集缩点，
+     不要误当成树形依赖背包。
 
 样例复核：
     5 朵云 (3,10)(3,10)(3,10)(5,100)(10,1)，搭配 1-3、3-2、4-2 -> {1,2,3,4} 一组，
@@ -75,20 +90,40 @@ def main() -> None:
         gc[r] += cost[i]
         gv[r] += val[i]
 
-    dp = [0] * (w + 1)
-    reach = 0                                  # 目前所有已处理组的价格之和（上限 w）
+    # 相同 (价格, 价值) 的组合并计数，再做二进制拆分，减少物品件数
+    bag = {}
     for i in range(1, n + 1):
         if parent[i] != i or gc[i] > w:        # 只处理代表元，且买得起的
             continue
-        c = gc[i]; v = gv[i]
-        reach += c
-        if reach > w:
-            reach = w
-        hi = reach
-        # 0/1 背包：dp[j] = max(dp[j], dp[j-c] + v)，整段切片交给 C 层
-        dp[c:hi + 1] = list(map(max, dp[c:hi + 1],
-                                [x + v for x in dp[:hi - c + 1]]))
-    sys.stdout.write("%d\n" % dp[w])
+        key = (gc[i], gv[i])
+        bag[key] = bag.get(key, 0) + 1
+
+    items = []
+    for (c, v), k in bag.items():
+        step = 1
+        while k:
+            take = step if step <= k else k
+            cc = c * take
+            if cc <= w:                        # 打包后超预算的直接丢掉
+                items.append((cc, v * take))
+            k -= take
+            step <<= 1
+    items.sort()                               # 价格升序，让 reach 涨得最慢
+
+    dp = [0]                                   # dp[j] 只维护 j = 0..reach
+    reach = 0                                  # 已处理物品的价格之和（上限 w）
+    for c, v in items:
+        nr = reach + c
+        if nr > w:
+            nr = w
+        if nr > reach:
+            dp.extend([dp[-1]] * (nr - reach))  # 新容量继承 dp[reach]（钱花不完）
+            reach = nr
+        # 0/1 背包：dp[j] = max(dp[j], dp[j-c] + v)，整段切片把内层循环交给 C 层
+        shifted = [x + v for x in dp[:reach + 1 - c]]
+        dp[c:reach + 1] = [a if a > b else b
+                           for a, b in zip(dp[c:reach + 1], shifted)]
+    sys.stdout.write("%d\n" % dp[reach])
 
 
 main()
