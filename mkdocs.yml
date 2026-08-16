@@ -4,6 +4,10 @@ site_url: https://algorithm.ebook.ttzg.site/
 repo_name: w3903771/algorithm
 repo_url: https://github.com/w3903771/algorithm
 
+# 审计类文件供仓库维护使用，不作为教程站点内容发布。
+exclude_docs: |
+  00-*.md
+
 theme:
   name: material
   language: zh
@@ -25,6 +29,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
     - navigation.top
     - search.suggest
     - search.highlight
@@ -50,3 +55,88 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+
+nav:
+  - 首页: index.md
+  - Python 基础:
+      - 学习索引: part1-python基础/index.md
+      - 01 · 语法与执行模型: part1-python基础/01-语法与执行模型.md
+      - 02 · 数据类型与转换: part1-python基础/02-数据类型与转换.md
+      - 03 · 运算符与位运算: part1-python基础/03-运算符与位运算.md
+      - 04 · 字符串: part1-python基础/04-字符串.md
+      - 05 · 列表: part1-python基础/05-列表.md
+      - 06 · 元组与序列通论: part1-python基础/06-元组与序列通论.md
+      - 07 · 字典: part1-python基础/07-字典.md
+      - 08 · 集合: part1-python基础/08-集合.md
+      - 09 · 推导式: part1-python基础/09-推导式.md
+      - 10 · 条件与循环: part1-python基础/10-条件与循环.md
+      - 11 · 函数: part1-python基础/11-函数.md
+      - 12 · 自定义排序: part1-python基础/12-自定义排序.md
+      - 13 · 内置函数速查: part1-python基础/13-内置函数速查.md
+      - 14 · 标准库速查: part1-python基础/14-标准库速查.md
+      - 15 · 面向对象、迭代器与生成器: part1-python基础/15-面向对象与迭代器生成器.md
+      - 16 · 模块、异常与文件: part1-python基础/16-模块-异常-文件.md
+  - 竞赛基本功:
+      - 学习索引: part2-竞赛基本功/index.md
+      - 20 · 输入输出处理: part2-竞赛基本功/20-输入输出处理.md
+      - 21 · 复杂度与 Python 性能: part2-竞赛基本功/21-复杂度与Python性能.md
+      - 22 · 高精度与大整数: part2-竞赛基本功/22-高精度与大整数.md
+      - 23 · 浮点与科学计数法: part2-竞赛基本功/23-浮点与科学计数法.md
+      - 24 · 多项式: part2-竞赛基本功/24-多项式.md
+  - 数据结构:
+      - 学习索引: part3-数据结构/index.md
+      - 30 · 序列与数组: part3-数据结构/30-序列与数组.md
+      - 31 · 链表: part3-数据结构/31-链表.md
+      - 32 · 栈: part3-数据结构/32-栈.md
+      - 33 · 队列与双端队列: part3-数据结构/33-队列与双端队列.md
+      - 34 · 集合与多重集合: part3-数据结构/34-集合与多重集合.md
+      - 35 · 优先队列与堆: part3-数据结构/35-优先队列与堆.md
+      - 36 · 哈希与字符串哈希: part3-数据结构/36-哈希与字符串哈希.md
+      - 37 · 单调栈与单调队列: part3-数据结构/37-单调栈与单调队列.md
+      - 38 · 并查集: part3-数据结构/38-并查集.md
+      - 39 · 树状数组与线段树: part3-数据结构/39-树状数组与线段树.md
+  - 基础算法:
+      - 学习索引: part4-基础算法/index.md
+      - 40 · 排序: part4-基础算法/40-排序.md
+      - 41 · 桶计数与离散化: part4-基础算法/41-桶计数与离散化.md
+      - 42 · 前缀和与差分: part4-基础算法/42-前缀和与差分.md
+      - 43 · 双指针与滑动窗口: part4-基础算法/43-双指针与滑动窗口.md
+      - 44 · 二分: part4-基础算法/44-二分.md
+      - 45 · 倍增: part4-基础算法/45-倍增.md
+      - 46 · 位运算: part4-基础算法/46-位运算.md
+      - 47 · 贪心: part4-基础算法/47-贪心.md
+      - 48 · 构造: part4-基础算法/48-构造.md
+      - 49 · 模拟: part4-基础算法/49-模拟.md
+      - 50 · 博弈论: part4-基础算法/50-博弈论.md
+  - 搜索:
+      - 学习索引: part5-搜索/index.md
+      - 60 · DFS 深度优先搜索: part5-搜索/60-DFS深度优先搜索.md
+      - 61 · BFS 广度优先搜索: part5-搜索/61-BFS广度优先搜索.md
+      - 62 · 记忆化搜索与剪枝: part5-搜索/62-记忆化搜索与剪枝.md
+  - 字符串:
+      - 学习索引: part6-字符串/index.md
+      - 70 · 字符串处理: part6-字符串/70-字符串处理.md
+      - 71 · 字符串匹配 KMP: part6-字符串/71-字符串匹配KMP.md
+      - 72 · 回文: part6-字符串/72-回文.md
+  - 数学:
+      - 学习索引: part7-数学/index.md
+      - 80 · 数论基础: part7-数学/80-数论基础.md
+      - 81 · 快速幂与逆元: part7-数学/81-快速幂与逆元.md
+      - 82 · 欧拉函数与欧拉降幂: part7-数学/82-欧拉函数与欧拉降幂.md
+      - 83 · 整除分块与数论进阶: part7-数学/83-整除分块与数论进阶.md
+      - 84 · 组合数学: part7-数学/84-组合数学.md
+  - 图与树:
+      - 学习索引: part8-图与树/index.md
+      - 90 · 图的表示与遍历: part8-图与树/90-图的表示与遍历.md
+      - 91 · 最短路: part8-图与树/91-最短路.md
+      - 92 · 最小生成树: part8-图与树/92-最小生成树.md
+  - 进阶专题:
+      - 学习索引: part10-进阶专题/index.md
+      - 110 · 计算几何入门: part10-进阶专题/110-计算几何入门.md
+      - 111 · 偏序集与 Dilworth 定理: part10-进阶专题/111-偏序集与Dilworth定理.md
+      - 112 · 连通性、强连通分量与割点: part10-进阶专题/112-连通性-强连通分量与割点.md
+      - 113 · 树链剖分: part10-进阶专题/113-树链剖分.md
+      - 114 · 同余方程组与离散对数: part10-进阶专题/114-同余方程组与离散对数.md
+  - 附录:
+      - 牛客题单总索引: appendix/A-牛客题单总索引.md
+      - Python 竞赛避坑清单: appendix/C-Python竞赛避坑清单.md
