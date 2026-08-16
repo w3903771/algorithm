@@ -1,0 +1,56 @@
+# 使用 MkDocs 构建教程站点并发布到 GitHub Pages
+# 线上地址：https://algorithm.ebook.ttzg.site/
+# 首次发布前，请在仓库 Settings → Pages 中将 Source 设为 GitHub Actions，
+# 并在 Custom domain 中填写 algorithm.ebook.ttzg.site。
+
+name: Deploy algorithm site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署，新提交取消进行中的旧部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install documentation toolchain
+        run: pip install mkdocs-material
+
+      - name: Build documentation site
+        run: mkdocs build --site-dir _site
+
+      - name: Configure Pages
+        run: |
+          printf 'algorithm.ebook.ttzg.site\n' > _site/CNAME
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
