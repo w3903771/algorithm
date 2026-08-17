@@ -383,7 +383,7 @@ Python 层每个元素只有一次 `bisect` 调用和一次赋值。
 
 > $1 \le n \le 5\times10^3$，$1 \le a_i \le 10^6$。求最长**不下降**子序列的长度。
 > 时限：C/C++ 1 秒，**其他语言 2 秒**。
-> 题面见 [`sources/05-nowcoder/problems/BISHI133.md`](../../sources/05-nowcoder/problems/BISHI133.md)。
+> 题面见 [BISHI133 原题（牛客）](https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062)。
 
 > ℹ️ 本题的 `solutions/` 题解文件尚在编写中。下面的代码已由
 > `scripts/verify_docs.py` 用**官方样例**实测通过，但未在牛客提交。
@@ -442,9 +442,9 @@ main()
 > 三局两胜，速度**严格大于**才算赢。已知齐威王三匹马的出场顺序 $v_1,v_2,v_3$，
 > 田忌有三匹马 $a_1,a_2,a_3$（顺序可任意调整），问田忌能否获胜。
 > $1 \le v_i, a_i \le 9$。
-> 题面见 [`sources/05-nowcoder/problems/BISHI9.md`](../../sources/05-nowcoder/problems/BISHI9.md)。
+> 题面见 [BISHI9 原题（牛客）](https://www.nowcoder.com/practice/49d799f65a0749588e9cd7e6135a4a9a)。
 
-> ✅ 题解见 [`solutions/BISHI9.py`](../../solutions/BISHI9.py)，**已通过官方样例验证**。
+> ✅ 题解见 [`solutions/BISHI9.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI9.py)，**已通过官方样例验证**。
 
 $n = 3$，$3! = 6$ 种排列，直接枚举。
 

@@ -3,7 +3,7 @@
 > 由 `scripts/gen_index.py` 自动生成，数据来自题单 JSON、章节映射与验证报告，
 > 因此始终与仓库实际状态一致。
 
-**共 165 题　已写题解 142 题　通过官方样例 138 题**
+**共 165 题　已写题解 165 题　通过官方样例 165 题**
 
 题目来源：[牛客在线编程](https://www.nowcoder.com/exam/oj?questionJobId=10&subTabName=online_coding_page) 的「笔试模板必刷」（BISHI1–147）与「输入输出练习」（PIO1–18）。
 
@@ -129,33 +129,33 @@
 | [BISHI118](https://www.nowcoder.com/practice/562630ca90ac40ce89443c91060574c6) | 相差不超过k的最多数 | 中等 | 双指针 | 41-桶计数与离散化、43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI118.py) |
 | [BISHI119](https://www.nowcoder.com/practice/ee0b6c6baa2642c182df8b4390126f9a) | 小红的01子序列构造（easy） | 中等 | 双指针 | 43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI119.py) |
 | [BISHI120](https://www.nowcoder.com/practice/b6b8bfcde03841e4880c2b9ef00329c6) | ？？？ | 较难 | 双指针 | 43-双指针与滑动窗口 | [✅ 已验证](../../solutions/BISHI120.py) |
-| [BISHI121](https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68) | 数列后缀极大位置统计 | 简单 | — | 37-单调栈与单调队列、104-DP优化 | [📝 已写](../../solutions/BISHI121.py) |
-| [BISHI122](https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235) | 区间后缀极大位置计数 | 简单 | — | 37-单调栈与单调队列 | [📝 已写](../../solutions/BISHI122.py) |
-| [BISHI123](https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339) | 环形字符串跃迁 | 中等 | — | 70-字符串处理 | [📝 已写](../../solutions/BISHI123.py) |
-| [BISHI124](https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217) | 【模板】最近公共祖先（LCA） | 中等 | — | 45-倍增、94-树上算法、113-树链剖分 | [📝 已写](../../solutions/BISHI124.py) |
-| [BISHI125](https://www.nowcoder.com/practice/831a314449d44ea0b1db90ca626bcd1a) | 【模板】静态区间最值 | 中等 | — | 39-树状数组与线段树、45-倍增 | — |
-| [BISHI126](https://www.nowcoder.com/practice/ef7a50cf0377447b9b435b0f95e48e70) | 【模板】动态区间和Ⅱ ‖ 区间修改 + 区间查询 | 较难 | — | 39-树状数组与线段树、113-树链剖分 | — |
-| [BISHI127](https://www.nowcoder.com/practice/56547df6934f4048a80ec75838d60c8f) | 区间根号与区间求和 | 中等 | — | 39-树状数组与线段树 | — |
-| [BISHI128](https://www.nowcoder.com/practice/7a1de22fa7a1456f8ba519f21de31c84) | 区间加乘与单点求值 | 中等 | — | 39-树状数组与线段树 | — |
-| [BISHI129](https://www.nowcoder.com/practice/74481dd14e3b4875a190952f86e6ffab) | 区间增量与区间小于计数 | 中等 | — | 39-树状数组与线段树、116-平衡树与有序集合、118-分治进阶：整体二分与CDQ | — |
-| [BISHI130](https://www.nowcoder.com/practice/55d474a878a84f4b84dca4b177a8c45c) | 区间取反与区间数一 | 中等 | — | 39-树状数组与线段树 | — |
-| [BISHI131](https://www.nowcoder.com/practice/c7e5f164fa5d471f8f83c90fe4ee3f05) | 数楼梯 | 简单 | — | 85-基础数学与递推、100-DP入门 | — |
-| [BISHI132](https://www.nowcoder.com/practice/8cd083c66a5f43489a532164e2a2304d) | 小红的地砖 | 简单 | — | 100-DP入门 | — |
-| [BISHI133](https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062) | 最长不下降子序列 | 简单 | — | 102-线性DP、111-偏序集与Dilworth定理 | — |
-| [BISHI134](https://www.nowcoder.com/practice/f04519cd1d904f50b68f4229a126ab08) | 最大子段和 | 简单 | — | 102-线性DP | — |
-| [BISHI135](https://www.nowcoder.com/practice/ceea5825472940dabfec917ef93538e6) | 三角形取数(Hard Version) | 中等 | — | 102-线性DP | — |
-| [BISHI136](https://www.nowcoder.com/practice/fd55637d3f24484e96dad9e992d3f62e) | 【模板】01背包 | 简单 | — | 101-背包问题 | — |
-| [BISHI137](https://www.nowcoder.com/practice/deda4293d9b24ce1aeaf1813c88b8c25) | 【模板】完全背包 | 中等 | — | 101-背包问题 | — |
-| [BISHI138](https://www.nowcoder.com/practice/8fa10063d33a43dd9652c1511a34d461) | 【模板】多重背包 | 中等 | — | 101-背包问题 | — |
-| [BISHI139](https://www.nowcoder.com/practice/84b88177894c4c82980017e6b4a15fb3) | 【模板】二维费用背包 | 中等 | 动态规划 | 101-背包问题 | — |
-| [BISHI140](https://www.nowcoder.com/practice/32a6c222213c42efa902da6b5c9f8e99) | 【模板】分组背包 | 较难 | — | 101-背包问题 | — |
-| [BISHI141](https://www.nowcoder.com/practice/08dbc77ec79942c1914b002f488b87ee) | 来硬的 | 较难 | — | 101-背包问题 | — |
-| [BISHI142](https://www.nowcoder.com/practice/66403297dfe04faaacf7d0e905fea7ac) | 最大学分 | 较难 | — | 101-背包问题 | — |
-| [BISHI143](https://www.nowcoder.com/practice/f703237089ee42d9b37e01d70e14e2fc) | 没有上司的舞会 | 较难 | — | 103-区间树形状压DP | — |
-| [BISHI144](https://www.nowcoder.com/practice/9844dd9f531e46e29f5749e8fcc4bd0b) | 食物链计数 | 较难 | — | 103-区间树形状压DP | — |
-| [BISHI145](https://www.nowcoder.com/practice/237337887b094938bfc6e9557f92c3e9) | 石子合并 | 较难 | — | 103-区间树形状压DP | — |
-| [BISHI146](https://www.nowcoder.com/practice/bde230df252c4b41a059c9b06fcf65b6) | 收集金币 | 中等 | — | 62-记忆化搜索与剪枝、104-DP优化 | — |
-| [BISHI147](https://www.nowcoder.com/practice/3a02e2b818144c2dbad8dd3dc28d04cf) | 旅行者的大逃脱 | 困难 | — | 104-DP优化 | — |
+| [BISHI121](https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68) | 数列后缀极大位置统计 | 简单 | — | 37-单调栈与单调队列、104-DP优化 | [✅ 已验证](../../solutions/BISHI121.py) |
+| [BISHI122](https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235) | 区间后缀极大位置计数 | 简单 | — | 37-单调栈与单调队列 | [✅ 已验证](../../solutions/BISHI122.py) |
+| [BISHI123](https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339) | 环形字符串跃迁 | 中等 | — | 70-字符串处理 | [✅ 已验证](../../solutions/BISHI123.py) |
+| [BISHI124](https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217) | 【模板】最近公共祖先（LCA） | 中等 | — | 45-倍增、94-树上算法、113-树链剖分 | [✅ 已验证](../../solutions/BISHI124.py) |
+| [BISHI125](https://www.nowcoder.com/practice/831a314449d44ea0b1db90ca626bcd1a) | 【模板】静态区间最值 | 中等 | — | 39-树状数组与线段树、45-倍增 | [✅ 已验证](../../solutions/BISHI125.py) |
+| [BISHI126](https://www.nowcoder.com/practice/ef7a50cf0377447b9b435b0f95e48e70) | 【模板】动态区间和Ⅱ ‖ 区间修改 + 区间查询 | 较难 | — | 39-树状数组与线段树、113-树链剖分 | [✅ 已验证](../../solutions/BISHI126.py) |
+| [BISHI127](https://www.nowcoder.com/practice/56547df6934f4048a80ec75838d60c8f) | 区间根号与区间求和 | 中等 | — | 39-树状数组与线段树 | [✅ 已验证](../../solutions/BISHI127.py) |
+| [BISHI128](https://www.nowcoder.com/practice/7a1de22fa7a1456f8ba519f21de31c84) | 区间加乘与单点求值 | 中等 | — | 39-树状数组与线段树 | [✅ 已验证](../../solutions/BISHI128.py) |
+| [BISHI129](https://www.nowcoder.com/practice/74481dd14e3b4875a190952f86e6ffab) | 区间增量与区间小于计数 | 中等 | — | 39-树状数组与线段树、116-平衡树与有序集合、118-分治进阶：整体二分与CDQ | [✅ 已验证](../../solutions/BISHI129.py) |
+| [BISHI130](https://www.nowcoder.com/practice/55d474a878a84f4b84dca4b177a8c45c) | 区间取反与区间数一 | 中等 | — | 39-树状数组与线段树 | [✅ 已验证](../../solutions/BISHI130.py) |
+| [BISHI131](https://www.nowcoder.com/practice/c7e5f164fa5d471f8f83c90fe4ee3f05) | 数楼梯 | 简单 | — | 85-基础数学与递推、100-DP入门 | [✅ 已验证](../../solutions/BISHI131.py) |
+| [BISHI132](https://www.nowcoder.com/practice/8cd083c66a5f43489a532164e2a2304d) | 小红的地砖 | 简单 | — | 100-DP入门 | [✅ 已验证](../../solutions/BISHI132.py) |
+| [BISHI133](https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062) | 最长不下降子序列 | 简单 | — | 102-线性DP、111-偏序集与Dilworth定理 | [✅ 已验证](../../solutions/BISHI133.py) |
+| [BISHI134](https://www.nowcoder.com/practice/f04519cd1d904f50b68f4229a126ab08) | 最大子段和 | 简单 | — | 102-线性DP | [✅ 已验证](../../solutions/BISHI134.py) |
+| [BISHI135](https://www.nowcoder.com/practice/ceea5825472940dabfec917ef93538e6) | 三角形取数(Hard Version) | 中等 | — | 102-线性DP | [✅ 已验证](../../solutions/BISHI135.py) |
+| [BISHI136](https://www.nowcoder.com/practice/fd55637d3f24484e96dad9e992d3f62e) | 【模板】01背包 | 简单 | — | 101-背包问题 | [✅ 已验证](../../solutions/BISHI136.py) |
+| [BISHI137](https://www.nowcoder.com/practice/deda4293d9b24ce1aeaf1813c88b8c25) | 【模板】完全背包 | 中等 | — | 101-背包问题 | [✅ 已验证](../../solutions/BISHI137.py) |
+| [BISHI138](https://www.nowcoder.com/practice/8fa10063d33a43dd9652c1511a34d461) | 【模板】多重背包 | 中等 | — | 101-背包问题 | [✅ 已验证](../../solutions/BISHI138.py) |
+| [BISHI139](https://www.nowcoder.com/practice/84b88177894c4c82980017e6b4a15fb3) | 【模板】二维费用背包 | 中等 | 动态规划 | 101-背包问题 | [✅ 已验证](../../solutions/BISHI139.py) |
+| [BISHI140](https://www.nowcoder.com/practice/32a6c222213c42efa902da6b5c9f8e99) | 【模板】分组背包 | 较难 | — | 101-背包问题 | [✅ 已验证](../../solutions/BISHI140.py) |
+| [BISHI141](https://www.nowcoder.com/practice/08dbc77ec79942c1914b002f488b87ee) | 来硬的 | 较难 | — | 101-背包问题 | [✅ 已验证](../../solutions/BISHI141.py) |
+| [BISHI142](https://www.nowcoder.com/practice/66403297dfe04faaacf7d0e905fea7ac) | 最大学分 | 较难 | — | 101-背包问题 | [✅ 已验证](../../solutions/BISHI142.py) |
+| [BISHI143](https://www.nowcoder.com/practice/f703237089ee42d9b37e01d70e14e2fc) | 没有上司的舞会 | 较难 | — | 103-区间树形状压DP | [✅ 已验证](../../solutions/BISHI143.py) |
+| [BISHI144](https://www.nowcoder.com/practice/9844dd9f531e46e29f5749e8fcc4bd0b) | 食物链计数 | 较难 | — | 103-区间树形状压DP | [✅ 已验证](../../solutions/BISHI144.py) |
+| [BISHI145](https://www.nowcoder.com/practice/237337887b094938bfc6e9557f92c3e9) | 石子合并 | 较难 | — | 103-区间树形状压DP | [✅ 已验证](../../solutions/BISHI145.py) |
+| [BISHI146](https://www.nowcoder.com/practice/bde230df252c4b41a059c9b06fcf65b6) | 收集金币 | 中等 | — | 62-记忆化搜索与剪枝、104-DP优化 | [✅ 已验证](../../solutions/BISHI146.py) |
+| [BISHI147](https://www.nowcoder.com/practice/3a02e2b818144c2dbad8dd3dc28d04cf) | 旅行者的大逃脱 | 困难 | — | 104-DP优化 | [✅ 已验证](../../solutions/BISHI147.py) |
 | [PIO1](https://www.nowcoder.com/practice/c988a1f1814041c4b8b3d9547e91865a) | 只有输出 | 入门 | — | 01-语法与执行模型、20-输入输出处理 | [✅ 已验证](../../solutions/PIO1.py) |
 | [PIO2](https://www.nowcoder.com/practice/72195b26cb0a4483a1f9fdf314ad63fa) | 单组_A+B | 入门 | — | 20-输入输出处理 | [✅ 已验证](../../solutions/PIO2.py) |
 | [PIO3](https://www.nowcoder.com/practice/295063bf1bce4c2e819a8f18a5efcd20) | 多组_A+B_EOF形式 | 入门 | — | 16-模块-异常-文件、20-输入输出处理 | [✅ 已验证](../../solutions/PIO3.py) |

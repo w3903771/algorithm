@@ -53,8 +53,13 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - tables
+  # MkDocs 默认的 slugify 会剥掉所有非 ASCII 字符，中文标题的锚点会退化成 _1、_2……
+  # 换成 pymdownx 的 Unicode 版，锚点才会保留中文，跨章节的 #锚点 链接也才能命中。
   - toc:
       permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 
 nav:
   - 首页: index.md
@@ -118,6 +123,7 @@ nav:
       - 70 · 字符串处理: part6-字符串/70-字符串处理.md
       - 71 · 字符串匹配 KMP: part6-字符串/71-字符串匹配KMP.md
       - 72 · 回文: part6-字符串/72-回文.md
+      - 73 · Trie 字典树: part6-字符串/73-Trie字典树.md
   - 数学:
       - 学习索引: part7-数学/index.md
       - 80 · 数论基础: part7-数学/80-数论基础.md
@@ -125,11 +131,21 @@ nav:
       - 82 · 欧拉函数与欧拉降幂: part7-数学/82-欧拉函数与欧拉降幂.md
       - 83 · 整除分块与数论进阶: part7-数学/83-整除分块与数论进阶.md
       - 84 · 组合数学: part7-数学/84-组合数学.md
+      - 85 · 基础数学与递推: part7-数学/85-基础数学与递推.md
   - 图与树:
       - 学习索引: part8-图与树/index.md
       - 90 · 图的表示与遍历: part8-图与树/90-图的表示与遍历.md
       - 91 · 最短路: part8-图与树/91-最短路.md
       - 92 · 最小生成树: part8-图与树/92-最小生成树.md
+      - 93 · 拓扑排序与二分图: part8-图与树/93-拓扑排序与二分图.md
+      - 94 · 树上算法: part8-图与树/94-树上算法.md
+  - 动态规划:
+      - 学习索引: part9-动态规划/index.md
+      - 100 · DP 入门: part9-动态规划/100-DP入门.md
+      - 101 · 背包问题: part9-动态规划/101-背包问题.md
+      - 102 · 线性 DP: part9-动态规划/102-线性DP.md
+      - 103 · 区间、树形与状压 DP: part9-动态规划/103-区间树形状压DP.md
+      - 104 · DP 优化: part9-动态规划/104-DP优化.md
   - 进阶专题:
       - 学习索引: part10-进阶专题/index.md
       - 110 · 计算几何入门: part10-进阶专题/110-计算几何入门.md
@@ -137,6 +153,11 @@ nav:
       - 112 · 连通性、强连通分量与割点: part10-进阶专题/112-连通性-强连通分量与割点.md
       - 113 · 树链剖分: part10-进阶专题/113-树链剖分.md
       - 114 · 同余方程组与离散对数: part10-进阶专题/114-同余方程组与离散对数.md
+      - 115 · 高级搜索与精确覆盖: part10-进阶专题/115-高级搜索与精确覆盖.md
+      - 116 · 平衡树与有序集合: part10-进阶专题/116-平衡树与有序集合.md
+      - 117 · 图论进阶：k 短路与关键路径: part10-进阶专题/117-图论进阶-k短路与关键路径.md
+      - 118 · 分治进阶：整体二分与 CDQ: part10-进阶专题/118-分治进阶-整体二分与CDQ.md
   - 附录:
       - 牛客题单总索引: appendix/A-牛客题单总索引.md
+      - Python 算法模板速查: appendix/B-Python算法模板速查.md
       - Python 竞赛避坑清单: appendix/C-Python竞赛避坑清单.md

@@ -61,7 +61,7 @@ dist = [-1] * n        # -1 既是「未访问」标记，又是「不可达」�
 | --- | --- | --- |
 | 容器 | 栈（`list`） | **队列（`deque`）** |
 | 递归形态 | 天然递归 | **天然迭代** |
-| Python 爆栈风险 | ⚠️ 有（见 [60.4](60-DFS深度优先搜索.md#递归改迭代)） | ✅ **完全没有** |
+| Python 爆栈风险 | ⚠️ 有（见 [60.4](60-DFS深度优先搜索.md#604-递归改迭代)） | ✅ **完全没有** |
 | 无权最短路 | ❌ 不保证 | ✅ **保证** |
 | 内存峰值 | $O(\text{深度})$ | $O(\text{最宽一层})$ |
 | 求所有方案 | ✅ 回溯 | ❌ 不适合 |
@@ -384,8 +384,8 @@ def decode(code, W, K):
 
 > $n, m \le 2\times10^5$ 的**有向无权图**（可能不连通、可能有重边），
 > 输出从 $s$ 到所有点的最短路径长度，不可达输出 $-1$。
-> 题面见 [`sources/05-nowcoder/problems/BISHI105.md`](../../sources/05-nowcoder/problems/BISHI105.md)。
-> 题解见 [`solutions/BISHI105.py`](../../solutions/BISHI105.py)（已用官方样例验证）。
+> 题面见 [BISHI105 原题（牛客）](https://www.nowcoder.com/practice/359e14832ce1476fadc70dd4bc36b991)。
+> 题解见 [`solutions/BISHI105.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI105.py)（已用官方样例验证）。
 
 **无权图的最短路就是 BFS，不要上 Dijkstra**——后者白白多一个 $\log$，
 还要多背一个堆。
@@ -460,8 +460,8 @@ main()
 
 > $n, m \le 1000$ 的网格，`.` 可走、`*` 是障碍，四连通。
 > 求 $(x_s,y_s)$ 到 $(x_t,y_t)$ 的最少步数，不可达输出 $-1$。
-> 题面见 [`sources/05-nowcoder/problems/BISHI80.md`](../../sources/05-nowcoder/problems/BISHI80.md)。
-> 题解见 [`solutions/BISHI80.py`](../../solutions/BISHI80.py)（已用官方样例验证）。
+> 题面见 [BISHI80 原题（牛客）](https://www.nowcoder.com/practice/e88b41dc6e764b2893bc4221777ffe64)。
+> 题解见 [`solutions/BISHI80.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI80.py)（已用官方样例验证）。
 
 网格 BFS 的标准模板题，61.3 的技巧全部用上。
 
@@ -529,8 +529,8 @@ main()
 
 > $n, m \le 1000$ 的纸张，`.` 是被剪去的格子、`*` 是保留的。
 > 每个 `.` 的四连通块是一个被剪下的图案，问其中有多少个是**实心长方形**。
-> 题面见 [`sources/05-nowcoder/problems/BISHI81.md`](../../sources/05-nowcoder/problems/BISHI81.md)。
-> 题解见 [`solutions/BISHI81.py`](../../solutions/BISHI81.py)（已用官方样例验证）。
+> 题面见 [BISHI81 原题（牛客）](https://www.nowcoder.com/practice/33054daa2cc04fd6b97a0d18ccfc66a0)。
+> 题解见 [`solutions/BISHI81.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI81.py)（已用官方样例验证）。
 
 连通块搜索 + 一个非常干净的判定技巧：
 
@@ -605,8 +605,8 @@ main()
 > $N \le 1000$ 的方阵，`.` 是水、`#` 是空地，四连通的 `#` 组成一个区域。
 > 洪水上涨**一轮**：所有与 `.` 上下左右相邻的 `#` 都会被淹。
 > 问有多少个区域会被**完全**淹没。
-> 题面见 [`sources/05-nowcoder/problems/BISHI82.md`](../../sources/05-nowcoder/problems/BISHI82.md)。
-> 题解见 [`solutions/BISHI82.py`](../../solutions/BISHI82.py)（已用官方样例验证）。
+> 题面见 [BISHI82 原题（牛客）](https://www.nowcoder.com/practice/6d62436fda5f4ef997e68d1ce1dd6eb2)。
+> 题解见 [`solutions/BISHI82.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI82.py)（已用官方样例验证）。
 
 **这题一半的分在读题上。** 洪水上涨是**一次性、同时**发生的一轮，
 **不是反复扩散到收敛**。所以：
@@ -681,8 +681,8 @@ main()
 
 > $h, w \le 100$ 的 01 迷宫，输出一条从 $(0,0)$ 到 $(h-1,w-1)$ 的可行路径，
 > 每行输出 `(x,y)`。保证路径存在且唯一。
-> 题面见 [`sources/05-nowcoder/problems/BISHI83.md`](../../sources/05-nowcoder/problems/BISHI83.md)。
-> 题解见 [`solutions/BISHI83.py`](../../solutions/BISHI83.py)（已用官方样例验证）。
+> 题面见 [BISHI83 原题（牛客）](https://www.nowcoder.com/practice/cf24906056f4488c9ddb132f317e03bc)。
+> 题解见 [`solutions/BISHI83.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI83.py)（已用官方样例验证）。
 
 BFS 求最短路 + **前驱数组回溯路径**。
 题目保证可行路径唯一，所以「最短路」和「那条唯一路径」是同一条。
@@ -758,8 +758,8 @@ main()
 > 4 种资源初始都是 10，每次操作只能对**单一**资源做：$\pm1$、$\pm10$、$\pm100$、
 > 直接设为 300、直接设为 10。资源必须始终在 $[10, 300]$ 内。
 > $T \le 10^5$ 组询问，每组给目标 $(a,b,c,d)$，求最少操作次数。
-> 题面见 [`sources/05-nowcoder/problems/BISHI84.md`](../../sources/05-nowcoder/problems/BISHI84.md)。
-> 题解见 [`solutions/BISHI84.py`](../../solutions/BISHI84.py)（已用官方样例验证）。
+> 题面见 [BISHI84 原题（牛客）](https://www.nowcoder.com/practice/5a6f83a0e0214ba5a77f6cdc71a3027b)。
+> 题解见 [`solutions/BISHI84.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI84.py)（已用官方样例验证）。
 
 **这题是「状态空间拆分」的教科书例子**，也是本章最值得想清楚的一道。
 
@@ -835,8 +835,8 @@ $f[200]=2$（设为 300，再 $-100$）；$f[300]=1$（设为上限）。
 
 > $n, m \le 10^5$ 的无向图，每个点有 0/1 的陷阱标记，只能经过安全点。
 > 问 1 号点能否到 $n$ 号点，输出 `Yes` / `No`。
-> 题面见 [`sources/05-nowcoder/problems/BISHI97.md`](../../sources/05-nowcoder/problems/BISHI97.md)。
-> 题解见 [`solutions/BISHI97.py`](../../solutions/BISHI97.py)（已用官方样例验证）。
+> 题面见 [BISHI97 原题（牛客）](https://www.nowcoder.com/practice/4b4ee516c23d4bd2b838646363b5c395)。
+> 题解见 [`solutions/BISHI97.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI97.py)（已用官方样例验证）。
 
 带**点权限制**的连通性判定：把陷阱点当作不存在的点删掉，剩下的图上跑一次 BFS。
 
@@ -901,8 +901,8 @@ main()
 > $T \le 10^4$ 组，每组一棵 $n$ 个点的无根树（$\sum n \le 2\times10^5$）。
 > 度数为 1 的点叫 Sekai 点。Miku 点 = 在**非** Sekai 点中，
 > 「到最近的 Sekai 点的距离」最大的那些点。输出个数和升序编号。
-> 题面见 [`sources/05-nowcoder/problems/BISHI101.md`](../../sources/05-nowcoder/problems/BISHI101.md)。
-> 题解见 [`solutions/BISHI101.py`](../../solutions/BISHI101.py)（已用官方样例验证）。
+> 题面见 [BISHI101 原题（牛客）](https://www.nowcoder.com/practice/9dd512f784b24ece85c81600aa3bc06c)。
+> 题解见 [`solutions/BISHI101.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI101.py)（已用官方样例验证）。
 
 **多源 BFS 的模板题**。逐点单源 BFS 是 $O(n^2)$，必挂；
 把**所有叶子同时塞进队列**（距离 0）跑一次 BFS，

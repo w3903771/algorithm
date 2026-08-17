@@ -10,3 +10,8 @@ uv.lock
 # 抓取来源与脚本（按要求不入库）
 sources/
 scripts/
+
+# mkdocs 本地构建产物
+_site/
+_site_test/
+_site_check/

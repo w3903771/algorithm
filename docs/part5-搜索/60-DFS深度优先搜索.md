@@ -481,8 +481,8 @@ S3 day2 讲 DLX（精确覆盖）时给的搜索流程，就是「剪枝驱动�
 
 > $n \times m \le 100 \times 100$ 的迷宫，`.` 是空地、`#` 是墙，四连通移动。
 > 问能否从左上角 $(1,1)$ 走到右下角 $(n,m)$。输出 `Yes` / `No`。
-> 题面见 [`sources/05-nowcoder/problems/BISHI76.md`](../../sources/05-nowcoder/problems/BISHI76.md)。
-> 题解见 [`solutions/BISHI76.py`](../../solutions/BISHI76.py)（已用官方样例验证）。
+> 题面见 [BISHI76 原题（牛客）](https://www.nowcoder.com/practice/0c8930e517444d04b426e9703d483ed4)。
+> 题解见 [`solutions/BISHI76.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI76.py)（已用官方样例验证）。
 
 最裸的连通性判定。只问「能不能到」，不问步数，所以 DFS / BFS / 并查集都行，
 本质是一次泛洪填充。
@@ -539,8 +539,8 @@ main()
 
 > $N \times M \le 100 \times 100$ 的田地，`W` 是水、`.` 是干地。
 > **八连通**的水格属于同一个水坑。求水坑数量。
-> 题面见 [`sources/05-nowcoder/problems/BISHI77.md`](../../sources/05-nowcoder/problems/BISHI77.md)。
-> 题解见 [`solutions/BISHI77.py`](../../solutions/BISHI77.py)（已用官方样例验证）。
+> 题面见 [BISHI77 原题（牛客）](https://www.nowcoder.com/practice/664ca4289fcf457ba3109fdf4a7a1a05)。
+> 题解见 [`solutions/BISHI77.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI77.py)（已用官方样例验证）。
 
 连通块计数模板。唯一和常规题不同的是**八连通**——
 方向数组写成 4 个，会把斜着搭在一起的水格错拆成两块。
@@ -596,8 +596,8 @@ main()
 ### BISHI78 全排列（简单）
 
 > 给定 $n \le 9$，按**字典序**输出 $1 \sim n$ 的所有排列，每行 $n$ 个数用空格分隔。
-> 题面见 [`sources/05-nowcoder/problems/BISHI78.md`](../../sources/05-nowcoder/problems/BISHI78.md)。
-> 题解见 [`solutions/BISHI78.py`](../../solutions/BISHI78.py)（已用官方样例验证）。
+> 题面见 [BISHI78 原题（牛客）](https://www.nowcoder.com/practice/1d1fe38275da44b5848add89f9e223b1)。
+> 题解见 [`solutions/BISHI78.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI78.py)（已用官方样例验证）。
 
 DFS 回溯的入门模板题——**但正解不是手写回溯**。
 
@@ -638,8 +638,8 @@ main()
 
 > $T \le 20$ 组数据，每组给 $N \times M \le 6 \times 6$ 的非负整数矩阵，
 > 取出若干数使得任意两个数不**八连通**相邻，求最大和。
-> 题面见 [`sources/05-nowcoder/problems/BISHI79.md`](../../sources/05-nowcoder/problems/BISHI79.md)。
-> 题解见 [`solutions/BISHI79.py`](../../solutions/BISHI79.py)（已用官方样例验证）。
+> 题面见 [BISHI79 原题（牛客）](https://www.nowcoder.com/practice/b002b8eb564245fdbb8a02db8dcf03e4)。
+> 题解见 [`solutions/BISHI79.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI79.py)（已用官方样例验证）。
 
 **这题是「搜索 vs DP」的分水岭**，值得细读。
 
@@ -733,8 +733,8 @@ $M = 6$ 时子集只有 64 个，行内合法的只有 21 个（是斐波那契�
 > $h \times w \le 100 \times 100$ 的 01 迷宫（0 空地、1 墙），
 > 输出一条从 $(0,0)$ 到 $(h-1,w-1)$ 的可行路径，每行 `(x,y)`。
 > **保证可行路径存在且唯一**。
-> 题面见 [`sources/05-nowcoder/problems/BISHI83.md`](../../sources/05-nowcoder/problems/BISHI83.md)。
-> 题解见 [`solutions/BISHI83.py`](../../solutions/BISHI83.py)（已用官方样例验证，用的是 BFS 版）。
+> 题面见 [BISHI83 原题（牛客）](https://www.nowcoder.com/practice/cf24906056f4488c9ddb132f317e03bc)。
+> 题解见 [`solutions/BISHI83.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI83.py)（已用官方样例验证，用的是 BFS 版）。
 
 这题是**「输出路径」类问题的模板**。核心技巧：**前驱数组 `pre[]`**。
 
