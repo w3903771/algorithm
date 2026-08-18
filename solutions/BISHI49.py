@@ -29,7 +29,12 @@
        用 floor(i/k) 会多算一个道具，样例 1 就会错成 1 而不是 4；
     3. 道具可以攒着不用，也可以在任意后续关卡使用，所以只有前缀数量约束，
        没有「必须立刻用掉」的限制；
-    4. n = k 时 c_n = floor((n-1)/k) = 0，一个都跳不了。
+    4. n = k 时 c_n = floor((n-1)/k) = 0，一个都跳不了；
+    5. heapq 只有小根堆，这里正好要淘汰最小值，无需取负号；
+       heappushpop 是「先压再弹」的合并操作，比 heappush + heappop 少一次调整。
+
+    堆的用法见 docs/part3-数据结构/35-优先队列与堆.md，
+    反悔贪心的一般套路见 docs/part4-基础算法/47-贪心.md。
 """
 import sys
 from heapq import heappush, heappushpop
@@ -42,15 +47,16 @@ def main() -> None:
 
     heap = []                       # 小根堆：当前决定跳过的关卡耗时
     total = 0
-    for i in range(1, n + 1):
+    for i in range(1, n + 1):       # i 用 1 基编号，与容量公式 (i-1)//k 对齐
         t = a[i - 1]
-        total += t
+        total += t                  # 顺手累计总时间，省一次遍历
         cap = (i - 1) // k          # 进入第 i 关之前手上的道具总数
         if len(heap) < cap:
-            heappush(heap, t)
+            heappush(heap, t)       # 还有空余道具，先收下再说
         elif cap and t > heap[0]:
             heappushpop(heap, t)    # 容量满了，换掉最小的那个
-    print(total - sum(heap))
+        # cap == 0（还没攒到道具）或 t <= 堆顶（换了反而更亏）时什么都不做
+    print(total - sum(heap))        # 总时间减去被跳过的耗时之和
 
 
 main()

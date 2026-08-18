@@ -28,7 +28,11 @@
     2. 剩余预算 < 2 时再开新段没有任何收益，要及时 break；
     3. 段长为 1 的段一律无用，排序后遇到就可以停；
     4. 输入含 n 行字符串，用 buffer.read().split() 按空白切正好把每行切出来
-       （行内没有空格），第一行三个数字在前。
+       （行内没有空格），第一行三个数字在前；
+    5. 得分只看「正下方」，同一行左右相邻的红格不得分，所以按列拆解是对的，
+       按行或按连通块拆都会算错。
+
+    贪心的一般套路见 docs/part4-基础算法/47-贪心.md。
 """
 import sys
 
@@ -38,19 +42,21 @@ def main() -> None:
     n = int(data[0]); m = int(data[1]); k = int(data[2])
     rows = data[3:3 + n]
 
+    # 第一步：把矩阵按列切成一根根「连续空白段」，得到一张段长表
     lens = []
     for col in zip(*rows):                      # 转置：每个 col 是该列的字节元组
         for seg in bytes(col).split(b"*"):      # 黑格把列切成若干连续空白段
-            if len(seg) >= 2:
+            if len(seg) >= 2:                   # 长度 1 的段最多得 0 分，直接不入表
                 lens.append(len(seg))
     lens.sort(reverse=True)                     # 优先填最长的段，段数用得最少
 
+    # 第二步：按段长从大到小分配预算，每段贡献「染的格子数 - 1」
     ans = 0
-    rest = k
+    rest = k                                    # 剩余可染格子数
     for L in lens:
-        if rest < 2:
+        if rest < 2:                            # 不足 2 个格子凑不出一对，后面全无收益
             break
-        c = L if L <= rest else rest
+        c = L if L <= rest else rest            # 段能填满就填满，否则用光剩余预算
         ans += c - 1                            # 一段里染 c 个连续格子得 c-1 分
         rest -= c
     print(ans)

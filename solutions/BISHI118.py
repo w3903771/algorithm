@@ -24,14 +24,16 @@ import sys
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); k = int(data[1])
+    # 排序把「任选子集」变成「取一段连续区间」，这是本题唯一的转化步骤
     a = sorted(map(int, data[2:2 + n]))
-    l = 0
+    l = 0                                    # 窗口左端，全程只增不减
     best = 0
     for r in range(n):
-        x = a[r]
+        x = a[r]                             # 排序后 a[r] 就是窗口最大值
+        # a[l] 是窗口最小值；差超过 k 就把左端往右收，直到重新合法
         while x - a[l] > k:                  # 左端右移到合法为止（总共只走 n 步）
             l += 1
-        if r - l + 1 > best:
+        if r - l + 1 > best:                 # 此刻 [l, r] 是以 r 结尾的最长合法区间
             best = r - l + 1
     sys.stdout.write("%d\n" % best)
 

@@ -30,9 +30,12 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
+    # 每组五个数 n,a,b,c,d 连续排布，第 i 组从 data[1+5i] 开始（下标 1 跳过组数 T）
     for i in range(t):
         n = int(data[1 + 5 * i]); a = int(data[2 + 5 * i]); b = int(data[3 + 5 * i])
         c = int(data[4 + 5 * i]); d = int(data[5 + 5 * i])
+        # (a+b+c) 把恰好属于 k 个集合的人数了 k 次，减去只数一次的 n 得 e2 + 2*e3；
+        # 再减掉已知的 e2 = d，剩下 2*e3，除以 2 即三个题单都刷过的人数
         out.append(str((a + b + c - n - d) // 2))
     sys.stdout.write("\n".join(out) + "\n")
 

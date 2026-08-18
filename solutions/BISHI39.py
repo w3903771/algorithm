@@ -32,7 +32,13 @@
     2. 底数 a 可能等于 n 本身（例如 n = 2,3,5,7,11,13），
        此时 a % n == 0，要先把这些小素数直接判 Yes 再进主流程；
     3. 输出是 Yes / No（首字母大写，其余小写），不是 YES/NO；
-    4. Python 3.9 兼容：不用 math.isqrt 之外的新特性，pow 三参数从 2.x 就有。
+    4. Python 3.9 兼容：pow 的三参数形式（模幂）从 2.x 就有，不依赖新版本特性；
+    5. 内层循环写成 for ... else：只有当循环**没有被 break 打断**时才执行 else，
+       正好对应「s-1 次平方里始终没出现 n-1」这一判合数的条件。
+       误把 else 缩进到 for 内部或写成 if，判定就会反过来。
+
+    快速幂与模运算见 docs/part7-数学/81-快速幂与逆元.md，
+    素数与因数的基础见 docs/part7-数学/80-数论基础.md。
 """
 import sys
 
@@ -48,6 +54,7 @@ def is_prime(n: int) -> bool:
     for p in SMALL:
         if n % p == 0:
             return n == p              # 小素数本身算质数，其余倍数直接判负
+    # 把 n-1 分解成 d * 2^s，其中 d 为奇数（Miller-Rabin 的标准预处理）
     d = n - 1
     s = 0
     while d % 2 == 0:
@@ -56,11 +63,11 @@ def is_prime(n: int) -> bool:
     for a in BASES:
         x = pow(a, d, n)               # 内置快速幂，C 实现
         if x == 1 or x == n - 1:
-            continue
+            continue                   # 该底数已通过，换下一个
         for _ in range(s - 1):
-            x = x * x % n
+            x = x * x % n              # 逐次平方，走完 a^(d*2^r) 这条链
             if x == n - 1:
-                break
+                break                  # 出现 -1，该底数通过
         else:
             return False               # 没有出现 -1，判定为合数
     return True
@@ -73,7 +80,7 @@ def main() -> None:
     out = []
     for i in range(1, t + 1):
         x = int(data[i])
-        r = cache.get(x)
+        r = cache.get(x)               # T 到 1e5 时重复询问常见，命中即省一次判定
         if r is None:
             r = "Yes" if is_prime(x) else "No"
             cache[x] = r

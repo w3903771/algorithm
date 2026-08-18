@@ -30,12 +30,14 @@ P = 1000000007
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); q = int(data[1])
-    a = [int(x) % P for x in data[2:2 + n]]
+    a = [int(x) % P for x in data[2:2 + n]]  # 先各自取模，后面所有乘法都在 [0,P) 内
 
+    # 前缀积：pre[i] = a_1 * ... * a_i，pre[0] = 1（空积）才能让 i=1 的递推成立
     pre = [1] * (n + 1)
     for i in range(1, n + 1):
-        pre[i] = pre[i - 1] * a[i - 1] % P
+        pre[i] = pre[i - 1] * a[i - 1] % P   # pre 是 1-indexed，a 是 0-indexed，故 a[i-1]
 
+    # 批量求逆：只对末项做一次模幂，再由 1/pre[i-1] = (1/pre[i]) * a_i 倒着推回去
     ipre = [1] * (n + 1)                     # 批量求逆：只做一次模幂
     ipre[n] = pow(pre[n], P - 2, P)
     for i in range(n, 0, -1):
@@ -43,9 +45,10 @@ def main() -> None:
 
     out = []
     ap = out.append
-    base = 2 + n
+    base = 2 + n                             # 询问从这里开始：跳过 n、q 和 n 个元素
     for j in range(q):
         l = int(data[base + 2 * j]); r = int(data[base + 2 * j + 1])
+        # 闭区间 [l,r] 的乘积 = pre[r] / pre[l-1]，除法换成乘逆元
         ap(str(pre[r] * ipre[l - 1] % P))
     sys.stdout.write(" ".join(out) + "\n")   # 一行输出，空格分隔
 

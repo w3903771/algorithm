@@ -32,15 +32,16 @@ P = 1000000007
 def comb(n: int, k: int) -> int:
     """C(n,k) mod P，k 很小时的 O(k) 写法；n < k 时返回 0。"""
     if n < k:
-        return 0
+        return 0                        # 人数不够，一种都选不出来
     num = 1
-    for i in range(k):
+    for i in range(k):                  # 下降阶乘 n(n-1)...(n-k+1)，共 k 个因子
         num = num * (n - i) % P
     den = 1
-    for i in range(1, k + 1):
+    for i in range(1, k + 1):           # k! 最大只有 5040，不必取模
         den *= i
     return num * pow(den, -1, P) % P     # Python 3.8+：负指数 = 扩展欧几里得求逆元
 
 
 n = int(sys.stdin.buffer.read().split()[0])
+# 「恰好 5~7 人」是三种互斥情形，方案数相加；末尾再取一次模防止和越过 P
 sys.stdout.write(str((comb(n, 5) + comb(n, 6) + comb(n, 7)) % P) + "\n")

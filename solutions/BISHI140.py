@@ -36,22 +36,26 @@ import sys
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); M = int(data[1])
+    # 组号不保证连续、也不保证从 1 开始，用字典按组归拢；
+    # 键直接用未转 int 的 bytes，反正只当标识用，省 n 次转换
     groups = {}
     p = 2
     for _ in range(n):
         w = int(data[p]); v = int(data[p + 1]); g = data[p + 2]
         p += 3
         if w > M:                            # w 可到 1e9，装不下的直接丢
-            continue
+            continue                         # 留着会让下面的 M + 1 - w 变成负数，切片错位
         groups.setdefault(g, []).append((w, v))
 
-    f = [0] * (M + 1)
+    f = [0] * (M + 1)                        # 至多选一件而非必须选，初值全 0
     for items in groups.values():
         tmp = f[:]                           # 本组「一件都不选」
         for w, v in items:
+            # 组内每件物品的候选都取自本组开始前的 f，彼此看不见对方，
+            # 于是「一组至多选一件」自动成立；结果累积在 tmp 上
             cand = [x + v for x in f[:M + 1 - w]]    # ★ 候选来自旧的 f
             tmp[w:] = list(map(max, tmp[w:], cand))
-        f = tmp
+        f = tmp                              # 整组处理完才更新 f，等价于「组在最外层」
     sys.stdout.write("%d\n" % f[M])
 
 

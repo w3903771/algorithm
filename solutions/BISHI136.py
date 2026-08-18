@@ -34,6 +34,8 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); V = int(data[1])
     NEG = -(1 << 60)                         # 「凑不出」的哨兵，加法后仍远小于 0
+    # 两问只差在初值：f1 全 0 表示「任何容量都是合法状态」；
+    # f2 只有容量 0 合法，其余是 NEG，凑不出的体积永远传不出正值
     f1 = [0] * (V + 1)                       # 不要求装满
     f2 = [NEG] * (V + 1)                     # 恰好装满
     f2[0] = 0
@@ -41,11 +43,14 @@ def main() -> None:
     for _ in range(n):
         v = int(data[p]); w = int(data[p + 1])
         p += 2
-        if v > V:
+        if v > V:                            # 单件就超容量，对两问都无用
             continue
-        m = V + 1 - v
+        m = V + 1 - v                        # 候选段长度：源容量 0..V-v 对应目标 v..V
+        # 等价于 for c in range(V, v-1, -1)。右侧的候选列表在赋值前一次算完，
+        # 用的全是本物品未参与时的旧 f，所以「每件只用一次」的 01 语义自动成立
         f1[v:] = list(map(max, f1[v:], [x + w for x in f1[:m]]))
         f2[v:] = list(map(max, f2[v:], [x + w for x in f2[:m]]))
+    # 恰好装满无解时 f2[V] 还是负的哨兵，按题意输出 0
     sys.stdout.write("%d\n%d\n" % (f1[V], f2[V] if f2[V] >= 0 else 0))
 
 

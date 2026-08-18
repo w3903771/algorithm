@@ -32,10 +32,12 @@ def main() -> None:
     push = out.append
     p = 1
     for _ in range(T):
+        # s 转成 bytearray 才能原地改写单个字节；t 保持 bytes，
+        # 两者按下标取出来的都是整数，可以直接比较，全程不做解码
         s = bytearray(data[p]); t = data[p + 1]
         p += 2
         lt = len(t)
-        j = 0
+        j = 0                                # t 中下一个待匹配字符的下标
         for i in range(len(s)):
             c = s[i]
             if c == 63:                      # ord('?')
@@ -45,10 +47,11 @@ def main() -> None:
                 else:
                     s[i] = 97                # ord('a')，随便填
             elif j < lt and c == t[j]:
-                j += 1
+                j += 1                       # 固定字母恰好对上，最左匹配即最优
+        # j 走到 lt 说明 t 的每个字符都找到了落点
         if j == lt:
             push("YES")
-            push(s.decode())
+            push(s.decode())                 # 此时 s 里已无 '?'，可直接作为答案
         else:
             push("NO")
     sys.stdout.write("\n".join(out) + "\n")

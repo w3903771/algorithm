@@ -34,31 +34,33 @@ def main() -> None:
     ONE = 49                                 # ord('1')，直接比 bytes 的整数元素，省一次解码
 
     r = 0                                    # 窗口 [l, r]，r 为已加入的最右下标（1-indexed）
-    zeros = ones = pairs = 0
+    zeros = ones = pairs = 0                 # 窗口内 '0' 数、'1' 数、"01" 子序列数
     ans = None
     for l in range(1, n + 1):
         if r < l - 1:                        # 窗口被掏空了，重置
-            r = l - 1
+            r = l - 1                        # 让 [l, r] 重新表示空窗口
             zeros = ones = pairs = 0
+        # 右端只前进不后退：一直加字符，直到攒够 k 对或者到串尾
         while r < n and pairs < k:
             c = s[r]                         # s[r] 是 1-indexed 的第 r+1 个字符
             r += 1
             if c == ONE:
-                pairs += zeros
+                pairs += zeros               # 新来的 '1' 与窗口里每个 '0' 各配成一对
                 ones += 1
             else:
-                zeros += 1
+                zeros += 1                   # 新来的 '0' 在最右，暂时配不上任何 '1'
         if pairs == k:
-            ans = (l, r)
+            ans = (l, r)                     # 恰好命中，题目只要求输出任意一组
             break
+        # 到这里 pairs 只可能 > k（说明本轮 l 无解，缩左端再试）或 < k
         if r >= n and pairs < k:             # 右端已到头仍不够，l 再往右只会更小
             break
         if r >= l:                           # 弹出左端字符 s[l]
             if s[l - 1] == ONE:
-                ones -= 1
+                ones -= 1                    # 它是窗口最左，左边没有 '0'，pairs 不变
             else:
                 zeros -= 1
-                pairs -= ones
+                pairs -= ones                # 这个 '0' 和窗口里每个 '1' 都配过对
     if ans is None:
         sys.stdout.write("-1\n")
     else:

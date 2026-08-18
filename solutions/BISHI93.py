@@ -1,7 +1,8 @@
 """BISHI93 【模板】Trie 字典树 —— n 个模式串，q 次询问「有多少模式串以 t 为前缀」。
 
 这题考什么：
-    Trie（字典树）模板。插入每个模式串时，把它经过的**每一个节点**的
+    Trie（字典树，把公共前缀合并成一条路径的多叉树，见
+    docs/part6-字符串/73-Trie字典树.md）模板。插入每个模式串时，把它经过的**每一个节点**的
     计数 +1；查询时沿 t 走下去，走得通就输出终点节点的计数，
     走不通输出 0。因为「以 t 为前缀的串」恰好就是「插入时经过了 t 对应节点的串」。
 
@@ -39,27 +40,29 @@ def main() -> None:
     cnt = [0]                  # cnt[v] = 经过节点 v 的模式串数量；0 号是根
     get = child.get
 
+    # ---- 插入 n 个模式串：沿途每个节点的计数 +1 ----
     p = 2
     for _ in range(n):
         s = data[p]; p += 1
-        cur = 0
+        cur = 0                # 每个串都从根节点 0 出发
         for b in s:
-            k = cur * 128 + b
+            k = cur * 128 + b  # 把 (节点号, 字符) 打包成一个整数当 key
             nxt = get(k, -1)
-            if nxt < 0:
-                nxt = len(cnt)
+            if nxt < 0:        # 这条转移还不存在，新建一个节点
+                nxt = len(cnt) # 新节点编号 = 当前节点总数
                 cnt.append(0)
                 child[k] = nxt
             cur = nxt
-            cnt[cur] += 1
+            cnt[cur] += 1      # 该前缀又多了一个模式串经过
 
+    # ---- q 次查询：沿 t 一路走下去，走得通就读终点节点的计数 ----
     out = []
     for _ in range(q):
         s = data[p]; p += 1
         cur = 0
         for b in s:
             cur = get(cur * 128 + b, -1)
-            if cur < 0:
+            if cur < 0:        # 中途断路，说明没有模式串以 t 为前缀
                 break
         out.append("0" if cur < 0 else str(cnt[cur]))
     sys.stdout.write("\n".join(out) + "\n")

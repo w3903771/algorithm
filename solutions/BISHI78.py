@@ -16,7 +16,9 @@ Python 的选择与坑：
      （递归深度只有 n <= 9 层，本题不存在递归深度问题。）
   2. 绝对不能 for p in ...: print(p)——36 万次 print 会把时间全耗在 IO 上。
      必须先 "\n".join 拼成一整块再一次 write；
-  3. 预先把 1..n 转成 str，join 时就不用反复 map(str, ...)。
+  3. 预先把 1..n 转成 str，join 时就不用反复 map(str, ...)；
+  4. 输出格式是每行 n 个整数、单个空格分隔，行内不能有多余空格，
+     所以用 " ".join 而不是 print(*p) 之外的拼法；n = 1 时输出就是一行 "1"。
 """
 import sys
 from itertools import permutations
@@ -25,7 +27,8 @@ from itertools import permutations
 def main() -> None:
     n = int(sys.stdin.buffer.read().split()[0])
     digits = [str(i) for i in range(1, n + 1)]      # 已升序 -> 排列即字典序
-    join = " ".join
+    join = " ".join                                 # 提前绑定，36 万次调用省下属性查找
+    # 每个排列拼成一行，再把 9! 行一次性拼成整块写出：全程只有一次 write
     sys.stdout.write("\n".join(map(join, permutations(digits))) + "\n")
 
 

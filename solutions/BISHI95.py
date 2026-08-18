@@ -1,8 +1,10 @@
 """BISHI95 【模板】链式前向星 —— 无向图，按升序输出每个点的全部邻居。
 
 这题考什么：
-    图的存储方式模板。C++ 里链式前向星是「head[u] + nxt[] + to[] 三个数组
-    模拟链表」，本质就是一个**紧凑的邻接表**（CSR）。
+    图的存储方式模板（见 docs/part8-图与树/90-图的表示与遍历.md）。
+    C++ 里链式前向星是「head[u] + nxt[] + to[] 三个数组模拟链表」，
+    本质就是一个**紧凑的邻接表**，即 CSR（压缩稀疏行，用扁平数组
+    连续存放所有邻居，再用一个偏移数组标出每个点的区间）。
     本题在存完之后还要求把每个点的邻居**升序**输出，所以存完还得排序。
 
 Python 的实现选择（重点）：
@@ -35,20 +37,22 @@ def main() -> None:
     n, m = int(data[0]), int(data[1])
     adj = [[] for _ in range(n + 1)]     # 定长 list of list，不用 defaultdict
 
+    # ---- 读边：无向图，两个方向都要挂上 ----
     p = 2
     for _ in range(m):
         a = int(data[p]); b = int(data[p + 1]); p += 2
         adj[a].append(b)
         adj[b].append(a)
 
+    # ---- 按点号从小到大逐行输出邻居 ----
     out = []
     for u in range(1, n + 1):
         e = adj[u]
         if e:
-            e.sort()
+            e.sort()                     # 题目要求升序；单点排序代价 deg log deg
             out.append(" ".join(map(str, e)))
         else:
-            out.append("None")
+            out.append("None")           # 孤立点，注意首字母大写
     sys.stdout.write("\n".join(out) + "\n")
 
 

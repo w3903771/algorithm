@@ -29,24 +29,28 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
     a = list(map(int, data[1:1 + n]))
-    last = [-1] * (n + 1)                    # a_i ∈ [0, n]
+    # 值域是 0..n，用定长数组当哈希表，比 dict 快且省内存
+    last = [-1] * (n + 1)                    # a_i ∈ [0, n]；-1 表示该值还没出现过
     lo = [0] * n                             # lo[r] = 以 r 结尾的最长合法区间左端（0-indexed）
-    l = 0
+    l = 0                                    # 当前窗口左端，全程只增不减
     best = 0
+    # ---- 第一遍：双指针求出每个 r 对应的 lo[r]，同时记下全局最长长度 ----
     for r in range(n):
         v = a[r]
         j = last[v]
         if j >= l:                           # v 在窗口内出现过，左端跳过去
-            l = j + 1
-        last[v] = r
+            l = j + 1                        # 跳到重复位置的右边，一步到位而不是逐格挪
+        last[v] = r                          # 更新前先用旧值，顺序不能反
         lo[r] = l
         if r - l + 1 > best:
             best = r - l + 1
+    # ---- 第二遍：长度等于 best 的 (lo[r], r) 就是一个答案区间 ----
+    # r 从小到大扫，lo[r] 也随之递增，输出天然按 l 递增（本题没有 SPJ，顺序必须对）
     out = []
     push = out.append
     for r in range(n):
         if r - lo[r] + 1 == best:
-            push("%d %d" % (lo[r] + 1, r + 1))
+            push("%d %d" % (lo[r] + 1, r + 1))   # 内部 0-indexed，输出转回 1-indexed
     sys.stdout.write("%d\n%s\n" % (len(out), "\n".join(out)))
 
 

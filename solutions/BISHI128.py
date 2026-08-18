@@ -23,10 +23,12 @@
 数据规模与复杂度：
     n, q <= 1e5。时间 O((n + q) log q)，空间 O(n + q)。
 
-⚠️ Python 现实性判断：**在 CPython 3.9 下大概率 TLE**，原因是：
-    时限只有「其他语言 2 秒」，而本做法约需 5e6 次 Python 层循环迭代
-    （每次迭代含 2 次模乘），实测在 3-5 秒量级。
-    但它已经比在线线段树快 3-5 倍，是本题在 Python 下最有希望的写法；PyPy 下可过。
+提交语言：本题必须用 PyPy3 提交。
+    时限是「其他语言 2 秒」，而本做法约需 5e6 次 Python 层循环迭代，
+    每次迭代还带 2 次模乘，CPython 下实测在 3-5 秒量级，交上去过不了；
+    同一份代码在 PyPy3 下可以通过。
+    离线换维已经比在线懒标记线段树快 3-5 倍，结构上没有更省的写法了，
+    剩下的差距来自解释器常数，只能靠换提交语言补。
 
 坑在哪：
   1. **复合顺序**：新操作作用在旧结果**之后**，所以 b <- b·k_new + b_new；
@@ -43,6 +45,8 @@ MOD = 998244353
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); q = int(data[1])
+    # 前面补一个占位 0，让下标与题面的 1..n 对齐，省掉后面每处的 -1。
+    # a_i 可能是负数，读进来就先取模：Python 的 % 对负数返回非负，正好落进 [0, MOD)
     a = [0] + [int(v) % MOD for v in data[2:2 + n]]
 
     # ---- 先把所有操作读进来，按下标挂事件 ----
@@ -50,63 +54,75 @@ def main() -> None:
     dea = [[] for _ in range(n + 2)]         # 在下标 i 处失效的修改编号
     qs = [[] for _ in range(n + 2)]          # 下标 i 上的查询：(此前修改数 T, 输出序号)
     ops = []                                 # 第 j 个修改的 (k, b)
-    p = 2 + n
-    nq = 0
+    p = 2 + n                                # 操作段在 data 里的起始位置
+    nq = 0                                   # 已读到的查询个数，兼作输出序号
     for _ in range(q):
-        op = data[p]
+        op = data[p]                         # 保持 bytes 原样比较，省一次 int() 转换
         if op == b"3":
             x = int(data[p + 1]); p += 2
+            # len(ops) 就是「这次查询之前已经发生的修改条数」，
+            # 记下来，扫描到下标 x 时只复合时间前缀 [0, len(ops)) 的那些操作
             qs[x].append((len(ops), nq))
             nq += 1
         else:
             l = int(data[p + 1]); r = int(data[p + 2]); v = int(data[p + 3]) % MOD
             p += 4
-            j = len(ops)
+            j = len(ops)                     # 修改编号即时间戳，也是它在线段树里的叶子号
+            # 加数是 x -> 1·x + v，乘数是 x -> v·x + 0，统一成仿射变换 (k, b)
             ops.append((1, v) if op == b"1" else (v, 0))
+            # 差分式挂事件：扫到左端点时装上这个变换，扫过右端点后一格再卸掉，
+            # 于是每个操作全程只产生 2 次单点修改，而不是覆盖 r-l+1 个位置
             act[l].append(j)
             dea[r + 1].append(j)
 
     # ---- 时间轴线段树：叶子存仿射变换，内部节点存「左儿子 then 右儿子」的复合 ----
+    # 叶子数补齐到 2 的幂，这样「叶子 j 的下标 = j + size、父亲 = i >> 1」永远成立。
+    # max(1, ...) 保证一条修改都没有时也有一个叶子，树不会退化成空数组
     size = 1
     while size < max(1, len(ops)):
         size <<= 1
     km = [1] * (2 * size)                    # 乘法系数
-    kb = [0] * (2 * size)                    # 加法系数
+    kb = [0] * (2 * size)                    # 加法系数，(1, 0) 就是恒等变换
 
     def assign(j, k, b):
         """把叶子 j 设为 (k, b)，并沿路更新祖先，O(log q)。"""
-        i = j + size
+        i = j + size                         # 叶子 j 在数组里的位置
         km[i] = k; kb[i] = b
         i >>= 1
-        while i:
+        while i:                             # 一路向上重算到根，i 变成 0 时停
             lc = i << 1; rc = lc | 1
             kr = km[rc]
+            # 左儿子的时间早于右儿子，所以是「先左后右」：
+            # x -> k_l·x + b_l -> k_r·(k_l·x + b_l) + b_r = (k_l·k_r)·x + (b_l·k_r + b_r)
             km[i] = km[lc] * kr % MOD
             kb[i] = (kb[lc] * kr + kb[rc]) % MOD
             i >>= 1
 
     ans = [0] * nq
+    # 扫描轴是下标 i：走到 i 时，树里恰好装着「覆盖下标 i 的全部修改」
     for i in range(1, n + 1):
-        for j in act[i]:
+        for j in act[i]:                     # 左端点落在 i 的修改，现在生效
             k, b = ops[j]
             assign(j, k, b)
-        for j in dea[i]:
+        for j in dea[i]:                     # 右端点在 i-1 的修改，到此为止
             assign(j, 1, 0)                  # 写回恒等
         for T, oi in qs[i]:
-            # 时间前缀 [0, T) 的复合：左段顺序累积，右段逆序累积，最后拼起来
-            l = size; r = T + size
+            # 时间前缀 [0, T) 的复合：左段顺序累积，右段逆序累积，最后拼起来。
+            # 只能取前缀——树根还含有比这次查询更晚的操作，直接读根会算错
+            l = size; r = T + size           # 自底向上的半开区间 [l, r)
             kl = 1; bl = 0                   # 左半部分（靠前的时间）
             kr = 1; br = 0                   # 右半部分（靠后的时间）
             while l < r:
-                if l & 1:
-                    bl = (bl * km[l] + kb[l]) % MOD
+                if l & 1:                    # l 是右儿子，这块不能整体上提，先吃掉
+                    bl = (bl * km[l] + kb[l]) % MOD   # 新块接在已有结果之后
                     kl = kl * km[l] % MOD
                     l += 1
-                if r & 1:
+                if r & 1:                    # r-1 是右儿子，同样先吃掉
                     r -= 1
-                    br = (kb[r] * kr + br) % MOD
+                    br = (kb[r] * kr + br) % MOD      # 右段是倒着扫的，新块接在前面
                     kr = km[r] * kr % MOD
-                l >>= 1; r >>= 1
+                l >>= 1; r >>= 1             # 上升一层，两端都换成父节点
+            # 左段在前、右段在后，合成 (kl·kr, bl·kr + br)，再作用到 a[i] 上
             ans[oi] = (a[i] * (kl * kr) + (bl * kr + br)) % MOD
     sys.stdout.write("\n".join(map(str, ans)) + "\n")
 

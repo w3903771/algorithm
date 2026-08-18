@@ -29,7 +29,11 @@
        正因如此各项才独立，才不需要做图上的 DP；
     2. b_i、c_i 可能等于 i 自己，也可能 b_i == c_i（题面只保证 1<=b,c<=n），
        此时公式仍然成立（要买两瓶同种红色，花 2*a_{b_i}）；
-    3. 每行两个数共 n 行，整块读入按游标取最快。
+    3. 每行两个数共 n 行，整块读入按游标取最快；
+    4. 合成得到的是**蓝色**第 i 种，而题目只要求「每种药剂有任意一种形态」，
+       所以合成出的蓝色确实顶得上一瓶。若题目要求的是红色，这题就完全不同了。
+
+    贪心的一般套路见 docs/part4-基础算法/47-贪心.md。
 """
 import sys
 
@@ -38,14 +42,14 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
     a = [int(v) for v in data[1:n + 1]]
-    p = n + 1
+    p = n + 1                       # 游标：n 行配方从这里开始，每行占 2 个整数
     total = 0
     for i in range(n):
-        b = int(data[p]) - 1
+        b = int(data[p]) - 1        # 题目编号从 1 开始，转成 0 基下标
         c = int(data[p + 1]) - 1
         p += 2
         # 直接买红色，或者买两瓶原料合成蓝色，取便宜的
-        cost = a[b] + a[c]
+        cost = a[b] + a[c]          # b == c 时就是买两瓶同种，公式照样成立
         total += a[i] if a[i] < cost else cost
     print(total)
 

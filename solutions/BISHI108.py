@@ -48,21 +48,23 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     M = int(data[0]); N = int(data[1])
 
+    # ---- 逐条读线路：每条线路先给站数 s，再给 s 个站号 ----
     lines = []
     p = 2
-    total_stops = 0
+    total_stops = 0                           # Σs，决定「车上」节点一共要开多少个
     for _ in range(M):
         s = int(data[p]); p += 1
         stops = [int(v) for v in data[p:p + s]]; p += s
         lines.append(stops)
         total_stops += s
 
+    # ---- 建图 ----
     # 节点编号：1..N 是站台，N+1.. 是各线路各位置的「车上」节点
-    V = N + total_stops + 1
+    V = N + total_stops + 1                   # 0 号下标空着不用，站台编号才能与题面对齐
     adj = [[] for _ in range(V)]
-    nid = N + 1
+    nid = N + 1                               # 下一个可分配的「车上」节点编号
     for stops in lines:
-        base = nid
+        base = nid                            # 本条线路的第 i 站对应节点 base + i
         s = len(stops)
         for i, st in enumerate(stops):
             r = base + i
@@ -70,11 +72,12 @@ def main() -> None:
             adj[r].append((st, 0))            # 下车：免费
             if i + 1 < s:
                 adj[r].append((r + 1, 0))     # 继续往前开：免费，且只能顺向
-        nid += s
+        nid += s                              # 让出本条线路占用的 s 个编号
 
+    # ---- 0-1 BFS：边权只有 0/1，用双端队列代替堆 ----
     INF = float('inf')
     dist = [INF] * V
-    dist[1] = 0
+    dist[1] = 0                               # 起点固定是 1 号站台
     dq = deque([(0, 1)])                      # 0-1 BFS 需要双端队列
     while dq:
         d, u = dq.popleft()
@@ -84,10 +87,13 @@ def main() -> None:
             nd = d + w
             if nd < dist[v]:
                 dist[v] = nd
+                # 队列里始终只存在两种距离值 d 和 d+1，且 d 全在前面，
+                # 所以按下面这样分头插入就能保持出队顺序单调不减
                 if w:
                     dq.append((nd, v))        # 权 1 放队尾
                 else:
                     dq.appendleft((nd, v))    # 权 0 放队首
+    # dist[N] 是「乘车段数」（每次上车 +1），换乘次数要再减 1
     d = dist[N]
     sys.stdout.write("NO\n" if d == INF else "%d\n" % (d - 1))
 

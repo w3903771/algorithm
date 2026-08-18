@@ -12,8 +12,8 @@
 
 数据规模与复杂度：
     T <= 1e3，a,b,c <= 1e9。每组 O(1)。
-    答案最大 3 * 1e18 = 3e18 已经超过 int64 上界 9.22e18？没有超，但很接近；
-    C++ 用 unsigned long long / __int128 才稳，Python 的 int 无限精度，不用管。
+    答案最大 3 * 1e18 = 3e18，尚在 int64 上界 9.22e18 之内，但已是同一量级：
+    C++ 必须用 long long，用 int 会直接溢出；Python 的 int 是无限精度，不受影响。
     题目没要求取模，所以要输出精确值。
 
 坑在哪：
@@ -29,8 +29,10 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
+    # 第 i 组的三个数在 data[1+3i .. 3+3i]，起始的 1 是跳过开头的组数 T
     for i in range(t):
         a = int(data[1 + 3 * i]); b = int(data[2 + 3 * i]); c = int(data[3 + 3 * i])
+        # 三种「忘穿哪一类」互斥，各自是剩下两类的乘积，加起来就是答案
         out.append(str(a * b + b * c + c * a))
     sys.stdout.write("\n".join(out) + "\n")
 

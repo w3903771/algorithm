@@ -3,6 +3,7 @@
 这题考什么：
     经典的「木棒 / Sticks」搜索题（POJ 1011），核心是 **DFS + 一大堆剪枝**，
     没有剪枝的裸搜索是纯指数级，必然超时。
+    搜索与剪枝的通用手法见 docs/part5-搜索/62-记忆化搜索与剪枝.md。
 
     枚举原始长度 L（必须满足 max(a) <= L <= sum(a) 且 L | sum(a)），
     然后 DFS 判断能否把所有木棍恰好分成 sum/L 组、每组和为 L。
@@ -34,7 +35,7 @@
 样例复核：
     9 根 [5,2,1,5,2,1,5,2,1]，sum = 24，max = 5。
     L = 6 可行：(5,1) (5,1) (5,1) (2,2,2)，输出 6 ✓
-    （L = 4 不整除 24 之外还小于… 其实 4 整除 24 但 4 < 5 = max，被排除。）
+    （L = 4 虽然整除 24，但小于 max = 5，最长的一根就放不下，因此不在枚举范围内。）
 """
 import sys
 
@@ -44,7 +45,7 @@ def main() -> None:
     n = int(data[0])
     a = sorted((int(v) for v in data[1:1 + n]), reverse=True)   # 剪枝1：降序
     total = sum(a)
-    used = [False] * n
+    used = [False] * n                                          # 该棍是否已归入某一组
 
     def dfs(groups_left: int, rest: int, start: int) -> bool:
         """还要拼 groups_left 组，当前组还差 rest，从下标 start 起挑棍。"""
@@ -52,9 +53,9 @@ def main() -> None:
             return True
         if rest == 0:                                  # 当前组拼满，开下一组
             return dfs(groups_left - 1, L, 0)
-        prev = -1
+        prev = -1                                      # 上一根「试过并失败」的棍长
         for i in range(start, n):
-            if used[i] or a[i] > rest:
+            if used[i] or a[i] > rest:                 # 已用掉，或塞不进当前组的余量
                 continue
             if a[i] == prev:                           # 剪枝5：跳过等长的失败分支
                 continue
@@ -71,11 +72,12 @@ def main() -> None:
                 return False
         return False
 
-    for L in range(a[0], total + 1):
-        if total % L:
+    # 从小到大枚举原始长度，第一个可行的 L 即答案
+    for L in range(a[0], total + 1):               # 下界是最长的一根，它不能被切开
+        if total % L:                              # 不整除就分不成若干等长的组
             continue
         for i in range(n):
-            used[i] = False
+            used[i] = False                        # 换一个 L 重搜，标记全部还原
         if dfs(total // L, L, 0):
             sys.stdout.write("%d\n" % L)
             return

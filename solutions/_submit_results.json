@@ -1,0 +1,992 @@
+{
+  "PIO4": {
+    "status": "AC",
+    "submissionId": 481047255,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO5": {
+    "status": "AC",
+    "submissionId": 481047260,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI1": {
+    "status": "AC",
+    "submissionId": 481047269,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI2": {
+    "status": "AC",
+    "submissionId": 481047278,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI3": {
+    "status": "AC",
+    "submissionId": 481047292,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI4": {
+    "status": "AC",
+    "submissionId": 481048843,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI5": {
+    "status": "AC",
+    "submissionId": 481047306,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI6": {
+    "status": "AC",
+    "submissionId": 481047318,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI7": {
+    "status": "AC",
+    "submissionId": 481047327,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI8": {
+    "status": "AC",
+    "submissionId": 481047336,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI9": {
+    "status": "AC",
+    "submissionId": 481047343,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI10": {
+    "status": "AC",
+    "submissionId": 481047351,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI11": {
+    "status": "AC",
+    "submissionId": 481047358,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI12": {
+    "status": "AC",
+    "submissionId": 481047368,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI13": {
+    "status": "AC",
+    "submissionId": 481047379,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI14": {
+    "status": "AC",
+    "submissionId": 481047388,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI15": {
+    "status": "AC",
+    "submissionId": 481047394,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI16": {
+    "status": "AC",
+    "submissionId": 481047408,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI17": {
+    "status": "AC",
+    "submissionId": 481047415,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI18": {
+    "status": "AC",
+    "submissionId": 481047424,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI19": {
+    "status": "AC",
+    "submissionId": 481047434,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI20": {
+    "status": "AC",
+    "submissionId": 481047445,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI21": {
+    "status": "AC",
+    "submissionId": 481047464,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI22": {
+    "status": "AC",
+    "submissionId": 481047480,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI23": {
+    "status": "AC",
+    "submissionId": 481047485,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI24": {
+    "status": "AC",
+    "submissionId": 481047499,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI25": {
+    "status": "AC",
+    "submissionId": 481047510,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI26": {
+    "status": "AC",
+    "submissionId": 481047520,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI27": {
+    "status": "AC",
+    "submissionId": 481047525,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI28": {
+    "status": "AC",
+    "submissionId": 481047532,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI29": {
+    "status": "AC",
+    "submissionId": 481047544,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI30": {
+    "status": "AC",
+    "submissionId": 481047548,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI31": {
+    "status": "AC",
+    "submissionId": 481047562,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI32": {
+    "status": "AC",
+    "submissionId": 481047579,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI33": {
+    "status": "AC",
+    "submissionId": 481047586,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI34": {
+    "status": "AC",
+    "submissionId": 481047597,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI35": {
+    "status": "AC",
+    "submissionId": 481047610,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI36": {
+    "status": "AC",
+    "submissionId": 481047622,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI37": {
+    "status": "AC",
+    "submissionId": 481047635,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI38": {
+    "status": "AC",
+    "submissionId": 481047645,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI39": {
+    "status": "AC",
+    "submissionId": 481047653,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI40": {
+    "status": "AC",
+    "submissionId": 481047658,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI41": {
+    "status": "AC",
+    "submissionId": 481047667,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI42": {
+    "status": "AC",
+    "submissionId": 481047676,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI43": {
+    "status": "AC",
+    "submissionId": 481047691,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI44": {
+    "status": "AC",
+    "submissionId": 481047697,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI45": {
+    "status": "AC",
+    "submissionId": 481047708,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI46": {
+    "status": "AC",
+    "submissionId": 481047721,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI47": {
+    "status": "AC",
+    "submissionId": 481047734,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI48": {
+    "status": "AC",
+    "submissionId": 481047742,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI49": {
+    "status": "AC",
+    "submissionId": 481047754,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI50": {
+    "status": "AC",
+    "submissionId": 481047765,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI51": {
+    "status": "AC",
+    "submissionId": 481047777,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI52": {
+    "status": "AC",
+    "submissionId": 481047787,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI53": {
+    "status": "AC",
+    "submissionId": 481047800,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI54": {
+    "status": "AC",
+    "submissionId": 481047811,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI55": {
+    "status": "AC",
+    "submissionId": 481047820,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI56": {
+    "status": "AC",
+    "submissionId": 481047830,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI57": {
+    "status": "AC",
+    "submissionId": 481047846,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI58": {
+    "status": "AC",
+    "submissionId": 481047853,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI59": {
+    "status": "AC",
+    "submissionId": 481047865,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI60": {
+    "status": "AC",
+    "submissionId": 481047876,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI61": {
+    "status": "AC",
+    "submissionId": 481047886,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI62": {
+    "status": "AC",
+    "submissionId": 481047896,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI63": {
+    "status": "AC",
+    "submissionId": 481047904,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI64": {
+    "status": "AC",
+    "submissionId": 481047911,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI65": {
+    "status": "AC",
+    "submissionId": 481047924,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI66": {
+    "status": "AC",
+    "submissionId": 481047937,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI67": {
+    "status": "AC",
+    "submissionId": 481047944,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI68": {
+    "status": "AC",
+    "submissionId": 481047952,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI69": {
+    "status": "AC",
+    "submissionId": 481047962,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI70": {
+    "status": "AC",
+    "submissionId": 481047968,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI71": {
+    "status": "AC",
+    "submissionId": 481047986,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI72": {
+    "status": "AC",
+    "submissionId": 481047997,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI73": {
+    "status": "AC",
+    "submissionId": 481048007,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI74": {
+    "status": "AC",
+    "submissionId": 481048019,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI75": {
+    "status": "AC",
+    "submissionId": 481048025,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI76": {
+    "status": "AC",
+    "submissionId": 481048035,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI77": {
+    "status": "AC",
+    "submissionId": 481048046,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI78": {
+    "status": "AC",
+    "submissionId": 481048056,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI79": {
+    "status": "AC",
+    "submissionId": 481048065,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI80": {
+    "status": "AC",
+    "submissionId": 481048074,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI81": {
+    "status": "AC",
+    "submissionId": 481048081,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI82": {
+    "status": "AC",
+    "submissionId": 481048096,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI83": {
+    "status": "AC",
+    "submissionId": 481048109,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI84": {
+    "status": "AC",
+    "submissionId": 481048122,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI85": {
+    "status": "AC",
+    "submissionId": 481048128,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI86": {
+    "status": "AC",
+    "submissionId": 481048138,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI87": {
+    "status": "AC",
+    "submissionId": 481048150,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI88": {
+    "status": "AC",
+    "submissionId": 481048847,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI89": {
+    "status": "AC",
+    "submissionId": 481048169,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI90": {
+    "status": "AC",
+    "submissionId": 481048177,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI91": {
+    "status": "AC",
+    "submissionId": 481048187,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI92": {
+    "status": "AC",
+    "submissionId": 481048193,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI93": {
+    "status": "AC",
+    "submissionId": 481048203,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI94": {
+    "status": "AC",
+    "submissionId": 481048211,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI95": {
+    "status": "AC",
+    "submissionId": 481048223,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI96": {
+    "status": "AC",
+    "submissionId": 481048231,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI97": {
+    "status": "AC",
+    "submissionId": 481048241,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI98": {
+    "status": "AC",
+    "submissionId": 481048248,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI99": {
+    "status": "AC",
+    "submissionId": 481048256,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI100": {
+    "status": "AC",
+    "submissionId": 481048269,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI101": {
+    "status": "AC",
+    "submissionId": 481048279,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI102": {
+    "status": "AC",
+    "submissionId": 481048289,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI103": {
+    "status": "AC",
+    "submissionId": 481049437,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Pypy3"
+  },
+  "BISHI104": {
+    "status": "AC",
+    "submissionId": 481048310,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI105": {
+    "status": "AC",
+    "submissionId": 481048317,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI106": {
+    "status": "AC",
+    "submissionId": 481048328,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI107": {
+    "status": "AC",
+    "submissionId": 481048340,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI108": {
+    "status": "AC",
+    "submissionId": 481048348,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI109": {
+    "status": "AC",
+    "submissionId": 481048356,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI110": {
+    "status": "AC",
+    "submissionId": 481048367,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI111": {
+    "status": "AC",
+    "submissionId": 481048375,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI112": {
+    "status": "AC",
+    "submissionId": 481048384,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI113": {
+    "status": "AC",
+    "submissionId": 481048396,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI114": {
+    "status": "AC",
+    "submissionId": 481048402,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI115": {
+    "status": "AC",
+    "submissionId": 481048412,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI116": {
+    "status": "AC",
+    "submissionId": 481048420,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI117": {
+    "status": "AC",
+    "submissionId": 481048431,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI118": {
+    "status": "AC",
+    "submissionId": 481048434,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI119": {
+    "status": "AC",
+    "submissionId": 481048439,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI120": {
+    "status": "AC",
+    "submissionId": 481048446,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI121": {
+    "status": "AC",
+    "submissionId": 481048454,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI122": {
+    "status": "AC",
+    "submissionId": 481048462,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI123": {
+    "status": "AC",
+    "submissionId": 481048473,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI124": {
+    "status": "AC",
+    "submissionId": 481048485,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI125": {
+    "status": "AC",
+    "submissionId": 481048496,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI126": {
+    "status": "AC",
+    "submissionId": 481048506,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI127": {
+    "status": "AC",
+    "submissionId": 481049108,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI128": {
+    "status": "AC",
+    "submissionId": 481049440,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Pypy3"
+  },
+  "BISHI129": {
+    "status": "AC",
+    "submissionId": 481048532,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI130": {
+    "status": "AC",
+    "submissionId": 481049444,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Pypy3"
+  },
+  "BISHI131": {
+    "status": "AC",
+    "submissionId": 481048557,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI132": {
+    "status": "AC",
+    "submissionId": 481048561,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI133": {
+    "status": "AC",
+    "submissionId": 481048565,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI134": {
+    "status": "AC",
+    "submissionId": 481048572,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI135": {
+    "status": "AC",
+    "submissionId": 481048581,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI136": {
+    "status": "AC",
+    "submissionId": 481048591,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI137": {
+    "status": "AC",
+    "submissionId": 481048603,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI138": {
+    "status": "AC",
+    "submissionId": 481049448,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Pypy3"
+  },
+  "BISHI139": {
+    "status": "AC",
+    "submissionId": 481048625,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI140": {
+    "status": "AC",
+    "submissionId": 481048629,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI141": {
+    "status": "AC",
+    "submissionId": 481048640,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI142": {
+    "status": "AC",
+    "submissionId": 481048650,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI143": {
+    "status": "AC",
+    "submissionId": 481048654,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI144": {
+    "status": "AC",
+    "submissionId": 481048849,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI145": {
+    "status": "AC",
+    "submissionId": 481048668,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI146": {
+    "status": "AC",
+    "submissionId": 481048669,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "BISHI147": {
+    "status": "AC",
+    "submissionId": 481049452,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Pypy3"
+  },
+  "PIO1": {
+    "status": "AC",
+    "submissionId": 481048684,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO2": {
+    "status": "AC",
+    "submissionId": 481048691,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO3": {
+    "status": "AC",
+    "submissionId": 481048697,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO6": {
+    "status": "AC",
+    "submissionId": 481048706,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO7": {
+    "status": "AC",
+    "submissionId": 481048712,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO8": {
+    "status": "AC",
+    "submissionId": 481048714,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO9": {
+    "status": "AC",
+    "submissionId": 481048721,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO10": {
+    "status": "AC",
+    "submissionId": 481048726,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO11": {
+    "status": "AC",
+    "submissionId": 481048738,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO12": {
+    "status": "AC",
+    "submissionId": 481048749,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO13": {
+    "status": "AC",
+    "submissionId": 481048752,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO14": {
+    "status": "AC",
+    "submissionId": 481048760,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO15": {
+    "status": "AC",
+    "submissionId": 481048765,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO16": {
+    "status": "AC",
+    "submissionId": 481048772,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO17": {
+    "status": "AC",
+    "submissionId": 481048782,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  },
+  "PIO18": {
+    "status": "AC",
+    "submissionId": 481048787,
+    "verdict": "恭喜！您提交的程序通过了所有的测试用例",
+    "lang": "Python 3"
+  }
+}

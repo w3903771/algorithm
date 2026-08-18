@@ -43,13 +43,13 @@ def phi(x: int) -> int:
     """试除法求欧拉函数。x <= 1e9+7，只需除到 sqrt(x)。"""
     res = x
     p = 2
-    while p * p <= x:
+    while p * p <= x:                   # x 随除法缩小，上界自动收紧
         if x % p == 0:
-            res = res // p * (p - 1)
+            res = res // p * (p - 1)    # 乘上 (1 - 1/p)，先除后乘保证整除
             while x % p == 0:
-                x //= p
-        p += 1 if p == 2 else 2
-    if x > 1:
+                x //= p                 # 除干净，重数不影响 φ
+        p += 1 if p == 2 else 2         # 2 之后只试奇数，试除量直接减半
+    if x > 1:                           # 剩下的是一个大于 sqrt 的质因子
         res = res // x * (x - 1)
     return res
 
@@ -57,7 +57,7 @@ def phi(x: int) -> int:
 def ge(n: int, m: int) -> bool:
     """判断 fp(n) >= m，不必真的算出 fp(n)。"""
     if n <= 4:
-        return SMALL[max(n, 0)] >= m
+        return SMALL[max(n, 0)] >= m    # 小项有精确值，直接比；max 兜住 n 为 0 的下标
     return True                     # fp(5) = 5^262144，碾压一切 m
 
 
@@ -67,11 +67,11 @@ def calc(n: int, m: int) -> int:
         return 0                    # 模 1 恒为 0，同时终止 φ 链
     if n <= 1:
         return 1                    # fp(0)=fp(1)=1，且此时 m >= 2
-    pm = phi(m)
+    pm = phi(m)                     # 指数要在模 φ(m) 意义下算，递归一层模数就换一次
     e = calc(n - 1, pm)             # e = fp(n-1) mod φ(m)
     if ge(n - 1, pm):               # 指数 >= φ(m) 才做「+φ(m)」的降幂修正
         e += pm
-    return pow(n % m, e, m)
+    return pow(n % m, e, m)         # 底数先取模：n 可能远大于当前的 m
 
 
 n = int(sys.stdin.buffer.read().split()[0])

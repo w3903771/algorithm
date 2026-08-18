@@ -5,6 +5,8 @@
     于是「必须一起买」的关系是等价关系，用**并查集**把互相牵连的云朵缩成一个
     「超级物品」（价格 = 组内价格之和，价值 = 组内价值之和）。
     缩完之后就是一个最普通的 **0/1 背包**：每个组要么整组买、要么不买。
+    并查集见 docs/part3-数据结构/38-并查集.md，
+    0/1 背包与二进制拆分见 docs/part9-动态规划/101-背包问题.md。
 
     （注意区分：真正的「树形依赖背包」是单向依赖（买子必须买父），
       那才需要树上分组背包；本题是双向，缩点后退化成裸 0/1 背包。）
@@ -39,9 +41,12 @@ Python 的关键优化（本题的核心，四条一起上）：
      这是这个优化最容易写错的地方，必须真的把数组扩展并填上继承值；
   4. 价格超过 w 的组（以及拆分后价格超过 w 的打包物品）直接跳过。
 
-    即便如此，纯 Python 在「1e4 个价格各异的组 + w = 1e4」这种极限数据下
-    仍要几秒——这是 5e7 次元素级运算在 CPython 里的物理下限，
-    真要更快只能上 numpy（本项目环境未安装）。
+    即便如此，「1e4 个价格各异的组 + w = 1e4」这类极限数据仍要做约 5e7 次
+    元素级运算。这是 CPython 的物理下限，超出本题留给其他语言的 2 秒。
+    因此本题按 **PyPy3** 提交：同一份代码在 PyPy3 的即时编译下，
+    这段元素级循环会被编译成机器码，时间落回限制之内。
+    上面四条优化在 PyPy3 下同样不能省——少了它们，工作量会回到
+    组数 * w = 1e8，PyPy3 也追不回来。
 
 坑在哪：
   1. 输入第一行是 n, m, w 三个数（题面把 w 写在括号外面，容易看漏）；
@@ -77,6 +82,7 @@ def main() -> None:
             parent[x], x = r, parent[x]
         return r
 
+    # 每条搭配关系都是双向的，直接把两端并进同一个集合
     for _ in range(m):
         u = int(data[p]); v = int(data[p + 1]); p += 2
         ru, rv = find(u), find(v)
@@ -84,10 +90,10 @@ def main() -> None:
             parent[ru] = rv
 
     # 缩点：同一集合的云朵合成一个「超级物品」
-    gc = [0] * (n + 1)
+    gc = [0] * (n + 1)                        # gc / gv 只在代表元下标上有意义
     gv = [0] * (n + 1)
     for i in range(1, n + 1):
-        r = find(i)
+        r = find(i)                           # 把每朵云的价格与价值累加到它的代表元
         gc[r] += cost[i]
         gv[r] += val[i]
 
@@ -112,30 +118,31 @@ def main() -> None:
 
     items = []
     for (c, v), k in bag.items():
-        step = 1
+        step = 1                               # 打包份额依次取 1, 2, 4, ...
         while k:
-            take = step if step <= k else k
+            take = step if step <= k else k    # 最后一份取剩余量，保证总和恰为 k
             cc = c * take
             if cc <= w:                        # 打包后超预算的直接丢掉
                 items.append((cc, v * take))
             k -= take
-            step <<= 1
+            step <<= 1                         # 份额翻倍，总份数只有 O(log k)
     items.sort()                               # 价格升序，让 reach 涨得最慢
 
     dp = [0]                                   # dp[j] 只维护 j = 0..reach
     reach = 0                                  # 已处理物品的价格之和（上限 w）
     for c, v in items:
-        nr = reach + c
+        nr = reach + c                         # 加入这一件后，钱最多能花到 nr
         if nr > w:
-            nr = w
+            nr = w                             # 预算封顶，再多也花不出去
         if nr > reach:
             dp.extend([dp[-1]] * (nr - reach))  # 新容量继承 dp[reach]（钱花不完）
             reach = nr
         # 0/1 背包：dp[j] = max(dp[j], dp[j-c] + v)，整段切片把内层循环交给 C 层
+        # shifted 的第 j-c 项就是 dp[j-c] + v，切片已复制旧值，故不会重复选取
         shifted = [x + v for x in dp[:reach + 1 - c]]
         dp[c:reach + 1] = [a if a > b else b
                            for a, b in zip(dp[c:reach + 1], shifted)]
-    sys.stdout.write("%d\n" % dp[reach])
+    sys.stdout.write("%d\n" % dp[reach])       # reach 即实际能花出去的钱的上限
 
 
 main()

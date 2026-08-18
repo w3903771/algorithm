@@ -21,6 +21,20 @@
      b_0 完全没用（读掉丢弃即可）；
   2. 是「乘积除以 b_i 下取整」，必须用整除 //，用浮点会炸精度；
   3. 前缀乘积是「不含自己」的：先算 floor(prefix / b_i)，再把 a_i 乘进去。
+     顺序颠倒会把自己的 a_i 也算进分子，结果偏大；
+  4. 排序键是乘积 a_i*b_i，不是 a_i 或 b_i 单独一个，也不是 a_i/b_i。
+
+样例复核：
+    国王 (1,1)，大臣 (2,3)、(7,4)、(4,6)，乘积键分别是 6、28、24，
+    升序排成 (2,3) -> (4,6) -> (7,4)。
+    前缀从 a_0 = 1 开始：
+      (2,3)：1 // 3 = 0，前缀变 1*2 = 2；
+      (4,6)：2 // 6 = 0，前缀变 2*4 = 8；
+      (7,4)：8 // 4 = 2，前缀变 8*7 = 56。
+    最大值 2，与样例一致 ✓。
+
+    Python 的任意精度整数见 docs/part2-竞赛基本功/22-高精度与大整数.md，
+    相邻交换法见 docs/part4-基础算法/47-贪心.md。
 """
 import sys
 
@@ -31,18 +45,19 @@ def main() -> None:
     a0 = int(data[1])                 # data[2] 是 b0，用不到
     pairs = []
     for i in range(n):
+        # 国王占了 data[1]、data[2]，所以第 i 位大臣从下标 3+2i 开始
         a = int(data[3 + 2 * i])
         b = int(data[4 + 2 * i])
-        pairs.append((a * b, a, b))
+        pairs.append((a * b, a, b))   # 把排序键放在元组首位，直接用默认排序
     pairs.sort()                      # 按 a*b 升序
 
     prefix = a0                       # 当前大臣前面所有人的左手乘积
     ans = 0
     for _, a, b in pairs:
-        v = prefix // b
-        if v > ans:
+        v = prefix // b               # 整除，浮点在 8^60 量级会彻底失真
+        if v > ans:                   # 只关心「拿得最多的那个人」
             ans = v
-        prefix *= a
+        prefix *= a                   # 算完自己再把 a_i 并入前缀，供后面的人用
     sys.stdout.write(str(ans) + "\n")
 
 

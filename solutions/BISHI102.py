@@ -1,7 +1,8 @@
 """BISHI102 【模板】并查集 —— 支持合并、同集合查询、集合大小查询。
 
 这题考什么：
-    并查集（Union-Find）模板，两个优化必须同时上：
+    并查集（Union-Find，用一棵树代表一个集合、树根作为集合标识的数据结构，
+    见 docs/part3-数据结构/38-并查集.md）模板，两个优化必须同时上：
       - **路径压缩**：find 时把沿途所有点直接挂到根上；
       - **按大小合并**：把小树挂到大树下，保证树高不会失控。
     两者一起用时单次操作的均摊复杂度是反阿克曼函数 O(α(n))，实际上就是常数。
@@ -31,27 +32,27 @@ import sys
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); q = int(data[1])
-    parent = list(range(n + 1))
-    size = [1] * (n + 1)
+    parent = list(range(n + 1))               # 初始每个元素自成一集，父亲是自己
+    size = [1] * (n + 1)                      # 只有根节点上的 size 有意义
 
     def find(x: int) -> int:
         """迭代式路径压缩：先找到根，再把沿途所有点直接挂到根上。"""
         r = x
-        while parent[r] != r:
+        while parent[r] != r:                 # 第一趟：一路向上走到根
             r = parent[r]
-        while parent[x] != r:
-            parent[x], x = r, parent[x]
+        while parent[x] != r:                 # 第二趟：把 x 到根这条链整体改挂到 r
+            parent[x], x = r, parent[x]       # 右侧先求值，x 拿到的是改写前的父亲
         return r
 
     out = []
-    p = 2
+    p = 2                                     # 每条操作的 token 数不固定，只能用游标
     for _ in range(q):
-        op = data[p]
-        if op == b"3":
+        op = data[p]                          # 保持 bytes 比较，省掉一次 int() 转换
+        if op == b"3":                        # 查集合大小：只跟一个参数
             out.append(str(size[find(int(data[p + 1]))]))
             p += 2
             continue
-        ra = find(int(data[p + 1]))
+        ra = find(int(data[p + 1]))           # op 为 1 或 2，都跟两个参数
         rb = find(int(data[p + 2]))
         p += 3
         if op == b"1":
@@ -59,9 +60,9 @@ def main() -> None:
                 if size[ra] < size[rb]:       # 按大小合并：小挂大
                     ra, rb = rb, ra
                 parent[rb] = ra
-                size[ra] += size[rb]
+                size[ra] += size[rb]          # 新根接管两个集合的元素总数
         else:                                 # op == b"2"
-            out.append("YES" if ra == rb else "NO")
+            out.append("YES" if ra == rb else "NO")   # 根相同即同集合
     sys.stdout.write("\n".join(out) + "\n")
 
 

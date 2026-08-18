@@ -1,7 +1,9 @@
 """BISHI94 【模板】马拉车算法 —— 求最长回文子串的长度，|S| <= 1e6。
 
 这题考什么：
-    Manacher。朴素做法「枚举中心向两边扩」是 O(n^2)，1e6 时是 1e12，必挂。
+    Manacher（马拉车算法，线性求出每个中心的回文半径，见
+    docs/part6-字符串/72-回文.md）。
+    朴素做法「枚举中心向两边扩」是 O(n^2)，1e6 时是 1e12，必挂。
     Manacher 靠「已经算出的最右回文区间 [l, r]」做镜像预测：
     若当前中心 i < r，则 p[i] 至少是 min(r - i, p[mirror])，
     从这个下界继续扩即可，整体均摊 O(n)。
@@ -34,30 +36,30 @@ import sys
 
 
 def main() -> None:
-    s = sys.stdin.buffer.read().split()[0]
+    s = sys.stdin.buffer.read().split()[0]      # split() 顺带剥掉行尾的换行 / 回车
     n = len(s)
     # t = ^ # s0 # s1 # ... # $，两端哨兵保证扩展循环自然停止
-    m = 2 * n + 1
+    m = 2 * n + 1                               # 插入分隔符后的有效长度（不含两端哨兵）
     t = bytearray(b'^' + b'#' * m + b'$')       # 总长 2n+3，t[0] 与 t[2n+2] 是哨兵
     t[2:2 + 2 * n:2] = s                        # 原字符落在 t 的偶数下标上
 
-    p = [0] * (m + 2)
-    c = r = 0
+    p = [0] * (m + 2)                           # p[i] = t 中以 i 为中心的回文半径
+    c = r = 0                                   # c 是已知最右回文的中心，r 是其右端
     best = 0
-    for i in range(1, m + 1):
+    for i in range(1, m + 1):                   # 从 1 开始，跳过左哨兵
         if i < r:
-            mir = 2 * c - i
+            mir = 2 * c - i                     # i 关于中心 c 的镜像位置
             k = r - i
             pm = p[mir]
             k = pm if pm < k else k             # 下界 = min(右边界剩余, 镜像半径)
         else:
-            k = 0
+            k = 0                               # 落在已知区间之外，只能从零开始扩
         while t[i - k - 1] == t[i + k + 1]:     # 哨兵 ^ / $ 保证一定会失配停下
             k += 1
         p[i] = k
-        if i + k > r:
+        if i + k > r:                           # 扩出了更靠右的回文，换一个参照中心
             c, r = i, i + k
-        if k > best:
+        if k > best:                            # 半径即原串中的回文长度，直接打擂台
             best = k
     sys.stdout.write("%d\n" % best)
 

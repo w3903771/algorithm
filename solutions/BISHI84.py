@@ -40,24 +40,26 @@ LO, HI = 10, 300
 def build_table():
     """f[v] = 单个资源从 10 出发变到 v 的最少操作次数。"""
     f = [-1] * (HI + 1)
-    f[LO] = 0
-    q = deque([LO])
+    f[LO] = 0                # 起点是 10，走 0 步
+    q = deque([LO])          # 边权全为 1，BFS 的出队顺序就是步数递增顺序
     while q:
         v = q.popleft()
         d = f[v] + 1
+        # 六条增减边 + 两条「设为上限/下限」的传送边，任何位置都能一步到 HI 或 LO
         for u in (v - 1, v + 1, v - 10, v + 10, v - 100, v + 100, HI, LO):
-            if LO <= u <= HI and f[u] < 0:
-                f[u] = d
+            if LO <= u <= HI and f[u] < 0:   # 越界丢弃；f[u] < 0 即尚未访问
+                f[u] = d                     # 首次访问即最短，之后不再更新
                 q.append(u)
     return f
 
 
 def main() -> None:
-    f = build_table()
+    f = build_table()                            # 全部询问共用这一张表
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
-    idx = 1
+    idx = 1                                      # data[0] 是组数，数据从下标 1 开始
+    # 每组四个数，游标一次推进 4，全程只查表不再搜索
     for _ in range(t):
         a = int(data[idx]); b = int(data[idx + 1])
         c = int(data[idx + 2]); d = int(data[idx + 3])

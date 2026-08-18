@@ -32,7 +32,12 @@
        （"1709" 里 7 和 9 都能给出 6，选 9 会让后面变差）；
     3. 首位字符不能被操作，但它可以被别人越过而右移 —— 这正是
        "19" -> "81" 的原理，别误以为首位永远留在最前；
-    4. 多组数据、字符串输入，整块 buffer.read().split() 即可（串内无空格）。
+    4. 多组数据、字符串输入，整块 buffer.read().split() 即可（串内无空格）；
+    5. 结果长度与原串**相同**：操作只是移动与减值，既不删字符也不加字符。
+       首位只增不减 —— 答案第一位取的是 max(d - t)，而偏移 0 的候选正是原首位，
+       所以不会出现前导零；但后面的位置完全可能是 0（"1709" -> "6710"）。
+
+    贪心的一般套路见 docs/part4-基础算法/47-贪心.md。
 """
 import sys
 
@@ -44,21 +49,23 @@ def main() -> None:
     for idx in range(1, t + 1):
         s = data[idx]
         n = len(s)
-        res = bytearray(n)
+        res = bytearray(n)             # 答案与原串等长：操作只搬运、不增删字符
         buf = []                       # 剩余字符的前若干个（最多 10 个）
-        p = 0
+        p = 0                          # 原串里下一个还没进过窗口的位置
         for j in range(n):
+            # 把窗口补满 10 个：偏移只可能是 0..9，再远的字符搬不过来
             while len(buf) < 10 and p < n:
-                buf.append(s[p] - 48)
+                buf.append(s[p] - 48)  # bytes 取出的是 ASCII 码值，减 48 得数字
                 p += 1
+            # 偏移 0 的字符不花代价，用它做初值，保证「并列时取最左」
             best = 0
             bv = buf[0]
             for k in range(1, len(buf)):
                 v = buf[k] - k         # 移到当前位要走 k 步，代价 k
-                if v > bv:
+                if v > bv:             # 严格大于才换，并列时保留更左的候选
                     bv = v
                     best = k
-            res[j] = bv + 48
+            res[j] = bv + 48           # 数字转回 ASCII 码值写进结果
             del buf[best]              # 后面的元素偏移自动整体 -1
         out.append(res.decode())
     sys.stdout.write("\n".join(out) + "\n")

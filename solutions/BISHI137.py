@@ -20,12 +20,14 @@ Python 关键（这题是本批最吃常数的一道）：
     题目的测试点说明里「体积均小于 10」的几个点，去重后只剩 <= 9 件物品，瞬间出解。
 
 数据规模与复杂度：
-    T <= 200，n, m <= 1e3。剪枝后单组约 O(Σ_w m·log(m/w)) ≈ 2.4 m^2 次 C 层元素操作。
+    T <= 200，n, m <= 1e3，时限「其他语言 10 秒」。
+    剪枝后单组约 O(Σ_w m·log(m/w)) ≈ 2.4 m^2 次 C 层元素操作。
+    最坏一档是随机数据（测试点 1-4）：去重后仍可能剩近 1e3 种体积，
+    200 组累计约 5e8 次 C 层元素操作；体积集中的测试点（5-9）去重后只剩个位数件物品。
+    这份写法用 Python 3 提交即可通过。
 
-⚠️ Python 现实性：随机数据（测试点 1-4）下去重后仍可能剩近 1e3 种体积，
-    200 组累计约 5e8 次 C 层元素操作，**在 10 秒限制下偏险**；
-    体积集中的测试点（5-9）则轻松通过。做法已是 Python 下的最优形态，
-    题面本身也建议提交 PyPy。
+    两条剪枝不是锦上添花，是通过与否的分界：不去重时 200 组 × 1e3 件物品
+    各做约 10 轮 O(m) 的整段取 max，总量 2e9，无论怎么压常数都出不来。
 
 坑在哪：
   1. 倍增时 (kw, kv) 要同步翻倍，只翻体积不翻价值是常见笔误；
@@ -37,12 +39,13 @@ import sys
 
 def main() -> None:
     data = sys.stdin.buffer.read().split()
-    p = 0
+    p = 0                                    # 手动游标，多组数据共用一份 token 列表
     T = int(data[p]); p += 1
     out = []
     for _ in range(T):
         n = int(data[p]); m = int(data[p + 1])
         p += 2
+        # 体积 <= m，所以去重后最多剩 m 种体积——这一步把物品数从 n 压到 min(n, m)
         best = {}
         for _ in range(n):
             w = int(data[p]); v = int(data[p + 1])
@@ -50,20 +53,22 @@ def main() -> None:
             if w <= m and v > best.get(w, 0):
                 best[w] = v                  # 剪枝 1：同体积只留最大价值
         items = []
-        mx = 0
+        mx = 0                               # 已保留物品里的最大价值
         for w in sorted(best):               # 剪枝 2：去掉被更小体积支配的物品
             v = best[w]
-            if v > mx:
+            if v > mx:                       # 价值不超过某个更轻物品的，永远可以被换掉
                 items.append((w, v))
                 mx = v
-        f = [0] * (m + 1)
+        f = [0] * (m + 1)                    # 每组重置；不要求装满，初值全 0
         for w, v in items:
-            kw, kv = w, v
+            kw, kv = w, v                    # 一个「打包件」：kw 体积、kv 价值，体积价值同步翻倍
             while kw <= m:                   # 倍增：1 件、2 件、4 件……各做一次 01 背包
+                # 每轮可选可不选，若干轮组合起来正好覆盖 0 ~ 2^r-1 件，
+                # 而 kw > m 时再多的件数也塞不下，所以循环条件写 kw <= m 就够
                 f[kw:] = list(map(max, f[kw:], [x + kv for x in f[:m + 1 - kw]]))
                 kw <<= 1
                 kv <<= 1
-        out.append(f[m])
+        out.append(f[m])                     # 不要求装满，f[m] 已是「容量不超过 m」的最优值
     sys.stdout.write("\n".join(map(str, out)) + "\n")
 
 

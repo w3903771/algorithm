@@ -28,16 +28,17 @@ def main() -> None:
     n = int(data[0])
     a = list(map(int, data[1:1 + n]))
     st = []                                  # 存下标（1-indexed），对应值严格递减
-    xor = 0
+    xor = 0                                  # 栈内全部下标的异或和，随栈同步维护
     out = []
     push = out.append
     for i in range(1, n + 1):
-        x = a[i - 1]
+        x = a[i - 1]                         # 栈存 1-indexed 下标，取值时要减 1
+        # 被 x 挡住的元素永远不再是后缀最大值，出栈的同时把它从异或和里剔除
         while st and a[st[-1] - 1] <= x:     # 相等也要弹（条件是严格大于）
-            xor ^= st.pop()
+            xor ^= st.pop()                  # 异或的自反性：再异或一次即移除
         st.append(i)
-        xor ^= i
-        push(xor)
+        xor ^= i                             # 新下标入栈，计入异或和
+        push(xor)                            # 此刻栈内容 = 当前所有后缀最大值下标
     sys.stdout.write("\n".join(map(str, out)) + "\n")
 
 

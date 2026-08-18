@@ -33,6 +33,8 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     N = int(data[0]); M = int(data[1])
     s = [0] * (N + 1)
+    # 下标 0 是虚拟根：学分 0，所有「无先修课」的课程都挂到它下面，
+    # 森林由此接成一棵树，全局只剩一个入口
     children = [[] for _ in range(N + 1)]
     for i in range(1, N + 1):
         k = int(data[2 * i]); s[i] = int(data[2 * i + 1])
@@ -40,6 +42,7 @@ def main() -> None:
     cap = M + 1                              # 含虚拟根一共要选 M+1 个点
 
     # ---- 迭代式后序遍历：先拿到处理顺序，再倒着做 DP ----
+    # 先修链最深可到 300 层，用显式栈代替递归，深度再大也不会爆栈
     order = []
     stk = [0]
     while stk:
@@ -47,26 +50,26 @@ def main() -> None:
         order.append(u)
         stk.extend(children[u])
 
-    NEG = -(1 << 60)
+    NEG = -(1 << 60)                         # 「这个点数凑不出来」的哨兵
     f = [None] * (N + 1)
     for u in reversed(order):                # 保证孩子先于父亲被处理
         cur = [0, s[u]]                      # f[u][0]=0, f[u][1]=s_u
-        for c in children[u]:
+        for c in children[u]:                # 每个孩子是分组背包里的一「组」
             fc = f[c]
             f[c] = None                      # 及时释放
             lc = len(fc)
-            nl = len(cur) + lc - 1
-            if nl > cap:
-                nl = cap + 1
+            nl = len(cur) + lc - 1           # 合并后能取到的点数上限
+            if nl > cap:                     # 超过 M+1 的部分再也用不上，截断
+                nl = cap + 1                 # 这一步把复杂度从 O(N·M^2) 压回 O(N·M)
             new = [NEG] * nl
-            new[0] = 0
+            new[0] = 0                       # 一个点都不取时学分为 0，与 u 是否被选无关
             for j in range(1, nl):           # 分组背包：这个孩子取 t 个点
                 best = NEG
-                lo = j - (len(cur) - 1)
+                lo = j - (len(cur) - 1)      # cur 侧最多只有 len(cur)-1 个点可分
                 if lo < 0:
                     lo = 0
-                hi = lc - 1
-                if hi > j - 1:
+                hi = lc - 1                  # 孩子子树里最多能取这么多点
+                if hi > j - 1:               # u 自己必占一个名额，所以 t 至多 j-1
                     hi = j - 1
                 for t in range(lo, hi + 1):
                     v = cur[j - t] + fc[t]
@@ -76,6 +79,7 @@ def main() -> None:
             cur = new
         f[u] = cur
     root = f[0]
+    # cap 超出树能提供的点数时（M 比课程总数还大）根本无解，按 0 输出
     sys.stdout.write("%d\n" % (root[cap] if cap < len(root) else 0))
 
 

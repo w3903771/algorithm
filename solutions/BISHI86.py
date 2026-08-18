@@ -11,6 +11,7 @@
       3. 找到第一个前缀和 >= S 的位置 i，答案就是 sqrt(d2[i])；
          若总权值和 < S，输出 -1。
     第 3 步既可以 bisect 也可以线性扫，这里线性扫更直白。
+    前缀和的基本用法见 docs/part4-基础算法/42-前缀和与差分.md。
 
 数据规模与复杂度：
     n <= 1e5，排序 O(n log n)，其余 O(n)。
@@ -41,15 +42,16 @@ def main() -> None:
     for _ in range(n):
         x = int(data[p]); y = int(data[p + 1]); v = int(data[p + 2]); p += 3
         pts.append((x * x + y * y, v))    # 用距离平方排序，整数无精度损失
-    pts.sort()
+    pts.sort()                        # 按距离平方升序，等价于按半径从小到大
 
+    # 半径由小到大扫过每个点，权值前缀和第一次达标的位置就是最小可行半径
     acc = 0
     for d2, v in pts:
         acc += v
         if acc >= S:
-            sys.stdout.write("%.6f\n" % sqrt(d2))
+            sys.stdout.write("%.6f\n" % sqrt(d2))   # 全程只在这里开一次根号
             return
-    sys.stdout.write("-1\n")
+    sys.stdout.write("-1\n")            # 把全部点都圈进来仍凑不够 S
 
 
 main()

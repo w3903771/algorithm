@@ -35,8 +35,15 @@
        「点对」来算，邻接表里要保留重复项；
     3. 要输出的是核心边的**编号**（1..M，按输入顺序），不是端点；
     4. 多组数据，且 ∑M 可能到 2e6，读入必须整块 buffer.read().split()；
-    5. 答案不唯一，本地要用 special judge：校验器不能只数个数，
-       必须验证「存在一种染色，使得核心边集合恰好是输出的这一组编号」。
+    5. 答案不唯一：达到阈值的染色方案通常有很多种，对应的核心边编号集合也就
+       不止一个。样例第二组的参考输出是「2 条边：1 4」，本解法给出的是
+       「3 条边：1 3 4」，两者都满足 >= floor(4/4)+1 = 2。
+       所以本地要用 special judge（特殊评测程序，按题目条件验证选手输出是否
+       合法，而不是与标准答案逐字符比对）：本题配了 solutions/_spj/BISHI38.py。
+       它不能只数个数——选手并没有输出染色方案，校验器必须反推出
+       「是否存在一种染色，使核心边集合恰好等于输出的编号集合 S」：
+       把 S 中每条边的起点强制染黑，再沿非 S 边做前向闭包得到最小黑点集，
+       用这组染色重算一遍核心边并与 S 比对。
 """
 import random
 import sys
@@ -48,7 +55,7 @@ def solve(n, m, eu, ev, out_adj, in_adj, color):
     # outW[v]: v 指向白点的出边数; inB[v]: 黑点指向 v 的入边数
     outW = [0] * (n + 1)
     inB = [0] * (n + 1)
-    for i in range(m):
+    for i in range(m):                     # 一趟扫边把两张增量表填好
         u, v = eu[i], ev[i]
         if not color[v]:
             outW[u] += 1
@@ -56,6 +63,7 @@ def solve(n, m, eu, ev, out_adj, in_adj, color):
             inB[v] += 1
     core = 0
     for v in range(1, n + 1):
+        # 核心边「起点黑、终点白」，按起点归类即可不重不漏地数完
         if color[v]:
             core += outW[v]
 
@@ -64,26 +72,28 @@ def solve(n, m, eu, ev, out_adj, in_adj, color):
     while dq:
         v = dq.popleft()
         inq[v] = 0
+        # 翻转 v 只影响与 v 相邻的边，增量可以 O(1) 算出来：
+        # 黑翻白，v 的入边由「黑->白」变成核心边（+inB），出边不再是核心边（-outW）
         if color[v]:
             delta = inB[v] - outW[v]
         else:
             delta = outW[v] - inB[v]
-        if delta <= 0:
+        if delta <= 0:                     # 只走严格变优的一步，保证必然终止
             continue
         core += delta
         if color[v]:                       # 黑 -> 白
             color[v] = 0
-            for w in out_adj[v]:
+            for w in out_adj[v]:           # v 不再是黑起点，出边邻居的 inB 减一
                 inB[w] -= 1
                 if not inq[w]:
                     inq[w] = 1
                     dq.append(w)
-            for u in in_adj[v]:
+            for u in in_adj[v]:            # v 变成白终点，入边邻居的 outW 加一
                 outW[u] += 1
-                if not inq[u]:
+                if not inq[u]:             # 受影响的点重新排队，等待再评估
                     inq[u] = 1
                     dq.append(u)
-        else:                              # 白 -> 黑
+        else:                              # 白 -> 黑（与上面完全对称）
             color[v] = 1
             for w in out_adj[v]:
                 inB[w] += 1
@@ -99,8 +109,9 @@ def solve(n, m, eu, ev, out_adj, in_adj, color):
 
 
 def count_core(m, eu, ev, color):
+    """按给定染色数出核心边（起点黑、终点白）的条数。"""
     c = 0
-    for i in range(m):
+    for i in range(m):                     # 重新数一遍，用于比较两种染色的优劣
         if color[eu[i]] and not color[ev[i]]:
             c += 1
     return c
@@ -120,11 +131,11 @@ def main() -> None:
         in_adj = [[] for _ in range(n + 1)]
         for i in range(m):
             u = int(data[p]); v = int(data[p + 1]); p += 2
-            eu[i] = u; ev[i] = v
-            out_adj[u].append(v)
+            eu[i] = u; ev[i] = v           # 边表留着，翻转后要重新数核心边
+            out_adj[u].append(v)           # 正反邻接表都要：翻转 v 时两侧都受影响
             in_adj[v].append(u)
 
-        need = m // 4 + 1
+        need = m // 4 + 1                  # 题目阈值：核心边数达到它即可收工
         # 初始解：出度不小于入度的点当「源」染黑，其余染白
         color = bytearray(n + 1)
         for v in range(1, n + 1):
@@ -132,6 +143,7 @@ def main() -> None:
 
         best = None
         best_core = -1
+        # 至多 12 轮「爬山 + 随机重启」；一旦达标就 break，通常第一轮就够
         for attempt in range(12):
             core = solve(n, m, eu, ev, out_adj, in_adj, color)
             # 整体取反后核心边数 = 当前的「白 -> 黑」边数，更优就换过去再爬
@@ -155,7 +167,8 @@ def main() -> None:
             for v in range(1, n + 1):
                 color[v] = rng.getrandbits(1)
 
-        color = best
+        color = best                       # 取历轮中最好的一组染色
+        # 输出的是边的编号（1-based，按输入顺序），不是端点
         ids = [str(i + 1) for i in range(m) if color[eu[i]] and not color[ev[i]]]
         out.append(str(len(ids)))
         out.append(" ".join(ids))

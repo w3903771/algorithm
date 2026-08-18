@@ -17,7 +17,17 @@
   2. 质因数重复出现要重复输出（18 -> "2 3 3"）；
   3. 行尾不能有多余空格，用 " ".join，不要循环 print(x, end=" ")；
   4. n 本身是质数时（比如 999999999989）循环内一个因子都找不到，
-     全靠最后那句「剩余 > 1 就输出」。
+     全靠最后那句「剩余 > 1 就输出」；
+  5. 除到最后 n 最多只剩一个大于 sqrt 的质因子，不可能剩两个 ——
+     若剩下 p*q 且 p,q 都大于当时的 sqrt(n)，则 p*q > n，矛盾。
+     所以补一次输出就够，不用再循环。
+
+样例复核：
+    18：除 2 一次得 9，除 3 两次得 1，输出 "2 3 3" ✓；
+    60：除 2 两次得 15，除 3 一次得 5，循环结束时 n = 5 > 1 补输出，
+        得 "2 2 3 5" ✓。
+
+    质因数分解见 docs/part7-数学/80-数论基础.md。
 """
 import sys
 
@@ -25,12 +35,14 @@ import sys
 def main() -> None:
     n = int(sys.stdin.buffer.read().split()[0])
     res = []
+    # 先除净 2 和 3，之后剩下的因子模 6 只能余 1 或 5，才轮得到下面的轮子
     for d in (2, 3):
         while n % d == 0:
-            res.append(d)
+            res.append(d)           # 有几次除尽就记几次，重数要保留
             n //= d
     d = 5
     while d * d <= n:               # d*d<=n 会随 n 缩小而自动收紧上界
+        # 一轮处理一对 (6k-1, 6k+1)：先试 d，再试 d+2，然后跳到下一个 6k-1
         while n % d == 0:
             res.append(d)
             n //= d
@@ -38,7 +50,7 @@ def main() -> None:
         while n % d == 0:
             res.append(d)
             n //= d
-        d += 4
+        d += 4                      # 2 + 4 = 6，正好落到下一组的 6k-1
     if n > 1:                       # 剩下的是大于 sqrt 的那个质因子
         res.append(n)
     sys.stdout.write(" ".join(map(str, res)) + "\n")

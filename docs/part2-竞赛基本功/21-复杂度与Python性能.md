@@ -111,12 +111,12 @@ $$O(1) < O(\log n) < O(\sqrt n) < O(n) < O(n \log n) < O(n \sqrt n) < O(n^2) < O
 **循环拼接字符串是 $O(n^2)$**：
 
 ```python
-# ❌ O(n²)
+# ❌ O(n²)：字符串不可变，每次 += 都要新建一个更长的字符串并整体复制
 s = ""
 for x in a:
     s += str(x)
 
-# ✅ O(n)
+# ✅ O(n)：join 先量好总长度，只分配一次、只复制一次
 s = "".join(map(str, a))
 ```
 
@@ -144,10 +144,10 @@ import sys
 
 
 def main():
-    ...              # 所有逻辑写这里
+    ...              # 所有逻辑写这里：函数体内的名字都是局部变量
 
 
-main()
+main()               # 顶层只留这一句调用
 ```
 
 ### 2. 把常用的全局名绑成局部名
@@ -156,18 +156,18 @@ main()
 
 ```python
 from math import gcd
-_gcd = gcd                      # 绑成局部
+_gcd = gcd                      # 绑成局部名：循环里省掉一次全局字典查找
 for i in range(n):
-    g = _gcd(g, a[i])
+    g = _gcd(g, a[i])           # 写 math.gcd 的话每轮要查「模块 + 属性」两次
 ```
 
 同理，循环里用到的 `append` 可以提前取出来：
 
 ```python
 res = []
-push = res.append               # 省掉每轮的属性查找
+push = res.append               # 方法只取一次；每轮的 res.append 属性查找就省掉了
 for x in a:
-    push(x * 2)
+    push(x * 2)                 # 循环次数越多，这一改的收益越明显
 ```
 
 ### 3. 把循环下沉到 C 层
@@ -175,12 +175,12 @@ for x in a:
 这是 Python 优化的**核心思路**：不是让循环跑得更快，而是**让循环消失**。
 
 ```python
-# 慢：Python 层循环
+# 慢：Python 层循环，每次迭代都要走一遍字节码分派
 s = 0
 for x in a:
     s += x
 
-# 快：C 层循环
+# 快：同样是 n 次加法，但循环本身在 C 里跑，没有字节码开销
 s = sum(a)
 ```
 
@@ -203,6 +203,11 @@ s = sum(a)
 > 如果是自己写的 Python 函数，`map` 反而可能更慢，因为每次调用都有开销。
 > 这时列表推导式更好。
 
+**下沉只改常数，不改渐进复杂度。** 两种算法的复杂度差一个 $\log$ 时，C 层的常数优势通常补不回来：
+多重背包的二进制拆分每轮都是 C 层整段处理，极限数据实测 80.1 秒；纯 Python 层的单调队列
+实测 14.9 秒，快 5.4 倍。**先比复杂度、再谈常数**，见
+[101-背包问题 §101.5](../part9-动态规划/101-背包问题.md#单调队列优化bishi138-真正要用的解法)。
+
 ### 4. 输入输出
 
 见 [20-输入输出处理](20-输入输出处理.md)。一句话：
@@ -214,18 +219,18 @@ $10^5$ 行的规模，光这一条就能从 TLE 变 AC。
 小值域下用 `list` 当数组，比 `dict` 快 2–3 倍（省掉哈希计算）：
 
 ```python
-cnt = [0] * (MAXV + 1)          # 值域已知且不大
-cnt = defaultdict(int)          # 值域未知或稀疏
+cnt = [0] * (MAXV + 1)          # 值域已知且不大：下标直接寻址，不算哈希
+cnt = defaultdict(int)          # 值域未知或稀疏：这时才值得付哈希的代价
 ```
 
 ### 6. 避免不必要的对象创建
 
 ```python
-# 慢：每轮创建元组
+# 每轮都要打包一个 (下标, 值) 元组再解包
 for i, x in enumerate(a):
     ...
 
-# 如果不需要下标，直接遍历值
+# 用不到下标就别要它，省掉这次打包与解包
 for x in a:
     ...
 ```
@@ -253,11 +258,12 @@ for x in a:
 
 ```python
 def sieve(n):
-    is_p = bytearray([1]) * (n + 1)
-    is_p[0:2] = b"\x00\x00"
-    for i in range(2, int(n ** 0.5) + 1):
-        if is_p[i]:
-            # 关键：切片步长赋值，内层循环在 C 层完成
+    is_p = bytearray([1]) * (n + 1)       # 先全标成素数；1 字节一格，比 list 省内存
+    is_p[0:2] = b"\x00\x00"               # 0 和 1 不是素数
+    for i in range(2, int(n ** 0.5) + 1):  # 筛到根号 n 为止：更大的因子必配一个更小的
+        if is_p[i]:                       # 轮到 i 时还没被划掉 ⇒ i 是素数
+            # 从 i*i 起步：比 i*i 小的 i 的倍数，都已被更小的素因子划掉过
+            # 关键：切片步长赋值，内层循环在 C 层完成；bytearray(k) 是 k 个 0，即「标为合数」
             is_p[i * i::i] = bytearray(len(is_p[i * i::i]))
     return is_p
 ```
@@ -300,8 +306,8 @@ import sys
 
 data = sys.stdin.buffer.read().split()
 n = int(data[0])
-a = sorted(map(int, data[1:1 + n]))
-sys.stdout.write(" ".join(map(str, a)) + "\n")
+a = sorted(map(int, data[1:1 + n]))       # sorted 直接吃迭代器，省掉一个中间列表
+sys.stdout.write(" ".join(map(str, a)) + "\n")   # 一次写出，不在循环里 print
 ```
 
 Python 的 `sorted` 是 Timsort，C 实现，$n = 10^5$ 时约 0.02 秒。
@@ -330,6 +336,6 @@ Python 的 `sorted` 是 Timsort，C 实现，$n = 10^5$ 时约 0.02 秒。
 | --- | --- |
 | 逻辑装进函数 | 20%–30% |
 | 全局名绑成局部名 | 5%–15% |
-| 循环下沉到 C 层 | 数倍到数十倍 ← **首选** |
+| 循环下沉到 C 层 | 数倍到数十倍 ← 同复杂度下**首选**；救不了复杂度本身 |
 | 快速 IO | 大输入下十几倍 |
 | `list` 代替 `dict` 当数组 | 2–3 倍 |

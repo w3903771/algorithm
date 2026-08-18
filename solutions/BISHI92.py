@@ -1,7 +1,9 @@
 """BISHI92 【模板】前缀函数（KMP）—— 对每组字符串输出其全部 π 值。
 
 这题考什么：
-    KMP 的前缀函数模板。π[i] = s[0..i] 的「最长真前缀 = 真后缀」的长度。
+    KMP（Knuth-Morris-Pratt，利用已匹配信息避免回退主串的字符串匹配算法）
+    的前缀函数模板。π[i] = s[0..i] 的「最长真前缀 = 真后缀」的长度。
+    完整推导见 docs/part6-字符串/71-字符串匹配KMP.md。
 
     递推的核心：算 π[i] 时，候选长度只能是
         π[i-1], π[π[i-1]-1], π[π[π[i-1]-1]-1], ...
@@ -38,17 +40,17 @@ def main() -> None:
     out = []
     p = 1
     for _ in range(t):
-        n = int(data[p]); s = data[p + 1]; p += 2
+        n = int(data[p]); s = data[p + 1]; p += 2    # 每组两个 token：长度与串本身
         pi = [0] * n
-        k = 0
-        for i in range(1, n):
+        k = 0                           # 当前候选的「最长相等真前后缀」长度
+        for i in range(1, n):           # pi[0] 恒为 0：真前缀不能是整个串
             c = s[i]
             while k and s[k] != c:      # 沿失配链回退，均摊 O(1)
                 k = pi[k - 1]
-            if s[k] == c:
+            if s[k] == c:               # 对上了就把候选长度延长一位
                 k += 1
-            pi[i] = k
-        out.append(" ".join(map(str, pi)))
+            pi[i] = k                   # k 退到 0 仍不匹配时，pi[i] 自然是 0
+        out.append(" ".join(map(str, pi)))          # 每组结果先拼成一整行
     sys.stdout.write("\n".join(out) + "\n")
 
 

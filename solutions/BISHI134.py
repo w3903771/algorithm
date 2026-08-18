@@ -27,10 +27,12 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
     cur = best = int(data[1])                # 非空 -> 初值必须是第一个元素，不能是 0
+    # cur 是「以当前元素结尾」的最大子段和，best 是扫到目前为止的全局最大值。
+    # 首元素已经吃掉，所以从 data[2] 开始，切片右端 1 + n 正好是最后一个元素的下一位
     for tok in data[2:1 + n]:
         x = int(tok)
         cur = x + cur if cur > 0 else x      # 前面那段是负贡献就丢掉
-        if cur > best:
+        if cur > best:                       # 逐个比较即可，不必最后再 max 一遍
             best = cur
     sys.stdout.write("%d\n" % best)
 

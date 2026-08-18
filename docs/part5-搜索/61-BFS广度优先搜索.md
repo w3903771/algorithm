@@ -19,20 +19,20 @@ BFS（Breadth First Search，广度优先搜索）是「**一层一层地铺开*
 ## 61.1　基本框架与正确性
 
 ```python
-from collections import deque
+from collections import deque            # deque = double-ended queue，双端队列
 
 
 def bfs(s, adj, n):
     """无权图单源最短路。dist[v] = -1 表示不可达。O(n + m)。"""
-    dist = [-1] * n
-    dist[s] = 0
-    q = deque([s])                       # ★ 必须是 deque
+    dist = [-1] * n                      # -1 兼作「未访问」标记，省掉一个 vis 数组
+    dist[s] = 0                          # 起点到自己距离 0，同时它就此算作已访问
+    q = deque([s])                       # ★ 必须是 deque：list.pop(0) 是 O(n)
     while q:
-        u = q.popleft()
-        d = dist[u] + 1
+        u = q.popleft()                  # 队首的距离最小，出队顺序天然按层
+        d = dist[u] + 1                  # u 的邻居都属于下一层，先算好省得循环里重复加
         for v in adj[u]:
-            if dist[v] < 0:              # 第一次访问 = 最短
-                dist[v] = d
+            if dist[v] < 0:              # 第一次访问 = 最短，之后再遇到只会更远
+                dist[v] = d              # ★ 入队的同时就填 dist，这就是「入队即标记」
                 q.append(v)
     return dist
 ```
@@ -78,14 +78,14 @@ dist = [-1] * n        # -1 既是「未访问」标记，又是「不可达」�
 **这是 Python BFS 唯一的性能红线。**
 
 ```python
-# ❌ 每次 pop(0) 都要把后面所有元素前移一格，是 O(n)
+# ❌ list 的元素在内存里连续排放，删掉第 0 个要把后面所有元素整体前移一格
 q = [s]
-u = q.pop(0)
+u = q.pop(0)                   # 单次 O(n)，队列一长就是灾难
 
-# ✅ deque 是块状双向链表，两端操作都是 O(1)
+# ✅ deque 是分块的双向链表，头尾两端都预留了空位
 from collections import deque
 q = deque([s])
-u = q.popleft()
+u = q.popleft()                # 队首出队，其余元素原地不动，O(1)
 ```
 
 | 队列 $n$ | `list.pop(0)` 总代价 | `deque.popleft()` 总代价 |
@@ -103,13 +103,13 @@ def bfs_fast(s, start, adj, n):
     """list + 头指针的 BFS。省掉 deque 的方法调用，快约 1.3-1.6 倍。"""
     dist = [-1] * n
     dist[s] = 0
-    q = [s]
-    head = 0
-    while head < len(q):
+    q = [s]                              # 只往尾部追加，出队的元素留在原地不回收
+    head = 0                             # 头指针：q[head] 就是当前队首
+    while head < len(q):                 # 头指针追上队尾即队列为空
         u = q[head]; head += 1           # 「出队」= 指针后移，不搬数据
         d = dist[u] + 1
         for v in adj[u]:
-            if dist[v] < 0:
+            if dist[v] < 0:              # 每个点只入队一次，所以 q 的长度不超过 n
                 dist[v] = d
                 q.append(v)
     return dist
@@ -147,22 +147,22 @@ def grid_bfs(rows, n, m, sx, sy, WALL=ord('*')):
 
     压一维 + 四周哨兵：内层循环只有一次查表，没有 4 次边界比较。
     """
-    W = m + 2                                # 加了左右各一列哨兵
-    grid = bytearray(b'*' * W)               # 顶部哨兵行
+    W = m + 2                                # 一行的宽度 = 原来 m 列 + 左右各一列哨兵
+    grid = bytearray(b'*' * W)               # 顶部哨兵行，保证 u - W 不会掉出数组
     for r in rows:
-        grid += b'*' + r + b'*'
-    grid += b'*' * W                         # 底部哨兵行
+        grid += b'*' + r + b'*'              # 每一行左右各包一堵墙
+    grid += b'*' * W                         # 底部哨兵行，保证 u + W 不会掉出数组
 
-    dist = [-1] * len(grid)
+    dist = [-1] * len(grid)                  # 长度与 grid 一致，哨兵格也占位置
     s = sx * W + sy                          # 1-based 坐标加了哨兵后正好对上
     dist[s] = 0
     q = deque([s])
     while q:
         u = q.popleft()
         d = dist[u] + 1
-        for v in (u - W, u + W, u - 1, u + 1):   # 上下左右
-            if dist[v] < 0 and grid[v] != WALL:
-                dist[v] = d
+        for v in (u - W, u + W, u - 1, u + 1):   # 行号 ±1 即下标 ±W，列号 ±1 即下标 ±1
+            if dist[v] < 0 and grid[v] != WALL:  # 越界的位置必是哨兵墙，被后半句挡掉
+                dist[v] = d                      # ★ 入队即标记，否则一格会被 4 个邻居各压一次
                 q.append(v)
     return grid, dist, W
 ```
@@ -198,13 +198,13 @@ def multi_source_bfs(sources, adj, n):
     dist = [-1] * n
     q = deque()
     for s in sources:
-        dist[s] = 0
-        q.append(s)                      # ★ 全部先入队，再开始扩展
+        dist[s] = 0                      # 所有源点彼此平级，距离都是 0
+        q.append(s)                      # ★ 全部先入队再开始扩展，初始层的距离仍单调
     while q:
         u = q.popleft()
         d = dist[u] + 1
         for v in adj[u]:
-            if dist[v] < 0:
+            if dist[v] < 0:              # 第一次访问 = 到「最近的那个源点」的距离
                 dist[v] = d
                 q.append(v)
     return dist
@@ -249,7 +249,7 @@ def bfs01(s, adj, n):
     所以 0 权边插队首、1 权边接队尾之后，单调性依然成立。
     """
     INF = float("inf")
-    dist = [INF] * n
+    dist = [INF] * n                     # 距离会被反复松弛，不能再拿它兼当「访问过」标记
     dist[s] = 0
     q = deque([s])
     while q:
@@ -257,12 +257,12 @@ def bfs01(s, adj, n):
         du = dist[u]
         for v, w in adj[u]:
             nd = du + w
-            if nd < dist[v]:
+            if nd < dist[v]:             # 判据是「这条路更短」，不是「没访问过」
                 dist[v] = nd
                 if w:
-                    q.append(v)          # 权 1：排队尾
+                    q.append(v)          # 权 1：距离比队首大 1，排队尾
                 else:
-                    q.appendleft(v)      # 权 0：插队首
+                    q.appendleft(v)      # 权 0：距离与队首相同，插队首才维持单调
     return dist
 ```
 
@@ -304,23 +304,23 @@ def bidirectional_bfs(start, goal, neighbors):
     关键优化：每轮总是扩展**较小的那一侧**，让两棵搜索树保持平衡。
     """
     if start == goal:
-        return 0
-    fa = {start: 0}                      # 正向已访问：状态 -> 步数
-    fb = {goal: 0}                       # 反向已访问
-    qa = [start]
-    qb = [goal]
+        return 0                         # 起点即终点答案是 0，不特判会漏掉这种输入
+    fa = {start: 0}                      # 正向已访问：状态 -> 距 start 的步数
+    fb = {goal: 0}                       # 反向已访问：状态 -> 距 goal 的步数
+    qa = [start]                         # 正向的当前整层
+    qb = [goal]                          # 反向的当前整层
     step = 0
-    while qa and qb:
-        if len(qa) > len(qb):            # ★ 永远扩展较小的一侧
-            qa, qb = qb, qa
+    while qa and qb:                     # 任何一侧扩不动，就说明两端不连通
+        if len(qa) > len(qb):            # ★ 永远扩展较小的一侧，两棵搜索树才平衡
+            qa, qb = qb, qa              # 队列和访问表必须成对交换，只换一个就错位
             fa, fb = fb, fa
         step += 1
-        nq = []
+        nq = []                          # 整层算完再替换 qa，保证严格按层推进
         for u in qa:
             for v in neighbors(u):
                 if v in fa:
-                    continue
-                if v in fb:              # 相遇！
+                    continue             # 本侧访问过，再扩展只会更远
+                if v in fb:              # 两侧在 v 相遇：本侧步数 + 这一步 + 对侧步数
                     return fa[u] + 1 + fb[v]
                 fa[v] = fa[u] + 1
                 nq.append(v)
@@ -355,9 +355,11 @@ BFS 不只能在图和网格上跑，**任何「状态 + 转移」的问题都�
 ```python
 # 分层图：坐标 (i, j) + 「还剩 k 次穿墙机会」
 def encode(i, j, k, W, K):
+    # 混合进制打包：低位放 k（共 K+1 种取值），高位放坐标，状态与整数一一对应
     return (i * W + j) * (K + 1) + k
 
 def decode(code, W, K):
+    # 解包顺序与打包相反：先除出低位的 k，再把高位拆回行列
     code, k = divmod(code, K + 1)
     i, j = divmod(code, W)
     return i, j, k
@@ -410,34 +412,34 @@ def main():
 
     # ---- CSR 邻接表（有向）：先数度数，再前缀和定位，最后填边 ----
     deg = [0] * (n + 2)
-    for i in range(3, 3 + 2 * m, 2):
+    for i in range(3, 3 + 2 * m, 2):    # 步长 2：只取每条边的起点 u，统计出度
         deg[int(data[i])] += 1
     start = [0] * (n + 2)
     acc = 0
     for i in range(1, n + 1):
-        start[i] = acc
+        start[i] = acc                  # u 的邻居占 adj[start[u] : start[u+1]] 这一段
         acc += deg[i]
-    start[n + 1] = acc
-    pos = start[:]                      # 每个点当前的写入位置
-    adj = [0] * acc
+    start[n + 1] = acc                  # 右哨兵：n 号点的区间右端靠它给出
+    pos = start[:]                      # 每个点当前的写入位置，填一条就前移一格
+    adj = [0] * acc                     # 所有邻居挤在一个扁平数组里，零对象开销
     p = 3
     for _ in range(m):
         u = int(data[p]); v = int(data[p + 1]); p += 2
-        adj[pos[u]] = v
+        adj[pos[u]] = v                 # 有向图，只填 u -> v，不加反向边
         pos[u] += 1
 
-    dist = [-1] * (n + 1)
+    dist = [-1] * (n + 1)               # -1 既是未访问标记，也正好是不可达要输出的值
     dist[s] = 0
-    q = deque([s])                      # 必须 deque
+    q = deque([s])                      # 必须 deque：n 到 2e5，list.pop(0) 会 TLE
     while q:
         u = q.popleft()
-        d = dist[u] + 1
-        for i in range(start[u], start[u + 1]):
+        d = dist[u] + 1                 # u 的邻居都在下一层
+        for i in range(start[u], start[u + 1]):   # 扫 u 的邻居区间
             v = adj[i]
-            if dist[v] < 0:
-                dist[v] = d
+            if dist[v] < 0:             # 第一次访问即最短；重边第二次来时已被挡掉
+                dist[v] = d             # ★ 入队即标记
                 q.append(v)
-    sys.stdout.write(" ".join(map(str, dist[1:])) + "\n")
+    sys.stdout.write(" ".join(map(str, dist[1:])) + "\n")   # 点编号 1-based，跳过 dist[0]
 
 
 main()
@@ -476,33 +478,33 @@ def main():
     xs, ys, xt, yt = int(data[2]), int(data[3]), int(data[4]), int(data[5])
     rows = data[6:6 + n]
 
-    W = m + 2
-    BLOCK = ord('*')
+    W = m + 2                            # 一行宽度 = m 列 + 左右两列哨兵
+    BLOCK = ord('*')                     # grid 是 bytearray，取出来是 int，得和 ord 比
     # 压成一维并加一圈 '*' 哨兵，越界判断被墙自动挡掉
-    grid = bytearray(b'*' * W)
+    grid = bytearray(b'*' * W)           # 顶部哨兵行
     for r in rows:
-        grid += b'*' + r + b'*'
-    grid += b'*' * W
+        grid += b'*' + r + b'*'          # 每行左右各包一堵墙
+    grid += b'*' * W                     # 底部哨兵行
 
     s = xs * W + ys                      # 1-based 坐标 + 哨兵，正好对上
     t = xt * W + yt
-    dist = [-1] * len(grid)
-    if grid[t] == BLOCK:                 # 终点本身是障碍
+    dist = [-1] * len(grid)              # -1 = 未访问，也正好是不可达时要输出的值
+    if grid[t] == BLOCK:                 # 终点本身是障碍，BFS 永远填不到 dist[t]
         sys.stdout.write("-1\n")
         return
 
-    dist[s] = 0
+    dist[s] = 0                          # 起点保证可通行；起点即终点时答案天然是 0
     q = deque([s])
     while q:
         u = q.popleft()
         if u == t:
-            break                        # 提前退出，省一半时间
+            break                        # 队首就是终点，dist[t] 已定，再扩展是浪费
         d = dist[u] + 1
-        for v in (u - W, u + W, u - 1, u + 1):
+        for v in (u - W, u + W, u - 1, u + 1):   # 行 ±1 即下标 ±W，列 ±1 即下标 ±1
             if dist[v] < 0 and grid[v] != BLOCK:
-                dist[v] = d
+                dist[v] = d              # ★ 入队即标记，避免同一格被 4 个邻居重复入队
                 q.append(v)
-    sys.stdout.write("%d\n" % dist[t])
+    sys.stdout.write("%d\n" % dist[t])   # 走不到时 dist[t] 仍是 -1，正合题意
 
 
 main()
@@ -550,35 +552,35 @@ def main():
     n, m = int(data[0]), int(data[1])
     rows = data[2:2 + n]
 
-    W = m + 2
-    CUT = ord('.')
-    grid = bytearray(b'*' * W)
+    W = m + 2                             # 一行宽度 = m 列 + 左右两列哨兵
+    CUT = ord('.')                        # 被剪去的格子；bytearray 取出来是 int
+    grid = bytearray(b'*' * W)            # 顶部哨兵行
     for r in rows:
         grid += b'*' + r + b'*'
-    grid += b'*' * W
+    grid += b'*' * W                      # 底部哨兵行
 
     ans = 0
-    q = deque()
-    for start in range(W, len(grid) - W):
+    q = deque()                           # 循环外只建一次队列，所有连通块复用
+    for start in range(W, len(grid) - W):  # 下标范围跳过首尾两行哨兵
         if grid[start] != CUT:
-            continue
+            continue                      # 不是 '.'：本来是纸，或已被前面的块吃掉
         grid[start] = ord('*')            # ★ 入队即标记：直接把 '.' 改写成 '*'
         q.append(start)
-        r0, c0 = divmod(start, W)
-        minr = maxr = r0
+        r0, c0 = divmod(start, W)         # 一维下标还原成 (行, 列)
+        minr = maxr = r0                  # 外接矩形的四条边，用起点初始化
         minc = maxc = c0
-        size = 0
+        size = 0                          # 本块的格子数
         while q:
             u = q.popleft()
             size += 1
             r, c = divmod(u, W)
-            if r < minr: minr = r
+            if r < minr: minr = r         # 同一个格子不可能既破下界又破上界，故用 elif
             elif r > maxr: maxr = r
             if c < minc: minc = c
             elif c > maxc: maxc = c
             for v in (u - W, u + W, u - 1, u + 1):
-                if grid[v] == CUT:
-                    grid[v] = ord('*')
+                if grid[v] == CUT:        # 哨兵是 '*'，越界的方向自动被挡
+                    grid[v] = ord('*')    # ★ 入队即标记，改写成墙就等于打了 vis
                     q.append(v)
         # 块大小 == 外接矩形面积  <=>  实心长方形
         if size == (maxr - minr + 1) * (maxc - minc + 1):
@@ -630,9 +632,9 @@ def main():
     n = int(data[0])
     rows = data[1:1 + n]
 
-    W = n + 2
-    LAND = ord('#')
-    WATER = ord('.')
+    W = n + 2                             # 一行宽度 = n 列 + 左右两列哨兵
+    LAND = ord('#')                       # 尚未访问的陆地
+    WATER = ord('.')                      # 水
     SEEN = ord('x')                       # ★ 第三种字符：已访问的陆地
     grid = bytearray(b'.' * W)            # 题面保证边界全是水，补 '.' 与题意一致
     for r in rows:
@@ -640,23 +642,24 @@ def main():
     grid += b'.' * W
 
     ans = 0
-    q = deque()
-    for start in range(W, len(grid) - W):
+    q = deque()                           # 循环外建一次队列，各区域复用
+    for start in range(W, len(grid) - W):  # 下标范围跳过首尾两行哨兵
         if grid[start] != LAND:
-            continue
-        grid[start] = SEEN
+            continue                      # 是水，或已属于前面数过的区域
+        grid[start] = SEEN                # ★ 入队即标记，标成 'x' 而不是 '.'
         q.append(start)
-        all_flooded = True
+        all_flooded = True                # 先假设整块都会被淹，见到反例再推翻
         while q:
             u = q.popleft()
             touched = False               # 本格是否挨着水
             for v in (u - W, u + W, u - 1, u + 1):
                 c = grid[v]
                 if c == WATER:
-                    touched = True
+                    touched = True        # 只做记录，水不属于本区域，不入队
                 elif c == LAND:
-                    grid[v] = SEEN
+                    grid[v] = SEEN        # 同区域的新格子，入队即标记
                     q.append(v)
+                # c == SEEN：同区域里已经处理过的格子，跳过
             if not touched:
                 all_flooded = False       # 有一格淹不到，整块就不算完全消失
         if all_flooded:
@@ -698,41 +701,41 @@ def main():
     h, w = int(data[0]), int(data[1])
     g = data[2:2 + h * w]                 # b'0' / b'1'，空格分隔的 token
 
-    WALL = b'1'
-    n = h * w
+    WALL = b'1'                           # g 的元素是一个个 bytes token，直接与 b'1' 比
+    n = h * w                             # 二维压一维：下标 = x * w + y
     pre = [-2] * n                        # -2 未访问，-1 起点，其余为前驱下标
-    start, goal = 0, n - 1
-    pre[start] = -1
+    start, goal = 0, n - 1                # (0,0) 与 (h-1,w-1) 压一维后的下标
+    pre[start] = -1                       # 起点前驱设 -1，倒推时用它当终止条件
     q = deque([start])
     while q:
         u = q.popleft()
         if u == goal:
-            break
-        x, y = divmod(u, w)
-        if x > 0:
+            break                         # 最短路已定，后面的扩展不会改变答案
+        x, y = divmod(u, w)               # 还原行列，只用于判四个方向是否越界
+        if x > 0:                         # 不在第 0 行才能往上走
             v = u - w
             if pre[v] == -2 and g[v] != WALL:
-                pre[v] = u; q.append(v)
-        if x + 1 < h:
+                pre[v] = u; q.append(v)   # ★ 入队即记前驱，pre 同时充当 vis 标记
+        if x + 1 < h:                     # 不在最后一行才能往下走
             v = u + w
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; q.append(v)
-        if y > 0:
+        if y > 0:                         # 不在第 0 列才能往左走
             v = u - 1
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; q.append(v)
-        if y + 1 < w:
+        if y + 1 < w:                     # 不在最后一列才能往右走
             v = u + 1
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; q.append(v)
 
     path = []
     u = goal
-    while u != -1:                        # 从终点顺着 pre 倒推回起点
+    while u != -1:                        # 从终点顺着 pre 倒推回起点，-1 是起点标志
         x, y = divmod(u, w)
         path.append("(%d,%d)" % (x, y))
         u = pre[u]
-    path.reverse()
+    path.reverse()                        # 倒推出来是「终点 -> 起点」，翻回正序
     sys.stdout.write("\n".join(path) + "\n")
 
 
@@ -782,22 +785,22 @@ LO, HI = 10, 300
 
 def build_table():
     """f[v] = 单个资源从 10 出发变到 v 的最少操作次数。"""
-    f = [-1] * (HI + 1)
-    f[LO] = 0
+    f = [-1] * (HI + 1)                  # 下标就是资源值，-1 表示尚未访问
+    f[LO] = 0                            # 起点是初始值 10
     q = deque([LO])
     while q:
         v = q.popleft()
-        d = f[v] + 1
-        # 出边：±1、±10、±100，以及两条「任意位置一步可达」的传送边
+        d = f[v] + 1                     # 一步可达的邻居都在下一层
+        # 出边：±1、±10、±100，以及两条「任意位置一步可达」的传送边（设为 300 / 设为 10）
         for u in (v - 1, v + 1, v - 10, v + 10, v - 100, v + 100, HI, LO):
-            if LO <= u <= HI and f[u] < 0:
-                f[u] = d
+            if LO <= u <= HI and f[u] < 0:   # 越出 [10,300] 的操作不合法，直接丢弃
+                f[u] = d                     # ★ 入队即标记
                 q.append(u)
     return f
 
 
 def main():
-    f = build_table()
+    f = build_table()                    # 291 个点的表只建一次，之后每次询问 O(1) 查表
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
@@ -848,35 +851,35 @@ from collections import deque
 def main():
     data = sys.stdin.buffer.read().split()
     n, m = int(data[0]), int(data[1])
-    trap = data[2:2 + n]                    # b'0' / b'1'
-    ONE = b'1'
+    trap = data[2:2 + n]                    # 每个元素是一个 bytes token：b'0' / b'1'
+    ONE = b'1'                              # 标记「该点有陷阱」
 
-    if trap[0] == ONE or trap[n - 1] == ONE:   # 起点或终点本身有陷阱
+    if trap[0] == ONE or trap[n - 1] == ONE:   # 起点或终点本身有陷阱，BFS 都不必开始
         sys.stdout.write("No\n")
         return
 
-    adj = [[] for _ in range(n + 1)]
+    adj = [[] for _ in range(n + 1)]        # 点是 1-based，0 号槽空着不用
     p = 2 + n
     for _ in range(m):
         a = int(data[p]); b = int(data[p + 1]); p += 2
         if trap[a - 1] == ONE or trap[b - 1] == ONE:
             continue                        # ★ 建表时就把陷阱点的边扔掉
-        adj[a].append(b)
+        adj[a].append(b)                    # 无向图，两个方向都要挂
         adj[b].append(a)
 
-    vis = bytearray(n + 1)
-    vis[1] = 1
+    vis = bytearray(n + 1)                  # 每点 1 字节，比 [False] * n 省一个数量级内存
+    vis[1] = 1                              # 起点入队的同时标记
     q = deque([1])
     while q:
         u = q.popleft()
         if u == n:
-            sys.stdout.write("Yes\n")
+            sys.stdout.write("Yes\n")       # 出队时才判终点，n == 1 时也能正确命中
             return
         for v in adj[u]:
             if not vis[v]:
-                vis[v] = 1
+                vis[v] = 1                  # ★ 入队即标记，否则重边会让同一点反复入队
                 q.append(v)
-    sys.stdout.write("No\n")
+    sys.stdout.write("No\n")                # 队列空了还没到 n，说明两点不连通
 
 
 main()
@@ -920,24 +923,24 @@ def main():
     out = []
     for _ in range(T):
         n = int(data[ptr]); ptr += 1
-        us = [0] * (n - 1)
+        us = [0] * (n - 1)                     # 先把 n-1 条边存下来，度数数完才能定位
         vs = [0] * (n - 1)
         deg = [0] * (n + 2)
         for i in range(n - 1):
             a = int(data[ptr]); b = int(data[ptr + 1]); ptr += 2
             us[i] = a; vs[i] = b
-            deg[a] += 1
+            deg[a] += 1                        # 无向树，两端度数都要加
             deg[b] += 1
 
         # ---- CSR 邻接表 ----
         start = [0] * (n + 2)
         s = 0
         for i in range(1, n + 1):
-            start[i] = s
+            start[i] = s                       # u 的邻居占 adj[start[u] : start[u+1]]
             s += deg[i]
-        start[n + 1] = s
-        pos = start[:]
-        adj = [0] * s
+        start[n + 1] = s                       # 右哨兵，给 n 号点的区间定右端
+        pos = start[:]                         # 各点当前写入位置
+        adj = [0] * s                          # s = 2(n-1)，每条边正反各占一格
         for i in range(n - 1):
             a = us[i]; b = vs[i]
             adj[pos[a]] = b; pos[a] += 1
@@ -947,21 +950,21 @@ def main():
         dist = [-1] * (n + 1)
         q = deque()
         for u in range(1, n + 1):
-            if deg[u] == 1:
+            if deg[u] == 1:                    # 树上度数为 1 的点就是叶子
                 dist[u] = 0
-                q.append(u)
+                q.append(u)                    # 先把整批源点灌进队列，再开始扩展
         while q:
             u = q.popleft()
             d = dist[u] + 1
             for i in range(start[u], start[u + 1]):
                 v = adj[i]
-                if dist[v] < 0:
-                    dist[v] = d
+                if dist[v] < 0:                # 第一次访问 = 到最近叶子的距离
+                    dist[v] = d                # ★ 入队即标记
                     q.append(v)
 
         best = -1
         for u in range(1, n + 1):
-            if deg[u] != 1 and dist[u] > best:   # ★ 只在非叶子里评选
+            if deg[u] != 1 and dist[u] > best:   # ★ 只在非叶子里评选（Miku 点不能是叶子）
                 best = dist[u]
         res = [u for u in range(1, n + 1) if deg[u] != 1 and dist[u] == best]
         out.append(str(len(res)))

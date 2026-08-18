@@ -42,26 +42,28 @@ def main() -> None:
 
     ans = 0
     q = deque()
+    # 扫描范围掐掉首尾两行哨兵；左右两列哨兵是 '*'，会被下面的判断直接跳过
     for start in range(W, len(grid) - W):
         if grid[start] != CUT:
             continue
         grid[start] = ord('*')            # 入队即标记
         q.append(start)
-        r0, c0 = divmod(start, W)
-        minr = maxr = r0
+        r0, c0 = divmod(start, W)         # 一维下标还原成 (行, 列)
+        minr = maxr = r0                  # 外接矩形初值取起点自身
         minc = maxc = c0
         size = 0
         while q:
             u = q.popleft()
             size += 1
             r, c = divmod(u, W)
+            # 一个坐标不可能同时小于最小值又大于最大值，用 elif 少做一次比较
             if r < minr: minr = r
             elif r > maxr: maxr = r
             if c < minc: minc = c
             elif c > maxc: maxc = c
             for v in (u - W, u + W, u - 1, u + 1):
                 if grid[v] == CUT:
-                    grid[v] = ord('*')
+                    grid[v] = ord('*')    # 改写原图当访问标记，入队即改，省一个 vis
                     q.append(v)
         # 块大小 == 外接矩形面积 <=> 实心长方形
         if size == (maxr - minr + 1) * (maxc - minc + 1):

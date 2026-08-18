@@ -1,7 +1,8 @@
 """BISHI96 先序遍历、中序遍历和后序遍历 —— 由 n-1 条有向父子边建二叉树并输出三种遍历。
 
 这题考什么：
-    建树 + 三种 DFS 遍历。难点全在「左右孩子怎么定」和「n = 1e5 的递归深度」。
+    建树 + 三种 DFS 遍历（三种序的定义见 docs/part8-图与树/94-树上算法.md）。
+    难点全在「左右孩子怎么定」和「n = 1e5 的递归深度」。
 
     左右孩子规则（题面原文）：
       - 父节点有两个孩子：编号**较小**者为左孩子，较大者为右孩子；
@@ -40,17 +41,19 @@ import sys
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
-    left = [0] * (n + 1)
+    left = [0] * (n + 1)                      # left[u] = 0 表示 u 没有左孩子
     right = [0] * (n + 1)
-    kids = [[] for _ in range(n + 1)]
-    has_parent = bytearray(n + 1)
+    kids = [[] for _ in range(n + 1)]         # 先按输入顺序收着，读完再判定左右
+    has_parent = bytearray(n + 1)             # 出现在边右端的点一定不是根
 
+    # ---- 读入 n-1 条「父 -> 子」有向边 ----
     p = 1
     for _ in range(n - 1):
         a = int(data[p]); b = int(data[p + 1]); p += 2
         kids[a].append(b)
         has_parent[b] = 1
 
+    # ---- 按题面规则把孩子分配到左右 ----
     for u in range(1, n + 1):
         ch = kids[u]
         if len(ch) == 2:
@@ -63,8 +66,9 @@ def main() -> None:
             if v > u:
                 left[u] = v                   # 独子且编号大于父 -> 左
             else:
-                right[u] = v
+                right[u] = v                  # 否则一律当右孩子
 
+    # ---- 根 = 唯一没有父亲的点；n = 1 时没有边，初值 1 就是答案 ----
     root = 1
     for u in range(1, n + 1):
         if not has_parent[u]:
@@ -79,10 +83,10 @@ def main() -> None:
         pre.append(u)
         r = right[u]
         if r:
-            st.append(r)
+            st.append(r)                      # 右孩子先压
         l = left[u]
         if l:
-            st.append(l)
+            st.append(l)                      # 左孩子后压先出，出栈顺序即「根 左 右」
 
     # ---- 中序：一路向左压栈，弹出访问后转右子树 ----
     ino = []
@@ -90,11 +94,11 @@ def main() -> None:
     u = root
     while st or u:
         while u:
-            st.append(u)
+            st.append(u)                      # 把从当前点到最左端的整条路径压进栈
             u = left[u]
-        u = st.pop()
+        u = st.pop()                          # 弹出的点，其左子树已经全部访问完
         ino.append(u)
-        u = right[u]
+        u = right[u]                          # 根访问完，转去处理右子树
 
     # ---- 后序：先按「根 右 左」跑一遍先序，再整体逆序 ----
     post = []
@@ -104,11 +108,11 @@ def main() -> None:
         post.append(u)
         l = left[u]
         if l:
-            st.append(l)
+            st.append(l)                      # 压栈左先右后 -> 出栈顺序是「根 右 左」
         r = right[u]
         if r:
             st.append(r)
-    post.reverse()
+    post.reverse()                            # 「根 右 左」整体逆序即「左 右 根」
 
     w = sys.stdout.write
     w(" ".join(map(str, pre)) + "\n")

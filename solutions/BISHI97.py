@@ -3,6 +3,7 @@
 这题考什么：
     带点权限制的连通性判定。把「有陷阱的房间」直接当作不存在的点删掉，
     剩下的图上做一次 BFS / DFS，看 n 是否可达。
+    BFS 的框架见 docs/part5-搜索/61-BFS广度优先搜索.md。
 
 数据规模与复杂度：
     n, m <= 1e5。建邻接表 O(n + m)，一次遍历 O(n + m)。
@@ -30,14 +31,15 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n, m = int(data[0]), int(data[1])
     trap = data[2:2 + n]                    # b'0' / b'1'
-    ONE = b'1'
+    ONE = b'1'                              # 直接比较 bytes，省掉 n 次 int() 转换
 
     if trap[0] == ONE or trap[n - 1] == ONE:   # 起点或终点本身有陷阱
         sys.stdout.write("No\n")
         return
 
+    # ---- 建邻接表，同时把与陷阱点相连的边全部剔除 ----
     adj = [[] for _ in range(n + 1)]
-    p = 2 + n
+    p = 2 + n                               # 前 2 + n 个 token 是 n、m 与陷阱数组
     for _ in range(m):
         a = int(data[p]); b = int(data[p + 1]); p += 2
         if trap[a - 1] == ONE or trap[b - 1] == ONE:
@@ -45,16 +47,17 @@ def main() -> None:
         adj[a].append(b)
         adj[b].append(a)
 
+    # ---- 从 1 号房间 BFS，能走到的都是安全可达的房间 ----
     vis = bytearray(n + 1)
-    vis[1] = 1
+    vis[1] = 1                              # 入队时就打标记，避免同一点重复入队
     q = deque([1])
     while q:
         u = q.popleft()
-        if u == n:
+        if u == n:                          # 出队时判终点，n == 1 时第一轮即命中
             sys.stdout.write("Yes\n")
             return
         for v in adj[u]:
-            if not vis[v]:
+            if not vis[v]:                  # 邻居必定安全（不安全的边建表时已丢弃）
                 vis[v] = 1
                 q.append(v)
     sys.stdout.write("No\n")        # n == 1 时上面第一轮就命中 u == n 返回 Yes 了

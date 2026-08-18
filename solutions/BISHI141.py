@@ -39,13 +39,17 @@ import sys
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); m = int(data[1])
-    INF = 1 << 60
+    INF = 1 << 60                            # 「还凑不出这么多矿石」的哨兵
+    # 下标 j 表示「还需要融化 j 单位」，j = 0 是已经烧完，时间 0；
+    # f1 全 INF，因为「用过魔法」必须真的施过一次才成立
     f0 = [0] + [INF] * m                     # 没用魔法
     f1 = [INF] * (m + 1)                     # 用过魔法
 
     def shift(d, cap, cost):
         """返回 t，其中 t[j] = d[max(0, j-cap)] + cost。"""
-        if cap >= m:
+        # max(0, j-cap) 就是「至少覆盖」的实现：这枚煤炭多融化的部分不额外记账，
+        # 剩余需求被夹在 0，不会掉成负数
+        if cap >= m:                         # 2x 可能超过 m，一枚就把全部需求盖掉
             return [d[0] + cost] * (m + 1)
         head = d[0] + cost
         return [head] * cap + [x + cost for x in d[:m + 1 - cap]]
@@ -54,12 +58,14 @@ def main() -> None:
     for _ in range(n):
         x = int(data[p]); y = int(data[p + 1])
         p += 2
+        # 三个候选一律基于本轮开始前的 f0 / f1 算好，保证同一枚煤炭只被用一次
         a0 = shift(f0, x, y)                 # 普通使用
         a1 = shift(f1, x, y)                 # 普通使用（魔法此前已用掉）
         a2 = shift(f0, 2 * x, y >> 1)        # ★ 把唯一一次魔法用在这一枚
+        # f1 必须先算：它要读没被本轮污染的 f0，顺序反了就等于一枚煤炭用了两次
         f1 = list(map(min, f1, a1, a2))
         f0 = list(map(min, f0, a0))
-    ans = f0[m]
+    ans = f0[m]                              # 魔法是「至多」施放，不用也可以
     if f1[m] < ans:
         ans = f1[m]
     sys.stdout.write("%d\n" % ans)

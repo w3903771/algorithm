@@ -24,9 +24,9 @@ C++ 选手写 DFS 从不考虑深度，Python 选手写 DFS **必须先算深度
 ```python
 def dfs(u):
     """访问节点 u。vis 防止重复访问，是 DFS 的灵魂。"""
-    vis[u] = True
+    vis[u] = True               # 一进门就标记，递归返回之前不会有人再进来
     for v in adj[u]:            # 枚举 u 的所有后继
-        if not vis[v]:
+        if not vis[v]:          # 漏掉这一句，图上只要有环就会无限递归
             dfs(v)
 ```
 
@@ -62,16 +62,17 @@ S3 day7 里对连通块的描述就是这个骨架的直接应用：
 
 ```python
 # 四方向 / 八方向偏移量，写成常量元组，别在循环里现造
-DIR4 = ((-1, 0), (1, 0), (0, -1), (0, 1))
-DIR8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1),
+DIR4 = ((-1, 0), (1, 0), (0, -1), (0, 1))       # 每项是 (行增量, 列增量)
+DIR8 = ((-1, -1), (-1, 0), (-1, 1), (0, -1),    # 八连通 = 3x3 邻域去掉 (0, 0)
         (0, 1), (1, -1), (1, 0), (1, 1))
 
 
 def dfs_grid(g, vis, x, y, n, m):
     """网格四连通 DFS（递归版）。仅在深度可控时使用！"""
-    vis[x][y] = 1
+    vis[x][y] = 1                               # 进入即标记且不撤销 = 每格只走一次
     for dx, dy in DIR4:
         nx, ny = x + dx, y + dy
+        # 四个条件的先后不能换：确认下标合法之后，才敢拿它去索引 vis 和 g
         if 0 <= nx < n and 0 <= ny < m and not vis[nx][ny] and g[nx][ny] != '#':
             dfs_grid(g, vis, nx, ny, n, m)
 ```
@@ -95,13 +96,13 @@ def backtrack(path, state):
     """回溯三件套：选择 -> 递归 -> 撤销。三步一步都不能少。"""
     if is_answer(path):
         record(path[:])                  # ★ 必须复制！path 后面还要改
-        return
+        return                           # 收下这一组解，本条路径到此为止
     for choice in candidates(state):
         if not ok(choice, state):        # 剪枝：不合法就别往下走
             continue
         do(choice, path, state)          # 1. 做选择
         backtrack(path, state)           # 2. 递归
-        undo(choice, path, state)        # 3. 撤销选择
+        undo(choice, path, state)        # 3. 撤销：现场恢复成进入本层时的样子
 ```
 
 > ⚠️ **`record(path[:])` 里的切片不能省。** `path` 是同一个 list 对象，
@@ -123,21 +124,22 @@ def backtrack(path, state):
 def permutations_dfs(n):
     """1..n 的全排列，按字典序输出。O(n! * n)。"""
     res = []
-    path = []
-    used = [False] * (n + 1)
+    path = []                                    # 当前已经确定的前几位
+    used = [False] * (n + 1)                     # used[v]：v 是否已经出现在 path 里
+                                                 # 开 n+1 格，下标直接用 1..n，不做偏移
 
     def dfs():
         if len(path) == n:
-            res.append(path[:])                  # 复制！
+            res.append(path[:])                  # 复制！path 是同一个对象，之后还会被改
             return
         for v in range(1, n + 1):                # 从小到大 -> 天然字典序
             if used[v]:
-                continue
+                continue                         # 排列里每个数只能出现一次
             used[v] = True
             path.append(v)
             dfs()
             path.pop()                           # 撤销
-            used[v] = False                      # 撤销
+            used[v] = False                      # 撤销：v 换到别的位置上还要再用
     dfs()
     return res
 
@@ -149,11 +151,11 @@ def subsets_dfs(a):
     path = []
 
     def dfs(start):
-        res.append(path[:])                      # 每个节点都是一个子集
-        for i in range(start, n):
+        res.append(path[:])                      # 每个节点都是一个子集，根节点是空集
+        for i in range(start, n):                # 只从 start 往后挑，同一子集不会被换序枚举
             path.append(a[i])
             dfs(i + 1)                           # ★ i+1：后面的元素只能选更靠后的
-            path.pop()
+            path.pop()                           # 撤销，换下一个 i
     dfs(0)
     return res
 
@@ -167,12 +169,13 @@ def combinations_dfs(n, k):
         if len(path) == k:
             res.append(path[:])
             return
-        # 剪枝：剩下的元素凑不够 k 个就不用往下走了
+        # 剪枝：还差 k-len(path) 个数，i 最大只能取到 n-(k-len(path))+1；
+        # range 的右端是开区间，所以写成 +2
         for i in range(start, n - (k - len(path)) + 2):
             path.append(i)
-            dfs(i + 1)
+            dfs(i + 1)                           # 下一层从 i+1 起，组合不计顺序
             path.pop()
-    dfs(1)
+    dfs(1)                                       # 元素编号是 1..n，所以起点取 1
     return res
 ```
 
@@ -204,13 +207,13 @@ def combinations_dfs(n, k):
 ```python
 def count_components(g, n, m, target, dirs):
     """数网格中值为 target 的连通块个数。dirs 传 DIR4 或 DIR8。O(nm)。"""
-    vis = [bytearray(m) for _ in range(n)]
+    vis = [bytearray(m) for _ in range(n)]       # 每格 1 字节，比 list of bool 省内存
     cnt = 0
     for si in range(n):
         for sj in range(m):
             if g[si][sj] != target or vis[si][sj]:
-                continue
-            cnt += 1
+                continue                         # 不是目标格，或已属于前面数过的块
+            cnt += 1                             # 每找到一个新起点，就是一个新连通块
             vis[si][sj] = 1
             stack = [(si, sj)]                   # 显式栈，不用递归
             while stack:
@@ -301,7 +304,7 @@ def main():
 threading.stack_size(1 << 26)                 # 2. 64 MB 物理栈（必须在 Thread 创建前调用）
 t = threading.Thread(target=main)
 t.start()
-t.join()
+t.join()                                      # 等子线程跑完；主线程先退出会截断输出
 ```
 
 > **三个细节**：
@@ -318,18 +321,18 @@ t.join()
 ```python
 # ---- 递归版 ----
 def dfs(u):
-    vis[u] = 1
+    vis[u] = 1                            # 进入时标记且不撤销 = 全局只访问一次
     for v in adj[u]:
         if not vis[v]:
-            dfs(v)
+            dfs(v)                        # 递归深度 = 最长路径长度，随时可能爆栈
 
 
 # ---- 迭代版（等价，深度不受限）----
 def dfs_iter(s):
-    vis[s] = 1
+    vis[s] = 1                            # 起点压栈之前先标记，与下面的规则保持一致
     stack = [s]
     while stack:
-        u = stack.pop()
+        u = stack.pop()                   # 后进先出，效果就是「一条路走到黑」
         for v in adj[u]:
             if not vis[v]:
                 vis[v] = 1                # ★ 入栈即标记
@@ -353,25 +356,25 @@ def tree_dp_two_pass(n, adj, root=1):
     第一趟：BFS/DFS 求出 order（访问顺序）和 par（父亲）；
     第二趟：reversed(order) 即为后序，儿子一定先于父亲被处理。
     """
-    par = [0] * (n + 1)
-    order = []
+    par = [0] * (n + 1)                    # par[v] = v 的父亲；0 表示「没有父亲」
+    order = []                             # 第一趟的访问顺序，也就是一个合法的 DFS 序
     stack = [root]
-    par[root] = 0
+    par[root] = 0                          # 根没有父亲，用 0 当哨兵
     vis = bytearray(n + 1)
     vis[root] = 1
     while stack:
         u = stack.pop()
         order.append(u)
         for v in adj[u]:
-            if not vis[v]:
-                vis[v] = 1
+            if not vis[v]:                 # 无根树的邻接表不分方向，靠 vis 挡住「走回父亲」
+                vis[v] = 1                 # ★ 入栈即标记
                 par[v] = u
                 stack.append(v)
 
-    size = [1] * (n + 1)
+    size = [1] * (n + 1)                   # 每个点先把自己算进子树大小
     for u in reversed(order):              # ★ 倒序 = 后序：儿子已经算完了
         p = par[u]
-        if p:
+        if p:                              # 根的父亲是 0，到根就停，不再往外累加
             size[p] += size[u]
     return size, order, par
 ```
@@ -394,9 +397,9 @@ def dfs_events(s, adj):
         u, stage = stack.pop()
         if stage == 0:
             if u in vis:
-                continue
-            vis[u] = True
-            stack.append((u, 1))            # ★ 先压「退出事件」
+                continue                    # 同一点可能被多个邻居压入，靠这一句去重
+            vis[u] = True                   # 这里只能出栈时标记，理由见下方说明
+            stack.append((u, 1))            # ★ 先压「退出事件」：它会在所有孩子之后才弹出
             for v in reversed(adj[u]):      # 逆序压栈以保持正序访问
                 if v not in vis:
                     stack.append((v, 0))
@@ -406,24 +409,28 @@ def dfs_events(s, adj):
             # ---- 在这里写「离开 u 时」要做的事（后序）----
 ```
 
+> **事件栈是「入栈即标记」的唯一例外**：进入事件和退出事件必须成对，
+> 而退出事件只能在真正展开 $u$ 时才压得进去，所以标记只能推迟到出栈那一刻。
+> 代价是同一个点可能被压入多次，栈的规模比改法一大，靠 `if u in vis: continue` 兜住。
+
 另一种等价写法是「**迭代器栈**」，更接近递归的语义（能保留「循环走到哪了」）：
 
 ```python
 def dfs_iterstack(s, adj):
     """栈里存 (节点, 该节点的邻居迭代器)。最贴近递归语义的迭代改写。"""
     vis = {s}
-    stack = [(s, iter(adj[s]))]
+    stack = [(s, iter(adj[s]))]             # 迭代器替我们记住「这一层的循环走到哪了」
     while stack:
-        u, it = stack[-1]
+        u, it = stack[-1]                   # 只看栈顶不弹出，这一层可能还没走完
         advanced = False
         for v in it:                        # 从上次断点继续
             if v not in vis:
-                vis.add(v)
+                vis.add(v)                  # ★ 入栈即标记
                 stack.append((v, iter(adj[v])))
                 advanced = True
-                break
+                break                       # 立刻下潜；剩下的邻居等回到这一层再走
         if not advanced:
-            stack.pop()
+            stack.pop()                     # 邻居全部走完，这一层才真正出栈
             # ---- 这里是「离开 u」，后序位置 ----
 ```
 
@@ -463,7 +470,7 @@ def dfs_iterstack(s, adj):
 最后一行是搜索题的本质：**剪枝的好坏决定生死**，见
 [62-记忆化搜索与剪枝](62-记忆化搜索与剪枝.md)。
 
-S3 day2 讲 DLX（精确覆盖）时给的搜索流程，就是「剪枝驱动的 DFS」的典范：
+S3 day2 讲 DLX（Dancing Links X，用双向十字链表实现的精确覆盖搜索）时给的搜索流程，就是「剪枝驱动的 DFS」的典范：
 
 > 1. 如果当前矩阵没有列，则要求满足。
 > 2. 任意选取一列，如果这一列上没有 1，则**无解**（← 可行性剪枝）。
@@ -499,21 +506,22 @@ def main():
     n, m = int(data[0]), int(data[1])
     g = data[2:2 + n]                       # 每行一个 bytes，g[i][j] 取出来是 int
 
-    WALL = ord('#')
+    WALL = ord('#')                         # 在 bytes 上索引得到 int，所以取字符的码值
     if g[0][0] == WALL or g[n - 1][m - 1] == WALL:
-        sys.stdout.write("No\n")
+        sys.stdout.write("No\n")             # 起点或终点是墙，连搜都不用搜
         return
 
-    vis = [bytearray(m) for _ in range(n)]
-    vis[0][0] = 1
+    vis = [bytearray(m) for _ in range(n)]  # 每格 1 字节
+    vis[0][0] = 1                           # 起点压栈之前先标记
     stack = [(0, 0)]                        # 显式栈，深度不受解释器限制
     ok = False
     while stack:
         x, y = stack.pop()
-        if x == n - 1 and y == m - 1:
+        if x == n - 1 and y == m - 1:       # 出栈时判终点，n = m = 1 时第一次就命中
             ok = True
-            break
+            break                           # 只问能否到达，找到就可以停
         for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+            # 先判越界再索引：and 的短路保证不会拿非法下标去取 vis 和 g
             if 0 <= nx < n and 0 <= ny < m and not vis[nx][ny] and g[nx][ny] != WALL:
                 vis[nx][ny] = 1             # 入栈即标记
                 stack.append((nx, ny))
@@ -558,23 +566,24 @@ def main():
     vis = [bytearray(m) for _ in range(n)]
     cnt = 0
     for si in range(n):
-        row = g[si]
+        row = g[si]                         # 把本行绑成局部名，内层少一次二维索引
         vrow = vis[si]
         for sj in range(m):
             if row[sj] != W or vrow[sj]:
-                continue
+                continue                    # 不是水，或已属于前面数过的水坑
             cnt += 1                        # 发现一个新水坑
             vrow[sj] = 1
-            stack = [(si, sj)]
+            stack = [(si, sj)]              # 显式栈：一个水坑最多 1e4 格，递归必崩
             while stack:
                 x, y = stack.pop()
                 for dx in (-1, 0, 1):       # 八连通 = 3x3 邻域去掉自己
                     nx = x + dx
                     if nx < 0 or nx >= n:
-                        continue
-                    gr, vr = g[nx], vis[nx]
+                        continue            # 行号越界，这一整行的 3 个方向一起跳过
+                    gr, vr = g[nx], vis[nx]  # 取一次行对象，内层 3 次列判断共用
                     for dy in (-1, 0, 1):
                         ny = y + dy
+                        # dx = dy = 0 枚举到的是自己，但它已被标记，被 not vr[ny] 挡掉
                         if 0 <= ny < m and not vr[ny] and gr[ny] == W:
                             vr[ny] = 1      # 入栈即标记，防止重复入栈
                             stack.append((nx, ny))
@@ -612,8 +621,9 @@ from itertools import permutations
 
 def main():
     n = int(sys.stdin.buffer.read().split()[0])
-    digits = [str(i) for i in range(1, n + 1)]      # 已升序 -> 排列即字典序
-    join = " ".join
+    digits = [str(i) for i in range(1, n + 1)]      # 已升序 -> 排列即字典序；预转 str
+    join = " ".join                                 # 绑成局部名，36 万次调用省下属性查找
+    # 全部拼成一整块再一次写出：逐行 print 会把时间全花在 IO 上
     sys.stdout.write("\n".join(map(join, permutations(digits))) + "\n")
 
 
@@ -677,9 +687,9 @@ def main():
             rows.append([int(v) for v in data[p:p + m]])
             p += m
 
-        full = 1 << m
-        masks = [s for s in range(full) if not (s & (s << 1))]   # 行内合法
-        spread = [s | (s << 1) | (s >> 1) for s in range(full)]  # 向左右扩一位
+        full = 1 << m                # m 位二进制，共 2^m 种「本行选法」
+        masks = [s for s in range(full) if not (s & (s << 1))]   # 行内合法：无相邻两位同为 1
+        spread = [s | (s << 1) | (s >> 1) for s in range(full)]  # 向左右各扩一位
 
         dp = [0] * full              # dp[mask]：上一行选 mask 时的最大和
         alive = [0]                  # 上一行取空集作为哨兵起点
@@ -690,22 +700,22 @@ def main():
                 tot = 0
                 x = s
                 while x:
-                    low = x & -x     # lowbit，见 46-位运算
-                    tot += row[low.bit_length() - 1]
-                    x ^= low
+                    low = x & -x     # lowbit：取出 x 最低位的那个 1，见 46-位运算
+                    tot += row[low.bit_length() - 1]   # 该 1 在第几位就加第几列的数
+                    x ^= low         # 抹掉这一位，循环次数 = 1 的个数
                 val[s] = tot
-            ndp = [-1] * full
+            ndp = [-1] * full        # 本行的新表，-1 表示这个 mask 无法从上一行到达
             for s2 in masks:
                 best = -1
                 for s1 in alive:
                     if spread[s1] & s2:
-                        continue     # 与上一行八连通冲突
+                        continue     # 扩位后仍相交 = 正上方或斜上方冲突
                     if dp[s1] > best:
                         best = dp[s1]
-                if best >= 0:
+                if best >= 0:        # 至少存在一个合法的上一行搭配
                     ndp[s2] = best + val[s2]
             dp = ndp
-            alive = [s for s in masks if dp[s] >= 0]
+            alive = [s for s in masks if dp[s] >= 0]   # 只留可达的 mask，下一行少枚举
         out.append(str(max(dp)))
     sys.stdout.write("\n".join(out) + "\n")
 
@@ -753,41 +763,41 @@ def main():
     h, w = int(data[0]), int(data[1])
     g = data[2:2 + h * w]                 # b'0' / b'1'，按 token 读
 
-    WALL = b'1'
-    n = h * w
+    WALL = b'1'                           # g 的元素是一个个 bytes token，直接与 b'1' 比
+    n = h * w                             # 二维压一维：下标 = x * w + y
     pre = [-2] * n                        # -2 未访问，-1 起点，其余为前驱下标
-    start, goal = 0, n - 1
-    pre[start] = -1
+    start, goal = 0, n - 1                # (0,0) 与 (h-1,w-1) 压一维后的下标
+    pre[start] = -1                       # 起点前驱设 -1，倒推时用它当终止条件
     stack = [start]                       # ★ 显式栈：路径最长 1e4，递归必崩
     while stack:
         u = stack.pop()
         if u == goal:
-            break
-        x, y = divmod(u, w)
-        if x > 0:
+            break                         # 题目保证路径唯一，摸到终点就可以收工
+        x, y = divmod(u, w)               # 还原行列，只用于判四个方向是否越界
+        if x > 0:                         # 不在第 0 行才能往上走
             v = u - w
             if pre[v] == -2 and g[v] != WALL:
-                pre[v] = u; stack.append(v)
-        if x + 1 < h:
+                pre[v] = u; stack.append(v)   # ★ 入栈即记前驱，pre 同时充当 vis
+        if x + 1 < h:                     # 不在最后一行才能往下走
             v = u + w
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; stack.append(v)
-        if y > 0:
+        if y > 0:                         # 不在第 0 列才能往左走
             v = u - 1
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; stack.append(v)
-        if y + 1 < w:
+        if y + 1 < w:                     # 不在最后一列才能往右走
             v = u + 1
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; stack.append(v)
 
     path = []
     u = goal
-    while u != -1:                        # 从终点顺着 pre 倒推回起点
+    while u != -1:                        # 从终点顺着 pre 倒推回起点，-1 是起点标志
         x, y = divmod(u, w)
         path.append("(%d,%d)" % (x, y))
         u = pre[u]
-    path.reverse()                        # ★ 倒推出来是反的
+    path.reverse()                        # ★ 倒推出来是「终点 -> 起点」，翻回正序
     sys.stdout.write("\n".join(path) + "\n")
 
 

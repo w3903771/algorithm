@@ -5,6 +5,7 @@
         cnt([l, r]) = (第一个 > r 的位置) - (第一个 >= l 的位置)
                     = bisect_right(a, r) - bisect_left(a, l)
     先把数组排好序，此后每次询问都是 O(log n)。
+    两个边界写法（第一个 >= x、第一个 > x）见 docs/part4-基础算法/44-二分.md。
 
 数据规模与复杂度：
     n, q <= 2e5。排序 O(n log n)，询问 O(q log n)，总计约 2e5 * 18 * 2 ≈ 7e6。
@@ -24,17 +25,19 @@ from bisect import bisect_left, bisect_right
 
 
 def main() -> None:
-    data = sys.stdin.buffer.read().split()
+    data = sys.stdin.buffer.read().split()      # 4e5+ 个 token，一次性读完
     n, q = int(data[0]), int(data[1])
-    a = sorted(map(int, data[2:2 + n]))
+    a = sorted(map(int, data[2:2 + n]))         # 排序一次，此后数组只读不改
 
     out = []
-    p = 2 + n
+    p = 2 + n                                   # 游标：数组之后紧跟着 q 组询问
     for _ in range(q):
         l = int(data[p]); r = int(data[p + 1]); p += 2
+        # bisect_right(a, r) = 第一个 > r 的下标，bisect_left(a, l) = 第一个 >= l 的下标，
+        # 两者相减恰好是落在 [l, r] 中的元素个数
         c = bisect_right(a, r) - bisect_left(a, l)
-        out.append(str(c if c > 0 else 0))
-    sys.stdout.write("\n".join(out) + "\n")
+        out.append(str(c if c > 0 else 0))      # l > r 时差值为负，兜底成 0
+    sys.stdout.write("\n".join(out) + "\n")     # q 行结果拼成一个串一次写出
 
 
 main()

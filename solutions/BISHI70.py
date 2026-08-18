@@ -33,13 +33,17 @@ P = 1000000007
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
+    # 每组是「n m」两个数，用步长 2 的切片一次性拆成两列：
+    # 下标 1、3、5… 是 n，下标 2、4、6… 是 m
     ns = [int(x) for x in data[1:1 + 2 * t:2]]
     ms = [int(x) for x in data[2:2 + 2 * t:2]]
-    mx = max(ms) if ms else 0
+    mx = max(ms) if ms else 0                   # 表只开到实际用到的最大上标
 
+    # 阶乘表：fact[0] = fact[1] = 1 已由初值给出，从 2 开始递推
     fact = [1] * (mx + 1)
     for i in range(2, mx + 1):
         fact[i] = fact[i - 1] * i % P
+    # 阶乘逆元表：先求出末项的逆元，再倒推，全程只有一次模幂
     inv_fact = [1] * (mx + 1)
     inv_fact[mx] = pow(fact[mx], P - 2, P)      # 只做一次模幂
     for i in range(mx, 0, -1):                  # 1/(i-1)! = i * (1/i!)
@@ -47,6 +51,7 @@ def main() -> None:
 
     out = []
     ap = out.append
+    # C(m,n) = m! * (1/n!) * (1/(m-n)!)，三次查表两次乘法，每组 O(1)
     for n, m in zip(ns, ms):
         ap(str(fact[m] * inv_fact[n] % P * inv_fact[m - n] % P))
     sys.stdout.write("\n".join(out) + "\n")

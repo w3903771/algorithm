@@ -13,7 +13,8 @@
 Python 的坑（本题必看）：
   1. **BFS 天然迭代，队列用 collections.deque**。这棵树可能是一条长链
      （n = 2e5），递归 DFS 会直接撞破递归上限；deque.popleft 是 O(1)；
-  2. 邻接表用 CSR（度数前缀和 + 一个大数组），不要 defaultdict(list)，
+  2. 邻接表用 CSR（压缩稀疏行：度数前缀和给出每个点的邻居区间，
+     所有邻居挤在一个大数组里），不要 defaultdict(list)，
      也不要在多组数据里反复 new 出 2e5 个小 list；
   3. 多组数据的 IO：一次 read().split() 全读进来用游标推进，
      所有输出攒进 list 最后 "\n".join 一次写出（T 可达 1e4，
@@ -40,6 +41,8 @@ def main() -> None:
     out = []
     for _ in range(T):
         n = int(data[ptr]); ptr += 1
+        # 边先落到 us / vs 两个数组里，顺手把度数统计出来
+        # （度数既用来建 CSR，也用来认叶子，一举两得）
         us = [0] * (n - 1)
         vs = [0] * (n - 1)
         deg = [0] * (n + 2)
@@ -50,43 +53,46 @@ def main() -> None:
             deg[b] += 1
 
         # ---- CSR 邻接表 ----
+        # 度数前缀和给出每个点的邻居区间 [start[u], start[u+1])
         start = [0] * (n + 2)
         s = 0
         for i in range(1, n + 1):
             start[i] = s
             s += deg[i]
-        start[n + 1] = s
-        pos = start[:]
+        start[n + 1] = s            # 末位哨兵，省掉最后一个点的边界特判
+        pos = start[:]              # pos[u] = u 的下一个写入位置
         adj = [0] * s
         for i in range(n - 1):
             a = us[i]; b = vs[i]
             adj[pos[a]] = b; pos[a] += 1
-            adj[pos[b]] = a; pos[b] += 1
+            adj[pos[b]] = a; pos[b] += 1   # 无向边两个方向都要存
 
         # ---- 多源 BFS：所有叶子（Sekai 点）同时入队 ----
-        dist = [-1] * (n + 1)
+        dist = [-1] * (n + 1)       # -1 兼作「尚未访问」的标记
         q = deque()
         for u in range(1, n + 1):
-            if deg[u] == 1:
+            if deg[u] == 1:         # 度数为 1 即叶子，它到最近叶子的距离是 0
                 dist[u] = 0
                 q.append(u)
         while q:
             u = q.popleft()
-            d = dist[u] + 1
+            d = dist[u] + 1         # 队列按层递增，u 出队时 dist[u] 已是最终值
             for i in range(start[u], start[u + 1]):
                 v = adj[i]
-                if dist[v] < 0:
+                if dist[v] < 0:     # 第一次被访问到就是最近的叶子，之后不再更新
                     dist[v] = d
                     q.append(v)
 
+        # ---- 在非叶子点里取最大距离，再收集全部取到它的编号 ----
         best = -1
         for u in range(1, n + 1):
             if deg[u] != 1 and dist[u] > best:   # 只在非叶子里评选
                 best = dist[u]
+        # 从小到大遍历，结果天然升序，不必再排序
         res = [u for u in range(1, n + 1) if deg[u] != 1 and dist[u] == best]
         out.append(str(len(res)))
         out.append(" ".join(map(str, res)))
-    sys.stdout.write("\n".join(out) + "\n")
+    sys.stdout.write("\n".join(out) + "\n")      # T 可达 1e4，攒齐后一次写出
 
 
 main()

@@ -27,7 +27,10 @@ import sys
 
 P = 100003
 
+# 只有一行两个数，取前两个 token 即可
 m, n = map(int, sys.stdin.buffer.read().split()[:2])
+# 正难则反：先数「所有分配方案」，再扣掉「一次越狱机会都没有」的方案
 total = pow(m % P, n, P)                       # M^N
 safe = m % P * pow((m - 1) % P, n - 1, P) % P  # M*(M-1)^(N-1)：任意相邻都不同
+# 相减可能为负，末尾统一取模；Python 的 % 直接给出 [0,P) 内的结果
 sys.stdout.write(str((total - safe) % P) + "\n")

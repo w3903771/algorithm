@@ -27,15 +27,19 @@ def main() -> None:
     n = int(data[0])
     m = int(data[1])
     d = [0] * (n + 2)                       # 差分数组，多留一格给 r+1 = n+1
+    # 先跳过原数组的 n 个 token，直接处理 m 次操作：
+    # 原数组要等差分累加完才用得上，此时不必解析。
     p = 2 + n
     for _ in range(m):
         l = int(data[p]); r = int(data[p + 1]); k = int(data[p + 2])
         p += 3
-        d[l] += k
-        d[r + 1] -= k
+        d[l] += k                           # 从 l 开始，后面每个位置都多了 k
+        d[r + 1] -= k                       # 到 r 为止，从 r+1 起把这份 k 抵消掉
     # accumulate(d[1:n+1]) 就是每个位置累计的增量，再和原数组逐项相加
     delta = accumulate(d[1:n + 1])
     a = map(int, data[2:2 + n])
+    # int.__add__ 是未绑定的整数加法，交给 map 就是 C 层的逐项相加，
+    # 比写 `for i in range(n): a[i] + delta[i]` 少 n 次 Python 层循环开销
     sys.stdout.write(" ".join(map(str, map(int.__add__, a, delta))) + "\n")
 
 

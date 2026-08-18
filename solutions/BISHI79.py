@@ -35,11 +35,11 @@ def main() -> None:
     for _ in range(t):
         n, m = int(data[p]), int(data[p + 1]); p += 2
         rows = []
-        for _ in range(n):
+        for _ in range(n):                       # 逐行取 m 个数，游标随之推进
             rows.append([int(v) for v in data[p:p + m]])
             p += m
 
-        full = 1 << m
+        full = 1 << m                            # mask 的取值范围是 [0, 2^m)
         # 行内合法的 mask（同行不选相邻列）
         masks = [s for s in range(full) if not (s & (s << 1))]
         # 每个 mask 向左右扩一位，用于判定与下一行是否冲突（正上 + 两斜上）
@@ -54,23 +54,23 @@ def main() -> None:
                 tot = 0
                 x = s
                 while x:
-                    low = x & -x
-                    tot += row[low.bit_length() - 1]
-                    x ^= low
+                    low = x & -x                  # lowbit：取出最低位的那个 1
+                    tot += row[low.bit_length() - 1]   # 位权 2^j 的 bit_length 是 j+1，故减 1 得列号
+                    x ^= low                      # 清掉这一位，继续找下一个
                 val[s] = tot
-            ndp = [-1] * full
+            ndp = [-1] * full                     # -1 表示该 mask 这一行还不可达
             for s2 in masks:
-                best = -1
+                best = -1                         # 上一行能接上 s2 的最大和
                 for s1 in alive:
                     if spread[s1] & s2:
                         continue          # 与上一行八连通冲突
                     if dp[s1] > best:
                         best = dp[s1]
-                if best >= 0:
+                if best >= 0:                     # 存在合法的上一行才有转移
                     ndp[s2] = best + val[s2]
             dp = ndp
-            alive = [s for s in masks if dp[s] >= 0]
-        out.append(str(max(dp)))
+            alive = [s for s in masks if dp[s] >= 0]   # 下一行只需在可达状态里挑
+        out.append(str(max(dp)))                  # 最后一行的所有合法状态取最大
     sys.stdout.write("\n".join(out) + "\n")
 
 

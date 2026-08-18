@@ -20,7 +20,16 @@
      （样例 10 -> 10+5+1 = 16 就包含末尾的 1）；
   2. 要按**重数**展开，比如 8 = 2*2*2，链是 8,4,2,1 而不是 8,1；
   3. 用 math.isqrt 而不是 n ** 0.5；这里写成 d*d <= n 同样安全；
-  4. 答案最大约为 2n（等比和 n + n/2 + n/4 + ... < 2n），不会溢出。
+  4. 答案最大约为 2n（等比和 n + n/2 + n/4 + ... < 2n），不会溢出；
+  5. n 本身是质数时链只有 n -> 1，答案 n + 1，靠「循环结束后 m > 1 补一个」
+     这一步兜住，漏了它会输出 n 而少算 1。
+
+样例复核：
+    n = 10：质因子升序是 [2, 5]，链为 10 -> 5 -> 1，
+    得分 10 + 5 + 1 = 16 ✓（先除 2 而不是先除 5，才留下更大的中间项 5）。
+    n = 8：质因子是 [2, 2, 2]，链为 8 -> 4 -> 2 -> 1，得分 15 ✓。
+
+    质因数分解见 docs/part7-数学/80-数论基础.md。
 """
 import sys
 
@@ -28,21 +37,21 @@ import sys
 def main() -> None:
     n = int(sys.stdin.buffer.read().split()[0])
     primes = []                      # 按重数展开的质因子，天然升序
-    m = n
+    m = n                            # 用副本分解，n 本身后面还要当链的起点
     d = 2
-    while d * d <= m:
+    while d * d <= m:                # 上界随 m 缩小自动收紧
         while m % d == 0:
-            primes.append(d)
+            primes.append(d)         # 除几次记几次，重数决定链有多长
             m //= d
-        d += 1 if d == 2 else 2
-    if m > 1:
+        d += 1 if d == 2 else 2      # 2 -> 3，之后只试奇数
+    if m > 1:                        # 剩下的是唯一那个大于 sqrt 的质因子
         primes.append(m)
 
     cur = n
-    ans = n
+    ans = n                          # c_1 = n 本身也计入得分
     for p in primes:                 # 升序除，每步商最大
         cur //= p
-        ans += cur
+        ans += cur                   # 最后一次除完 cur 恰好是 1，末尾的 1 自动含入
     sys.stdout.write(str(ans) + "\n")
 
 

@@ -15,7 +15,8 @@
 
     剩下就是最朴素的数字三角形 DP：
         f[i][j] = a[i][j] + max(f[i-1][j-2], f[i-1][j-1], f[i-1][j])
-    （下标是「行内序号」，上一行序号比本行小 0/1/2，正好对应右下/正下/左下三种来法。）
+    （下标是「行内序号」。上一行比本行少两个数，所以序号相同的位置其实靠右一格：
+      上一行序号 j 走的是左下、j-1 是正下、j-2 是右下。）
 
 数据规模与复杂度：
     n <= 300，总共 n^2 = 9e4 个数，DP 是 O(n^2)。
@@ -34,12 +35,13 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0]); k = int(data[1])
     p = 2
-    NEG = -(1 << 62)
+    NEG = -(1 << 62)                         # 比任何可能的路径和都小，充当「无路可走」
     prev = [int(data[p])]                    # 第 1 行只有一个数
     p += 1
+    # 逐行滚动，prev 是上一行的 f 值，只留一行即可，不用开 n*n 的表
     for i in range(2, n + 1):
-        w = 2 * i - 1
-        row = data[p:p + w]
+        w = 2 * i - 1                        # 第 i 行的数字个数
+        row = data[p:p + w]                  # 先不转 int，用到哪个转哪个
         p += w
         pw = len(prev)                       # = 2i-3
         cur = [0] * w
@@ -47,10 +49,10 @@ def main() -> None:
             # 上一行的候选序号：j, j-1, j-2（0-indexed 下即 j-2..j）
             best = NEG
             lo = j - 2
-            if lo < 0:
+            if lo < 0:                       # 本行最左两格没有「右下 / 正下」来源
                 lo = 0
-            hi = j if j < pw else pw - 1
-            for t in range(lo, hi + 1):
+            hi = j if j < pw else pw - 1     # 同理，最右两格的候选被上一行长度截断
+            for t in range(lo, hi + 1):      # 至多 3 个候选，直接展开比 max() 快
                 v = prev[t]
                 if v > best:
                     best = v
@@ -58,11 +60,12 @@ def main() -> None:
         prev = cur
     # 最后一行的行内序号 j（1-indexed）就等于绝对列号，约束 |j - n| <= k
     lo = n - k
-    if lo < 1:
+    if lo < 1:                               # k 可以取到 n，范围要先夹回三角形内
         lo = 1
     hi = n + k
     if hi > 2 * n - 1:
         hi = 2 * n - 1
+    # 切片是 0 起、右开，所以 [lo-1, hi) 恰好对应 1 起的闭区间 [lo, hi]
     sys.stdout.write("%d\n" % max(prev[lo - 1:hi]))
 
 

@@ -19,7 +19,17 @@
   1. 输入范围写的是 n >= 1，但官方样例里出现了 n = 0，必须能处理（答案 "0 0"）；
   2. T 高达 5e5，一定要 sys.stdin.buffer.read() 整块读 + "\n".join 一次输出，
      逐行 input()/print() 会被 IO 拖死；
-  3. n 到 1e18 超过 int64，C++ 要 unsigned long long / __int128 小心，Python 无忧。
+  3. n 到 1e18 超过 int64，C++ 要 unsigned long long / __int128 小心，Python 无忧；
+  4. 打表打到 64 项而不是 60 项：n <= 1e18 < 2^60，popcount 最大 60，
+     多留几项不占地方，写小了则会下标越界。
+
+样例复核：
+    n = 3 -> 二进制 11，popcount 2，最小同值下标 2^2-1 = 3，输出 "2 3" ✓；
+    n = 4 -> 二进制 100，popcount 1，最小下标 2^1-1 = 1，输出 "1 1" ✓；
+    n = 5 -> 二进制 101，popcount 2，输出 "2 3" ✓。
+
+    位运算与 popcount 见 docs/part4-基础算法/46-位运算.md，
+    整块读入的写法见 docs/part2-竞赛基本功/20-输入输出处理.md。
 """
 import sys
 
@@ -27,12 +37,13 @@ import sys
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
+    # 预先存成字符串，避免在 5e5 次循环里反复做 int -> str 转换
     first = [str((1 << k) - 1) for k in range(64)]   # popcount = k 时的最小下标
     out = []
-    ap = out.append
+    ap = out.append                                  # 绑成局部名字，省属性查找
     for tok in data[1:t + 1]:
         c = bin(int(tok)).count("1")                 # 3.9 无 int.bit_count()
-        ap(str(c) + " " + first[c])
+        ap(str(c) + " " + first[c])                  # f(n) 与首次出现的下标
     sys.stdout.write("\n".join(out) + "\n")
 
 

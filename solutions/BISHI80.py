@@ -31,31 +31,33 @@ def main() -> None:
     xs, ys, xt, yt = int(data[2]), int(data[3]), int(data[4]), int(data[5])
     rows = data[6:6 + n]
 
-    W = m + 2
+    W = m + 2                            # 每行左右各补一格哨兵，所以宽度是 m+2
     BLOCK = ord('*')
     # 压成一维并加一圈 '*' 哨兵，越界判断就被墙自动挡掉了
-    grid = bytearray(b'*' * W)
+    grid = bytearray(b'*' * W)           # 顶部哨兵行
     for r in rows:
         grid += b'*' + r + b'*'
-    grid += b'*' * W
+    grid += b'*' * W                     # 底部哨兵行
 
+    # 有了哨兵边框，1-based 的输入坐标正好就是一维下标：第 1 行落在第 1 行
     s = xs * W + ys
     t = xt * W + yt
-    dist = [-1] * len(grid)
-    if grid[t] == BLOCK:
+    dist = [-1] * len(grid)              # -1 兼作「未访问」标记与「不可达」答案
+    if grid[t] == BLOCK:                 # 终点不保证可通行，先挡掉
         sys.stdout.write("-1\n")
         return
 
-    dist[s] = 0
+    dist[s] = 0                          # 起点即终点时，答案就是这个 0
     q = deque([s])                       # 必须是 deque，list.pop(0) 会 O(n)
     while q:
         u = q.popleft()
         if u == t:
-            break
+            break                        # 出队即定型，此时 dist[t] 已是最短步数
         d = dist[u] + 1
+        # 四个邻居用 ±1、±W 直接算；越界的位置一定落在哨兵墙上，被下面挡住
         for v in (u - W, u + W, u - 1, u + 1):
             if dist[v] < 0 and grid[v] != BLOCK:
-                dist[v] = d
+                dist[v] = d              # 首次访问即最短，之后不再更新
                 q.append(v)
     sys.stdout.write("%d\n" % dist[t])
 

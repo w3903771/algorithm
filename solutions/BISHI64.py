@@ -23,15 +23,20 @@ import sys
 
 
 def main() -> None:
+    # 一次性读完整个输入再按空白切分，2e5 组数据下比逐行 input() 快一个量级
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
-    ap = out.append
-    idx = 1
+    ap = out.append                  # 提前绑定 append，省掉循环里每轮的属性查找
+    idx = 1                          # data[0] 是组数，真正的数据从下标 1 开始
+
+    # 逐组取 (a, b, p)：三个数一组，用一个游标扫过去，不做切片拷贝
     for _ in range(t):
         a = int(data[idx]); b = int(data[idx + 1]); p = int(data[idx + 2])
-        idx += 3
+        idx += 3                     # 游标整体后移一组
         ap(str(pow(a, b, p)))        # 内置三参数 pow = C 实现的快速幂，p=1 自动给 0
+
+    # 全部答案拼成一整块再写出，避免 2e5 次系统调用
     sys.stdout.write("\n".join(out) + "\n")
 
 

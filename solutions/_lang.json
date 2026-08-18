@@ -1,0 +1,8 @@
+{
+  "_comment": "提交语言覆盖表。默认 python3（牛客 id 11）；下列题目 CPython 物理上过不去，必须 PyPy3（id 25）。理由写在各自题解的文档字符串里。",
+  "BISHI103": "pypy3",
+  "BISHI128": "pypy3",
+  "BISHI130": "pypy3",
+  "BISHI138": "pypy3",
+  "BISHI147": "pypy3"
+}

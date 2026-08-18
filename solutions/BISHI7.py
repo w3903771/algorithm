@@ -18,14 +18,28 @@
     2. 串里只有数字和大小写字母（无空格），所以可以放心用 split() 按空白切
        token，不必逐行 readline；
     3. 只取前 N 个 token，防止输入尾部有多余空行/脏数据；
-    4. 直接对 bytes 去重，省掉 1e4 次 decode。
+    4. 直接对 bytes 去重，省掉 1e4 次 decode——两个 bytes 相等当且仅当
+       字节序列相同，与 decode 成 str 再比较等价，这里没有编码歧义
+       （输入只有数字和大小写字母）；
+    5. 「不同字符串的个数」是去重后的数量，不是「只出现一次的字符串个数」，
+       样例里 Hello 出现两次仍然只算一个。
+
+样例复核：
+    6 个串里 Hello 重复一次，去重后剩 Hello、World、hello、HELLO、Code 共 5 个，
+    与样例一致；若误用 lower() 去重则只剩 3 个。
+
+前置章节：
+    docs/part1-python基础/08-集合.md、docs/part3-数据结构/36-哈希与字符串哈希.md
 """
 import sys
 
 
 def main() -> None:
+    # 串里只有数字和字母、不含空白，所以按空白切 token 后每个元素恰好是一个串
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
+    # data[0] 是 N 本身，串从下标 1 开始；只取前 n 个，避免尾部空行等脏数据混入。
+    # set 去重靠内置哈希（C 实现），比手写多项式哈希更快，也不会被出题人卡冲突
     sys.stdout.write(str(len(set(data[1:1 + n]))) + "\n")
 
 

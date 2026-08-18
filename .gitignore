@@ -12,6 +12,7 @@ sources/
 scripts/
 
 # mkdocs 本地构建产物
+site/          # mkdocs build 的默认输出目录
 _site/
 _site_test/
 _site_check/

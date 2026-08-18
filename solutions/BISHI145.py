@@ -39,21 +39,27 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
     a = list(map(int, data[1:1 + n]))
-    if n == 1:
+    if n == 1:                               # 只有一堆，一次合并都不用做
         sys.stdout.write("0\n")
         return
+    # 前缀和：pre[r+1] - pre[l] 就是 [l, r] 的总质量，也就是最后一次合并的代价
     pre = [0]
     pre.extend(accumulate(a))
 
+    # f[i][i] 保持 0：单堆不需要合并，代价不是 m_i
     f = [[0] * n for _ in range(n)]          # f[l][r]
     fT = [[0] * n for _ in range(n)]         # fT[r][l] = f[l][r]，为了让内层能切列
+    # 按区间长度递增枚举，轮到长度 length 时，所有更短的区间都已算好
     for length in range(2, n + 1):
         for l in range(0, n - length + 1):
             r = l + length - 1
             # min over 断点 k ∈ [l, r-1] of f[l][k] + f[k+1][r]
+            # 左项是 f 第 l 行的一段切片；右项要的是第 r 列，普通二维表切不出来，
+            # 所以每算一个值就同时写进转置表 fT，这里直接切 fT 的第 r 行。
+            # map(add, ...) + min 把 O(N) 次加法和比较整段交给 C 层
             v = min(map(add, f[l][l:r], fT[r][l + 1:r + 1])) + pre[r + 1] - pre[l]
             f[l][r] = v
-            fT[r][l] = v
+            fT[r][l] = v                     # 同步维护转置，供更长的区间当右项使用
     sys.stdout.write("%d\n" % f[0][n - 1])
 
 

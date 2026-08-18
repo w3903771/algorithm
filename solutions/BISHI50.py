@@ -28,7 +28,13 @@
     2. 只能在超时的时候弹，而且弹完之后不用回退指针 —— 当前任务已经在堆里，
        弹出的可能正是它自己（说明它太长，不如不修）；
     3. 排序键只用 d，不能用 t 或 d-t；
-    4. 输出的是「最多能修好的数量」，不是时间。
+    4. 输出的是「最多能修好的数量」，不是时间；
+    5. 反悔贪心（regret greedy，即「先接下来、发现装不下再退掉最差的一个」）
+       与「先排序再一次性挑选」的区别在于：它允许推翻此前的决定，
+       所以能在一次扫描里同时兼顾「按截止期推进」和「总耗时最小」。
+
+    堆的用法见 docs/part3-数据结构/35-优先队列与堆.md，
+    贪心的一般套路见 docs/part4-基础算法/47-贪心.md。
 """
 import sys
 from heapq import heappush, heappop
@@ -38,20 +44,21 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
     jobs = []
-    p = 1
+    p = 1                             # 游标：n 行数据，每行 (t_i, d_i) 两个整数
     for _ in range(n):
         t = int(data[p]); d = int(data[p + 1]); p += 2
-        jobs.append((d, t))
+        jobs.append((d, t))           # 存成 (d, t)，让默认元组排序直接按 d 排
     jobs.sort()                       # 按截止时间升序
 
     heap = []                         # 大根堆（存负数）：已接下的任务耗时
-    cur = 0
+    cur = 0                           # 已接下的任务总耗时 = 当前完工时刻
     for d, t in jobs:
+        # 先无条件接下这个任务，超时了再回头反悔
         cur += t
         heappush(heap, -t)
         if cur > d:                   # 修不完了，反悔掉最耗时的那个
             cur += heappop(heap)      # heap 里是负数，加上等于减去耗时
-    print(len(heap))
+    print(len(heap))                  # 堆里剩几个任务，就修好了几座建筑
 
 
 main()

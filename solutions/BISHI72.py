@@ -39,16 +39,17 @@ def main() -> None:
     idx = 1
     cases = []
     mx = 1
+    # 先把所有测试用例扫一遍：只留下 (n, k, 1 的个数)，顺便记录最大的 n
     for _ in range(t):
         n = int(data[idx]); k = int(data[idx + 1]); idx += 2
         c1 = 0
         for j in range(idx, idx + n):
-            if data[j] == b"1":
+            if data[j] == b"1":       # data 里是 bytes，与 bytes 字面量比较，不必转 int
                 c1 += 1
-        idx += n
+        idx += n                      # 游标跳过这一组的 n 个元素
         cases.append((n, k, c1))
         if n > mx:
-            mx = n
+            mx = n                    # 阶乘表只需开到所有用例中最大的 n
 
     fact = [1] * (mx + 1)                     # 全局只建一次
     for i in range(2, mx + 1):
@@ -60,7 +61,7 @@ def main() -> None:
 
     def C(a: int, b: int) -> int:
         if b < 0 or b > a:
-            return 0
+            return 0                          # 越界一律返回 0，省掉调用处的边界讨论
         return fact[a] * inv_fact[b] % P * inv_fact[a - b] % P
 
     out = []
@@ -68,9 +69,11 @@ def main() -> None:
         c0 = n - c1
         h = (k + 1) // 2                      # 至少要有 h 个 1，中位数才是 1
         s = 0
+        # 枚举子序列里 1 的个数 j：从 1 中挑 j 个、从 0 中挑 k-j 个
+        # 上界 min(k, c1) 卡住「1 不够挑」；下界不足的情形由 C 返回 0 兜住
         for j in range(h, min(k, c1) + 1):
             s += C(c1, j) * C(c0, k - j) % P
-        out.append(str(s % P))
+        out.append(str(s % P))                # 累加时不逐项取模，末尾统一收一次
     sys.stdout.write("\n".join(out) + "\n")
 
 

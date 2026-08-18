@@ -1,7 +1,8 @@
 """BISHI125 【模板】静态区间最值 —— 只有查询、没有修改的区间 min / max。
 
 这题考什么：
-    区间数据结构的选型第一课：**只查不改就别写线段树，用 ST 表**。
+    区间数据结构的选型第一课：**只查不改就别写线段树，用 ST 表**
+    （sparse table，稀疏表：预处理所有「起点任意、长度为 2 的幂」的区间最值）。
         预处理 O(n log n)，查询 **O(1)**。
     原理是倍增 + 「可重复贡献」：st[k][i] = [i, i+2^k) 的最值，
         st[k][i] = f(st[k-1][i], st[k-1][i + 2^(k-1)])
@@ -34,32 +35,36 @@ def main() -> None:
     n = int(data[0]); q = int(data[1])
     a = list(map(int, data[2:2 + n]))
 
+    # ---- 建表：第 0 层就是原数组，第 k 层的每项覆盖长度 2^k ----
     mn = [a]                                 # 两张 ST 表，整层用 map 在 C 层构建
     mx = [a]
     k = 1
-    while (1 << k) <= n:
-        h = 1 << (k - 1)
+    while (1 << k) <= n:                     # 只建到最长可用的那层为止
+        h = 1 << (k - 1)                     # 上一层的跨度，也是右半段的偏移
         p = mn[-1]
+        # st[k][i] = f(st[k-1][i], st[k-1][i+h])；
+        # map 遇到较短的 p[h:] 就停，长度自动收敛到 len(p)-h，正好是本层的合法项数
         mn.append(list(map(min, p, p[h:])))
         p = mx[-1]
         mx.append(list(map(max, p, p[h:])))
         k += 1
 
+    # ---- 回答询问 ----
     p = 2 + n
     out = []
     push = out.append
     for _ in range(q):
-        op = data[p]
+        op = data[p]                         # 保持 bytes，与 b"1" 直接比，省一次解码
         l = int(data[p + 1]) - 1             # 转 0-indexed
         r = int(data[p + 2]) - 1
         p += 3
-        j = (r - l + 1).bit_length() - 1
-        s = r - (1 << j) + 1
-        if op == b"1":
+        j = (r - l + 1).bit_length() - 1     # floor(log2(区间长))，不必预处理 log 表
+        s = r - (1 << j) + 1                 # 右半段的起点，与左半段允许重叠
+        if op == b"1":                       # 区间最小
             row = mn[j]
             x = row[l]; y = row[s]
-            push(x if x < y else y)
-        else:
+            push(x if x < y else y)          # 内联比较，省掉 5e5 次内置函数调用
+        else:                                # 区间最大
             row = mx[j]
             x = row[l]; y = row[s]
             push(x if x > y else y)

@@ -29,15 +29,18 @@ from bisect import bisect_right
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
+    # tails[i] = 长度为 i+1 的不下降子序列所能达到的最小结尾值；它始终单调不减，
+    # 所以可以二分。tails 的长度就是当前扫过的前缀里最长不下降子序列的长度
     tails = []
     for tok in data[1:1 + n]:
         x = int(tok)
         p = bisect_right(tails, x)           # 不下降 -> right；严格上升 -> left
-        if p == len(tails):
+        if p == len(tails):                  # x 不小于所有结尾值，可以接在最长的那条后面
             tails.append(x)
         else:
+            # 用 x 顶掉第一个大于它的结尾值：长度不变，但结尾更小，后续更容易接下去
             tails[p] = x
-    sys.stdout.write("%d\n" % len(tails))
+    sys.stdout.write("%d\n" % len(tails))    # 只要长度，不需要还原序列本身
 
 
 main()

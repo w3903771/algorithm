@@ -29,13 +29,15 @@ import sys
 
 def inv(a: int, m: int) -> int:
     """扩展欧几里得求 a 在模 m 下的逆元；不存在返回 -1。迭代版，无递归开销。"""
-    # 维护 old_r = old_s*a + (...)*m，对 (r, s) 做辗转相除
+    # 循环不变量：old_r = old_s*a + (某个整数)*m，r = s*a + (某个整数)*m
+    # 初值 (a, 1) 与 (m, 0) 显然满足；每轮做一次带余除法，两个式子同步更新
     old_r, r = a, m
     old_s, s = 1, 0
     while r:
         q = old_r // r
-        old_r, r = r, old_r - q * r
-        old_s, s = s, old_s - q * s
+        old_r, r = r, old_r - q * r      # 辗转相除：余数替换除数
+        old_s, s = s, old_s - q * s      # 系数跟着做同样的线性组合
+    # 循环结束时 old_r = gcd(a, m)，且 old_r = old_s*a + (...)*m
     if old_r != 1:            # gcd(a, m) != 1 -> 逆元不存在
         return -1
     return old_s % m          # 可能是负数，拉回 [0, m)
@@ -45,6 +47,7 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
+    # 每组两个数，第 i 组落在 data[1+2i] 与 data[2+2i]（下标 1 跳过组数 T）
     for i in range(t):
         a = int(data[1 + 2 * i]); m = int(data[2 + 2 * i])
         # 等价一行写法（Python 3.8+）：

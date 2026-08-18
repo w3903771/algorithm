@@ -38,9 +38,9 @@ def main() -> None:
     out = []
     for _ in range(T):
         n = int(data[p]); q = int(data[p + 1]); p += 2
-        base = p
-        p += n
-        res = int(data[base])
+        base = p                           # 记下本组序列的起始位置
+        p += n                             # 游标先跳过整段序列，后面直接按 base 取值
+        res = int(data[base])              # 左折叠的初值就是 a_1；n = 1 时它即为答案
         for i in range(base + 1, base + n):
             res = 2 * (res & int(data[i]))     # f(x, y) = 2 * (x & y)
         for _ in range(q):

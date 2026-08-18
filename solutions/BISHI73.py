@@ -1,4 +1,6 @@
-"""BISHI73 【模板】欧拉函数Ⅰ ‖ 单个整数 —— T 组询问，每组给 x <= 1e9，求 φ(x)。
+"""BISHI73 【模板】欧拉函数计算Ⅰ ‖ 朴素求值：试除法 —— T 组询问，每组给 x <= 1e9，求 φ(x)。
+
+    φ(x)（欧拉函数）= 1..x 中与 x 互质的数的个数。
 
 这题考什么：
     欧拉函数的积性公式 + 试除法分解：
@@ -28,9 +30,11 @@ import sys
 def build_primes(limit: int) -> list:
     """埃氏筛：bytearray + 切片赋值，内层循环走 C。"""
     sieve = bytearray([1]) * (limit + 1)
-    sieve[0:2] = b"\x00\x00"
+    sieve[0:2] = b"\x00\x00"              # 0 和 1 不是质数
     for i in range(2, math.isqrt(limit) + 1):
         if sieve[i]:
+            # 从 i*i 起划掉 i 的倍数：更小的倍数早被更小的质因子划过了。
+            # 切片步长赋值把整个内层循环交给 C，比 for 逐个置 0 快得多
             sieve[i * i::i] = bytearray(len(range(i * i, limit + 1, i)))
     return [i for i in range(2, limit + 1) if sieve[i]]
 
@@ -38,19 +42,19 @@ def build_primes(limit: int) -> list:
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
-    primes = build_primes(31623)          # sqrt(1e9) 上取整
+    primes = build_primes(31623)          # sqrt(1e9) 上取整，试除只需到这里
     out = []
     ap = out.append
     for tok in data[1:t + 1]:
         x = int(tok)
-        res = x
+        res = x                           # 从 x 出发，每遇到一个质因子就乘上 (1 - 1/p)
         for p in primes:
-            if p * p > x:
+            if p * p > x:                 # x 会随着除法缩小，上界随之收紧
                 break
             if x % p == 0:
                 res = res // p * (p - 1)  # 先除后乘，保证整除
                 while x % p == 0:
-                    x //= p
+                    x //= p               # 把 p 除干净：重数不影响 φ，每个质因子只算一次
         if x > 1:                         # 剩下的大质因子
             res = res // x * (x - 1)
         ap(str(res))

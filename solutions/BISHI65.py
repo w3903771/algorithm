@@ -26,15 +26,19 @@ P = 1000000007
 
 
 def main() -> None:
-    data = sys.stdin.buffer.read().split()
+    data = sys.stdin.buffer.read().split()   # 整块读入，1e4 组数据不走逐行 input()
     t = int(data[0])
     out = []
     ap = out.append
+
+    # 第 i 组的两个数落在 data[1+2i] 与 data[2+2i]：下标 1 是跳过开头的组数 t
     for i in range(t):
         a = int(data[1 + 2 * i]); b = int(data[2 + 2 * i])
+        # 除以 b 等价于乘 b 的逆元；P 是质数，费马小定理给出 b^(-1) = b^(P-2)
         # 等价写法：inv = pow(b, -1, P)（Python 3.8+，走扩展欧几里得，不要求 P 是质数）
         ap(str(a * pow(b, P - 2, P) % P))     # Python 的 % 天然把负数拉回 [0,P)
-    sys.stdout.write("\n".join(out) + "\n")
+
+    sys.stdout.write("\n".join(out) + "\n")   # 一次写出，省掉逐行 print 的开销
 
 
 main()

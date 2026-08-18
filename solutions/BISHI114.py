@@ -32,14 +32,18 @@ def main() -> None:
     push = res.append
     for i in range(n):
         x = a[i]
+        # 1) 维持单调性：队尾那些 <= x 的下标既比 x 小、又比 x 先过期，
+        #    往后任何一个窗口里都轮不到它们当最大值，可以永久丢弃
         while q and a[q[-1]] <= x:           # 队尾比新元素小 -> 永远轮不到它
             q.pop()
         q.append(i)
+        # 2) 窗口每次只右移一格，因此最多只有一个下标刚刚滑出去，用 if 而非 while
         if q[0] <= i - k:                    # 队首过期
             q.popleft()
+        # 3) i < k-1 时窗口还没填满，从 i = k-1 起每一步恰好对应一个答案
         if i >= k - 1:
-            push(a[q[0]])
-    sys.stdout.write(" ".join(map(str, res)) + "\n")
+            push(a[q[0]])                    # 队首下标对应的值即当前窗口最大值
+    sys.stdout.write(" ".join(map(str, res)) + "\n")   # 一行输出，空格分隔
 
 
 main()

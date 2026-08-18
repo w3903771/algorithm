@@ -16,6 +16,7 @@
       f(a, b-1, *)：同层前一个 b，已算完；
       f(a, b, c-1)：同行前一个 c，已算完。
     所以一遍三重循环就够，不需要真的递归（也就绕开了递归深度问题）。
+    记忆化与递推的关系见 docs/part5-搜索/62-记忆化搜索与剪枝.md。
 
 数据规模与复杂度：
     表大小 101^3 ≈ 1.03e6，T <= 1e3 次询问 O(1)。
@@ -48,9 +49,9 @@ def build():
     """F[a][b] 是一个长度 N+1 的列表，F[a][b][c] = f(a,b,c) mod MOD。"""
     ones = [1] * (N + 1)
     # a = 0 层：base case 全为 1
-    F = [[ones] * (N + 1)]
+    F = [[ones] * (N + 1)]               # 同一个 ones 被引用 N+1 次，全程只读故不必复制
     for a in range(1, N + 1):
-        pa = F[a - 1]
+        pa = F[a - 1]                    # 上一层，分支三的四个转移全落在这里
         layer = [ones]                       # b = 0 -> 全 1
         for b in range(1, N + 1):
             pb = pa[b]                       # f(a-1, b, *)
@@ -64,8 +65,10 @@ def build():
             if lim < N:
                 # a < b 且 c > b：分支二，c 方向串行依赖，逐个算
                 cur = layer[b - 1]           # f(a, b-1, *)
-                prev = row[lim]
+                prev = row[lim]              # 从分支三算好的 c = lim 处接着往右推
                 for c in range(lim + 1, N + 1):
+                    # 分支二：f(a,b,c) = f(a,b,c-1) + f(a,b-1,c-1) - f(a,b-1,c)
+                    # prev 正是 f(a,b,c-1)，一次取模即可（Python 大整数不溢出）
                     prev = (prev + cur[c - 1] - cur[c]) % MOD
                     row.append(prev)
             layer.append(row)
@@ -74,14 +77,14 @@ def build():
 
 
 def main() -> None:
-    F = build()
+    F = build()                          # 离线把整张表推完，之后每次询问只是查表
     data = sys.stdin.buffer.read().split()
     t = int(data[0])
     out = []
     p = 1
     for _ in range(t):
         a = int(data[p]); b = int(data[p + 1]); c = int(data[p + 2]); p += 3
-        out.append(str(F[a][b][c]))
+        out.append(str(F[a][b][c]))      # 题面保证 1 <= a,b,c <= 100，下标必在表内
     sys.stdout.write("\n".join(out) + "\n")
 
 

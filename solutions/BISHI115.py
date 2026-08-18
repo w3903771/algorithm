@@ -40,24 +40,28 @@ def main() -> None:
         b = data[p:p + m]
         p += m
 
+        # need[x] = x 在 b 中的出现次数，也就是「x 最多能贡献几个匹配位」
         need = {}
         for x in b:
             need[x] = need.get(x, 0) + 1
-        have = {}
-        match = 0
+        have = {}                            # 当前窗口内各值的计数
+        match = 0                            # 当前窗口的匹配度 Σ min(have, need)
         ans = 0
         for i in range(n):
+            # ---- 右端进入 a[i] ----
             x = a[i]
-            h = have.get(x, 0)
+            h = have.get(x, 0)               # 注意取的是**加入前**的计数
             if h < need.get(x, 0):           # 这一个 x 还能配上一位
                 match += 1
-            have[x] = h + 1
+            have[x] = h + 1                  # 已经配满则只增计数，match 不动
+            # ---- 左端弹出：窗口长度回到 m ----
             if i >= m:                       # 窗口超长，弹出左端
                 y = a[i - m]
-                h = have[y]
+                h = have[y]                  # 同样是**删除前**的计数
                 if h <= need.get(y, 0):      # 弹掉的这个原本是配上的
                     match -= 1
                 have[y] = h - 1
+            # ---- 窗口首次填满是 i = m-1，此后每一步都是一个候选子段 ----
             if i >= m - 1 and match >= k:
                 ans += 1
         push(ans)

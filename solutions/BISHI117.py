@@ -30,25 +30,28 @@ import sys
 
 
 def main() -> None:
+    # 每个操作名都是一个不含空格的单词，所以 split() 后
+    # data 的布局是：n, k, s, 然后 k 个操作名。n 用不上，直接跳过。
     data = sys.stdin.buffer.read().split()
     k = int(data[1])
     s = data[2].decode()
-    i = s.index("I")
+    i = s.index("I")                         # 'I' 保证恰好出现一次，以它为界劈成两半
     left = list(s[:i])                       # 光标左侧，栈顶 = 最靠近光标的字符
     right = list(s[i + 1:])
     right.reverse()                          # 逆序存放，栈顶 = 光标右侧第一个字符
     for j in range(3, 3 + k):
         if data[j] == b"backspace":
+            # 成对删除的优先级最高：先判这一条，判不中才退化成删左边一个
             if left and left[-1] == "(" and right and right[-1] == ")":
                 left.pop()                   # 成对删除：一次删掉 () 两个字符
                 right.pop()
             elif left:
-                left.pop()
+                left.pop()                   # 左侧为空时 backspace 无效，什么也不做
         else:                                # delete
             if right:
-                right.pop()
-    right.reverse()
-    sys.stdout.write("".join(left) + "I" + "".join(right) + "\n")
+                right.pop()                  # 删的是光标右侧第一个字符，即右栈栈顶
+    right.reverse()                          # 反转回正序，才是原文里从左到右的顺序
+    sys.stdout.write("".join(left) + "I" + "".join(right) + "\n")   # 光标本身要保留
 
 
 main()

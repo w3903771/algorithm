@@ -1,10 +1,12 @@
 """BISHI147 旅行者的大逃脱 —— 带时刻约束的网格路径计数 + 最短时刻。
 
+⚠️ **本题必须用 PyPy3 提交**（牛客语言 id 25），CPython 交不过去。原因见文末。
+
 这题考什么：
     时间维 DP（分层图 DP）+ 前缀和优化。每个时刻只能「向下或向右走任意正整数步」，
     检查官从某时刻起永久占据格子，路径的每一次「离开/经过/到达」都受时刻约束。
 
-时刻语义（题面表述含糊，用样例 1 的两组数据反推确定）：
+时刻语义（题面表述含糊，下面这套读法由样例 1 的两组数据唯一确定）：
     记路径的停留点为 p_1=(1,1), p_2, ..., p_{T+1}=(n,m)，第 j 次移动发生在时刻 j。
     对每个格子取 block[c] = 占据它的检查官中最早的时刻（无人则 +inf），则合法条件是：
 
@@ -44,19 +46,18 @@
     3. block 取同格多名检查官的**最小**时刻（题面明说可能多人同格）；
     4. 输出顺序是「方案数 最短时刻」，不是「最短时刻 方案数」。
 
-【性能诚实说明】—— 数字是实测的，不是估算的
-    状态数 k·n·m = 100·500·500 = 2.5e7，每组数据都要跑满，T ≤ 5 组共 1.25e8 个状态。
+数据规模与复杂度：
+    T <= 5 组，n, m <= 500，q <= 100，k <= 100，时限「其他语言 4 秒」。
+    状态数 k·n·m = 100·500·500 = 2.5e7，每组都要跑满，五组合计 1.25e8 个状态。
+    前缀和把每个时刻的转移压到 O(nm) 的 C 层操作，这已是本题的复杂度下界。
+
+为什么必须 PyPy3：
     即使把前缀和压进 C 层，每个时刻仍要对 250000 个元素做一次 Python 层取模，
     每组数据还有 k·(n+m) = 1e5 次 Python 层的切片调用。
-
-    **本机实测：T=5、n=m=500、k=100、q=100 的极限数据耗时 30.8 秒，而限时只有 4 秒。**
-
-    结论：**本题在 CPython 下必然 TLE，是典型的 Python 语言劣势题**。
-    本题解保证算法与实现正确（官方两组样例全部通过，见 solutions/_verify_report.md），
-    但**不保证能在牛客判题机上 AC**。同样思路的 C++ 实现约 0.3 秒即可通过。
-    若判题机提供 PyPy3（语言标识符 pypy3），改用 PyPy3 提交有机会通过。
-
-    这不是实现没优化到位的问题，而是 2.5e7 量级的状态转移在纯 CPython 里的物理下限。
+    极限数据（T=5、n=m=500、k=100、q=100）在 CPython 下实测 30.8 秒，
+    同样思路的 C++ 实现约 0.3 秒。这不是实现没优化到位，而是 2.5e7 量级的
+    状态转移在纯 CPython 里的物理下限；PyPy3 的 JIT 能把这些循环编译成机器码。
+    识别信号：状态数上千万 + 转移带取模 + 无法整体向量化。
     详见 docs/appendix/C-Python竞赛避坑清单.md 的「Python 打不过的题型」一节。
 """
 import sys
@@ -77,29 +78,32 @@ def solve(n, m, k, inspectors):
         p = (x - 1) * m + (y - 1)
         if t < block[p]:
             block[p] = t
-    # 按时刻分桶，转移前逐时刻「熄灭」格子
+    # 按时刻分桶，转移前逐时刻「熄灭」格子。
+    # 这样整个过程只需单向地把格子从可通行改成不可通行，不必每个时刻重扫全图
     newly = [[] for _ in range(k + 2)]
     for p, t in enumerate(block):
         if t <= k:
             newly[t].append(p)
 
-    passable = bytearray([1]) * nm
+    passable = bytearray([1]) * nm        # 1 = 当前时刻该格仍可通行
 
     def build_row(x):
+        """扫出第 x 行的可通行连续段，每段是左闭右开的列区间 [s, e)。"""
         base = x * m
-        runs, s = [], -1
+        runs, s = [], -1                  # s = 当前段的起点，-1 表示还没开段
         for y in range(m):
             if passable[base + y]:
                 if s < 0:
                     s = y
-            elif s >= 0:
+            elif s >= 0:                  # 撞到墙，收尾当前段
                 runs.append((s, y))
                 s = -1
-        if s >= 0:
+        if s >= 0:                        # 扫到行尾还开着段，补上
             runs.append((s, m))
         return runs
 
     def build_col(y):
+        """扫出第 y 列的可通行连续段，每段是左闭右开的行区间 [s, e)。"""
         runs, s = [], -1
         for x in range(n):
             if passable[x * m + y]:
@@ -112,59 +116,64 @@ def solve(n, m, k, inspectors):
             runs.append((s, n))
         return runs
 
+    # 一次移动必须整段落在同一个可通行区间里（途中任一格被占就会被捕），
+    # 所以先把每行每列切成若干段，前缀和只在段内累加
     row_runs = [build_row(x) for x in range(n)]
     col_runs = [build_col(y) for y in range(m)]
 
-    dp = [0] * nm
-    dp[0] = 1
-    count = 0
-    best = -1
+    dp = [0] * nm                         # dp[c] = 当前时刻站在格子 c 的方案数
+    dp[0] = 1                             # 时刻 1 站在 (1,1)
+    count = 0                             # 累计逃脱方案数
+    best = -1                             # 最短时刻，-1 表示还没成功过
 
     for j in range(1, k + 1):
         # 时刻 j 起，block == j 的格子不可通行
         for p in newly[j]:
             if passable[p]:
                 passable[p] = 0
+                # q <= 100，被占格子最多 100 个，只重建它所在的那一行一列即可
                 row_runs[p // m] = build_row(p // m)
                 col_runs[p % m] = build_col(p % m)
 
         nxt = [0] * nm
 
-        # 向右：行内前缀和
+        # 向右：行内前缀和。走任意正整数步 = 落点的方案数是它左边同段各格之和
         for x in range(n):
             base = x * m
             for s, e in row_runs[x]:
                 span = e - s
-                if span < 2:
+                if span < 2:              # 段里只有一格，右移无处可去
                     continue
                 acc = list(accumulate(dp[base + s:base + e]))
+                # 落点从 s+1 起，acc[:span-1] 正好是「落点左侧（含出发格）之和」，
+                # 错开一位就实现了「至少走一步」
                 lo, hi = base + s + 1, base + e
                 nxt[lo:hi] = list(map(add, nxt[lo:hi], acc[:span - 1]))
 
         # 向下：列内前缀和（步长切片，同样落到 C 层）
         for y in range(m):
             runs = col_runs[y]
-            if not runs:
+            if not runs:                  # 整列都被占，跳过
                 continue
-            col = dp[y::m]
+            col = dp[y::m]                # 扁平存储让「第 y 列」也是一次切片
             for s, e in runs:
                 span = e - s
                 if span < 2:
                     continue
                 acc = list(accumulate(col[s:e]))
-                lo = (s + 1) * m + y
-                hi = (e - 1) * m + y + 1
+                lo = (s + 1) * m + y      # 第 s+1 行第 y 列的扁平下标
+                hi = (e - 1) * m + y + 1  # 右开，+1 是为了让步长切片取到第 e-1 行
                 nxt[lo:hi:m] = list(map(add, nxt[lo:hi:m], acc[:span - 1]))
 
         # nxt 现在是「时刻 j+1 站在各格」的方案数
         arrived = nxt[target] % MOD
         if arrived:
             count = (count + arrived) % MOD
-            if best < 0:
+            if best < 0:                  # j 递增，第一次到达即最短时刻
                 best = j
         nxt[target] = 0                   # 到达终点即逃脱，不再出发
 
-        dp = [v % MOD for v in nxt]
+        dp = [v % MOD for v in nxt]       # 前缀和过程中不取模，一个时刻收一次
 
     return (count, best) if best >= 0 else None
 

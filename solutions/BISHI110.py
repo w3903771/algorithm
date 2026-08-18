@@ -13,7 +13,7 @@
 Python 的坑（本题的真正难点全在这里）：
   1. **IO 就是瓶颈**：输入约 3e6 个整数（≈ 20 MB 文本），输出 1e6 行。
      必须 sys.stdin.buffer.read().split() 一次读完，
-     输出 "\n".join 拼成一整块再一次 write；
+     输出 "\\n".join 拼成一整块再一次 write；
      用 input() / print() 会慢一两个数量级；
   2. 前缀和用 **itertools.accumulate**（C 层循环），
      比 Python 的 `for` 累加快好几倍；
@@ -32,17 +32,21 @@ from itertools import accumulate
 
 
 def main() -> None:
-    data = sys.stdin.buffer.read().split()
+    data = sys.stdin.buffer.read().split()     # 约 3e6 个 token，一次读干净
     n = int(data[0]); q = int(data[1])
+    # a 保持 map 惰性对象，不落成 list —— 它只被 accumulate 消费一次
     a = map(int, data[2:2 + n])
-    S = [0]
+    S = [0]                                    # 哨兵：S[0] = 0，使 l = 1 时 S[l-1] 有定义
     S.extend(accumulate(a))                    # S[k] = a_1 + ... + a_k
 
+    # 询问的 2q 个 token 是「l r l r ...」交替排列的，
+    # 用步长 2 的切片一次性拆成两列，就不必在循环里做 1e6 次下标算术
     rest = data[2 + n:2 + n + 2 * q]
     ls = map(int, rest[0::2])
     rs = map(int, rest[1::2])
+    # 差分取出区间和：sum(l..r) = S[r] - S[l-1]
     out = [str(S[r] - S[l - 1]) for l, r in zip(ls, rs)]
-    sys.stdout.write("\n".join(out) + "\n")
+    sys.stdout.write("\n".join(out) + "\n")    # 1e6 行拼成一块再落盘
 
 
 main()

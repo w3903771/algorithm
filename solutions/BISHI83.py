@@ -33,15 +33,19 @@ def main() -> None:
 
     WALL = b'1'
     n = h * w
+    # pre 一物三用：-2 未访问（兼作 visited 标记）、-1 起点（回溯的终止哨兵）、
+    # 其余存前驱的一维下标。省掉单独的 vis 数组，本题空间限制只有 64MB
     pre = [-2] * n                        # -2 未访问，-1 起点，其余为前驱下标
-    start, goal = 0, n - 1
+    start, goal = 0, n - 1                # (0,0) 与 (h-1,w-1) 压成一维后的下标
     pre[start] = -1
     q = deque([start])
     while q:
         u = q.popleft()
         if u == goal:
-            break
-        x, y = divmod(u, w)
+            break                         # 到终点即可停，pre 链已经完整
+        x, y = divmod(u, w)               # 一维下标还原成 (行, 列)，用来做边界判断
+        # 四个方向分开写：先用行列判断不越界，再按 ±1 / ±w 算邻居下标。
+        # 这样能避免「最左格 -1 跑到上一行末尾」这类横向绕回的错误
         if x > 0:
             v = u - w
             if pre[v] == -2 and g[v] != WALL:
@@ -59,13 +63,14 @@ def main() -> None:
             if pre[v] == -2 and g[v] != WALL:
                 pre[v] = u; q.append(v)
 
+    # 回溯：从终点沿 pre 一路跳回起点，pre[start] = -1 是循环的出口
     path = []
     u = goal
     while u != -1:                        # 从终点顺着 pre 倒推回起点
         x, y = divmod(u, w)
         path.append("(%d,%d)" % (x, y))
         u = pre[u]
-    path.reverse()
+    path.reverse()                        # 倒推出来是「终点 -> 起点」，翻转成正序
     sys.stdout.write("\n".join(path) + "\n")
 
 

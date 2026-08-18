@@ -41,13 +41,13 @@ def main() -> None:
 
     stamp = [0] * (n + 1)                          # 时间戳染色，避免反复重建数组
     ans = [0] * (n + 1)
-    for a in range(1, n + 1):
+    for a in range(1, n + 1):                      # 依次把每个学生当作起点模拟一遍
         u = a
         while stamp[u] != a:                       # 直到撞上本轮已访问的点
-            stamp[u] = a
-            u = p[u]
-        ans[a] = u
-    sys.stdout.write(" ".join(map(str, ans[1:])) + "\n")
+            stamp[u] = a                           # 用起点编号 a 兼作本轮的时间戳
+            u = p[u]                               # 功能图上每点只有一条出边
+        ans[a] = u                                 # 第一个被重复访问的点 = 环入口
+    sys.stdout.write(" ".join(map(str, ans[1:])) + "\n")   # 第 a 个数对应起点 a
 
 
 main()

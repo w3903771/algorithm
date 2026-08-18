@@ -18,7 +18,10 @@
 Python 的坑：
   1. Dijkstra 用 heapq，标准「懒删除」写法：弹出 (d, u) 时若 d > dist[u]
      就 continue，heapq 没有 decrease-key，这是唯一正确的姿势；
-  2. 两张 CSR 邻接表（正图、反图）共用同一套构建代码，写成函数复用；
+  2. 两张 CSR 邻接表（正图、反图）共用同一套构建代码，写成函数复用。
+     CSR 即 Compressed Sparse Row（压缩稀疏行）：不给每个点单独开一个 list，
+     而是把所有边首尾相接铺进一个扁平数组，再用 start 数组记下每个点的边
+     从哪里开始、到哪里结束。省掉 n 个小 list 对象的构造与内存开销；
      不要用 defaultdict(list)；
   3. 输入 3e5 个整数一次 read().split()。
 
@@ -35,37 +38,46 @@ from heapq import heappush, heappop
 
 
 def build_csr(n, us, vs, ws):
-    """把边表压成 CSR：返回 (start, to, wt)。"""
+    """把边表压成 CSR：返回 (start, to, wt)。
+
+    调用方只要交换 us / vs 两个参数，同一段代码就能建出反图——
+    这正是本题只需两次 Dijkstra 的实现基础。
+    """
     m = len(us)
+    # 第一趟：数出每个点的出度
     deg = [0] * (n + 2)
     for u in us:
         deg[u] += 1
+    # 第二趟：出度做前缀和，得到每个点在扁平数组里的起始下标
     start = [0] * (n + 2)
     acc = 0
     for i in range(1, n + 1):
         start[i] = acc
         acc += deg[i]
-    start[n + 1] = acc
-    pos = start[:]
+    start[n + 1] = acc               # 末尾哨兵，u 的边区间统一写成 [start[u], start[u+1])
+    pos = start[:]                   # 填充游标，与 start 分开，建完表 start 还要用
     to = [0] * acc
     wt = [0] * acc
+    # 第三趟：把每条边写到它起点所属的那一段里
     for i in range(m):
         u = us[i]
         k = pos[u]
         to[k] = vs[i]; wt[k] = ws[i]
-        pos[u] = k + 1
+        pos[u] = k + 1               # 同一起点的下一条边接着往后放
     return start, to, wt
 
 
 def dijkstra(n, start, to, wt, src):
+    """堆优化 Dijkstra，返回 src 到各点的最短距离数组（不可达为 INF）。"""
     INF = float('inf')
     dist = [INF] * (n + 1)
     dist[src] = 0
-    heap = [(0, src)]
+    heap = [(0, src)]                # 元组按 (距离, 点号) 比较，天然以距离为序
     while heap:
         d, u = heappop(heap)
         if d > dist[u]:              # 懒删除
-            continue
+            continue                 # 这条记录被后来的更优松弛作废了，跳过
+        # 此刻 dist[u] 已是最终值，用它松弛 u 的所有出边
         for i in range(start[u], start[u + 1]):
             v = to[i]
             nd = d + wt[i]
@@ -78,6 +90,7 @@ def dijkstra(n, start, to, wt, src):
 def main() -> None:
     data = sys.stdin.buffer.read().split()
     n, m = int(data[0]), int(data[1])
+    # 边先拆成三个平行数组存着，正图和反图都从它们构建，输入只解析一遍
     us = [0] * m; vs = [0] * m; ws = [0] * m
     p = 2
     for i in range(m):
@@ -87,6 +100,7 @@ def main() -> None:
     d1 = dijkstra(n, *build_csr(n, us, vs, ws), src=1)   # 去程：1 -> v
     d2 = dijkstra(n, *build_csr(n, vs, us, ws), src=1)   # 回程：反图上 1 -> v 即 v -> 1
 
+    # 每件包裹独立地「送出去再回来」，所以总时间就是两段距离逐点求和
     total = 0
     for v in range(2, n + 1):
         total += d1[v] + d2[v]

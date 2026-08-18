@@ -5,6 +5,8 @@
     **让全图连通的那条边的时间**。这正是 Kruskal 的过程（最小生成树的
     最大边 = 瓶颈生成树的瓶颈值），所以：
         排序 + 并查集，加到第 N-1 次成功合并时，当前边的 t 就是答案。
+    Kruskal 与最小生成树见 docs/part8-图与树/92-最小生成树.md，
+    并查集见 docs/part3-数据结构/38-并查集.md。
     加完全部边仍未连通 -> 输出 -1。
 
 数据规模与复杂度：
@@ -38,38 +40,41 @@ def main() -> None:
         sys.stdout.write("0\n")
         return
 
+    # ---- 读边并按修完时间升序排序，这就是 Kruskal 的第一步 ----
     edges = [None] * m
     p = 2
     for i in range(m):
         x = int(data[p]); y = int(data[p + 1]); t = int(data[p + 2]); p += 3
         edges[i] = (t, x, y)                   # t 放首位，直接 sort 即按时间升序
-    edges.sort()
+    edges.sort()                               # 元组先比较首项，等价于按时间升序
 
-    parent = list(range(n + 1))
-    size = [1] * (n + 1)
+    parent = list(range(n + 1))                # 并查集：初始每座城市各成一个连通块
+    size = [1] * (n + 1)                       # size 只在根上有意义
 
     def find(x: int) -> int:
+        """迭代式路径压缩，避开退化成长链时的递归深度问题。"""
         r = x
-        while parent[r] != r:
+        while parent[r] != r:                  # 第一趟：向上找到根
             r = parent[r]
-        while parent[x] != r:
+        while parent[x] != r:                  # 第二趟：把沿途节点直接挂到根上
             parent[x], x = r, parent[x]
         return r
 
-    need = n - 1
+    # ---- 按时间从早到晚加边，第 n-1 次成功合并时全国刚好连通 ----
+    need = n - 1                               # 还差多少次「有效合并」
     for t, x, y in edges:
         rx, ry = find(x), find(y)
         if rx == ry:
-            continue
-        if size[rx] < size[ry]:
+            continue                           # 两端早已连通（重边 / 自环），不计数
+        if size[rx] < size[ry]:                # 按大小合并：小树挂到大树下
             rx, ry = ry, rx
         parent[ry] = rx
         size[rx] += size[ry]
         need -= 1
         if need == 0:                          # 第 n-1 次成功合并 -> 全图连通
-            sys.stdout.write("%d\n" % t)
+            sys.stdout.write("%d\n" % t)       # 这条边的修完时间即最早连通时刻
             return
-    sys.stdout.write("-1\n")
+    sys.stdout.write("-1\n")                   # 全部修完仍有城市互不可达
 
 
 main()

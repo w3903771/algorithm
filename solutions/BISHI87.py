@@ -4,6 +4,7 @@
 这题考什么：
     **二分答案 + O(n) 判定**。直接贪心构造很容易漏情况，但「能否凑出 k 套」
     这个判定是单调的（k 可行 => k-1 可行），于是二分 k。
+    二分答案的通用套路见 docs/part4-基础算法/44-二分.md。
 
     判定 check(k)：
       - 每套里同一种牌只用一张，所以第 i 种牌最多贡献 min(c_i, k) 张；
@@ -39,25 +40,27 @@ def main() -> None:
     c = [int(v) for v in data[2:2 + n]]
 
     def ok(k: int) -> bool:
+        """能否凑出 k 套：缺口既要够 Joker 补，也不能超过「每套至多一张 Joker」。"""
         if k == 0:
-            return True
+            return True                  # 一套都不凑总是可行，作为二分左端的兜底
         need = 0
         cap = m if m < k else k          # 缺口上限 = min(Joker 总数, 套数)
         for v in c:
-            if v < k:
+            if v < k:                    # 这一种牌不够 k 张，差的部分只能靠 Joker 顶
                 need += k - v
                 if need > cap:           # 提前退出，省掉无谓累加
                     return False
         return True
 
+    # 二分「可行 / 不可行」的分界，循环不变量：lo 始终可行、hi 始终不可行
     lo, hi = 0, (sum(c) + m) // n + 1    # hi 一定不可行
     while lo + 1 < hi:
         mid = (lo + hi) // 2
         if ok(mid):
-            lo = mid
+            lo = mid                     # mid 可行，答案至少是 mid
         else:
-            hi = mid
-    sys.stdout.write("%d\n" % lo)
+            hi = mid                     # mid 不可行，答案严格小于 mid
+    sys.stdout.write("%d\n" % lo)        # 退出时 hi = lo + 1，lo 就是最大可行套数
 
 
 main()

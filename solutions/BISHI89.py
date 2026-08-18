@@ -9,6 +9,7 @@
     因为 P_i >= 1，S 是**严格递增**的，所以「S[i] < 某个阈值」的 i 恰好是
     一段前缀。固定 j，合法的 i 个数 = min(两个阈值各自的前缀长度, j-1)。
     用 bisect 在 S 上二分即可，总复杂度 O(n log n)。
+    前缀和见 docs/part4-基础算法/42-前缀和与差分.md，二分见 docs/part4-基础算法/44-二分.md。
 
     （注意 2*S[i] < S[j] 这个条件本身就蕴含 i < j，所以它不需要额外截断；
       但第二个条件不蕴含，必须再和 j-1 取 min。）
@@ -44,19 +45,19 @@ def main() -> None:
     n = int(data[0])
     a = list(map(int, data[1:1 + n]))
     S = list(accumulate(a))              # S[k] = P_1 + ... + P_{k+1}，严格递增
-    total = S[-1]
+    total = S[-1]                        # 整个数组的和，即 b1 + b2 + b3
 
     ans = 0
     for j in range(2, n):                # j 取 2..n-1（1-based），三段都非空
-        sj = S[j - 1]
+        sj = S[j - 1]                    # S 是 0-based 存的，S[j-1] 才是前 j 项之和
         # 条件一：2*S[i] < S[j]  <=>  S[i] < (S[j]+1)//2
         c1 = bisect_left(S, (sj + 1) // 2)
         # 条件二：S[i] < 2*S[j] - S[n]
         c2 = bisect_left(S, 2 * sj - total)
-        c = c1 if c1 < c2 else c2
+        c = c1 if c1 < c2 else c2        # 两个上界要同时满足，取更紧的那一个
         if c > j - 1:                    # i 必须严格小于 j
             c = j - 1
-        if c > 0:
+        if c > 0:                        # 阈值为负时 bisect 返回 0，此时没有合法的 i
             ans += c
     sys.stdout.write("%d\n" % ans)
 

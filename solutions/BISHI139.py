@@ -31,19 +31,22 @@ def main() -> None:
     data = sys.stdin.buffer.read().split()
     n = int(data[0])
     T = int(data[1]); H = int(data[2])
+    # f[t][h] = 用时不超过 t、精力不超过 h 时的最大快乐值。
+    # 全 0 初值同时表达了「什么都不选也合法」，所以无解时自然输出 0
     f = [[0] * (H + 1) for _ in range(T + 1)]
     p = 3
     for _ in range(n):
         ti = int(data[p]); hi = int(data[p + 1]); a = int(data[p + 2])
         p += 3
-        if ti > T or hi > H:
+        if ti > T or hi > H:                 # 单个事件就超限，永远选不了
             continue
-        lim = H + 1 - hi
+        lim = H + 1 - hi                     # 候选段长度：源精力 0..H-hi 对应目标 hi..H
         for t in range(T, ti - 1, -1):       # ★ 时间维倒序 -> 每个事件只用一次
-            src = f[t - ti]
+            src = f[t - ti]                  # t - ti < t，倒序下这一行本轮还没被改过
             row = f[t]
+            # 精力维不必再写循环：整行一次 map(max)，1.25e7 次元素比较全落在 C 层
             row[hi:] = list(map(max, row[hi:], [x + a for x in src[:lim]]))
-    sys.stdout.write("%d\n" % f[T][H])
+    sys.stdout.write("%d\n" % f[T][H])       # 两维都是「不超过」，右下角即全局最优
 
 
 main()

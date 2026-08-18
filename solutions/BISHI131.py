@@ -24,10 +24,12 @@ MOD = 998244353
 
 def main() -> None:
     n = int(sys.stdin.buffer.read().split()[0])
-    if n == 1:
+    if n == 1:                               # 递推从 f_2 起步，n = 1 落在起点之前，单独答
         sys.stdout.write("1\n")
         return
     a, b = 1, 2                              # f_1, f_2
+    # 只保留相邻两项滚动向前，b 始终是当前算到的那一项；
+    # 从 f_2 推到 f_n 需要 n - 2 步
     for _ in range(n - 2):
         a, b = b, (a + b) % MOD              # 每步取模，避免大整数退化
     sys.stdout.write("%d\n" % b)
