@@ -535,7 +535,7 @@ def max_xor_pair_set(nums, bits=30):
 > $1 \le n, q \le 10^5$，**所有输入串的总长度** $\le 10^6$，全部由大小写字母组成，
 > **区分大小写**。时限：C/C++ 1 秒，其他语言 2 秒；空间：其他语言 512 MB。
 > 题面见 [BISHI93 原题（牛客）](https://www.nowcoder.com/practice/feed1cd7546a4901965751b9fbf5f8a1)。
-> 题解见 [`solutions/BISHI93.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI93.py)（已通过官方样例验证）。
+> 题解见 [`solutions/BISHI93.py`](../solutions/BISHI93.md)（已通过官方样例验证）。
 
 标准 Trie 模板题：插入时沿途 `pre += 1`，查询时沿 $t$ 走到底输出 `pre`。
 真正要做的判断是**选哪种实现**——总长 $10^6$ 意味着最坏 $10^6$ 个节点，

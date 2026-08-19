@@ -418,7 +418,7 @@ Python 层每个元素只有一次 `bisect` 调用和一次赋值。
 > 时限：C/C++ 1 秒，**其他语言 2 秒**。
 > 题面见 [BISHI133 原题（牛客）](https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062)。
 
-> ✅ 题解见 [`solutions/BISHI133.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI133.py)，
+> ✅ 题解见 [`solutions/BISHI133.py`](../solutions/BISHI133.md)，
 > 与下面这份写法一致，已在牛客用 Python 3 通过，并由
 > `scripts/verify_docs.py` 用**官方样例**复测。
 
@@ -480,7 +480,7 @@ main()
 > $1 \le v_i, a_i \le 9$。
 > 题面见 [BISHI9 原题（牛客）](https://www.nowcoder.com/practice/49d799f65a0749588e9cd7e6135a4a9a)。
 
-> ✅ 题解见 [`solutions/BISHI9.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI9.py)，**已通过官方样例验证**。
+> ✅ 题解见 [`solutions/BISHI9.py`](../solutions/BISHI9.md)，**已通过官方样例验证**。
 
 $n = 3$，$3! = 6$ 种排列，直接枚举。
 

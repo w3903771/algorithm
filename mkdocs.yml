@@ -7,51 +7,85 @@ repo_url: https://github.com/w3903771/algorithm
 # 审计类文件供仓库维护使用，不作为教程站点内容发布。
 exclude_docs: |
   00-*.md
+  _*.json
 
 theme:
   name: material
   language: zh
+  # 不走 Google Fonts：国内加载慢甚至超时，字体栈在 stylesheets/extra.css 里定义。
+  font: false
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: cyan
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
-        name: 切换为深色模式
+        icon: material/weather-night
+        name: 切换到深色
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: cyan
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
-        name: 切换为浅色模式
+        icon: material/weather-sunny
+        name: 切换到浅色
   features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.indexes
+    - navigation.tabs          # 十个部分做顶部标签，侧栏只显示当前部分
+    - navigation.indexes       # 部分索引页挂到部分标题上，省掉一行「学习索引」
+    - navigation.tracking      # 地址栏跟随当前小节，方便复制深链
     - navigation.top
+    - navigation.footer        # 上一章 / 下一章
+    - navigation.instant
+    - navigation.instant.progress
+    - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/table-filter.js
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# 构建期生成题解页、注入章节盘。scripts/ 不入库，构建期代码放 hooks/。
+hooks:
+  - hooks/build_pages.py
 
 plugins:
   - search:
       lang: zh
 
 markdown_extensions:
+  - abbr
   - admonition
   - attr_list
   - md_in_html
   - pymdownx.details
+  # 行内 $...$ 与独立 $$...$$ 交给 MathJax 渲染；
+  # generic 模式产出 \(...\)，不依赖 MathJax 自己扫 $ 符号。
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - tables
   # MkDocs 默认的 slugify 会剥掉所有非 ASCII 字符，中文标题的锚点会退化成 _1、_2……
   # 换成 pymdownx 的 Unicode 版，锚点才会保留中文，跨章节的 #锚点 链接也才能命中。
@@ -64,7 +98,7 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - Python 基础:
-      - 学习索引: part1-python基础/index.md
+      - part1-python基础/index.md
       - 01 · 语法与执行模型: part1-python基础/01-语法与执行模型.md
       - 02 · 数据类型与转换: part1-python基础/02-数据类型与转换.md
       - 03 · 运算符与位运算: part1-python基础/03-运算符与位运算.md
@@ -82,14 +116,14 @@ nav:
       - 15 · 面向对象、迭代器与生成器: part1-python基础/15-面向对象与迭代器生成器.md
       - 16 · 模块、异常与文件: part1-python基础/16-模块-异常-文件.md
   - 竞赛基本功:
-      - 学习索引: part2-竞赛基本功/index.md
+      - part2-竞赛基本功/index.md
       - 20 · 输入输出处理: part2-竞赛基本功/20-输入输出处理.md
       - 21 · 复杂度与 Python 性能: part2-竞赛基本功/21-复杂度与Python性能.md
       - 22 · 高精度与大整数: part2-竞赛基本功/22-高精度与大整数.md
       - 23 · 浮点与科学计数法: part2-竞赛基本功/23-浮点与科学计数法.md
       - 24 · 多项式: part2-竞赛基本功/24-多项式.md
   - 数据结构:
-      - 学习索引: part3-数据结构/index.md
+      - part3-数据结构/index.md
       - 30 · 序列与数组: part3-数据结构/30-序列与数组.md
       - 31 · 链表: part3-数据结构/31-链表.md
       - 32 · 栈: part3-数据结构/32-栈.md
@@ -101,7 +135,7 @@ nav:
       - 38 · 并查集: part3-数据结构/38-并查集.md
       - 39 · 树状数组与线段树: part3-数据结构/39-树状数组与线段树.md
   - 基础算法:
-      - 学习索引: part4-基础算法/index.md
+      - part4-基础算法/index.md
       - 40 · 排序: part4-基础算法/40-排序.md
       - 41 · 桶计数与离散化: part4-基础算法/41-桶计数与离散化.md
       - 42 · 前缀和与差分: part4-基础算法/42-前缀和与差分.md
@@ -114,18 +148,18 @@ nav:
       - 49 · 模拟: part4-基础算法/49-模拟.md
       - 50 · 博弈论: part4-基础算法/50-博弈论.md
   - 搜索:
-      - 学习索引: part5-搜索/index.md
+      - part5-搜索/index.md
       - 60 · DFS 深度优先搜索: part5-搜索/60-DFS深度优先搜索.md
       - 61 · BFS 广度优先搜索: part5-搜索/61-BFS广度优先搜索.md
       - 62 · 记忆化搜索与剪枝: part5-搜索/62-记忆化搜索与剪枝.md
   - 字符串:
-      - 学习索引: part6-字符串/index.md
+      - part6-字符串/index.md
       - 70 · 字符串处理: part6-字符串/70-字符串处理.md
       - 71 · 字符串匹配 KMP: part6-字符串/71-字符串匹配KMP.md
       - 72 · 回文: part6-字符串/72-回文.md
       - 73 · Trie 字典树: part6-字符串/73-Trie字典树.md
   - 数学:
-      - 学习索引: part7-数学/index.md
+      - part7-数学/index.md
       - 80 · 数论基础: part7-数学/80-数论基础.md
       - 81 · 快速幂与逆元: part7-数学/81-快速幂与逆元.md
       - 82 · 欧拉函数与欧拉降幂: part7-数学/82-欧拉函数与欧拉降幂.md
@@ -133,21 +167,21 @@ nav:
       - 84 · 组合数学: part7-数学/84-组合数学.md
       - 85 · 基础数学与递推: part7-数学/85-基础数学与递推.md
   - 图与树:
-      - 学习索引: part8-图与树/index.md
+      - part8-图与树/index.md
       - 90 · 图的表示与遍历: part8-图与树/90-图的表示与遍历.md
       - 91 · 最短路: part8-图与树/91-最短路.md
       - 92 · 最小生成树: part8-图与树/92-最小生成树.md
       - 93 · 拓扑排序与二分图: part8-图与树/93-拓扑排序与二分图.md
       - 94 · 树上算法: part8-图与树/94-树上算法.md
   - 动态规划:
-      - 学习索引: part9-动态规划/index.md
+      - part9-动态规划/index.md
       - 100 · DP 入门: part9-动态规划/100-DP入门.md
       - 101 · 背包问题: part9-动态规划/101-背包问题.md
       - 102 · 线性 DP: part9-动态规划/102-线性DP.md
       - 103 · 区间、树形与状压 DP: part9-动态规划/103-区间树形状压DP.md
       - 104 · DP 优化: part9-动态规划/104-DP优化.md
   - 进阶专题:
-      - 学习索引: part10-进阶专题/index.md
+      - part10-进阶专题/index.md
       - 110 · 计算几何入门: part10-进阶专题/110-计算几何入门.md
       - 111 · 偏序集与 Dilworth 定理: part10-进阶专题/111-偏序集与Dilworth定理.md
       - 112 · 连通性、强连通分量与割点: part10-进阶专题/112-连通性-强连通分量与割点.md
@@ -157,6 +191,7 @@ nav:
       - 116 · 平衡树与有序集合: part10-进阶专题/116-平衡树与有序集合.md
       - 117 · 图论进阶：k 短路与关键路径: part10-进阶专题/117-图论进阶-k短路与关键路径.md
       - 118 · 分治进阶：整体二分与 CDQ: part10-进阶专题/118-分治进阶-整体二分与CDQ.md
+  - 题解: solutions/index.md
   - 附录:
       - 牛客题单总索引: appendix/A-牛客题单总索引.md
       - Python 算法模板速查: appendix/B-Python算法模板速查.md

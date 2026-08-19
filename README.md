@@ -4,6 +4,8 @@
 算法部分覆盖三处本地资料（C++ 算法代码库、信息学竞赛课件、NOIP 模板文档）的全部知识点，
 每章配套牛客真题与**经过验证**的 Python 题解。
 
+教程站点：<https://algorithm.ebook.ttzg.site/>　（首页是全书 74 章的章节盘，题解可在站内直接读）
+
 ## 快速导航
 
 | 入口 | 说明 |
@@ -18,6 +20,7 @@
 
 ```
 docs/            教程正文（十部分 74 章）
+hooks/           MkDocs 构建钩子：把 solutions/*.py 生成为站内题解页、注入章节盘
 solutions/       牛客 165 题的 Python 题解，_spj/ 下是特判校验器
 scripts/         抓取、提取、验证、提交脚本
 sources/         从五处来源提取的原始资料
@@ -43,6 +46,9 @@ uv sync
 uv run python scripts/verify.py            # 全部
 uv run python scripts/verify.py PIO        # 只跑 PIO 开头的
 uv run python scripts/verify.py BISHI136
+
+# 本地预览站点（题解页在构建期生成，不入库）
+uv run mkdocs serve
 
 # 审计大纲与来源覆盖
 uv run python scripts/audit_outline.py

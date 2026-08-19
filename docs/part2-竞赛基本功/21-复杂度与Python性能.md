@@ -293,7 +293,7 @@ data = sys.stdin.buffer.read().split()
 
 一次系统调用读完全部输入，`split()` 在 C 层完成分词。
 实测在这个规模上是**十几倍**的差距。题解见
-[`solutions/PIO7.py`](https://github.com/w3903771/algorithm/blob/main/solutions/PIO7.py)、[`solutions/PIO9.py`](https://github.com/w3903771/algorithm/blob/main/solutions/PIO9.py)。
+[`solutions/PIO7.py`](../solutions/PIO7.md)、[`solutions/PIO9.py`](../solutions/PIO9.md)。
 
 ### BISHI21 【模板】排序
 

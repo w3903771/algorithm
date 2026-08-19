@@ -1,0 +1,1242 @@
+{
+ "BISHI1": {
+  "acceptRate": 34.43,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】序列操作",
+  "url": "https://www.nowcoder.com/practice/12da4185c0bb45918cfdc3072e544069"
+ },
+ "BISHI10": {
+  "acceptRate": 42.74,
+  "difficulty": "简单",
+  "tags": [
+   "字符串",
+   "模拟"
+  ],
+  "title": "小红的字符串修改",
+  "url": "https://www.nowcoder.com/practice/66e0054ff6b345afa47bcd4e8ceb72d7"
+ },
+ "BISHI100": {
+  "acceptRate": 42.8,
+  "difficulty": "中等",
+  "tags": [
+   "图",
+   "贪心"
+  ],
+  "title": "二分图判定",
+  "url": "https://www.nowcoder.com/practice/f4b8d0481c7b4278b9b406b636e3c7db"
+ },
+ "BISHI101": {
+  "acceptRate": 51.41,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "世界树上找米库",
+  "url": "https://www.nowcoder.com/practice/9dd512f784b24ece85c81600aa3bc06c"
+ },
+ "BISHI102": {
+  "acceptRate": 49.79,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "【模板】并查集",
+  "url": "https://www.nowcoder.com/practice/513111e4477c4fad8f19f14d4cdf49dc"
+ },
+ "BISHI103": {
+  "acceptRate": 36.44,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】有依赖的背包问题",
+  "url": "https://www.nowcoder.com/practice/f0a110f831de4cc6bebc6243a26166e6"
+ },
+ "BISHI104": {
+  "acceptRate": 64.71,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "修复公路",
+  "url": "https://www.nowcoder.com/practice/8111efc8c04d472da349b6e5010e1951"
+ },
+ "BISHI105": {
+  "acceptRate": 51.52,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】单源最短路Ⅰ ‖ 无权图",
+  "url": "https://www.nowcoder.com/practice/359e14832ce1476fadc70dd4bc36b991"
+ },
+ "BISHI106": {
+  "acceptRate": 36.85,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "【模板】单源最短路Ⅲ ‖ 非负权图",
+  "url": "https://www.nowcoder.com/practice/d7fafd4f3340439e90597532850257b5"
+ },
+ "BISHI107": {
+  "acceptRate": 56.89,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "【模板】最小生成树",
+  "url": "https://www.nowcoder.com/practice/6434142fe980434899c396a6124b0778"
+ },
+ "BISHI108": {
+  "acceptRate": 48.29,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "最优乘车",
+  "url": "https://www.nowcoder.com/practice/83101a4f624042b59a629089e83b6dd1"
+ },
+ "BISHI109": {
+  "acceptRate": 72.39,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "邮递员送信",
+  "url": "https://www.nowcoder.com/practice/2b0c636cf77d441fa96d40ac64290d39"
+ },
+ "BISHI11": {
+  "acceptRate": 47.66,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "变幻莫测",
+  "url": "https://www.nowcoder.com/practice/5e702b6c7c114e64b5db4650d0ce0051"
+ },
+ "BISHI110": {
+  "acceptRate": 47.74,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】静态区间和（前缀和）",
+  "url": "https://www.nowcoder.com/practice/ac79a1a4a66646cc87525d6faa86e021"
+ },
+ "BISHI111": {
+  "acceptRate": 43.48,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】差分",
+  "url": "https://www.nowcoder.com/practice/4bbc401a5df140309edd6f14debdba42"
+ },
+ "BISHI112": {
+  "acceptRate": 43.63,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】二维前缀和",
+  "url": "https://www.nowcoder.com/practice/99eb8040d116414ea3296467ce81cbbc"
+ },
+ "BISHI113": {
+  "acceptRate": 53.76,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】二维差分",
+  "url": "https://www.nowcoder.com/practice/50e1a93989df42efb0b1dec386fb4ccc"
+ },
+ "BISHI114": {
+  "acceptRate": 50.01,
+  "difficulty": "简单",
+  "tags": [
+   "双指针"
+  ],
+  "title": "【模板】滑动窗口",
+  "url": "https://www.nowcoder.com/practice/be419f584a3f4c5b818833f1ce856626"
+ },
+ "BISHI115": {
+  "acceptRate": 31.24,
+  "difficulty": "简单",
+  "tags": [
+   "双指针"
+  ],
+  "title": "可匹配子段计数",
+  "url": "https://www.nowcoder.com/practice/cfc8ae6269cd445d83686f12da66023c"
+ },
+ "BISHI116": {
+  "acceptRate": 18.74,
+  "difficulty": "中等",
+  "tags": [
+   "双指针"
+  ],
+  "title": "【模板】双指针",
+  "url": "https://www.nowcoder.com/practice/a2fd81391e1e4177aa6d506da895381b"
+ },
+ "BISHI117": {
+  "acceptRate": 31.52,
+  "difficulty": "中等",
+  "tags": [
+   "双指针"
+  ],
+  "title": "小苯的IDE括号问题（easy）",
+  "url": "https://www.nowcoder.com/practice/0a526c7863474220aaef082ab5f2a00a"
+ },
+ "BISHI118": {
+  "acceptRate": 30.81,
+  "difficulty": "中等",
+  "tags": [
+   "双指针"
+  ],
+  "title": "相差不超过k的最多数",
+  "url": "https://www.nowcoder.com/practice/562630ca90ac40ce89443c91060574c6"
+ },
+ "BISHI119": {
+  "acceptRate": 26.13,
+  "difficulty": "中等",
+  "tags": [
+   "双指针"
+  ],
+  "title": "小红的01子序列构造（easy）",
+  "url": "https://www.nowcoder.com/practice/ee0b6c6baa2642c182df8b4390126f9a"
+ },
+ "BISHI12": {
+  "acceptRate": 35.05,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "元素方碑",
+  "url": "https://www.nowcoder.com/practice/5c6e7ed4726e41f4ac99a4dedf1e5bb2"
+ },
+ "BISHI120": {
+  "acceptRate": 59.77,
+  "difficulty": "较难",
+  "tags": [
+   "双指针"
+  ],
+  "title": "？？？",
+  "url": "https://www.nowcoder.com/practice/b6b8bfcde03841e4880c2b9ef00329c6"
+ },
+ "BISHI121": {
+  "acceptRate": 51.16,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "数列后缀极大位置统计",
+  "url": "https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68"
+ },
+ "BISHI122": {
+  "acceptRate": 25.6,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "区间后缀极大位置计数",
+  "url": "https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235"
+ },
+ "BISHI123": {
+  "acceptRate": 24.12,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "环形字符串跃迁",
+  "url": "https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339"
+ },
+ "BISHI124": {
+  "acceptRate": 69.05,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】最近公共祖先（LCA）",
+  "url": "https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217"
+ },
+ "BISHI125": {
+  "acceptRate": 58.29,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】静态区间最值",
+  "url": "https://www.nowcoder.com/practice/831a314449d44ea0b1db90ca626bcd1a"
+ },
+ "BISHI126": {
+  "acceptRate": 47.7,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "【模板】动态区间和Ⅱ ‖ 区间修改 + 区间查询",
+  "url": "https://www.nowcoder.com/practice/ef7a50cf0377447b9b435b0f95e48e70"
+ },
+ "BISHI127": {
+  "acceptRate": 41.92,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "区间根号与区间求和",
+  "url": "https://www.nowcoder.com/practice/56547df6934f4048a80ec75838d60c8f"
+ },
+ "BISHI128": {
+  "acceptRate": 25.37,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "区间加乘与单点求值",
+  "url": "https://www.nowcoder.com/practice/7a1de22fa7a1456f8ba519f21de31c84"
+ },
+ "BISHI129": {
+  "acceptRate": 46.26,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "区间增量与区间小于计数",
+  "url": "https://www.nowcoder.com/practice/74481dd14e3b4875a190952f86e6ffab"
+ },
+ "BISHI13": {
+  "acceptRate": 42.98,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "九倍平方数",
+  "url": "https://www.nowcoder.com/practice/032c72fab5fe4a2ea8e11d40378a493d"
+ },
+ "BISHI130": {
+  "acceptRate": 49.96,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "区间取反与区间数一",
+  "url": "https://www.nowcoder.com/practice/55d474a878a84f4b84dca4b177a8c45c"
+ },
+ "BISHI131": {
+  "acceptRate": 44.09,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "数楼梯",
+  "url": "https://www.nowcoder.com/practice/c7e5f164fa5d471f8f83c90fe4ee3f05"
+ },
+ "BISHI132": {
+  "acceptRate": 69.15,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "小红的地砖",
+  "url": "https://www.nowcoder.com/practice/8cd083c66a5f43489a532164e2a2304d"
+ },
+ "BISHI133": {
+  "acceptRate": 44.39,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "最长不下降子序列",
+  "url": "https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062"
+ },
+ "BISHI134": {
+  "acceptRate": 39.38,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "最大子段和",
+  "url": "https://www.nowcoder.com/practice/f04519cd1d904f50b68f4229a126ab08"
+ },
+ "BISHI135": {
+  "acceptRate": 29.07,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "三角形取数(Hard Version)",
+  "url": "https://www.nowcoder.com/practice/ceea5825472940dabfec917ef93538e6"
+ },
+ "BISHI136": {
+  "acceptRate": 36.44,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】01背包",
+  "url": "https://www.nowcoder.com/practice/fd55637d3f24484e96dad9e992d3f62e"
+ },
+ "BISHI137": {
+  "acceptRate": 40.02,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】完全背包",
+  "url": "https://www.nowcoder.com/practice/deda4293d9b24ce1aeaf1813c88b8c25"
+ },
+ "BISHI138": {
+  "acceptRate": 30.25,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】多重背包",
+  "url": "https://www.nowcoder.com/practice/8fa10063d33a43dd9652c1511a34d461"
+ },
+ "BISHI139": {
+  "acceptRate": 60.68,
+  "difficulty": "中等",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "【模板】二维费用背包",
+  "url": "https://www.nowcoder.com/practice/84b88177894c4c82980017e6b4a15fb3"
+ },
+ "BISHI14": {
+  "acceptRate": 29.28,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "特殊的科学计数法",
+  "url": "https://www.nowcoder.com/practice/ca0962879d3b40d8bb598fb9a905ac7a"
+ },
+ "BISHI140": {
+  "acceptRate": 62.96,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "【模板】分组背包",
+  "url": "https://www.nowcoder.com/practice/32a6c222213c42efa902da6b5c9f8e99"
+ },
+ "BISHI141": {
+  "acceptRate": 31.46,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "来硬的",
+  "url": "https://www.nowcoder.com/practice/08dbc77ec79942c1914b002f488b87ee"
+ },
+ "BISHI142": {
+  "acceptRate": 63.65,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "最大学分",
+  "url": "https://www.nowcoder.com/practice/66403297dfe04faaacf7d0e905fea7ac"
+ },
+ "BISHI143": {
+  "acceptRate": 65.87,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "没有上司的舞会",
+  "url": "https://www.nowcoder.com/practice/f703237089ee42d9b37e01d70e14e2fc"
+ },
+ "BISHI144": {
+  "acceptRate": 35.52,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "食物链计数",
+  "url": "https://www.nowcoder.com/practice/9844dd9f531e46e29f5749e8fcc4bd0b"
+ },
+ "BISHI145": {
+  "acceptRate": 60.71,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "石子合并",
+  "url": "https://www.nowcoder.com/practice/237337887b094938bfc6e9557f92c3e9"
+ },
+ "BISHI146": {
+  "acceptRate": 30.56,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "收集金币",
+  "url": "https://www.nowcoder.com/practice/bde230df252c4b41a059c9b06fcf65b6"
+ },
+ "BISHI147": {
+  "acceptRate": 33.06,
+  "difficulty": "困难",
+  "tags": [],
+  "title": "旅行者的大逃脱",
+  "url": "https://www.nowcoder.com/practice/3a02e2b818144c2dbad8dd3dc28d04cf"
+ },
+ "BISHI15": {
+  "acceptRate": 52.99,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "小红的夹吃棋",
+  "url": "https://www.nowcoder.com/practice/94648fd37a644c76adb2adb29c2a3037"
+ },
+ "BISHI16": {
+  "acceptRate": 61.97,
+  "difficulty": "入门",
+  "tags": [
+   "模拟",
+   "基础数学"
+  ],
+  "title": "计算一年中的第几天",
+  "url": "https://www.nowcoder.com/practice/178aa3dafb144bb8b0445edb5e9b812a"
+ },
+ "BISHI17": {
+  "acceptRate": 37.38,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "纸牌游戏",
+  "url": "https://www.nowcoder.com/practice/74f915e366094b19b94334de8b68e733"
+ },
+ "BISHI18": {
+  "acceptRate": 29.58,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "多项式输出",
+  "url": "https://www.nowcoder.com/practice/142ee43d3e7345d385328faca9f636e5"
+ },
+ "BISHI19": {
+  "acceptRate": 34.53,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "乒乓球",
+  "url": "https://www.nowcoder.com/practice/78660925b1cd49b6b2e43cb375ed7945"
+ },
+ "BISHI2": {
+  "acceptRate": 53.54,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】栈的操作",
+  "url": "https://www.nowcoder.com/practice/cdf02ea916454957b575585634e5773a"
+ },
+ "BISHI20": {
+  "acceptRate": 38.57,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "回文日期",
+  "url": "https://www.nowcoder.com/practice/0372242deac541d0b578cc6563395681"
+ },
+ "BISHI21": {
+  "acceptRate": 53.34,
+  "difficulty": "入门",
+  "tags": [
+   "排序"
+  ],
+  "title": "【模板】排序",
+  "url": "https://www.nowcoder.com/practice/40bf74658879460bbf5f1bfe772e8580"
+ },
+ "BISHI22": {
+  "acceptRate": 44.37,
+  "difficulty": "简单",
+  "tags": [
+   "排序"
+  ],
+  "title": "分数线划定",
+  "url": "https://www.nowcoder.com/practice/2395fa7b6c6e452e8d8310a7cfdbe902"
+ },
+ "BISHI23": {
+  "acceptRate": 67.81,
+  "difficulty": "简单",
+  "tags": [
+   "哈希",
+   "排序"
+  ],
+  "title": "小红书推荐系统",
+  "url": "https://www.nowcoder.com/practice/e5b39c9034a84bf2a5e026b2b9b973d0"
+ },
+ "BISHI24": {
+  "acceptRate": 30.61,
+  "difficulty": "入门",
+  "tags": [
+   "排序"
+  ],
+  "title": "谐距下标对",
+  "url": "https://www.nowcoder.com/practice/12fd032361704c978bcb9c2c2b3bb93d"
+ },
+ "BISHI25": {
+  "acceptRate": 31.79,
+  "difficulty": "中等",
+  "tags": [
+   "排序"
+  ],
+  "title": "最大 FST 距离",
+  "url": "https://www.nowcoder.com/practice/6295f81acd1b4fb59c8beed92577f64b"
+ },
+ "BISHI26": {
+  "acceptRate": 73.62,
+  "difficulty": "入门",
+  "tags": [
+   "数论"
+  ],
+  "title": "构造C的歪",
+  "url": "https://www.nowcoder.com/practice/56735b3fe2fc4ed5916f5427dc787156"
+ },
+ "BISHI27": {
+  "acceptRate": 51.66,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "构造数对",
+  "url": "https://www.nowcoder.com/practice/c16b86c1149a43eaaa0fd85aaee51290"
+ },
+ "BISHI28": {
+  "acceptRate": 67.12,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "构造数独",
+  "url": "https://www.nowcoder.com/practice/bf8ffcbf95f743d7bbb2dd96bafa1a3c"
+ },
+ "BISHI29": {
+  "acceptRate": 36.55,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "小红的排列构造①",
+  "url": "https://www.nowcoder.com/practice/2b0a9318cc0740d1a78eec06162e7bea"
+ },
+ "BISHI3": {
+  "acceptRate": 59.79,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】队列操作",
+  "url": "https://www.nowcoder.com/practice/1137c8f6ffac4d5d94cc1b0cb08723f9"
+ },
+ "BISHI30": {
+  "acceptRate": 32.22,
+  "difficulty": "简单",
+  "tags": [
+   "位运算"
+  ],
+  "title": "二进制数1",
+  "url": "https://www.nowcoder.com/practice/bc4c7936f5ed42cbb9131b6f39aa272b"
+ },
+ "BISHI31": {
+  "acceptRate": 60.1,
+  "difficulty": "简单",
+  "tags": [
+   "位运算"
+  ],
+  "title": "二进制不同位数",
+  "url": "https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868"
+ },
+ "BISHI32": {
+  "acceptRate": 76.8,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "被打乱的异或和",
+  "url": "https://www.nowcoder.com/practice/116db6858c424fb89b821125053bbc15"
+ },
+ "BISHI33": {
+  "acceptRate": 43.57,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "Poi 的新加法（Easy Version）",
+  "url": "https://www.nowcoder.com/practice/9f766daa7e4042a786633c341fe9d7e2"
+ },
+ "BISHI34": {
+  "acceptRate": 44.09,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "甜蜜的博弈",
+  "url": "https://www.nowcoder.com/practice/d3934f2d05624c8fa1a748ef225d0460"
+ },
+ "BISHI35": {
+  "acceptRate": 67.43,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】巴什博弈",
+  "url": "https://www.nowcoder.com/practice/9bb882504d574ec287f69e967ce0fb95"
+ },
+ "BISHI36": {
+  "acceptRate": 48.81,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "【模板】扩展巴什博弈",
+  "url": "https://www.nowcoder.com/practice/4b0d36a3d3884cf69f618cf4c2511d82"
+ },
+ "BISHI37": {
+  "acceptRate": 41.32,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "数位差与数值和的构造",
+  "url": "https://www.nowcoder.com/practice/36f3593e553c4c67987abf88a3d4d105"
+ },
+ "BISHI38": {
+  "acceptRate": 35.57,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "有向二分图构造",
+  "url": "https://www.nowcoder.com/practice/e56757bb703b4cee9d641d1682b54b63"
+ },
+ "BISHI39": {
+  "acceptRate": 34.15,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】Pollard-Pho算法",
+  "url": "https://www.nowcoder.com/practice/9da360a56fa846708542b0fb3985c647"
+ },
+ "BISHI4": {
+  "acceptRate": 27.48,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】集合操作",
+  "url": "https://www.nowcoder.com/practice/a37b91f84cdf490b8d8b990794211135"
+ },
+ "BISHI40": {
+  "acceptRate": 50.65,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "数组取精",
+  "url": "https://www.nowcoder.com/practice/6f77d207b40c41d899d23627d6bd122a"
+ },
+ "BISHI41": {
+  "acceptRate": 44.77,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】整除分块",
+  "url": "https://www.nowcoder.com/practice/6b0b510b32484281bd21abb71ef7ba0b"
+ },
+ "BISHI42": {
+  "acceptRate": 35.3,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "余数求和",
+  "url": "https://www.nowcoder.com/practice/5d18ffe2c6cd45ac8d8040be19c96f14"
+ },
+ "BISHI43": {
+  "acceptRate": 62.68,
+  "difficulty": "入门",
+  "tags": [
+   "贪心"
+  ],
+  "title": "讨厌鬼进货",
+  "url": "https://www.nowcoder.com/practice/e364bac751204aa0b2d27389ca8e3c94"
+ },
+ "BISHI44": {
+  "acceptRate": 45.33,
+  "difficulty": "简单",
+  "tags": [
+   "贪心"
+  ],
+  "title": "灵异背包？",
+  "url": "https://www.nowcoder.com/practice/812bcedbbe244c9b86e459a244af5ddf"
+ },
+ "BISHI45": {
+  "acceptRate": 32.06,
+  "difficulty": "简单",
+  "tags": [
+   "贪心"
+  ],
+  "title": "小红的矩阵染色",
+  "url": "https://www.nowcoder.com/practice/dcbaf862c0e046d79e9cd297abd76bcf"
+ },
+ "BISHI46": {
+  "acceptRate": 63.91,
+  "difficulty": "简单",
+  "tags": [
+   "贪心"
+  ],
+  "title": "小红的魔法药剂",
+  "url": "https://www.nowcoder.com/practice/1ede2daa3ab445bc8ac8ea62b6ca8201"
+ },
+ "BISHI47": {
+  "acceptRate": 43.74,
+  "difficulty": "简单",
+  "tags": [
+   "贪心"
+  ],
+  "title": "交换到最大",
+  "url": "https://www.nowcoder.com/practice/73fd35bbfaa5483d8aa8b03cd27887a8"
+ },
+ "BISHI48": {
+  "acceptRate": 42.46,
+  "difficulty": "简单",
+  "tags": [
+   "贪心"
+  ],
+  "title": "小红的整数配对",
+  "url": "https://www.nowcoder.com/practice/66b9810e4fe34956a8d1f5c67aacc6dc"
+ },
+ "BISHI49": {
+  "acceptRate": 21.47,
+  "difficulty": "中等",
+  "tags": [
+   "贪心",
+   "堆"
+  ],
+  "title": "小红闯关",
+  "url": "https://www.nowcoder.com/practice/7ce4b75f7a304be481e73bc4dd2705a4"
+ },
+ "BISHI5": {
+  "acceptRate": 34.36,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】多重集合操作",
+  "url": "https://www.nowcoder.com/practice/aaf8b53f6ea74ad6beabed77bb275725"
+ },
+ "BISHI50": {
+  "acceptRate": 37.2,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "[JSOI2007]建筑抢修",
+  "url": "https://www.nowcoder.com/practice/e69a484a4dfb4015b34c2e0ff2ae2ac8"
+ },
+ "BISHI51": {
+  "acceptRate": 47.36,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "低买高卖",
+  "url": "https://www.nowcoder.com/practice/61ad3cbe0e7d4db9b64fc2b7b503dfd8"
+ },
+ "BISHI52": {
+  "acceptRate": 25.93,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "奥赛组队",
+  "url": "https://www.nowcoder.com/practice/8809c78fe4fa445ab8218cee5b69910f"
+ },
+ "BISHI53": {
+  "acceptRate": 64.15,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "[P1080] 国王游戏(简化版)",
+  "url": "https://www.nowcoder.com/practice/145c3426577f40f8b2b5e51ca6f61523"
+ },
+ "BISHI54": {
+  "acceptRate": 48.77,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "货物堆放",
+  "url": "https://www.nowcoder.com/practice/22541f98215747aeb0b8217ae1dd97e8"
+ },
+ "BISHI55": {
+  "acceptRate": 30.81,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "判断质数",
+  "url": "https://www.nowcoder.com/practice/9f418ff48b5e4e879f398352bed6118d"
+ },
+ "BISHI56": {
+  "acceptRate": 51.75,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "分解质因数",
+  "url": "https://www.nowcoder.com/practice/35723516d6f841ca8869ecbcf3ddacaf"
+ },
+ "BISHI57": {
+  "acceptRate": 50.13,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "最大公因数与最小公倍数",
+  "url": "https://www.nowcoder.com/practice/ee732bec4f174cd9b4abc6427ba90584"
+ },
+ "BISHI58": {
+  "acceptRate": 51.71,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "矩形游戏",
+  "url": "https://www.nowcoder.com/practice/5b6c2c824a434b55a5e3b77619c54a90"
+ },
+ "BISHI59": {
+  "acceptRate": 16.89,
+  "difficulty": "中等",
+  "tags": [
+   "基础数学"
+  ],
+  "title": "阶乘末尾非零数字",
+  "url": "https://www.nowcoder.com/practice/248c8fbee56e491aa147b67b9c082da0"
+ },
+ "BISHI6": {
+  "acceptRate": 64.98,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】整数优先队列",
+  "url": "https://www.nowcoder.com/practice/a88e9711f7b04369982bbe8902278ae4"
+ },
+ "BISHI60": {
+  "acceptRate": 81.18,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "大水题",
+  "url": "https://www.nowcoder.com/practice/6b9770de551c426287252421742f6ebf"
+ },
+ "BISHI61": {
+  "acceptRate": 39.65,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "小q的数列",
+  "url": "https://www.nowcoder.com/practice/8ea1e0d996f64e15961ae42e658a04a7"
+ },
+ "BISHI62": {
+  "acceptRate": 41.22,
+  "difficulty": "简单",
+  "tags": [
+   "基础数学",
+   "递归"
+  ],
+  "title": "斐波那契数列",
+  "url": "https://www.nowcoder.com/practice/c245af6cfdce49ceb5435f649ee14f89"
+ },
+ "BISHI63": {
+  "acceptRate": 35.28,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "计算阶乘",
+  "url": "https://www.nowcoder.com/practice/b93729ad46d74a62801bdc320be2aa8e"
+ },
+ "BISHI64": {
+  "acceptRate": 45.12,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】快速幂Ⅰ ‖ 整数",
+  "url": "https://www.nowcoder.com/practice/3d624107a6904da1bd0e8c9c85e17167"
+ },
+ "BISHI65": {
+  "acceptRate": 58.74,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】分数取模",
+  "url": "https://www.nowcoder.com/practice/23839ef20d5f4dbaa9664daa51864291"
+ },
+ "BISHI66": {
+  "acceptRate": 35.39,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "子数列求积",
+  "url": "https://www.nowcoder.com/practice/5daab034da954f5697dcf96c1808d34f"
+ },
+ "BISHI67": {
+  "acceptRate": 62.31,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "穿搭大挑战",
+  "url": "https://www.nowcoder.com/practice/cd190da0f3614a8393c84981a11d024e"
+ },
+ "BISHI68": {
+  "acceptRate": 78.43,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "刷题统计",
+  "url": "https://www.nowcoder.com/practice/99ddb1a6e71d47dcbbe4f272aba532b8"
+ },
+ "BISHI69": {
+  "acceptRate": 42.59,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "[HNOI2008]越狱",
+  "url": "https://www.nowcoder.com/practice/33d5016548d84cbe8cdb08ca0c13c2f1"
+ },
+ "BISHI7": {
+  "acceptRate": 78.6,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "字符串哈希",
+  "url": "https://www.nowcoder.com/practice/dadbd37fee7c43f0ae407db11b16b4bf"
+ },
+ "BISHI70": {
+  "acceptRate": 39.84,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】组合数",
+  "url": "https://www.nowcoder.com/practice/53f82db091b2452bae5fef4437ffd0bb"
+ },
+ "BISHI71": {
+  "acceptRate": 41.3,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "人员分组问题",
+  "url": "https://www.nowcoder.com/practice/482f31bf028f46aa9b7882a4b921ffcf"
+ },
+ "BISHI72": {
+  "acceptRate": 35.22,
+  "difficulty": "较难",
+  "tags": [],
+  "title": "中位数之和",
+  "url": "https://www.nowcoder.com/practice/4bc8c3535b8e488eb608c73f8946d9cb"
+ },
+ "BISHI73": {
+  "acceptRate": 73.12,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】欧拉函数Ⅰ ‖ 单个整数",
+  "url": "https://www.nowcoder.com/practice/6a22f91ad3904c6cbd624ae5ff6a4eac"
+ },
+ "BISHI74": {
+  "acceptRate": 68.56,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】非质模数下的乘法逆元",
+  "url": "https://www.nowcoder.com/practice/52328883c41f475c8eb228726af2ce2f"
+ },
+ "BISHI75": {
+  "acceptRate": 21.15,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】欧拉降幂",
+  "url": "https://www.nowcoder.com/practice/da7a14c1a58b48bd80e63771b82e50c5"
+ },
+ "BISHI76": {
+  "acceptRate": 46.9,
+  "difficulty": "简单",
+  "tags": [
+   "dfs"
+  ],
+  "title": "迷宫寻路",
+  "url": "https://www.nowcoder.com/practice/0c8930e517444d04b426e9703d483ed4"
+ },
+ "BISHI77": {
+  "acceptRate": 66.14,
+  "difficulty": "简单",
+  "tags": [
+   "dfs"
+  ],
+  "title": "数水坑",
+  "url": "https://www.nowcoder.com/practice/664ca4289fcf457ba3109fdf4a7a1a05"
+ },
+ "BISHI78": {
+  "acceptRate": 67.37,
+  "difficulty": "简单",
+  "tags": [
+   "dfs"
+  ],
+  "title": "全排列",
+  "url": "https://www.nowcoder.com/practice/1d1fe38275da44b5848add89f9e223b1"
+ },
+ "BISHI79": {
+  "acceptRate": 39.14,
+  "difficulty": "中等",
+  "tags": [
+   "dfs"
+  ],
+  "title": "取数游戏",
+  "url": "https://www.nowcoder.com/practice/b002b8eb564245fdbb8a02db8dcf03e4"
+ },
+ "BISHI8": {
+  "acceptRate": 38.13,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "大整数哈希",
+  "url": "https://www.nowcoder.com/practice/29f0cff8a69b4ab6a2f63fb7386defa3"
+ },
+ "BISHI80": {
+  "acceptRate": 36.59,
+  "difficulty": "简单",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "走迷宫",
+  "url": "https://www.nowcoder.com/practice/e88b41dc6e764b2893bc4221777ffe64"
+ },
+ "BISHI81": {
+  "acceptRate": 54.52,
+  "difficulty": "简单",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "剪纸游戏",
+  "url": "https://www.nowcoder.com/practice/33054daa2cc04fd6b97a0d18ccfc66a0"
+ },
+ "BISHI82": {
+  "acceptRate": 24.99,
+  "difficulty": "简单",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "没挡住洪水",
+  "url": "https://www.nowcoder.com/practice/6d62436fda5f4ef997e68d1ce1dd6eb2"
+ },
+ "BISHI83": {
+  "acceptRate": 35.21,
+  "difficulty": "中等",
+  "tags": [
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "迷宫问题",
+  "url": "https://www.nowcoder.com/practice/cf24906056f4488c9ddb132f317e03bc"
+ },
+ "BISHI84": {
+  "acceptRate": 50.43,
+  "difficulty": "中等",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "时津风的资源收集",
+  "url": "https://www.nowcoder.com/practice/5a6f83a0e0214ba5a77f6cdc71a3027b"
+ },
+ "BISHI85": {
+  "acceptRate": 63.19,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】整数域二分",
+  "url": "https://www.nowcoder.com/practice/d483ab6bf19245518730a75c6ea108ae"
+ },
+ "BISHI86": {
+  "acceptRate": 31.41,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "圆覆盖",
+  "url": "https://www.nowcoder.com/practice/4f96afe5dfe74dad88dbe419d33f9536"
+ },
+ "BISHI87": {
+  "acceptRate": 32.4,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "[CQOI2010]扑克牌",
+  "url": "https://www.nowcoder.com/practice/b77ff162bbab446993913fd684489cde"
+ },
+ "BISHI88": {
+  "acceptRate": 26.42,
+  "difficulty": "中等",
+  "tags": [
+   "贪心",
+   "二分",
+   "字符串"
+  ],
+  "title": "小苯的魔法染色",
+  "url": "https://www.nowcoder.com/practice/2e27509b990d4d02a70c0f208f078cdf"
+ },
+ "BISHI89": {
+  "acceptRate": 25.54,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "山峰数组计数",
+  "url": "https://www.nowcoder.com/practice/aac1989d183d4e6daf6ee2e1ca62b50c"
+ },
+ "BISHI9": {
+  "acceptRate": 47.72,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "田忌赛马",
+  "url": "https://www.nowcoder.com/practice/49d799f65a0749588e9cd7e6135a4a9a"
+ },
+ "BISHI90": {
+  "acceptRate": 26.12,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】记忆化搜索",
+  "url": "https://www.nowcoder.com/practice/211c9fa6ea984185a16c6005e9793736"
+ },
+ "BISHI91": {
+  "acceptRate": 38.39,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "拼接木棍",
+  "url": "https://www.nowcoder.com/practice/e0f5370bf8bb4d7d9c89c832c30da460"
+ },
+ "BISHI92": {
+  "acceptRate": 57.19,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】前缀函数（kmp）",
+  "url": "https://www.nowcoder.com/practice/f347bf9d731d47a0bc87bc7e2415cef1"
+ },
+ "BISHI93": {
+  "acceptRate": 55.31,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】Trie 字典树",
+  "url": "https://www.nowcoder.com/practice/feed1cd7546a4901965751b9fbf5f8a1"
+ },
+ "BISHI94": {
+  "acceptRate": 47.9,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "【模板】马拉车算法",
+  "url": "https://www.nowcoder.com/practice/c01a7b5e88e544db841a009a035bd125"
+ },
+ "BISHI95": {
+  "acceptRate": 53.74,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "【模板】链式前向星",
+  "url": "https://www.nowcoder.com/practice/23f622c8b15f4b37bffe1a986eeea185"
+ },
+ "BISHI96": {
+  "acceptRate": 57.69,
+  "difficulty": "简单",
+  "tags": [],
+  "title": "先序遍历、中序遍历和后序遍历",
+  "url": "https://www.nowcoder.com/practice/15fdb346838545d0b272e43957e1cb2a"
+ },
+ "BISHI97": {
+  "acceptRate": 47.23,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "旺仔哥哥走迷宫",
+  "url": "https://www.nowcoder.com/practice/4b4ee516c23d4bd2b838646363b5c395"
+ },
+ "BISHI98": {
+  "acceptRate": 62.29,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "谍中谍中谍中谍中谍...",
+  "url": "https://www.nowcoder.com/practice/ee1246384c9b4066b67043ebb37fd9c9"
+ },
+ "BISHI99": {
+  "acceptRate": 51.22,
+  "difficulty": "中等",
+  "tags": [],
+  "title": "我朋友的朋友不是我的朋友",
+  "url": "https://www.nowcoder.com/practice/9656866233614f4191f5555a0cdcae4b"
+ },
+ "PIO1": {
+  "acceptRate": 72.46,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "只有输出",
+  "url": "https://www.nowcoder.com/practice/c988a1f1814041c4b8b3d9547e91865a"
+ },
+ "PIO10": {
+  "acceptRate": 71.74,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_字符串",
+  "url": "https://www.nowcoder.com/practice/e3a57b2ff6de4aefb82af98925df544e"
+ },
+ "PIO11": {
+  "acceptRate": 78.8,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_字符串_T组形式",
+  "url": "https://www.nowcoder.com/practice/35f6f4e9173943e3b3f462b697fefd8b"
+ },
+ "PIO12": {
+  "acceptRate": 69.79,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_二维字符数组",
+  "url": "https://www.nowcoder.com/practice/2316c1fedff14a8d91694a26c9da3310"
+ },
+ "PIO13": {
+  "acceptRate": 62.96,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_带空格的字符串_T组形式",
+  "url": "https://www.nowcoder.com/practice/cff28a28d7f54419a640a8bb19f4275f"
+ },
+ "PIO14": {
+  "acceptRate": 76.13,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_保留小数位数",
+  "url": "https://www.nowcoder.com/practice/a4bccea7f4644fbda1208f8e0d397bab"
+ },
+ "PIO15": {
+  "acceptRate": 84.83,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_补充前导零",
+  "url": "https://www.nowcoder.com/practice/c5b1fb6a4b1644e590b49a4cbca7930e"
+ },
+ "PIO16": {
+  "acceptRate": 84.11,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_spj判断YES与NO",
+  "url": "https://www.nowcoder.com/practice/4dffedb2a0734a0e9ce759f2eaeeda65"
+ },
+ "PIO17": {
+  "acceptRate": 91.29,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_spj判断浮点误差",
+  "url": "https://www.nowcoder.com/practice/6652094c6a0e4381911b541ed664d8b7"
+ },
+ "PIO18": {
+  "acceptRate": 55.1,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_spj判断数组之和",
+  "url": "https://www.nowcoder.com/practice/da783089da3b4a3188d240e1b7ac4b23"
+ },
+ "PIO2": {
+  "acceptRate": 82.54,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_A+B",
+  "url": "https://www.nowcoder.com/practice/72195b26cb0a4483a1f9fdf314ad63fa"
+ },
+ "PIO3": {
+  "acceptRate": 86.88,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_A+B_EOF形式",
+  "url": "https://www.nowcoder.com/practice/295063bf1bce4c2e819a8f18a5efcd20"
+ },
+ "PIO4": {
+  "acceptRate": 78.93,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_A+B_T组形式",
+  "url": "https://www.nowcoder.com/practice/cc937d32225340469bfb60a0797bad77"
+ },
+ "PIO5": {
+  "acceptRate": 84.4,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_A+B_零尾模式",
+  "url": "https://www.nowcoder.com/practice/a561ad77e7bb45679db2bd7317fded84"
+ },
+ "PIO6": {
+  "acceptRate": 48.6,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_一维数组",
+  "url": "https://www.nowcoder.com/practice/f3a0631c336d42099103c187a9c65e62"
+ },
+ "PIO7": {
+  "acceptRate": 64.05,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_一维数组_T组形式",
+  "url": "https://www.nowcoder.com/practice/90cdc8e31ef74b6e9fd44c1e03077b57"
+ },
+ "PIO8": {
+  "acceptRate": 65.93,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "单组_二维数组",
+  "url": "https://www.nowcoder.com/practice/4df606b6c3764d9c969f8759c8a4807b"
+ },
+ "PIO9": {
+  "acceptRate": 75.15,
+  "difficulty": "入门",
+  "tags": [],
+  "title": "多组_二维数组_T组形式",
+  "url": "https://www.nowcoder.com/practice/fe1e902e076b46dd82e7d42e12617893"
+ }
+}

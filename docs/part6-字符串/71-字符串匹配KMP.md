@@ -379,7 +379,7 @@ def z_search(t, p, sep=b"\x00"):
 > 输出它的前缀函数 $\pi_1, \pi_2, \dots, \pi_n$，一行一组，空格分隔。
 > 特殊测试点 11–15：**仅使用一个字符构建串**。
 > 题面见 [BISHI92 原题（牛客）](https://www.nowcoder.com/practice/f347bf9d731d47a0bc87bc7e2415cef1)。
-> 题解见 [`solutions/BISHI92.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI92.py)（已用官方样例验证）。
+> 题解见 [`solutions/BISHI92.py`](../solutions/BISHI92.md)（已用官方样例验证）。
 
 **这题是纯模板 + 纯 IO 压力测试。** 算法就是 71.2 的十行递推，
 但 $\sum n = 2\times10^6$、输出 $2\times10^6$ 个整数（4–14 MB），
