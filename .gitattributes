@@ -1,0 +1,4 @@
+# 让换行符行为不依赖各人的 core.autocrlf 设置。
+# 仓库内一律存 LF；Windows 上检出成什么由本地 core.autocrlf 决定，
+# 两边都不会产生「整文件都变了」的噪音 diff。
+* text=auto eol=lf

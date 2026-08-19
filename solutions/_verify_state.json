@@ -4,1154 +4,1154 @@
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12758874893188477
+    "time": 0.09480118751525879
   },
   "BISHI2": {
     "no": "BISHI2",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06923127174377441
+    "time": 0.04920816421508789
   },
   "BISHI3": {
     "no": "BISHI3",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06401371955871582
+    "time": 0.049303293228149414
   },
   "BISHI4": {
     "no": "BISHI4",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1460857391357422
+    "time": 0.09859824180603027
   },
   "BISHI5": {
     "no": "BISHI5",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12513470649719238
+    "time": 0.09766769409179688
   },
   "BISHI6": {
     "no": "BISHI6",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06362652778625488
+    "time": 0.060091495513916016
   },
   "BISHI7": {
     "no": "BISHI7",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06077265739440918
+    "time": 0.053604841232299805
   },
   "BISHI8": {
     "no": "BISHI8",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06430959701538086
+    "time": 0.0529477596282959
   },
   "BISHI9": {
     "no": "BISHI9",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13062405586242676
+    "time": 0.09526395797729492
   },
   "BISHI10": {
     "no": "BISHI10",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12577247619628906
+    "time": 0.09541559219360352
   },
   "BISHI11": {
     "no": "BISHI11",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13507723808288574
+    "time": 0.09428763389587402
   },
   "BISHI12": {
     "no": "BISHI12",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0681910514831543
+    "time": 0.05016016960144043
   },
   "BISHI13": {
     "no": "BISHI13",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06789135932922363
+    "time": 0.05081582069396973
   },
   "BISHI14": {
     "no": "BISHI14",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.14306974411010742
+    "time": 0.10520792007446289
   },
   "BISHI15": {
     "no": "BISHI15",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06624984741210938
+    "time": 0.04913449287414551
   },
   "BISHI16": {
     "no": "BISHI16",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0723564624786377
+    "time": 0.05208706855773926
   },
   "BISHI17": {
     "no": "BISHI17",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0702219009399414
+    "time": 0.05150938034057617
   },
   "BISHI18": {
     "no": "BISHI18",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1248934268951416
+    "time": 0.09997725486755371
   },
   "BISHI19": {
     "no": "BISHI19",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06248307228088379
+    "time": 0.05101776123046875
   },
   "BISHI20": {
     "no": "BISHI20",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1387767791748047
+    "time": 0.11324834823608398
   },
   "BISHI21": {
     "no": "BISHI21",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07273364067077637
+    "time": 0.04949808120727539
   },
   "BISHI22": {
     "no": "BISHI22",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06756162643432617
+    "time": 0.0530245304107666
   },
   "BISHI23": {
     "no": "BISHI23",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06684422492980957
+    "time": 0.056626081466674805
   },
   "BISHI24": {
     "no": "BISHI24",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06992554664611816
+    "time": 0.05703258514404297
   },
   "BISHI25": {
     "no": "BISHI25",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06377458572387695
+    "time": 0.0487821102142334
   },
   "BISHI26": {
     "no": "BISHI26",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.12189984321594238
+    "time": 0.09885334968566895
   },
   "BISHI27": {
     "no": "BISHI27",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.12061190605163574
+    "time": 0.1023406982421875
   },
   "BISHI28": {
     "no": "BISHI28",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.12218332290649414
+    "time": 0.09588122367858887
   },
   "BISHI29": {
     "no": "BISHI29",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.1251370906829834
+    "time": 0.09515881538391113
   },
   "BISHI30": {
     "no": "BISHI30",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12500715255737305
+    "time": 0.10301995277404785
   },
   "BISHI31": {
     "no": "BISHI31",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13131117820739746
+    "time": 0.09813785552978516
   },
   "BISHI32": {
     "no": "BISHI32",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.06519603729248047
+    "time": 0.04996848106384277
   },
   "BISHI33": {
     "no": "BISHI33",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.061766624450683594
+    "time": 0.052034854888916016
   },
   "BISHI34": {
     "no": "BISHI34",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06725287437438965
+    "time": 0.050511837005615234
   },
   "BISHI35": {
     "no": "BISHI35",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06418657302856445
+    "time": 0.052852630615234375
   },
   "BISHI36": {
     "no": "BISHI36",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06317663192749023
+    "time": 0.04889082908630371
   },
   "BISHI37": {
     "no": "BISHI37",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.06773686408996582
+    "time": 0.05151987075805664
   },
   "BISHI38": {
     "no": "BISHI38",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.07935476303100586
+    "time": 0.059058189392089844
   },
   "BISHI39": {
     "no": "BISHI39",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06951594352722168
+    "time": 0.05236530303955078
   },
   "BISHI40": {
     "no": "BISHI40",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.06931948661804199
+    "time": 0.052963972091674805
   },
   "BISHI41": {
     "no": "BISHI41",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06311559677124023
+    "time": 0.05020427703857422
   },
   "BISHI42": {
     "no": "BISHI42",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06533956527709961
+    "time": 0.05732297897338867
   },
   "BISHI43": {
     "no": "BISHI43",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06728553771972656
+    "time": 0.05187058448791504
   },
   "BISHI44": {
     "no": "BISHI44",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12712311744689941
+    "time": 0.09675455093383789
   },
   "BISHI45": {
     "no": "BISHI45",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12448835372924805
+    "time": 0.09693622589111328
   },
   "BISHI46": {
     "no": "BISHI46",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06426310539245605
+    "time": 0.05125713348388672
   },
   "BISHI47": {
     "no": "BISHI47",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06763458251953125
+    "time": 0.05472064018249512
   },
   "BISHI48": {
     "no": "BISHI48",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06997513771057129
+    "time": 0.05239748954772949
   },
   "BISHI49": {
     "no": "BISHI49",
     "status": "PASS",
     "mode": "exact",
     "cases": 3,
-    "time": 0.19871807098388672
+    "time": 0.15531444549560547
   },
   "BISHI50": {
     "no": "BISHI50",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07156181335449219
+    "time": 0.05329608917236328
   },
   "BISHI51": {
     "no": "BISHI51",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06789016723632812
+    "time": 0.05449938774108887
   },
   "BISHI52": {
     "no": "BISHI52",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.07031679153442383
+    "time": 0.05324578285217285
   },
   "BISHI53": {
     "no": "BISHI53",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06223917007446289
+    "time": 0.05217766761779785
   },
   "BISHI54": {
     "no": "BISHI54",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06718063354492188
+    "time": 0.05260300636291504
   },
   "BISHI55": {
     "no": "BISHI55",
     "status": "PASS",
     "mode": "exact",
     "cases": 3,
-    "time": 0.1885221004486084
+    "time": 0.1601123809814453
   },
   "BISHI56": {
     "no": "BISHI56",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12529587745666504
+    "time": 0.10255861282348633
   },
   "BISHI57": {
     "no": "BISHI57",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12850046157836914
+    "time": 0.09985041618347168
   },
   "BISHI58": {
     "no": "BISHI58",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13137555122375488
+    "time": 0.09867358207702637
   },
   "BISHI59": {
     "no": "BISHI59",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12898659706115723
+    "time": 0.09937405586242676
   },
   "BISHI60": {
     "no": "BISHI60",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1363060474395752
+    "time": 0.10088229179382324
   },
   "BISHI61": {
     "no": "BISHI61",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06852364540100098
+    "time": 0.0726308822631836
   },
   "BISHI62": {
     "no": "BISHI62",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0700528621673584
+    "time": 0.04773998260498047
   },
   "BISHI63": {
     "no": "BISHI63",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.08014297485351562
+    "time": 0.048438072204589844
   },
   "BISHI64": {
     "no": "BISHI64",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06713747978210449
+    "time": 0.048210859298706055
   },
   "BISHI65": {
     "no": "BISHI65",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1258697509765625
+    "time": 0.09718585014343262
   },
   "BISHI66": {
     "no": "BISHI66",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06387734413146973
+    "time": 0.05050015449523926
   },
   "BISHI67": {
     "no": "BISHI67",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.060456037521362305
+    "time": 0.04952645301818848
   },
   "BISHI68": {
     "no": "BISHI68",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06443119049072266
+    "time": 0.04862260818481445
   },
   "BISHI69": {
     "no": "BISHI69",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06157088279724121
+    "time": 0.05054664611816406
   },
   "BISHI70": {
     "no": "BISHI70",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07040715217590332
+    "time": 0.05068564414978027
   },
   "BISHI71": {
     "no": "BISHI71",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06656789779663086
+    "time": 0.050897836685180664
   },
   "BISHI72": {
     "no": "BISHI72",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06770682334899902
+    "time": 0.048005104064941406
   },
   "BISHI73": {
     "no": "BISHI73",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.08335471153259277
+    "time": 0.0537261962890625
   },
   "BISHI74": {
     "no": "BISHI74",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07454538345336914
+    "time": 0.05377936363220215
   },
   "BISHI75": {
     "no": "BISHI75",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.14225101470947266
+    "time": 0.09811878204345703
   },
   "BISHI76": {
     "no": "BISHI76",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07480812072753906
+    "time": 0.05321359634399414
   },
   "BISHI77": {
     "no": "BISHI77",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07639694213867188
+    "time": 0.04911208152770996
   },
   "BISHI78": {
     "no": "BISHI78",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07599306106567383
+    "time": 0.046402931213378906
   },
   "BISHI79": {
     "no": "BISHI79",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07007670402526855
+    "time": 0.0584254264831543
   },
   "BISHI80": {
     "no": "BISHI80",
     "status": "PASS",
     "mode": "exact",
     "cases": 3,
-    "time": 0.21799802780151367
+    "time": 0.1474754810333252
   },
   "BISHI81": {
     "no": "BISHI81",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07829618453979492
+    "time": 0.05392050743103027
   },
   "BISHI82": {
     "no": "BISHI82",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07386469841003418
+    "time": 0.050655364990234375
   },
   "BISHI83": {
     "no": "BISHI83",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.1421966552734375
+    "time": 0.09894466400146484
   },
   "BISHI84": {
     "no": "BISHI84",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07038712501525879
+    "time": 0.05226850509643555
   },
   "BISHI85": {
     "no": "BISHI85",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06619977951049805
+    "time": 0.051084041595458984
   },
   "BISHI86": {
     "no": "BISHI86",
     "status": "PASS",
     "mode": "float",
     "cases": 2,
-    "time": 0.14179778099060059
+    "time": 0.10099124908447266
   },
   "BISHI87": {
     "no": "BISHI87",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.15510964393615723
+    "time": 0.10422682762145996
   },
   "BISHI88": {
     "no": "BISHI88",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07489490509033203
+    "time": 0.05014324188232422
   },
   "BISHI89": {
     "no": "BISHI89",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07258081436157227
+    "time": 0.049660682678222656
   },
   "BISHI90": {
     "no": "BISHI90",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.213425874710083
+    "time": 0.17887043952941895
   },
   "BISHI91": {
     "no": "BISHI91",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07041025161743164
+    "time": 0.05515766143798828
   },
   "BISHI92": {
     "no": "BISHI92",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06369519233703613
+    "time": 0.052344322204589844
   },
   "BISHI93": {
     "no": "BISHI93",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07244253158569336
+    "time": 0.049901723861694336
   },
   "BISHI94": {
     "no": "BISHI94",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06866145133972168
+    "time": 0.05215787887573242
   },
   "BISHI95": {
     "no": "BISHI95",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06821680068969727
+    "time": 0.050585269927978516
   },
   "BISHI96": {
     "no": "BISHI96",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06375885009765625
+    "time": 0.0528109073638916
   },
   "BISHI97": {
     "no": "BISHI97",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07204294204711914
+    "time": 0.0551762580871582
   },
   "BISHI98": {
     "no": "BISHI98",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07087326049804688
+    "time": 0.049866437911987305
   },
   "BISHI99": {
     "no": "BISHI99",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07262086868286133
+    "time": 0.05001020431518555
   },
   "BISHI100": {
     "no": "BISHI100",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.161041259765625
+    "time": 0.10469436645507812
   },
   "BISHI101": {
     "no": "BISHI101",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.08295488357543945
+    "time": 0.051100730895996094
   },
   "BISHI102": {
     "no": "BISHI102",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.062380075454711914
+    "time": 0.04858970642089844
   },
   "BISHI103": {
     "no": "BISHI103",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06702423095703125
+    "time": 0.055913686752319336
   },
   "BISHI104": {
     "no": "BISHI104",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06674718856811523
+    "time": 0.05138444900512695
   },
   "BISHI105": {
     "no": "BISHI105",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13680338859558105
+    "time": 0.10142135620117188
   },
   "BISHI106": {
     "no": "BISHI106",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13187050819396973
+    "time": 0.10198354721069336
   },
   "BISHI107": {
     "no": "BISHI107",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13093900680541992
+    "time": 0.09490203857421875
   },
   "BISHI108": {
     "no": "BISHI108",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06801795959472656
+    "time": 0.05787515640258789
   },
   "BISHI109": {
     "no": "BISHI109",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06862139701843262
+    "time": 0.05375337600708008
   },
   "BISHI110": {
     "no": "BISHI110",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07415270805358887
+    "time": 0.05363726615905762
   },
   "BISHI111": {
     "no": "BISHI111",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06866049766540527
+    "time": 0.050441741943359375
   },
   "BISHI112": {
     "no": "BISHI112",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06667637825012207
+    "time": 0.05507206916809082
   },
   "BISHI113": {
     "no": "BISHI113",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1214599609375
+    "time": 0.09625387191772461
   },
   "BISHI114": {
     "no": "BISHI114",
     "status": "PASS",
     "mode": "exact",
     "cases": 3,
-    "time": 0.20115947723388672
+    "time": 0.14907264709472656
   },
   "BISHI115": {
     "no": "BISHI115",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07056427001953125
+    "time": 0.049163103103637695
   },
   "BISHI116": {
     "no": "BISHI116",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.07379388809204102
+    "time": 0.04898428916931152
   },
   "BISHI117": {
     "no": "BISHI117",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12795424461364746
+    "time": 0.10294032096862793
   },
   "BISHI118": {
     "no": "BISHI118",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06700563430786133
+    "time": 0.0509486198425293
   },
   "BISHI119": {
     "no": "BISHI119",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.12632989883422852
+    "time": 0.1023411750793457
   },
   "BISHI120": {
     "no": "BISHI120",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.06435513496398926
+    "time": 0.05170035362243652
   },
   "BISHI121": {
     "no": "BISHI121",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06797456741333008
+    "time": 0.04872012138366699
   },
   "BISHI122": {
     "no": "BISHI122",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06623435020446777
+    "time": 0.05066490173339844
   },
   "BISHI123": {
     "no": "BISHI123",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06370902061462402
+    "time": 0.05080533027648926
   },
   "BISHI124": {
     "no": "BISHI124",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06602168083190918
+    "time": 0.04965496063232422
   },
   "BISHI125": {
     "no": "BISHI125",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06214451789855957
+    "time": 0.05486750602722168
   },
   "BISHI126": {
     "no": "BISHI126",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06413507461547852
+    "time": 0.04873323440551758
   },
   "BISHI127": {
     "no": "BISHI127",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06668615341186523
+    "time": 0.05080699920654297
   },
   "BISHI128": {
     "no": "BISHI128",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06643867492675781
+    "time": 0.052588462829589844
   },
   "BISHI129": {
     "no": "BISHI129",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13515114784240723
+    "time": 0.10043668746948242
   },
   "BISHI130": {
     "no": "BISHI130",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06637907028198242
+    "time": 0.05115318298339844
   },
   "BISHI131": {
     "no": "BISHI131",
     "status": "PASS",
     "mode": "exact",
     "cases": 3,
-    "time": 0.18460488319396973
+    "time": 0.13921666145324707
   },
   "BISHI132": {
     "no": "BISHI132",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1272585391998291
+    "time": 0.09486126899719238
   },
   "BISHI133": {
     "no": "BISHI133",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12520051002502441
+    "time": 0.09560155868530273
   },
   "BISHI134": {
     "no": "BISHI134",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13168644905090332
+    "time": 0.09387540817260742
   },
   "BISHI135": {
     "no": "BISHI135",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12820148468017578
+    "time": 0.09612226486206055
   },
   "BISHI136": {
     "no": "BISHI136",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12721729278564453
+    "time": 0.10501885414123535
   },
   "BISHI137": {
     "no": "BISHI137",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06687784194946289
+    "time": 0.05148172378540039
   },
   "BISHI138": {
     "no": "BISHI138",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06402349472045898
+    "time": 0.04995131492614746
   },
   "BISHI139": {
     "no": "BISHI139",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.1282057762145996
+    "time": 0.09651827812194824
   },
   "BISHI140": {
     "no": "BISHI140",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06371855735778809
+    "time": 0.05378460884094238
   },
   "BISHI141": {
     "no": "BISHI141",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.061600685119628906
+    "time": 0.049375295639038086
   },
   "BISHI142": {
     "no": "BISHI142",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0688326358795166
+    "time": 0.04911017417907715
   },
   "BISHI143": {
     "no": "BISHI143",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06743884086608887
+    "time": 0.054965972900390625
   },
   "BISHI144": {
     "no": "BISHI144",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0677943229675293
+    "time": 0.051103830337524414
   },
   "BISHI145": {
     "no": "BISHI145",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.062412261962890625
+    "time": 0.05057168006896973
   },
   "BISHI146": {
     "no": "BISHI146",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12726259231567383
+    "time": 0.09678173065185547
   },
   "BISHI147": {
     "no": "BISHI147",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.13252472877502441
+    "time": 0.09856271743774414
   },
   "PIO1": {
     "no": "PIO1",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.061365365982055664
+    "time": 0.049887895584106445
   },
   "PIO2": {
     "no": "PIO2",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06705594062805176
+    "time": 0.04929018020629883
   },
   "PIO3": {
     "no": "PIO3",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06174516677856445
+    "time": 0.05485367774963379
   },
   "PIO4": {
     "no": "PIO4",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06640863418579102
+    "time": 0.05336284637451172
   },
   "PIO5": {
     "no": "PIO5",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.0679633617401123
+    "time": 0.05060410499572754
   },
   "PIO6": {
     "no": "PIO6",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06434965133666992
+    "time": 0.050029754638671875
   },
   "PIO7": {
     "no": "PIO7",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06216716766357422
+    "time": 0.04915165901184082
   },
   "PIO8": {
     "no": "PIO8",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06252312660217285
+    "time": 0.0515596866607666
   },
   "PIO9": {
     "no": "PIO9",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06638193130493164
+    "time": 0.04981231689453125
   },
   "PIO10": {
     "no": "PIO10",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06055116653442383
+    "time": 0.048760414123535156
   },
   "PIO11": {
     "no": "PIO11",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06606435775756836
+    "time": 0.050278425216674805
   },
   "PIO12": {
     "no": "PIO12",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.06913924217224121
+    "time": 0.04987788200378418
   },
   "PIO13": {
     "no": "PIO13",
     "status": "PASS",
     "mode": "exact",
     "cases": 1,
-    "time": 0.08207535743713379
+    "time": 0.04917454719543457
   },
   "PIO14": {
     "no": "PIO14",
     "status": "PASS",
     "mode": "exact",
     "cases": 3,
-    "time": 0.2216813564300537
+    "time": 0.1551814079284668
   },
   "PIO15": {
     "no": "PIO15",
     "status": "PASS",
     "mode": "exact",
     "cases": 2,
-    "time": 0.12953877449035645
+    "time": 0.10191679000854492
   },
   "PIO16": {
     "no": "PIO16",
     "status": "PASS",
     "mode": "spj",
     "cases": 2,
-    "time": 0.13017487525939941
+    "time": 0.10352587699890137
   },
   "PIO17": {
     "no": "PIO17",
     "status": "PASS",
     "mode": "float",
     "cases": 1,
-    "time": 0.06224250793457031
+    "time": 0.050368547439575195
   },
   "PIO18": {
     "no": "PIO18",
     "status": "PASS",
     "mode": "spj",
     "cases": 1,
-    "time": 0.06571269035339355
+    "time": 0.04880046844482422
   }
 }

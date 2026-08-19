@@ -13,7 +13,7 @@ Trie（字典树 / 前缀树）是**把一堆字符串按公共前缀合并成�
 | 有多少个串**以 $t$ 为前缀** | ❌ 得枚举所有串 | ✅ **$O(\|t\|)$** |
 | 集合里与 $x$ **异或最大**的数 | ❌ | ✅ 01-Trie，$O(\log V)$ |
 | 集合里字典序最小/第 $k$ 小的串 | ❌ 得排序 | ✅ 树上二分 |
-| 多个模式串**同时**在文本里匹配 | ❌ | ✅ AC 自动机 = Trie + KMP |
+| 多个模式串**同时**在文本里匹配 | ❌ | ✅ AC 自动机（Aho-Corasick 自动机）= Trie + KMP |
 
 > **一句话判据**：**问「精确匹配」用哈希表，问「前缀 / 逐位贪心」用 Trie。**
 > 只要题面里出现「前缀」「异或最大」「按位从高到低」这些词，就该想 Trie。
@@ -103,13 +103,13 @@ def trie_nested_build(words):
 
     最好写，但每个节点一个 dict 对象，内存代价最大。
     """
-    root = {}
+    root = {}                                # 根代表空前缀
     for w in words:
-        node = root
+        node = root                          # 每个串都从根出发
         for ch in w:
-            node = node.setdefault(ch, {})   # ★ 没有就新建，一行搞定
-            node['#'] = node.get('#', 0) + 1
-        node['$'] = node.get('$', 0) + 1
+            node = node.setdefault(ch, {})   # ★ 「查 + 不存在就新建」一次调用完成
+            node['#'] = node.get('#', 0) + 1   # 沿途累加 = 经过该前缀的串数（pre）
+        node['$'] = node.get('$', 0) + 1     # 只在末端累加 = 恰好等于该串的个数（end）
     return root
 
 
@@ -119,8 +119,8 @@ def trie_nested_count_prefix(root, t):
     for ch in t:
         node = node.get(ch)
         if node is None:                     # 走不通 -> 没有任何串以 t 为前缀
-            return 0
-    return node['#']
+            return 0                         # 断路返回，不能继续往下走
+    return node['#']                         # '#' 槽里存的就是 pre 计数
 ```
 
 `setdefault` 是这个写法的灵魂：**「查 + 不存在就插入」一次调用完成**，
@@ -153,23 +153,23 @@ def trie_flat_build(words, C=128):
     C 取 128 覆盖全部 ASCII，且是 2 的幂（乘法可换成移位）。
     返回 (child, pre, end)。
     """
-    child = {}                               # 全局只有这一个 dict
+    child = {}                               # 全局只有这一个 dict，键是「节点 + 字符」的编码
     pre = [0]                                # pre[0] 是根，不会被查到
-    end = [0]
+    end = [0]                                # len(pre) 同时充当「下一个可用节点编号」计数器
     get = child.get                          # ★ 绑成局部名，省掉每次属性查找
     for w in words:
-        cur = 0
+        cur = 0                              # 0 号节点是根，每个串都从这里出发
         for b in w:                          # 迭代 bytes 得到的是 int
-            k = cur * C + b
-            nxt = get(k, -1)
+            k = cur * C + b                  # 与扁平数组同一套下标编码，只是槽不预先分配
+            nxt = get(k, -1)                 # 一次调用完成「查表 + 缺省」，-1 表示没这条边
             if nxt < 0:
                 nxt = len(pre)               # 新节点编号 = 当前节点总数
                 pre.append(0)
                 end.append(0)
                 child[k] = nxt
             cur = nxt
-            pre[cur] += 1
-        end[cur] += 1
+            pre[cur] += 1                    # 沿途每个节点 +1 = 经过该前缀的串数
+        end[cur] += 1                        # 只有末端 +1 = 恰好等于该串的个数
     return child, pre, end
 
 
@@ -178,10 +178,10 @@ def trie_flat_count_prefix(child, pre, t, C=128):
     get = child.get
     cur = 0
     for b in t:
-        cur = get(cur * C + b, -1)
+        cur = get(cur * C + b, -1)           # 用同一套编码往下走一步
         if cur < 0:
-            return 0
-    return pre[cur]
+            return 0                         # 断路：这条边不存在，就没有串以 t 为前缀
+    return pre[cur]                          # 走通了，答案就是终点节点的 pre
 ```
 
 **为什么这是 Python 下的最优解**，四条理由：
@@ -213,23 +213,25 @@ def trie_array_build(words, C=26, base=97):
     对应 S4 的 int next[MAX][26]。0 号节点是根，所以「0 = 不存在」不会歧义。
     查询是纯下标访问，理论上最快；但内存是 节点数 * C，Python 下极易爆。
     """
-    son = [0] * C                            # 先给根开一段
-    pre = [0]
+    son = [0] * C                            # 先给 0 号节点（根）开一段，占 son[0..C-1]
+    pre = [0]                                # len(pre) 就是当前节点总数，兼作编号分配器
     end = [0]
     for w in words:
-        cur = 0
+        cur = 0                              # 每个串都从根出发
         for b in w:
-            k = cur * C + (b - base)
+            # ★ 二维 next[node][c] 压成一维：每个节点独占连续 C 个槽，
+            #   node 号的那一段从 node*C 开始，第 c 条边落在 node*C + c
+            k = cur * C + (b - base)         # b - base 把字符映射到 0..C-1
             nxt = son[k]
-            if nxt == 0:
-                nxt = len(pre)
+            if nxt == 0:                     # 0 号是根，根不可能是谁的孩子，故 0 = 不存在
+                nxt = len(pre)               # 新节点编号 = 已分配的节点数
                 son[k] = nxt
                 son.extend([0] * C)          # ★ 为新节点开一整段，哪怕只用一条边
                 pre.append(0)
                 end.append(0)
             cur = nxt
-            pre[cur] += 1
-        end[cur] += 1
+            pre[cur] += 1                    # 沿途每个节点 +1 = 经过该前缀的串数
+        end[cur] += 1                        # 只有末端 +1 = 恰好等于该串的个数
     return son, pre, end
 ```
 
@@ -276,27 +278,27 @@ class Trie:
     __slots__ = ("child", "pre", "end")
 
     def __init__(self):
-        self.child = {}
+        self.child = {}                      # key = node * 128 + 字节值 -> 子节点编号
         self.pre = [0]                       # 0 号节点是根
         self.end = [0]
 
     def insert(self, w):
         if isinstance(w, str):
-            w = w.encode()
+            w = w.encode()                   # 统一成 bytes，迭代出来才是 int
         child, pre, end = self.child, self.pre, self.end
-        get = child.get
-        cur = 0
+        get = child.get                      # 循环里高频调用，先绑成局部名
+        cur = 0                              # 从根出发
         for b in w:
-            k = cur * 128 + b
+            k = cur * 128 + b                # 每个节点虚拟占 128 个槽，实际只存用到的边
             nxt = get(k, -1)
-            if nxt < 0:
-                nxt = len(pre)
+            if nxt < 0:                      # 没这条边就新建一个节点
+                nxt = len(pre)               # 新编号 = 已有节点数
                 pre.append(0)
                 end.append(0)
                 child[k] = nxt
             cur = nxt
-            pre[cur] += 1
-        end[cur] += 1
+            pre[cur] += 1                    # 沿途 +1：经过该前缀的串数
+        end[cur] += 1                        # 末端 +1：恰好等于 w 的串数
 
     def _walk(self, t):
         """沿 t 走，返回终点节点编号；走不通返回 -1。"""
@@ -307,7 +309,7 @@ class Trie:
         for b in t:
             cur = get(cur * 128 + b, -1)
             if cur < 0:
-                return -1
+                return -1                    # 断路退出，绝不能拿 -1 去索引 pre/end
         return cur
 
     def count_prefix(self, t):
@@ -324,17 +326,17 @@ class Trie:
             w = w.encode()
         get = self.child.get
         cur = 0
-        path = []
+        path = []                            # 记下沿途节点，确认能删之后再统一减
         for b in w:
             cur = get(cur * 128 + b, -1)
             if cur < 0:
                 return False                 # 不存在，什么都不做
             path.append(cur)
         if self.end[cur] == 0:
-            return False
+            return False                     # 路走得通，但没有串「终止」在这里
         for v in path:
-            self.pre[v] -= 1
-        self.end[cur] -= 1
+            self.pre[v] -= 1                 # 沿途撤销一次「经过」
+        self.end[cur] -= 1                   # 末端撤销一次「终止」
         return True
 ```
 
@@ -405,30 +407,31 @@ def max_xor_pair(nums, bits=30):
     """
     if len(nums) < 2:
         return 0
-    ch = [0, 0]                              # 根的两个孩子
+    ch = [0, 0]                              # 根（0 号节点）的两条边，占 ch[0] 与 ch[1]
     for x in nums:                           # ---- 建树 ----
         cur = 0
         for k in range(bits - 1, -1, -1):    # ★ 必须从高位往低位
-            b = (x >> k) & 1
+            b = (x >> k) & 1                 # 取出 x 的第 k 位
+            # 字符集只有 {0,1}，每个节点独占 2 个槽：v 号的边在 ch[v*2] 和 ch[v*2+1]
             nxt = ch[cur * 2 + b]
-            if nxt == 0:
-                nxt = len(ch) >> 1           # 新节点编号 = 已有节点数
+            if nxt == 0:                     # 根是 0 号，不会是谁的孩子，故 0 = 不存在
+                nxt = len(ch) >> 1           # 新节点编号 = 已有节点数 = 槽数的一半
                 ch[cur * 2 + b] = nxt
-                ch.append(0)
+                ch.append(0)                 # 补出新节点自己的两个槽
                 ch.append(0)
             cur = nxt
     best = 0
     for x in nums:                           # ---- 逐个查询 ----
         cur = 0
-        val = 0
+        val = 0                              # x 与最优配对的异或值，逐位拼出来
         for k in range(bits - 1, -1, -1):
             b = (x >> k) & 1
-            opp = ch[cur * 2 + (b ^ 1)]
+            opp = ch[cur * 2 + (b ^ 1)]      # b ^ 1 就是 b 的相反位
             if opp:                          # 能走相反位 -> 这一位异或得 1
-                val |= 1 << k
+                val |= 1 << k                # 高位的一个 1 顶得上后面所有位，能拿就拿
                 cur = opp
             else:                            # 只能走同位 -> 这一位是 0
-                cur = ch[cur * 2 + b]
+                cur = ch[cur * 2 + b]        # 每个数都插满 bits 位，同位分支一定存在
         if val > best:
             best = val
     return best
@@ -459,16 +462,16 @@ def max_xor_pair_set(nums, bits=30):
         存在一对数满足高位异或 == cand  <=>  存在 p 使 p ^ cand 也是前缀。
     集合推导式与 `in` 判断都是 C 层操作，比逐位走 Trie 快一个数量级。
     """
-    res = 0
-    mask = 0
-    for k in range(bits - 1, -1, -1):
-        mask |= 1 << k
+    res = 0                                  # 已经坐实的答案高位
+    mask = 0                                 # 只保留「已考察过的高位」
+    for k in range(bits - 1, -1, -1):        # 与 01-Trie 一样，必须从高位往低位定
+        mask |= 1 << k                       # 每轮把考察范围往低位放宽一位
         prefixes = {x & mask for x in nums}  # ★ 集合推导，C 层一次扫完
-        cand = res | (1 << k)
+        cand = res | (1 << k)                # 试着让第 k 位也取 1
         for p in prefixes:                   # a ^ b == cand  <=>  b == a ^ cand
             if (p ^ cand) in prefixes:
-                res = cand
-                break
+                res = cand                   # 确实存在这样一对，第 k 位坐实为 1
+                break                        # 本位已定，进入下一位
     return res
 ```
 
@@ -508,7 +511,7 @@ def max_xor_pair_set(nums, bits=30):
 
 | 用途 | 说明 |
 | --- | --- |
-| **AC 自动机** | Trie + 失配指针（KMP 的 $\pi$ 数组在树上的推广），一次扫文本匹配全部模式串。见 [71.8](71-字符串匹配KMP.md) |
+| **AC 自动机（Aho-Corasick 自动机）** | Trie + 失配指针（KMP 的 $\pi$ 数组在树上的推广），一次扫文本匹配全部模式串。见 [71.8](71-字符串匹配KMP.md) |
 | **字典序遍历** | Trie 的 DFS 序就是字典序，常用来「按字典序输出所有满足条件的串」 |
 | **后缀 Trie / 后缀自动机** | 把所有后缀插进 Trie，可解本质不同子串数等问题；后缀 Trie 是 $O(n^2)$ 的，实用的是后缀自动机（超纲） |
 | **数对 / 路径的异或** | 树上路径异或 = 根到两点的前缀异或的异或，于是「树上最大异或路径」= 01-Trie 求最大异或对 |
@@ -553,12 +556,12 @@ def main():
     p = 2
     for _ in range(n):                       # ---- 插入 ----
         s = data[p]; p += 1
-        cur = 0
+        cur = 0                              # 每个模式串都从 0 号节点（根）出发
         for b in s:                          # 迭代 bytes 得到 int，直接当转移字符
-            k = cur * 128 + b
-            nxt = get(k, -1)
+            k = cur * 128 + b                # 节点号乘字符集大小再加字符，编码唯一且可逆
+            nxt = get(k, -1)                 # 一次调用完成「查表 + 缺省」，-1 = 没这条边
             if nxt < 0:                      # 没这条边就新建节点
-                nxt = len(cnt)
+                nxt = len(cnt)               # len(cnt) 就是已有节点数，直接拿来当新编号
                 cnt.append(0)
                 child[k] = nxt
             cur = nxt
@@ -569,11 +572,11 @@ def main():
         s = data[p]; p += 1
         cur = 0
         for b in s:
-            cur = get(cur * 128 + b, -1)
+            cur = get(cur * 128 + b, -1)     # 用与插入完全相同的编码往下走
             if cur < 0:                      # 走不通：没有任何模式串以 t 为前缀
-                break
-        out.append("0" if cur < 0 else str(cnt[cur]))
-    sys.stdout.write("\n".join(out) + "\n")
+                break                        # 必须立刻断路，否则 cnt[-1] 会取到最后一个元素
+        out.append("0" if cur < 0 else str(cnt[cur]))   # 走通了就输出终点的 cnt
+    sys.stdout.write("\n".join(out) + "\n")   # 1e5 行一次写出，逐行 print 会拖垮时限
 
 
 main()

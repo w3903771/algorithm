@@ -4,6 +4,10 @@
 > **来源**：S4 `模板.docx` KMP 段
 > **前置**：[70-字符串处理](70-字符串处理.md)、[36-哈希与字符串哈希](../part3-数据结构/36-哈希与字符串哈希.md)
 
+KMP（Knuth-Morris-Pratt，取三位作者 Knuth、Morris、Pratt 的姓氏首字母）
+是最经典的字符串匹配算法。它真正的产物是一张**前缀函数**表——
+在各家资料里也叫 `next` 数组或 `fail` 数组，本章统一记作 $\pi$。
+
 这一章有一个**反直觉的核心结论**，先说在前面：
 
 > **在 Python 里，纯粹的「找子串」几乎永远应该用 `str.find` / `in`，
@@ -25,12 +29,13 @@ def naive_search(t, p):
     """暴力匹配，最坏 O(nm)。"""
     n, m = len(t), len(p)
     res = []
-    for i in range(n - m + 1):
-        j = 0
+    for i in range(n - m + 1):           # i 是对齐起点；再往后 p 就放不下了
+        j = 0                            # j = 本轮已经比对成功的长度
         while j < m and t[i + j] == p[j]:
             j += 1
-        if j == m:
+        if j == m:                       # 一路比到底，说明 p 出现在下标 i
             res.append(i)
+        # 失配后 i 只 +1、j 归零：刚刚比对成功的 j 个字符全白比了
     return res
 ```
 
@@ -94,16 +99,23 @@ def prefix_function(s):
     """
     n = len(s)
     pi = [0] * n
-    k = 0                                    # 当前候选 border 长度
-    for i in range(1, n):
-        c = s[i]
-        while k and s[k] != c:               # 沿失配链回退
-            k = pi[k - 1]
-        if s[k] == c:
+    k = 0                                    # 当前候选 border 长度，同时也是「下一个要比的下标」
+    for i in range(1, n):                    # pi[0] 恒为 0（真前缀不能是整串），所以从 1 起
+        c = s[i]                             # 取进局部变量，内层 while 每轮少一次索引
+        while k and s[k] != c:               # 长度 k 的候选接不上 c，换一个更短的候选
+            k = pi[k - 1]                    # ★ 跳到 pi[k-1]：s[0..k-1] 的最长 border
+        if s[k] == c:                        # 接上了，候选前缀整体加长一位
             k += 1
-        pi[i] = k
+        pi[i] = k                            # k == 0 表示 s[0..i] 没有非空 border
     return pi
 ```
+
+**`k = pi[k-1]` 为什么不是 `k = 0`**：长度 $k$ 的候选接不上 $s[i]$，
+但**比 $k$ 短的候选未必接不上**，直接归零就把它们全丢了，等于退回暴力。
+而 $s[0..i-1]$ 的**全部** border 恰好构成
+$k,\ \pi[k-1],\ \pi[\pi[k-1]-1],\ \dots,\ 0$ 这条严格递减的链，
+所以「换成次长的候选」就是沿链走一步——`pi[k-1]` 正是长度 $k$ 的那个前缀自己的最长 border。
+链一定会终止：每跳一次 $k$ 至少减 1，跳到 0 就只能重新开始。
 
 **复杂度是 $O(n)$（均摊）**：内层 `while` 每执行一次 $k$ 至少减 1，
 而 $k$ 在整个循环里总共只增加了不超过 $n$ 次，所以回退总量 $\le n$。
@@ -124,21 +136,32 @@ def kmp_search(t, p):
     """在 t 中找出 p 的所有出现位置（可重叠），返回起始下标列表。O(n + m)。"""
     m = len(p)
     if m == 0:
-        return list(range(len(t) + 1))
-    pi = prefix_function(p)
+        return list(range(len(t) + 1))       # 空串在每个位置（含末尾）都算出现一次
+    pi = prefix_function(p)                  # 只对模式串预处理，与文本无关
     res = []
-    k = 0                                    # 当前已匹配的长度
+    k = 0                                    # 当前已匹配的长度，同时是 p 中下一个要比的下标
     for i in range(len(t)):
         c = t[i]
-        while k and p[k] != c:
-            k = pi[k - 1]
+        while k and p[k] != c:               # 与构建循环同形，只是把 s[k] 换成了 p[k]
+            k = pi[k - 1]                    # ★ 同一条失配链：换成次长的「已匹配前缀」
         if p[k] == c:
             k += 1
-        if k == m:                           # 完整匹配一次
-            res.append(i - m + 1)
+        if k == m:                           # 已匹配长度到达 m，完整命中一次
+            res.append(i - m + 1)            # 命中的末位是 i，起点就是 i-m+1
             k = pi[k - 1]                    # ★ 回退，允许重叠匹配
     return res
 ```
+
+**两段循环是同一个模板**。逐行对照 `prefix_function`，差别只有三处：
+
+| | 构建 $\pi$ | 匹配 |
+| --- | --- | --- |
+| 游标 $k$ 的含义 | 候选 border 的长度 | 已匹配的前缀长度 |
+| 拿谁和谁比 | `s[k]` 对 `s[i]`（串和自己比） | `p[k]` 对 `t[i]`（模式对文本） |
+| 命中之后 | 只记 `pi[i] = k` | 多一句「记录位置并回退」 |
+
+回退用的是同一句 `k = pi[k-1]`，因为两处问的是同一个问题：
+**「已经匹配上的这 $k$ 个字符里，最长的那个『既是前缀又是后缀』有多长」**。
 
 > **`k = pi[k-1]` 这一行决定了「是否允许重叠」**：
 > - 写 `k = pi[k-1]` → 允许重叠（`"aaa"` 中找 `"aa"` 得到 2 个）；
@@ -156,9 +179,12 @@ def kmp_search_concat(t, p, sep=b"\x00"):
     代价：多用 O(n + m) 的内存。
     """
     m = len(p)
-    s = p + sep + t
+    s = p + sep + t                          # p 占下标 0..m-1，sep 占 m，t 从 m+1 开始
     pi = prefix_function(s)
-    return [i - 2 * m for i in range(2 * m + 1, len(s)) if pi[i] == m]
+    # pi[i] == m 表示以 i 结尾、长度 m 的那一段等于 p；该段起点是 i-m+1，
+    # 减去 t 的偏移 m+1，在 t 中的下标就是 i-2m
+    # 下界取 2m：t 的第 0 位若就是一次匹配，它结束在 i = 2m（写成 2m+1 会漏掉这一处）
+    return [i - 2 * m for i in range(2 * m, len(s)) if pi[i] == m]
 ```
 
 > **分隔符不能省**。不加分隔符时，`p = "aa"`、`t = "aaa"` 会让 $\pi$ 值超过 $m$，
@@ -197,10 +223,10 @@ $O(n+m)$ 最坏复杂度，而且**整个循环在 C 层**。
 # 找所有出现位置的「正确」Python 写法（比手写 KMP 快）
 def find_all(t, p):
     res = []
-    i = t.find(p)
+    i = t.find(p)                   # find 找不到返回 -1，正好当循环出口
     while i >= 0:
         res.append(i)
-        i = t.find(p, i + 1)        # +1 允许重叠；+len(p) 则不重叠
+        i = t.find(p, i + 1)        # 第二个参数是起始搜索位置；+1 允许重叠，+len(p) 则不重叠
     return res
 ```
 
@@ -231,6 +257,8 @@ def min_period(s):
     """
     n = len(s)
     pi = prefix_function(s)
+    # 最长 border 长 pi[n-1]，把它从右端对齐回左端要平移 n-pi[n-1] 位，
+    # 这个平移量就是最小周期
     return n - pi[n - 1]
 ```
 
@@ -257,10 +285,10 @@ def all_borders(s):
     """返回 s 的所有 border 长度（从大到小），不含 s 自身。"""
     pi = prefix_function(s)
     res = []
-    k = pi[len(s) - 1]
-    while k:
+    k = pi[len(s) - 1]                       # 整串的最长 border
+    while k:                                 # 沿失配链一路跳，长度严格递减，跳到 0 结束
         res.append(k)
-        k = pi[k - 1]
+        k = pi[k - 1]                        # 长度 k 的前缀，它自己的最长 border
     return res
 ```
 
@@ -297,17 +325,17 @@ def z_function(s):
     z = [0] * n
     if n == 0:
         return z
-    z[0] = n
-    l = r = 0                                # 最靠右的匹配段 [l, r)
+    z[0] = n                                 # 约定：s 与自己的公共前缀就是整串
+    l = r = 0                                # 最靠右的匹配段 [l, r)，满足 s[l:r] == s[0:r-l]
     for i in range(1, n):
-        if i < r:
-            zi = z[i - l]
-            ri = r - i
+        if i < r:                            # i 落在已知段内，可以借用镜像位置的结论
+            zi = z[i - l]                    # i 关于段首 l 的镜像位置
+            ri = r - i                       # 已知段在 i 右边还剩多少字符可信
             z[i] = zi if zi < ri else ri     # ★ 下界 = min(镜像值, 区间剩余)
         while i + z[i] < n and s[z[i]] == s[i + z[i]]:
-            z[i] += 1                        # 从下界继续暴力扩
+            z[i] += 1                        # 超出已知段的部分没有信息，只能逐位暴力扩
         if i + z[i] > r:
-            l, r = i, i + z[i]               # 更新最右段
+            l, r = i, i + z[i]               # 扩出了更靠右的边界，换成新的已知段
     return z
 ```
 
@@ -319,8 +347,10 @@ def z_function(s):
 def z_search(t, p, sep=b"\x00"):
     """用 Z 函数在 t 中找 p 的所有出现。O(n + m)。"""
     m = len(p)
-    s = p + sep + t
+    s = p + sep + t                          # t 从下标 m+1 开始（p 占 m 位，sep 占 1 位）
     z = z_function(s)
+    # z[i] >= m 表示从 i 开始至少有 m 个字符与 s 的开头（即 p）一致；
+    # 有 sep 挡着，z[i] 不可能超过 m。减去偏移 m+1 即为 t 中的下标
     return [i - m - 1 for i in range(m + 1, len(s)) if z[i] >= m]
 ```
 
@@ -366,17 +396,17 @@ def main():
     p = 1
     for _ in range(t):
         n = int(data[p]); s = data[p + 1]; p += 2     # 全程 bytes，不 decode
-        pi = [0] * n
-        k = 0
-        for i in range(1, n):
-            c = s[i]
+        pi = [0] * n                # 每组重开一张表，k 也必须跟着归零
+        k = 0                       # 候选 border 长度 = 下一个要比的下标
+        for i in range(1, n):       # pi[0] 恒为 0，直接跳过
+            c = s[i]                # bytes 取出来是 int，整数比较比字符对象快
             while k and s[k] != c:      # 沿失配链回退，均摊 O(1)
-                k = pi[k - 1]
+                k = pi[k - 1]           # 换成次长的候选，而不是从头再来
             if s[k] == c:
-                k += 1
+                k += 1                  # 候选前缀加长一位
             pi[i] = k
-        out.append(" ".join(map(str, pi)))
-    sys.stdout.write("\n".join(out) + "\n")
+        out.append(" ".join(map(str, pi)))   # 每组先拼成一行，最后统一输出
+    sys.stdout.write("\n".join(out) + "\n")   # 2e6 个整数只能一次写出，逐行 print 必 TLE
 
 
 main()

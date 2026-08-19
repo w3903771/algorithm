@@ -215,6 +215,17 @@ $$m \geqslant d$$
 
 $$\text{最少需要的系统数} = \text{最长严格上升子序列的长度}$$
 
+**于是「导弹拦截」这道两问的题，两问都是 LIS，写两遍同一个模板就完事**：
+
+| 问 | 要求的东西 | 偏序集语言 | 代码 |
+| --- | --- | --- | --- |
+| 第一问：一套系统最多拦几颗 | 最长**不上升**子序列 | 最长**反链** | 序列取负后求最长不下降 |
+| 第二问：最少要几套系统 | 最少**不上升**子序列覆盖 | 最小**反链覆盖** | 最长**严格上升**子序列 |
+
+第二问的推导链条是：一套系统 = 一条反链 → 「用最少的系统拦下全部」= 最小反链覆盖
+→ Mirsky 定理把它换成最长链 → 链在序列上就是严格上升子序列。
+**整个过程没有任何新算法，只是把问题翻译了两次。**
+
 > **注意「严格」与「不严格」的对应关系必须成对翻转**，这是本章最容易错的地方：
 >
 > | 一套系统能拦的 | 最少套数 = |
@@ -231,6 +242,25 @@ $$\text{最少需要的系统数} = \text{最长严格上升子序列的长度}$
 ## 111.7　Dilworth 定理
 
 > **Dilworth 定理**：**最小链覆盖**中链的条数等于**最长反链**的长度。即 $c = w$。
+
+### 先建立直觉
+
+两边各自的含义摆出来，等号就不神秘了：
+
+- **$c \ge w$ 是显然的**（这一半随时能自己推出来）。
+  反链上的元素两两不可比，而一条链上的元素两两可比，
+  所以**一条链最多吃下反链里的一个元素**。
+  有 $w$ 个元素必须分到不同的链里，链数当然至少是 $w$。
+- **$c \le w$ 才是定理的内容**：它断言「最长反链」这个下界**总能取到**，
+  不存在「明明反链只有 5，却非要 6 条链才盖得住」的偏序集。
+
+换成大白话：**最长反链是唯一的瓶颈**。
+拆分一个偏序集时，逼着你多开一条链的原因只有一个——有一撮元素两两不可比；
+而这撮元素最多有多少个，答案就是多少。
+
+同一句话在 Mirsky 定理那边镜像成立：最长链是分层的唯一瓶颈。
+**两个定理都在说「某个显而易见的下界恰好是紧的」，
+这也是它们能把「最少要几组」这类问题一句话解决的原因。**
 
 ### 这和 Mirsky 定理有什么区别？
 
@@ -325,13 +355,15 @@ from bisect import bisect_left, bisect_right
 def lis_strict(a):
     """最长**严格上升**子序列的长度。O(n log n)。"""
     tails = []                       # tails[i] = 长度 i+1 的上升子序列的最小结尾
+                                     # 每个长度只留最小的结尾，后面才最容易接得下去
     for v in a:
         i = bisect_left(tails, v)    # ★ 严格上升用 bisect_left
+                                     # 定位到第一个 >= v 的位置：它接不动 v，正好被替换
         if i == len(tails):
-            tails.append(v)
+            tails.append(v)          # v 比所有结尾都大，能把最长的那条再延长一位
         else:
-            tails[i] = v
-    return len(tails)
+            tails[i] = v             # 否则把这个长度的结尾换成更小的 v，长度不变
+    return len(tails)                # tails 的长度即答案；它本身不是任何一条真实子序列
 
 
 def lnds(a):
@@ -339,11 +371,12 @@ def lnds(a):
     tails = []
     for v in a:
         i = bisect_right(tails, v)   # ★ 不下降用 bisect_right（相等可以接上去）
+                                     # 跳过所有等于 v 的结尾，让 v 接在它们后面而不是挤掉
         if i == len(tails):
             tails.append(v)
         else:
             tails[i] = v
-    return len(tails)
+    return len(tails)                # tails 全程单调不减，所以二分始终有效
 ```
 
 > **`bisect_left` 与 `bisect_right` 的选择，是 LIS 一族唯一的记忆点**：
@@ -385,8 +418,9 @@ Python 层每个元素只有一次 `bisect` 调用和一次赋值。
 > 时限：C/C++ 1 秒，**其他语言 2 秒**。
 > 题面见 [BISHI133 原题（牛客）](https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062)。
 
-> ℹ️ 本题的 `solutions/` 题解文件尚在编写中。下面的代码已由
-> `scripts/verify_docs.py` 用**官方样例**实测通过，但未在牛客提交。
+> ✅ 题解见 [`solutions/BISHI133.py`](https://github.com/w3903771/algorithm/blob/main/solutions/BISHI133.py)，
+> 与下面这份写法一致，已在牛客用 Python 3 通过，并由
+> `scripts/verify_docs.py` 用**官方样例**复测。
 
 $n$ 只有 $5\times10^3$，$O(n^2)$ 的 DP 也能过（$2.5\times10^7$ 次比较，2 秒下贴着上限）。
 但既然 `bisect` 版更短更快，没有理由不用。
@@ -399,17 +433,19 @@ from bisect import bisect_right
 
 
 def main():
-    data = sys.stdin.buffer.read().split()
+    data = sys.stdin.buffer.read().split()  # 一次读完，避免逐行 input() 的开销
     n = int(data[0])
     tails = []                               # tails[i]：长度 i+1 的不下降子序列的最小结尾
-    for tok in data[1:1 + n]:
+                                             # 它始终单调不减，所以可以直接二分
+    for tok in data[1:1 + n]:                # 只取前 n 个数，多余的空白 token 自然被忽略
         v = int(tok)
         i = bisect_right(tails, v)           # ★ 不下降 -> bisect_right
+                                             # 跳过等于 v 的结尾，相等元素可以接在一起
         if i == len(tails):
             tails.append(v)                  # 能接到最长的后面，长度 +1
         else:
             tails[i] = v                     # 否则把这个长度的结尾换成更小的 v
-    sys.stdout.write(str(len(tails)) + "\n")
+    sys.stdout.write(str(len(tails)) + "\n")  # 答案是 tails 的长度，不是它的内容
 
 
 main()
@@ -451,10 +487,12 @@ $n = 3$，$3! = 6$ 种排列，直接枚举。
 ```python
 from itertools import permutations
 
-v = list(map(int, input().split()))
-a = list(map(int, input().split()))
+v = list(map(int, input().split()))          # 齐威王三匹马，出场顺序固定
+a = list(map(int, input().split()))          # 田忌三匹马，顺序可以任意安排
 
 # 枚举田忌三匹马的所有出场顺序，只要有一种能赢下至少两局即可
+# p 与 v 按位置配对，x > y 是严格大于（相等算平局，不计入胜场）
+# bool 在求和时按 1/0 计算，sum(...) 就是这一种排列下赢的局数
 ok = any(sum(x > y for x, y in zip(p, v)) >= 2 for p in permutations(a))
 print("Yes" if ok else "No")
 ```
