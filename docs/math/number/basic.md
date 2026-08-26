@@ -1,0 +1,943 @@
+---
+id: math/number/basic
+title: 数论基础
+volume: 1
+lang: py
+---
+
+# 第 80 章　数论基础
+
+<!-- CHAPTER-EXAMPLES -->
+> **前置**：[高精度与大整数](../../toolkit/bignum.md)、
+> [复杂度与Python性能](../../toolkit/complexity.md)
+
+数论在 OI 里的地位，一段话就能讲清楚：
+
+> 数论研究整数的性质, 是数学的一门重要分支。信息学竞赛涉及的数学多是离散的,
+> 数论在其中有着举足轻重的作用。
+
+这一章是整个第七部分的地基：**整除、同余、素数、gcd**。
+四件事说完，后面的快速幂、逆元、欧拉函数、组合数取模全都是它们的推论。
+
+Python 选手在这一章有三件「白捡的便宜」和三个「必须绕开的坑」：
+
+| 白捡的便宜 | 必须绕开的坑 |
+| --- | --- |
+| `int` 无限精度，$10^{18}$ 的中间量随便算 | `int(x ** 0.5)` 在 $10^{12}$ 以上会差 1 → **必须 `math.isqrt`** |
+| `math.gcd` / `math.lcm` 是 C 实现 | 纯 Python 的双重循环筛 $10^6$ 就危险 → **必须 `bytearray` 切片赋值** |
+| `%` 对负数返回非负，省掉 `((x%p)+p)%p` | 大整数不溢出但**会变慢** → **能取模就立刻取模** |
+
+---
+
+## 1　整除与同余
+
+### 整除
+
+对整数 $a, b$（$b \ne 0$），若存在整数 $k$ 使 $a = bk$，称 **$b$ 整除 $a$**，记作 $b \mid a$。
+
+整除的性质可以整理成两组，非常好背：
+
+**偏序关系**
+
+| 性质 | 内容 |
+| --- | --- |
+| 自反性 | $a \mid a$ |
+| 传递性 | $a \mid b$ 且 $b \mid c$ $\Rightarrow$ $a \mid c$ |
+| 反对称性 | $a \mid b$ 且 $b \mid a$ $\Rightarrow$ $a = \pm b$ |
+
+**运算性质**
+
+| 性质 | 内容 |
+| --- | --- |
+| 加减法 | $a \mid b$ 且 $a \mid c$ $\Rightarrow$ $a \mid (b \pm c)$ |
+| 数乘 | $\forall n \ge 1$，$a \mid b \iff an \mid bn$ |
+
+「加减法」这条是**欧几里得算法的全部理论依据**，务必记牢。
+
+### 带余除法与取整
+
+标准表述是：
+
+> $\forall a, b \in \mathbb{Z}$，$\exists$ 唯一的一对整数 $q, r$ 满足 $b = qa + r\ (0 \le r < |a|)$。
+
+**这里有一个 C++ 与 Python 的关键差异**：
+
+> C++ 的 `/` 是**向零取整**，`-7 / 2 == -3`，`-7 % 2 == -1`；
+> Python 的 `//` 是**向下取整**，`-7 // 2 == -4`，`-7 % 2 == 1`。
+>
+> 也就是说 **Python 的 `%` 永远返回与除数同号的结果**，对正模数就是 $[0, m)$。
+> 这意味着：C++ 里到处要写的 `((x % P) + P) % P`，Python 里**一个都不用写**。
+> 反过来，把 C++ 题解直译成 Python 时，凡是涉及负数除法的地方都要重新推一遍。
+
+还有两条取整技巧同样常用：
+
+$$\lfloor x \rfloor = -\lceil -x \rceil, \qquad \lceil x \rceil = -\lfloor -x \rfloor$$
+
+$$\left\lceil \frac{n}{m} \right\rceil = \left\lfloor \frac{n + m - 1}{m} \right\rfloor \quad (m > 0,\ n \ge 0)$$
+
+在 Python 里上取整还有个更短的写法：`-(-n // m)`，对负数也正确。
+
+### 同余
+
+若 $a \bmod m = b \bmod m$，称 $a, b$ **模 $m$ 同余**，记作 $a \equiv b \pmod m$。
+等价定义：$m \mid (a - b)$。
+
+同余式可以像等式一样**加、减、乘**（不能直接除，除法要靠逆元，见
+[快速幂与逆元](inverse.md)）：
+
+$$(a + b) \bmod m = ((a \bmod m) + (b \bmod m)) \bmod m$$
+$$(a \times b) \bmod m = ((a \bmod m) \times (b \bmod m)) \bmod m$$
+
+**消去律**：若 $\gcd(c, m) = 1$ 且 $ac \equiv bc \pmod m$，则 $a \equiv b \pmod m$。
+
+> **证明**：$ac \equiv bc$ 意味着 $m \mid c(a-b)$。因为 $\gcd(c, m) = 1$，
+> $c$ 中不含 $m$ 的任何质因子，所以必有 $m \mid (a-b)$，即 $a \equiv b \pmod m$。$\square$
+>
+> **$\gcd(c,m)=1$ 的条件不能丢**：$2 \times 3 \equiv 2 \times 0 \pmod 6$，但 $3 \not\equiv 0 \pmod 6$。
+
+### 随时取模
+
+「随时取模」值得单独讲，而这在 Python 里格外重要：
+
+```python
+# ❌ 最后才取模：res 会膨胀成几百万位的大整数
+res = 1
+for i in range(1, n + 1):
+    res *= i
+print(res % MOD)
+
+# ✅ 每步取模：res 始终 < MOD，乘法恒为 O(1)
+res = 1
+for i in range(1, n + 1):
+    res = res * i % MOD
+print(res)
+```
+
+C++ 里不取模会**溢出**（错误答案），Python 里不取模会**变慢**（超时）。
+两种语言的症状不同，但结论一样：**能取模就立刻取模**。
+
+$n = 10^6$ 时前者的 `res` 有约 $5.5\times10^6$ 位，光是那串大整数乘法就要跑几分钟。
+
+---
+
+## 2　素数与试除法判定
+
+**质数（素数）**：大于 1 且只有 1 和自身两个正约数的整数。1 既不是质数也不是合数。
+
+### 素数定理
+
+$$\pi(n) \sim \frac{n}{\ln n}$$
+
+$\pi(n)$ 是不超过 $n$ 的素数个数。几个要记住的数：
+
+| $n$ | $\pi(n)$ | 密度 |
+| --- | --- | --- |
+| $10^3$ | 168 | 16.8% |
+| $10^6$ | 78498 | 7.8% |
+| $10^7$ | 664579 | 6.6% |
+| $10^9$ | 50847534 | 5.1% |
+
+推论：**「从 $n$ 往上暴力找下一个素数」是可行的**，因为平均只要试 $\ln n \approx 20$ 个数
+（「求下一个素数」这类题的答案就是「暴力即可（素数定理）」）。
+
+### 试除法：$O(\sqrt n)$
+
+**核心引理**：若 $n$ 是合数，则它必有一个不超过 $\sqrt n$ 的质因子。
+
+> **证明**：设 $n = pq$ 且 $1 < p \le q < n$。若 $p > \sqrt n$，
+> 则 $pq > \sqrt n \cdot \sqrt n = n$，矛盾。所以 $p \le \sqrt n$。$\square$
+
+于是只需试除 $2 \ldots \lfloor\sqrt n\rfloor$。再用**轮子（wheel）**优化：
+除 2、3 外的所有质数都形如 $6k \pm 1$（因为 $6k, 6k+2, 6k+4$ 被 2 整除，$6k+3$ 被 3 整除），
+把循环次数降到原来的 $1/3$。
+
+### 模板一：试除法判素数
+
+```python
+# [片段] 模板：试除判素数
+import math
+
+
+def is_prime(n):
+    """试除法判素数，O(sqrt(n)/3)。n <= 1e12 时约 3.3e5 次循环，Python 下约 0.1 秒。"""
+    if n < 2:
+        return False
+    if n < 4:                       # 2, 3
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    r = math.isqrt(n)               # ★ 精确整数开方，绝不用 n ** 0.5
+    i = 5
+    while i <= r:                   # 只试 6k-1 与 6k+1
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+```
+
+> **`math.isqrt` 是本章第一条铁律。**
+> `int(n ** 0.5)` 走的是 IEEE-754 双精度浮点，尾数只有 53 位，
+> 在 $n > 2^{53} \approx 9\times10^{15}$ 时必然失真；即使在 $10^{12}$ 量级也会因为
+> 舍入而偏差 $\pm 1$。
+>
+> 具体反例：$999966000289 = 999983^2$。
+> ```python
+> >>> import math
+> >>> n = 999966000289
+> >>> int(n ** 0.5), math.isqrt(n)
+> (999982, 999983)          # 浮点版少了 1！
+> ```
+> 少这个 1，循环就不会试到 $999983$，**这个完全平方数会被误判成质数**。
+> `math.isqrt`（Python 3.8+）是纯整数的牛顿迭代，永远精确。
+> 详见 [浮点与科学计数法](../../toolkit/float.md)。
+
+另一种写法是把循环条件写成 `i * i <= n`，好处是不用先算平方根、
+且在质因数分解里 $n$ 会随除法缩小而**自动收紧上界**。判素数时两种都行。
+
+### 什么时候试除法不够
+
+$T$ 组询问、每组 $n \le 10^{12}$ 时，试除法是 $O(T\sqrt n)$。
+$T = 10^5$ 就是 $3\times10^{10}$ 次循环——必须换 **Miller-Rabin**，见
+[整除分块与数论进阶](sqrt-decomposition.md)。
+
+---
+
+## 3　筛法：一次求出一段区间内的所有素数
+
+### 埃拉托斯特尼筛（埃氏筛）
+
+思路：从 2 开始，每遇到一个没被标记的数就是素数，把它的所有倍数标记为合数。
+复杂度是调和级数
+
+$$\sum_{p \le n,\ p \text{ 为质数}} \frac{n}{p} = O(n \log \log n)$$
+
+**从 $i \times i$ 开始标记**即可（比 $i$ 小的倍数已被更小的质因子标记过）。
+
+### 模板二：埃氏筛（Python 的标准写法）
+
+```python
+# [片段] 模板：埃氏筛，bytearray + 切片步长赋值
+import math
+
+
+def sieve(n):
+    """返回长度 n+1 的 bytearray，is_p[i] 为 1 表示 i 是素数。O(n log log n)，内层循环在 C 层。"""
+    is_p = bytearray([1]) * (n + 1)               # 先全部假定是素数，再逐个划掉
+    is_p[0:2] = b"\x00\x00"                       # 0、1 不是素数
+    # 外层只需走到 sqrt(n)：合数 n 必有一个不超过 sqrt(n) 的质因子，
+    # 大于 sqrt(n) 的 i 再去划，它的倍数早已被更小的质因子划掉
+    for i in range(2, math.isqrt(n) + 1):
+        if is_p[i]:                               # 此刻还没被划掉 -> i 是素数
+            # 从 i*i 起划：i*2, i*3, ..., i*(i-1) 的另一个因子都小于 i，
+            # 在处理那个更小的质因子时已经划过了，重复划纯属浪费
+            # ★ 关键：切片步长赋值，把「标记所有 i 的倍数」整个交给 C 层
+            is_p[i * i::i] = bytearray(len(range(i * i, n + 1, i)))
+    return is_p
+
+
+def primes_upto(n):
+    """直接返回素数列表。"""
+    is_p = sieve(n)
+    return [i for i in range(2, n + 1) if is_p[i]]
+```
+
+这段代码里有三个必须理解的 Python 细节：
+
+| 写法 | 为什么 |
+| --- | --- |
+| `bytearray` 而不是 `list` | 每个元素 1 字节 vs 8 字节指针，$10^7$ 时是 10MB vs 80MB |
+| `is_p[i*i::i] = bytearray(k)` | **切片步长赋值**，$O(n/i)$ 的内层循环整个下沉到 C 层 |
+| `len(range(i*i, n+1, i))` | `range` 对象算长度是 $O(1)$ 公式，**不会真的展开**；比 `len(is_p[i*i::i])` 少建一个临时切片 |
+
+**实测（Python 3.9）**：
+
+| 规模 | `bytearray` 埃氏筛 | 纯 Python 双重 `for` |
+| --- | --- | --- |
+| $n = 10^6$ | **0.002 s** | 约 0.9 s |
+| $n = 10^7$ | **0.033 s** | 约 10 s（TLE） |
+
+> **这是「让循环消失」思路最漂亮的一个例子**：
+> 算法复杂度一点没变，但把 $O(n \log \log n)$ 次操作从 Python 字节码搬到了 C 层，
+> 直接快了两个数量级。见 [复杂度与Python性能](../../toolkit/complexity.md)。
+
+### 欧拉线性筛
+
+线性筛的核心思想只有一句：
+
+> **每个合数只被它的最小质因子筛掉一次**，所以总复杂度 $O(n)$。
+
+这句话怎么落到代码上，是本章最需要慢读的一处。内层循环写作
+
+```python
+# [片段] 线性筛的内层循环：两种等价写法
+for p in primes:                 # primes 升序
+    if i * p > n:
+        break
+    mark(i * p)                  # 标记合数 i*p
+    if i % p == 0:               # ★ 全部玄机都在这一行
+        break
+```
+
+`if i % p == 0: break` 等价于「只用 $\le \operatorname{minp}(i)$ 的质数去筛」——
+因为 `primes` 升序枚举，第一个整除 $i$ 的质数就是 $\operatorname{minp}(i)$，
+上面模板里的 `if p > minp[i]: break` 是同一条件的另一种写法（它把判断提到标记之前）。
+
+> **为什么这样就「不重不漏」**：
+> - **不漏**：任取合数 $c$，令 $p = \operatorname{minp}(c)$、$i = c/p$。
+>   $p$ 是 $c$ 的最小质因子，所以 $p \le \operatorname{minp}(i)$，
+>   于是外层走到 $i$、内层枚举到 $p$ 时循环还没退出，$c$ 一定会被标记。
+> - **不重**：若 $c = i \times p$ 被标记，则内层此刻还没 `break`，
+>   说明比 $p$ 小的质数都不整除 $i$，也就不整除 $c$，故 $p = \operatorname{minp}(c)$。
+>   而 $p$ 一旦定下，$i = c/p$ 也就定下——**$(i, p)$ 这对搭档对每个 $c$ 唯一**，
+>   所以 $c$ 只会被标记一次。$\square$
+>
+> **去掉那句 `break` 会怎样**：$12 = 6\times2 = 4\times3$ 就会被标记两次，
+> 复杂度退回到埃氏筛的 $O(n\log\log n)$，而且「$p$ 是 $i\times p$ 的最小质因子」这条
+> 不变量被打破，顺带筛 $\varphi$、$\mu$ 的递推（[欧拉函数与欧拉降幂](euler.md)、
+> [整除分块与数论进阶](sqrt-decomposition.md)）全都会算错。
+
+### 模板三：欧拉线性筛（附最小质因子）
+
+```python
+# [片段] 模板：欧拉线性筛，顺带求出每个数的最小质因子
+def linear_sieve(n):
+    """返回 (primes, minp)。minp[i] 是 i 的最小质因子（i >= 2），O(n)。"""
+    primes = []
+    minp = [0] * (n + 1)                 # 0 表示「还没被任何质因子筛到」
+    for i in range(2, n + 1):
+        if minp[i] == 0:                 # i 没被筛过 -> i 是素数
+            minp[i] = i                  # 质数的最小质因子就是它自己
+            primes.append(i)
+        # 用 i 去筛 i*p 这类合数。此时 minp[i] 一定已经填好：
+        # i 是质数时刚填过，i 是合数时它在更早的某一轮里被筛到过
+        for p in primes:
+            # 两个退出理由：p 超过 minp[i]（再筛就不是「按最小质因子筛」了），
+            # 或者乘积越界。primes 升序，所以一旦成立后面只会更糟
+            if p > minp[i] or i * p > n:  # 只用不超过 minp[i] 的质数去筛
+                break
+            # 循环没退出说明 p <= minp[i]，于是 i*p 的最小质因子恰是 p
+            minp[i * p] = p
+    return primes, minp
+```
+
+### 两种筛法怎么选：Python 的答案和 C++ 不一样
+
+| | 埃氏筛（`bytearray`） | 欧拉线性筛 |
+| --- | --- | --- |
+| 理论复杂度 | $O(n \log \log n)$ | $O(n)$ |
+| 循环层次 | 外层 Python，**内层 C** | **全在 Python 层** |
+| $n = 10^6$ 实测 | **0.002 s** | 0.16 s |
+| 附加产物 | 只有「是否素数」 | 最小质因子、可顺带筛积性函数 |
+
+> **结论（Python 专属）**：
+> **只要「筛素数」，一律用 `bytearray` 埃氏筛**——理论上更差的算法，实测快 80 倍。
+> **只有需要「最小质因子表」，或者要用线性筛顺带求 $\varphi$、$\mu$ 这类积性函数**
+> （见 [欧拉函数与欧拉降幂](euler.md)、
+> [整除分块与数论进阶](sqrt-decomposition.md)）时，才写线性筛，
+> 而且要接受它在 Python 里慢得多这个事实（$n \le 2\times10^6$ 是实用上限）。
+
+---
+
+## 4　唯一分解定理与质因数分解
+
+### 算术基本定理
+
+> **定理（唯一分解定理）**：任意大于 1 的正整数都可以唯一地表示成
+> $$n = p_1^{a_1} p_2^{a_2} \cdots p_k^{a_k}, \qquad p_1 < p_2 < \cdots < p_k \text{ 为质数},\ a_i \ge 1$$
+> （不计次序）。
+
+它值得最高的评价：
+
+> 这个定理几乎是整个数论的基石，因此也称为「**算术基本定理**」。
+
+胡渊鸣给了一个非常有用的视角：
+
+> 利用质因子分解, 每个自然数可以唯一地表示为一个长度为可数无限的向量。
+> $\gcd$、整除、乘除法等运算可以看成是向量的运算。
+
+这个视角直接推出下面几条：
+
+| 运算 | 指数向量上的操作 |
+| --- | --- |
+| $a \times b$ | 指数**相加** |
+| $a / b$（整除时） | 指数**相减** |
+| $a = b$ | 每个指数相等 |
+| $b \mid a$ | 每个指数 $\le$ |
+| $\gcd(a,b)$ | 每个指数取 $\min$ |
+| $\operatorname{lcm}(a,b)$ | 每个指数取 $\max$ |
+
+「齿轮」那道经典例题就是这个思想的直接应用：初始数不超过 100，
+所有乘除法都在**指数向量**上做，于是既不会溢出，也不会有浮点误差。
+
+### 由分解式导出的三个公式
+
+设 $n = \prod p_i^{a_i}$：
+
+**约数个数**
+$$d(n) = \prod_{i=1}^{k} (a_i + 1)$$
+（每个 $p_i$ 独立地取 $0 \ldots a_i$ 次幂，乘法原理。）
+
+**约数和**
+$$\sigma(n) = \prod_{i=1}^{k} \left(1 + p_i + p_i^2 + \cdots + p_i^{a_i}\right) = \prod_{i=1}^{k} \frac{p_i^{a_i+1}-1}{p_i-1}$$
+（把这个乘积展开，每一项恰好是一个约数。）
+
+**欧拉函数**
+$$\varphi(n) = n \prod_{i=1}^{k}\left(1 - \frac{1}{p_i}\right)$$
+（见 [欧拉函数与欧拉降幂](euler.md)。）
+
+### 模板四：试除法分解质因数
+
+```python
+# [片段] 模板：试除法质因数分解
+def factorize(n):
+    """返回 [(p, e), ...]，按 p 升序。O(sqrt(n))。"""
+    res = []
+    d = 2
+    while d * d <= n:                # ★ n 随除法缩小，上界自动收紧
+        if n % d == 0:
+            # 能整除说明 d 是质数：比 d 小的因子在之前的轮次里已被除干净
+            e = 0
+            while n % d == 0:        # 把这个质因子除到底，顺便数出重数 e
+                n //= d
+                e += 1
+            res.append((d, e))
+        d += 1 if d == 2 else 2      # 2 之后只试奇数
+    if n > 1:                        # ★ 剩下的是大于 sqrt 的那个质因子
+        res.append((n, 1))           # 它只可能出现一次，否则平方就超过原来的 n
+    return res
+
+
+def factor_list(n):
+    """返回按重数展开的质因子列表，如 18 -> [2, 3, 3]。"""
+    res = []
+    for d in (2, 3):                 # 先把 2 和 3 除净，6k±1 的轮子才成立
+        while n % d == 0:
+            res.append(d)            # 有几个就记几个，重数照实展开
+            n //= d
+    d = 5
+    while d * d <= n:                # 6k±1 轮子
+        for x in (d, d + 2):         # d = 6k-1 与 d+2 = 6k+1 这一对
+            while n % x == 0:
+                res.append(x)
+                n //= x
+        d += 6                       # 跳到下一对 6k±1
+    if n > 1:                        # 循环只试到 sqrt(n)，大于它的质因子靠这一句
+        res.append(n)
+    return res
+```
+
+> **分解质因数最常见的两个 bug**：
+> 1. **忘了最后那句 `if n > 1`**。循环只试到 $\sqrt n$，
+>    所以「大于 $\sqrt n$ 的那个质因子」永远进不了循环。
+>    $n$ 本身是质数（如 $999999999989$）或 $n = 2 \times \text{大质数}$ 时全靠这一句；
+> 2. **循环里被除出来的 $d$ 一定是质数**——这不需要额外判定：
+>    比 $d$ 小的质因子在之前的轮次里已经被除干净了，
+>    所以第一个能整除当前 $n$ 的 $d$ 必然是质数。
+
+**多个数一起分解**：若 $x_i \le 10^7$ 且个数多，先用线性筛打出 `minp` 表，
+之后每个数分解只要 $O(\log x)$ 次「除以 `minp[x]`」，比逐个试除快得多。
+
+---
+
+## 5　最大公约数与最小公倍数
+
+### 欧几里得算法
+
+$$\gcd(a, b) = \gcd(b, a \bmod b), \qquad \gcd(a, 0) = a$$
+
+> **证明**：若 $d \mid a$ 且 $d \mid b$，则 $\forall n$，$d \mid (a + nb)$。
+> 于是 $\{a, b\}$ 的公约数集合与 $\{a + nb, b\}$ 的公约数集合**完全相同**，
+> 其中最大的元素自然也相同。取 $n = -\lfloor a/b \rfloor$，得 $a + nb = a \bmod b$，
+> 即 $\gcd(a,b) = \gcd(b, a \bmod b)$。$\square$
+
+**复杂度 $O(\log \min(a,b))$**：连续两步之后余数至少减半。
+（若 $b \le a/2$，则 $a \bmod b < b \le a/2$；若 $b > a/2$，则 $a \bmod b = a - b < a/2$。）
+最坏情况是相邻的斐波那契数——这也是 Lamé 定理的内容。
+
+最朴素的递归版：
+
+```cpp
+int gcd(int a,int b){
+    if(b==0)return a;
+    else return gcd(b,a%b);
+}
+```
+
+**Python 里直接用 `math.gcd`**，理由和并查集的 `find` 一样：C 实现、无栈风险。
+
+```python
+import math
+
+math.gcd(12, 8)          # 4
+math.gcd(0, 0)           # 0
+math.gcd(-12, 8)         # 4    —— 自动取绝对值
+math.gcd(12, 18, 24)     # 6    —— ★ Python 3.9 起支持任意多个参数
+math.gcd(*a)             # 整个列表的 gcd（3.9+）
+```
+
+> **`math.gcd` 的多参数形式是 3.9 新增的**。在 3.8 及以下只能
+> `functools.reduce(math.gcd, a)`。全书锁定 3.9，所以可以放心用 `math.gcd(*a)`。
+> 但注意：`math.gcd()`（空参数）返回 0，`reduce` 版则会抛异常——
+> 求「整个数组的 gcd」时若数组可能为空，记得特判。
+
+### 最小公倍数
+
+$$\gcd(a,b) \times \operatorname{lcm}(a,b) = ab$$
+
+> **证明**：用指数向量看。对每个质数 $p$，
+> $\min(a_p, b_p) + \max(a_p, b_p) = a_p + b_p$。逐个质数成立，乘起来即得。$\square$
+
+通行写法是 `a/gcd(a,b)*b`——**先除后乘**，这是通用正解：
+
+```python
+import math
+
+
+def lcm2(a, b):
+    return a // math.gcd(a, b) * b      # ★ 先除后乘
+
+math.lcm(12, 8)          # 24   —— ★ Python 3.9 新增
+math.lcm(4, 6, 10)       # 60   —— 同样支持多参数
+math.lcm()               # 1    —— 空参数返回 1（乘法单位元）
+```
+
+> **为什么坚持先除后乘？**
+> $a, b \le 2\times10^9$ 时 $ab$ 最大 $4\times10^{18}$，已经贴着 `int64` 上界
+> $9.22\times10^{18}$；再大一点就溢出。Python 虽然不会溢出，
+> 但 **`a // g * b` 让中间量始终不超过答案本身**，既是好习惯、也更快
+> （小整数乘法比大整数乘法快）。而且这个写法翻译回 C++ 是直接可用的。
+>
+> 顺带一提：**`math.lcm` 也是 Python 3.9 才引入的**，3.8 没有。
+
+### gcd/lcm 的常用性质
+
+| 性质 | 内容 |
+| --- | --- |
+| 结合律 | $\gcd(a,b,c) = \gcd(\gcd(a,b), c)$ |
+| 提取公因子 | $\gcd(ka, kb) = k\gcd(a,b)$ |
+| 互质化 | $\gcd(a/g,\ b/g) = 1$，其中 $g = \gcd(a,b)$ |
+| 相邻数 | $\gcd(n, n+1) = 1$ |
+| 与差 | $\gcd(a, b) = \gcd(a, b - a)$（更相减损术，`math.gcd` 内部用的是二进制 GCD） |
+| 前缀 gcd | 从左往右做前缀 gcd，值**至多变化 $O(\log V)$ 次**（每次变化至少减半） |
+
+最后一条是很多「区间 gcd」题的关键：固定左端点时，右端点扫过去只有 $O(\log V)$ 段不同的 gcd 值。
+
+---
+
+## 6　裴蜀定理与扩展欧几里得
+
+### 裴蜀（Bézout）定理
+
+> **定理**：对任意整数 $a, b$，方程 $ax + by = c$ 有整数解
+> $\iff$ $\gcd(a,b) \mid c$。
+> 特别地，$ax + by = \gcd(a,b)$ 总有整数解。
+
+> **证明思路**：
+> （$\Rightarrow$）设 $g = \gcd(a,b)$。$g \mid a$ 且 $g \mid b$，所以 $g \mid (ax+by) = c$。
+> （$\Leftarrow$）只需证 $ax+by=g$ 有解，随后两边乘 $c/g$ 即可。
+> 考察集合 $S = \{ax+by : x,y \in \mathbb{Z}\} \cap \mathbb{Z}^{+}$，
+> 取其中最小的正元素 $d = ax_0+by_0$。用带余除法写 $a = qd + r$（$0 \le r < d$），
+> 则 $r = a - qd = a(1-qx_0) + b(-qy_0) \in S \cup \{0\}$。
+> 由 $d$ 的最小性得 $r = 0$，即 $d \mid a$；同理 $d \mid b$，所以 $d \le g$。
+> 又 $g \mid d$（因为 $g \mid a, g\mid b$），故 $d = g$。$\square$
+
+**推论（考点密集区）**：
+
+- $ax + by = 1$ 有解 $\iff$ $\gcd(a,b)=1$；
+- $a$ 在模 $m$ 下有逆元 $\iff$ $\gcd(a,m)=1$（把 $ax + my = 1$ 模 $m$ 就是 $ax \equiv 1$）；
+- 用面额 $a_1, \ldots, a_n$ 的硬币能凑出的金额，恰好是 $\gcd(a_1,\ldots,a_n)$ 的所有倍数
+  （允许负数张数时）。
+
+### 扩展欧几里得算法
+
+在跑欧几里得算法的同时，把 $x, y$ 也递推出来。推导：
+
+设已经求出 $b x' + (a \bmod b) y' = g$。因为 $a \bmod b = a - \lfloor a/b \rfloor b$：
+
+$$b x' + \left(a - \left\lfloor \frac{a}{b} \right\rfloor b\right) y' = g$$
+$$a y' + b \left(x' - \left\lfloor \frac{a}{b} \right\rfloor y'\right) = g$$
+
+对照 $ax + by = g$，得递推
+
+$$x = y', \qquad y = x' - \left\lfloor \frac{a}{b} \right\rfloor y'$$
+
+边界：$b = 0$ 时 $a \cdot 1 + 0 \cdot 0 = a = g$，即 $x = 1, y = 0$。
+
+### 模板五：扩展欧几里得（迭代版）
+
+```python
+# [片段] 模板：扩展欧几里得，迭代实现，无递归开销
+def exgcd(a, b):
+    """返回 (g, x, y) 满足 a*x + b*y = g = gcd(a, b)。O(log min(a,b))。"""
+    # 循环不变量：old_r = old_s*a + old_t*b，同时 r = s*a + t*b。
+    # 初值取 (a, b) 对应 (1,0) 与 (0,1)，等式显然成立
+    old_r, r = a, b
+    old_s, s = 1, 0
+    old_t, t = 0, 1
+    while r:                            # 余数变 0 时 old_r 就是 gcd
+        q = old_r // r                  # 这一步辗转相除的商
+        # 三行同步做同一个线性组合，不变量因此一直保持
+        old_r, r = r, old_r - q * r
+        old_s, s = s, old_s - q * s
+        old_t, t = t, old_t - q * t
+    return old_r, old_s, old_t          # g, x, y
+```
+
+> **为什么写迭代而不是递归？**
+> 和 [并查集](../../ds/dsu.md) 的 `find` 同理：
+> 递归深度虽然只有 $O(\log a) \approx 45$ 层不会爆栈，
+> 但 $T = 10^4$ 组询问时，$4.5\times10^5$ 次 Python 函数调用的开销很可观。
+> 迭代版没有这个负担，代码也不长。
+
+**通解**：若 $(x_0, y_0)$ 是 $ax+by=g$ 的一组解，则全部解为
+
+$$x = x_0 + \frac{b}{g}t, \qquad y = y_0 - \frac{a}{g}t, \qquad t \in \mathbb{Z}$$
+
+由此可以求「最小正整数解」：
+$x_{\min} = ((x_0 \bmod \frac{b}{g}) + \frac{b}{g}) \bmod \frac{b}{g}$——
+在 Python 里因为 `%` 天然非负，直接写 `x0 % (b // g)` 就够了。
+
+---
+
+## 7　线性同余方程
+
+$$ax \equiv c \pmod m$$
+
+等价于 $ax + my = c$。由裴蜀定理：
+
+| 情形 | 结论 |
+| --- | --- |
+| $\gcd(a,m) \nmid c$ | **无解** |
+| $g = \gcd(a,m) \mid c$ | 有解，模 $m$ 意义下**恰有 $g$ 个**互不同余的解 |
+
+求解步骤：
+
+1. 用 exgcd 求 $ax_0 + my_0 = g$；
+2. 两边乘 $c/g$，得一个特解 $x = x_0 \cdot (c/g)$；
+3. 全部解为 $x \equiv x_0 \cdot \frac{c}{g} \pmod{m/g}$，
+   在模 $m$ 下就是 $x_{\min} + k\cdot\frac{m}{g}$（$k = 0,\ldots,g-1$）。
+
+### 模板六：线性同余方程
+
+```python
+# [片段] 模板：解 a*x ≡ c (mod m)
+def linear_congruence(a, c, m):
+    """返回模 m 下的全部解（升序列表）；无解返回 []。"""
+    g, x0, _ = exgcd(a, m)              # a*x0 + m*y0 = g
+    if c % g:
+        return []                       # gcd(a,m) 不整除 c -> 无解
+    step = m // g                       # 解在模 m/g 下唯一，相邻两解相差 m/g
+    base = x0 % step * (c // g) % step  # 先约到模 m/g 再乘，避免大数
+    # 模 m 意义下恰有 g 个互不同余的解，等距分布，步长就是 m/g
+    return [(base + i * step) % m for i in range(g)]
+
+
+def mod_inverse(a, m):
+    """a 在模 m 下的逆元；不存在返回 None。就是 c = 1 的特例。"""
+    g, x, _ = exgcd(a, m)
+    # 逆元存在当且仅当 gcd(a,m)=1（裴蜀定理）；x 可能为负，靠 % m 拉回 [0, m)
+    return None if g != 1 else x % m
+```
+
+> **Python 的捷径：`pow(a, -1, m)`**（3.8+）内部就是扩展欧几里得，
+> **不要求 $m$ 是质数**，只要求 $\gcd(a,m)=1$；否则抛 `ValueError`。
+> 生产代码里能用它就用它。什么时候还得手写 exgcd？
+> —— 需要**区分「无解」还是要求「通解」**时（`pow` 只会抛异常，不给出 $\gcd$）。
+> 详见 [快速幂与逆元](inverse.md)。
+
+**NOIP 2012 同余方程**就是 $ax \equiv 1 \pmod b$ 求最小正整数解，
+即 `mod_inverse(a, b)`，Python 一行：`pow(a, -1, b)`。
+
+---
+
+## 8　威尔逊定理
+
+> **定理（Wilson）**：$p$ 是质数 $\iff$ $(p-1)! \equiv -1 \pmod p$。
+
+证明思路：
+
+> $p \ge 5$ 时，$(p-1)!$ 中去掉 1 和 $p-1$，别的项总可以和其逆元配对，
+> 使得每对乘积同余 1，于是总的乘积同余 $-1$。
+> （思考：会不会有项的逆元就是自己？）
+
+把这个思路补完整：
+
+> **证明**（$\Rightarrow$ 方向）：模质数 $p$ 时，$1, 2, \ldots, p-1$ 每个都有唯一逆元。
+> 「自己是自己的逆元」意味着 $x^2 \equiv 1 \pmod p$，即 $p \mid (x-1)(x+1)$，
+> 因 $p$ 是质数，只能 $x \equiv 1$ 或 $x \equiv -1 \equiv p-1$。
+> 所以除了 $1$ 和 $p-1$，其余 $p-3$ 个数恰好两两配对成 $\frac{p-3}{2}$ 对，每对乘积 $\equiv 1$。
+> 于是 $(p-1)! \equiv 1 \cdot (p-1) \cdot 1^{(p-3)/2} \equiv -1 \pmod p$。$\square$
+>
+> （$\Leftarrow$ 方向）若 $n$ 是合数且 $n > 4$，则 $n$ 的某个真因子 $d$（$1<d<n$）出现在
+> $(n-1)!$ 里，故 $d \mid (n-1)!$，而 $d \mid n$，所以 $(n-1)! \not\equiv -1 \pmod n$
+> （否则 $d \mid 1$）。$n=4$ 时 $3! = 6 \equiv 2 \pmod 4$，也不等于 $-1$。$\square$
+
+**实战价值**：
+
+| 用途 | 说明 |
+| --- | --- |
+| 理论上的素性判定 | 需要算 $(p-1)!$，$O(p)$，**比试除法还慢**，不实用 |
+| **化简含阶乘的同余式** | 这才是真正的考点 |
+| Lucas 定理相关推导 | 见 [组合数学](../combi/basic.md) |
+
+一个典型用法：求 $(p-2)! \bmod p$。由 $(p-1)! = (p-1)\cdot(p-2)! \equiv -1$ 且 $p-1 \equiv -1$，
+得 $(p-2)! \equiv 1 \pmod p$。
+
+```python
+>>> import math
+>>> p = 13
+>>> math.factorial(p - 1) % p        # 12
+>>> math.factorial(p - 2) % p        # 1
+```
+
+---
+
+## 9　例题
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+
+### BISHI55 判断质数（入门）
+
+> 给定 $1 \le n \le 10^{12}$，判断 $n$ 是否为质数，输出 `Yes` / `No`。
+> 题面见 [原题](https://www.nowcoder.com/practice/9f418ff48b5e4e879f398352bed6118d)。
+
+单组数据，$\sqrt n \le 10^6$，用 $6k\pm1$ 轮子后约 $3.3\times10^5$ 次循环，
+Python 下约 0.1 秒，时限 2 秒——**不值得上 Miller-Rabin**。
+
+```python
+import math
+import sys
+
+
+def is_prime(n):
+    if n < 2:                       # ★ n=1 不是质数，题目下界就是 1
+        return False
+    if n < 4:                       # 2, 3
+        return True
+    # 先单独筛掉 2、3 的倍数，下面的 6k±1 轮子才能跳过它们
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    r = math.isqrt(n)               # ★ 精确整数开方，绝不用 n ** 0.5
+    i = 5                           # 第一对 6k±1 是 5 和 7
+    while i <= r:                   # 只需试除 6k-1 与 6k+1
+        # 合数必有不超过 sqrt(n) 的质因子，而除 2、3 外的质数都形如 6k±1，
+        # 于是循环次数只有 sqrt(n)/3
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6                      # 跳到下一对 6k±1
+    return True
+
+
+n = int(sys.stdin.buffer.read().split()[0])
+sys.stdout.write("Yes\n" if is_prime(n) else "No\n")   # 输出是 Yes/No，不是 YES/NO
+```
+
+**四个坑**：
+
+1. **`math.isqrt` 而非 `int(n ** 0.5)`**——$999966000289 = 999983^2$ 会被误判成质数；
+2. $n = 1$ 必须特判（题目下界就是 1）；
+3. 2 和 3 别被 $6k\pm1$ 的逻辑漏掉；
+4. 先算好 `r = isqrt(n)` 比每轮写 `i * i <= n` 快一点（少一次乘法）。
+
+题解见 [`solutions/nowcoder/BISHI55/sol.py`](../../solutions/BISHI55.md)。
+
+### BISHI56 分解质因数（简单）
+
+> 给定 $2 \le n \le 10^{12}$，按从小到大顺序输出 $n$ 的全部质因数（重数展开），
+> 空格分隔、**行尾不得有多余空格**。
+> 题面见 [原题](https://www.nowcoder.com/practice/35723516d6f841ca8869ecbcf3ddacaf)。
+
+模板题。注意循环条件写 `d * d <= n`：$n$ 每被除一次就变小，上界自动收紧，
+最省事也最不易错。
+
+```python
+import sys
+
+
+def main():
+    n = int(sys.stdin.buffer.read().split()[0])
+    res = []
+    for d in (2, 3):                # 先除净 2 和 3，才能用 6k±1 的轮子
+        while n % d == 0:
+            res.append(d)           # 重数照实展开：18 -> 2 3 3
+            n //= d
+    d = 5
+    while d * d <= n:               # d*d<=n 会随 n 缩小而自动收紧上界
+        while n % d == 0:           # 处理 6k-1 这一支
+            res.append(d)
+            n //= d
+        d += 2
+        while n % d == 0:           # 处理 6k+1 这一支
+            res.append(d)
+            n //= d
+        d += 4                      # 合起来就是 d += 6 的 6k±1 轮子
+    if n > 1:                       # ★ 剩下的是大于 sqrt 的那个质因子
+        res.append(n)
+    # 用 join 而不是逐个 print(x, end=" ")：题面要求行尾不得有多余空格
+    sys.stdout.write(" ".join(map(str, res)) + "\n")
+
+
+main()
+```
+
+**四个坑**：
+
+1. **最后那句 `if n > 1` 不能少**。$n$ 本身是质数（如 $999999999989$）时循环里一个因子都找不到；
+2. 重复的质因数要**重复输出**（$18 \to$ `2 3 3`）；
+3. **行尾不得有多余空格** → 用 `" ".join`，不要 `print(x, end=" ")`；
+4. 被除出来的 `d` 自动是质数，不需要额外判素。
+
+题解见 [`solutions/nowcoder/BISHI56/sol.py`](../../solutions/BISHI56.md)。
+
+### BISHI57 最大公因数与最小公倍数（简单）
+
+> 给定 $1 \le a, b \le 2\times10^9$，输出 $\gcd(a,b)$ 与 $\operatorname{lcm}(a,b)$，空格分隔。
+> 题面见 [原题](https://www.nowcoder.com/practice/ee732bec4f174cd9b4abc6427ba90584)。
+
+```python
+import math
+import sys
+
+a, b = map(int, sys.stdin.buffer.read().split()[:2])
+g = math.gcd(a, b)                                 # C 实现的二进制 GCD，不手写
+# 由 gcd*lcm = ab 得 lcm = a/g*b。先除后乘：g 一定整除 a，所以除法精确，
+# 而中间量始终不超过答案本身（翻译回 C++ 时正好避开 int64 溢出）
+sys.stdout.write("%d %d\n" % (g, a // g * b))      # ★ 先除后乘
+```
+
+一行核心代码，但把本章两条铁律都用上了：**`math.gcd` 不手写**、**lcm 先除后乘**。
+
+> Python 3.9 有 `math.lcm(a, b)`，写成
+> `sys.stdout.write("%d %d\n" % (math.gcd(a, b), math.lcm(a, b)))` 也完全正确。
+> 这里保留 `a // g * b` 是为了展示 $\gcd \cdot \operatorname{lcm} = ab$ 这个恒等式——
+> 而且一旦题目变成「求 $n$ 个数的 lcm 取模」，`math.lcm` 就不能用了
+> （它算的是精确值，$n$ 个数的 lcm 会爆炸成大整数），必须自己写 `l = l // gcd(l, x) * x % MOD`……
+> 注意这时**还要小心：取模之后 gcd 就失去意义了**，正确做法是对质因子的指数取 max。
+
+题解见 [`solutions/nowcoder/BISHI57/sol.py`](../../solutions/BISHI57.md)。
+
+### BISHI58 矩形游戏（简单）
+
+> 初始有 $n \le 10^9$ 颗石子。每轮选 $(a,b)$ 满足 $a > 1$ 且 $n = ab$，
+> 石子数变成 $b$（即变成 $n$ 的一个**真因子**），直到剩 1 颗。
+> 得分是整个过程中每轮结束时石子数之和（含起点 $n$ 和终点 1），求最大得分。
+> 题面见 [原题](https://www.nowcoder.com/practice/5b6c2c824a434b55a5e3b77619c54a90)。
+
+**质因数分解 + 贪心**，是唯一分解定理的一道好练习。
+
+把整条链写出来：$n,\ n/d_1,\ n/(d_1d_2),\ \ldots,\ 1$，其中 $d_1 d_2 \cdots d_k = n$ 且每个 $d_i > 1$。
+要让所有前缀商之和最大，就要让每个**前缀积** $d_1\cdots d_j$ 尽可能小。
+而 $\prod d_i = n$ 固定，所以：
+
+> **最优策略是把 $n$ 拆成全部质因子（拆得最碎，链最长），并按升序逐个除掉。**
+
+于是答案 $= n + n/p_1 + n/(p_1p_2) + \cdots + 1$，其中 $p_1 \le p_2 \le \cdots \le p_k$ 是
+$n$ 按重数展开的全部质因子。
+
+> **为什么升序最优？** 交换论证：若某相邻两步用了 $p_i > p_{i+1}$，
+> 交换它们不改变之后所有前缀积，却让中间那个前缀积从 $\cdot p_i$ 变成更小的 $\cdot p_{i+1}$，
+> 对应的商变大，总和严格不减。所以升序是最优的。$\square$
+
+```python
+import sys
+
+
+def main():
+    n = int(sys.stdin.buffer.read().split()[0])
+    primes = []                      # 按重数展开的质因子，天然升序
+    m = n                            # 用副本分解，n 本身还要当第一项得分
+    d = 2
+    while d * d <= m:                # 上界随 m 缩小自动收紧
+        while m % d == 0:
+            primes.append(d)
+            m //= d
+        d += 1 if d == 2 else 2      # 除完 2 之后只试奇数
+    if m > 1:                        # 大于 sqrt 的那个质因子
+        primes.append(m)
+
+    cur = n                          # 当前石子数，起点计入得分
+    ans = n
+    # 拆得最碎 = 链最长，且升序除让每一步的前缀积最小、商最大，总和因此最大
+    for p in primes:                 # 升序除，每步商最大
+        cur //= p
+        ans += cur                   # 最后一轮 cur 变成 1，终点的 1 也计入
+    sys.stdout.write(str(ans) + "\n")
+
+
+main()
+```
+
+**三个坑**：
+
+1. **要按重数展开**：$8 = 2\times2\times2$，链是 $8,4,2,1$ 而不是 $8,1$；
+2. **终点的 1 也计入得分**（样例 $10 \to 10+5+1=16$）；
+3. 答案上界约 $2n$（等比和 $n + n/2 + n/4 + \cdots < 2n$），$10^9$ 量级，无溢出风险。
+
+$n \le 10^9$，试除到 $\sqrt n \approx 31623$，毫秒级。
+
+题解见 [`solutions/nowcoder/BISHI58/sol.py`](../../solutions/BISHI58.md)。
+
+### BISHI39 【模板】Pollard-Rho算法（中等）
+
+> $T \le 10^5$ 组，每组给 $1 \le x \le 10^{12}$，判断是否为质数。
+> 题面见 [原题](https://www.nowcoder.com/practice/9da360a56fa846708542b0fb3985c647)。
+
+**这题是本章试除法的「反面教材」**：算法完全一样，只是询问变多了 $10^5$ 倍。
+
+| 做法 | 复杂度 | 判断 |
+| --- | --- | --- |
+| 每组试除 $O(\sqrt x)$ | $10^5 \times 3.3\times10^5 = 3.3\times10^{10}$ | ❌ 差着 4 个数量级 |
+| **Miller-Rabin** $O(k\log x)$ | $10^5 \times 6 \times 40 = 2.4\times10^7$ 次 C 层模乘 | ✅ |
+
+也就是说，**「$T$ 很大」本身就是要求换掉试除法的信号**。
+完整解法（含确定性底数的选取、为什么 Python 不需要龟速乘）见
+[整除分块与数论进阶](sqrt-decomposition.md) 的 §3 与例题。
+
+---
+
+## 10　本章速查
+
+### 定理与公式
+
+| 名称 | 内容 |
+| --- | --- |
+| 唯一分解定理 | $n = \prod p_i^{a_i}$ 存在且唯一 |
+| 试除引理 | 合数 $n$ 必有质因子 $\le \sqrt n$ |
+| 素数定理 | $\pi(n) \sim n/\ln n$ |
+| 欧几里得 | $\gcd(a,b)=\gcd(b,a\bmod b)$，$O(\log \min)$ |
+| gcd·lcm | $\gcd(a,b)\operatorname{lcm}(a,b)=ab$ |
+| 裴蜀定理 | $ax+by=c$ 有解 $\iff \gcd(a,b)\mid c$ |
+| exgcd 通解 | $x = x_0 + \frac{b}{g}t,\ y = y_0 - \frac{a}{g}t$ |
+| 线性同余 | $ax\equiv c \pmod m$ 有解 $\iff g=\gcd(a,m)\mid c$，模 $m$ 下恰 $g$ 个解 |
+| 威尔逊定理 | $p$ 质数 $\iff (p-1)!\equiv -1 \pmod p$ |
+| 约数个数 | $d(n)=\prod(a_i+1)$ |
+| 约数和 | $\sigma(n)=\prod \frac{p_i^{a_i+1}-1}{p_i-1}$ |
+| 消去律 | $\gcd(c,m)=1$ 时 $ac\equiv bc \Rightarrow a \equiv b$ |
+
+### Python 取舍
+
+| 场景 | 做法 | 理由 |
+| --- | --- | --- |
+| 整数开方 | **`math.isqrt(n)`** | `int(n**0.5)` 在 $10^{12}$ 就会差 1 |
+| gcd | **`math.gcd`**，3.9+ 支持多参数 | C 实现，不爆栈 |
+| lcm | `a // g * b` 或 `math.lcm`（3.9+） | 先除后乘，中间量不膨胀 |
+| 筛素数 | **`bytearray` 埃氏筛 + 切片步长赋值** | 比线性筛快 80 倍（$10^6$：0.002 s vs 0.16 s） |
+| 需要最小质因子表 / 筛积性函数 | 线性筛（$n \le 2\times10^6$） | 埃氏筛给不了这些信息 |
+| 逆元 / 线性同余 | `pow(a, -1, m)`（3.8+） | 内部就是 exgcd，不要求 $m$ 是质数 |
+| 需要区分无解 / 求通解 | 手写 `exgcd`（迭代版） | `pow` 只会抛 `ValueError` |
+| 负数取模 | 直接 `%` | Python 结果天然非负，不写 `((x%p)+p)%p` |
+| 循环连乘 | 每步 `% MOD` | 不取模会膨胀成百万位大整数 |
+| 精确阶乘 / 组合数 | `math.factorial` / `math.comb`（3.8+） | C 实现的大整数 |
+
+### 看到什么 → 想到什么
+
+| 题面特征 | 第一反应 |
+| --- | --- |
+| $n \le 10^{12}$，单组，判素/分解 | 试除法 $O(\sqrt n)$ + `math.isqrt` |
+| $T \ge 10^4$ 组判素 | Miller-Rabin（[整除分块与数论进阶](sqrt-decomposition.md)） |
+| 「求 $1\ldots n$ 中所有素数」 | `bytearray` 埃氏筛 |
+| 「对每个数求最小质因子 / 积性函数」 | 线性筛 |
+| 「$ax \equiv c \pmod m$」「求逆元」 | exgcd / `pow(a,-1,m)` |
+| 「凑出金额 / 步长组合」 | 裴蜀定理，答案是 $\gcd$ 的倍数 |
+| 「乘除法链、判相等，会爆 long long」 | 转成**质因子指数向量**（rxz 的齿轮题） |
+| 「$n!$ 相关的同余式」 | 威尔逊定理、勒让德公式（[基础数学与递推](../recurrence.md)） |
