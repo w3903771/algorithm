@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 先看看在线站点
+    url: https://algorithm.ebook.ttzg.site/
+    about: 正文与题解都在站点上，搜索框在右上角。
+  - name: 参与贡献指南
+    url: https://github.com/w3903771/algorithm/blob/main/CONTRIBUTING.md
+    about: 想直接动手改？先读这一份。

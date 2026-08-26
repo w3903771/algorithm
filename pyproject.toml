@@ -1,0 +1,23 @@
+[project]
+name = "algorithm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "lxml>=6.1.1",
+    "markdownify>=1.2.3",
+    "playwright>=1.60.0",
+    "pymupdf>=1.26.5",
+    "python-docx>=1.2.0",
+    "python-pptx>=1.0.2",
+    "pywin32>=312",
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+dev = [
+    "mkdocs-material>=9.7.7",
+    "mkdocs-redirects>=1.2.2",
+]

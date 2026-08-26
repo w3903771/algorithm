@@ -1,0 +1,77 @@
+{
+  "_comment": "题单来源注册表——新增/下线一套题单，只改这里。scripts/gen_index.py 与 hooks/build_pages.py 都读它。放在 docs/ 下是因为 sources/ 与 scripts/ 都不入库，而站点构建（CI 上只有 docs/ solutions/ hooks/）必须拿得到分组信息；mkdocs.yml 的 exclude_docs 已排除 _*.json，不会被当成页面发布。",
+  "_fields": {
+    "key": "题单短名，同时是 <key>_list.json 的文件名前缀",
+    "prefix": "题号字母前缀，必须全局唯一——solutions/ 是扁平目录，靠前缀分组",
+    "site": "来源站短名，用于把多套题单归到同一来源下",
+    "mode": "acm = 读 stdin 写 stdout；core = 核心代码模式，判题要按函数签名调用",
+    "list": "题单 JSON 相对仓库根的路径",
+    "raw": "机器可读题面（含官方样例）所在目录，verify 从这里取样例"
+  },
+  "sites": {
+    "nowcoder": {
+      "name": "牛客",
+      "fullName": "牛客在线编程",
+      "url": "https://www.nowcoder.com/exam/oj?questionJobId=10&subTabName=online_coding_page"
+    },
+    "leetcode": {
+      "name": "力扣",
+      "fullName": "力扣（LeetCode 中国站）",
+      "url": "https://leetcode.cn/studyplan/top-100-liked/"
+    }
+  },
+  "sets": [
+    {
+      "key": "bishi",
+      "prefix": "BISHI",
+      "site": "nowcoder",
+      "name": "笔试模板必刷",
+      "mode": "acm",
+      "topicId": 389,
+      "range": "BISHI1–147",
+      "desc": "牛客「笔试模板必刷」题单，ACM 模式（读 stdin 写 stdout）。",
+      "list": "sources/05-nowcoder/bishi_list.json",
+      "raw": "sources/05-nowcoder/raw",
+      "problems": "sources/05-nowcoder/problems"
+    },
+    {
+      "key": "pio",
+      "prefix": "PIO",
+      "site": "nowcoder",
+      "name": "输入输出练习",
+      "mode": "acm",
+      "topicId": 372,
+      "range": "PIO1–18",
+      "desc": "牛客「输入输出练习」题单，ACM 模式，专练读入与输出格式。",
+      "list": "sources/05-nowcoder/pio_list.json",
+      "raw": "sources/05-nowcoder/raw",
+      "problems": "sources/05-nowcoder/problems"
+    },
+    {
+      "key": "bm",
+      "prefix": "BM",
+      "site": "nowcoder",
+      "name": "面试必刷TOP101",
+      "mode": "core",
+      "topicId": 295,
+      "range": "BM1–101",
+      "desc": "牛客「面试必刷 TOP101」题单，核心代码模式（实现指定函数，不读 stdin）。",
+      "list": "sources/05-nowcoder/bm_list.json",
+      "raw": "sources/05-nowcoder/raw",
+      "problems": "sources/05-nowcoder/problems"
+    },
+    {
+      "key": "hot100",
+      "prefix": "LC",
+      "site": "leetcode",
+      "name": "热题 100",
+      "mode": "core",
+      "planSlug": "top-100-liked",
+      "range": "题号即力扣真实题号，不连续",
+      "desc": "力扣「热题 100」学习计划，核心代码模式，官方自带 17 个专题分组。",
+      "list": "sources/06-leetcode/hot100_list.json",
+      "raw": "sources/06-leetcode/raw",
+      "problems": "sources/06-leetcode/problems"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+# MkDocs site deployment. GitHub Actions only loads files from .github/workflows/.
+name: Deploy algorithm site
+
+on:
+  push:
+    # P-S① 之前工作分支是 refactor-v2，所以这里列了它。分离之后开发侧资料
+    # 走另一个私有仓，正文改动直接提在 main 上，refactor-v2 只留本地不再推。
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 注意：**没有** workflow 级的 concurrency。
+# P0b 把触发条件从「只有 main」放宽到「所有分支 ＋ PR」，
+# 而原先那条 `group: pages` 是写在 workflow 级的——放宽之后，
+# 任何一个分支 push 都会取消**正在进行的 main 部署**。
+# 现在把它收进 build（build 只在 main 上跑），语义与放宽前完全一致。
+
+jobs:
+  # 文风校验独立成 job：它在**每个分支、每个 PR** 上跑，而部署只在 main 上跑。
+  # check_prose.py 只用标准库，所以这一步不装任何依赖（改脚本时别引第三方包，
+  # 要引就得同时改这里）。
+  prose:
+    runs-on: ubuntu-latest
+    # 同一分支的新提交取消旧的校验；**不与部署共用 group**
+    concurrency:
+      group: prose-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - name: Check Python 3.9 syntax
+        # 本仓库反复承诺「全书代码一律兼容 Python 3.9」，而在这一步之前
+        # **没有任何闸门在看它**：CI 原先跑 3.11，写了 match / int | None 也照样全绿；
+        # verify.py 只在维护者本地跑，而那台机器恰好是 3.9 才顺带验到。
+        # 这一步与 setup-python 的版本绑定：改上面那个 3.9，这一步跟着变，不会脱节。
+        run: python scripts/check_syntax.py
+      - name: Check prose style
+        # 棘轮：dev/data/_prose_baseline.json 记着每个「文件 × 条款」的当前处数，
+        # 只在超出基线时失败。清洗完一批跑一次 --baseline 把数压下去。
+        run: python scripts/check_prose.py
+
+  build:
+    needs: prose
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # 同一时间只跑一个部署，新提交取消进行中的旧部署（原 workflow 级那条，收到这里）
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - name: Install documentation toolchain
+        # mkdocs.yml 的 plugins 列了 redirects（P-M① 起旧 URL 要 301 到新 id 路径），
+        # 少装这个包 mkdocs build 会直接 ConfigurationError，部署整条挂掉。
+        run: pip install mkdocs-material mkdocs-redirects
+      - name: Build documentation site
+        run: mkdocs build --site-dir _site
+      - name: Configure Pages
+        run: |
+          printf 'algorithm.ebook.ttzg.site\n' > _site/CNAME
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

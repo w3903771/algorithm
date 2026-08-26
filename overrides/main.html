@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{#
+  Material 主题覆盖层。custom_dir: overrides 在 mkdocs.yml 里声明。
+
+  extrahead 是 Material 官方留给「往 <head> 里塞东西」的钩子，
+  它渲染在每一页上——放这里而不是放 docs/index.md 有两个原因：
+
+  1. Cloudflare Web Analytics 的 beacon 本来就按「每页都有」设计，
+     只挂主页统计不到任何站内页面。
+  2. 本站开了 navigation.instant（站内跳转用 XHR 换 body），
+     写在页面正文里的 <script> 只在整页加载时执行一次，
+     从别的页跳回主页不会再执行；<head> 里的不受这个影响。
+#}
+{% block extrahead %}
+  {{ super() }}
+  <!-- Cloudflare Web Analytics -->
+  {#
+    官方文档给的是 defer，这里原先写的是 type='module'。两者都保证
+    「不阻塞解析、DOM 就绪后执行」，但 type='module' 会让
+    document.currentScript 恒为 null（HTML 规范如此），
+    而 beacon 取 token 的写法是
+    document.currentScript || document.querySelector('script[data-cf-beacon]')
+    ——module 下它靠的是**回退分支**。回退分支不是文档承诺的接口，
+    哪天上游精简掉，统计会**无声地**停掉，而没有任何闸门看得见。
+    换成 defer 没有代价。（05 号文件 §P-R① 原子②）
+  #}
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5c56eff1eda34f82a67465df70854a13"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+{% endblock %}

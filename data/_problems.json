@@ -1,0 +1,4578 @@
+{
+ "BISHI1": {
+  "acceptRate": 34.43,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】序列操作",
+  "url": "https://www.nowcoder.com/practice/12da4185c0bb45918cfdc3072e544069"
+ },
+ "BISHI10": {
+  "acceptRate": 42.74,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "模拟"
+  ],
+  "title": "小红的字符串修改",
+  "url": "https://www.nowcoder.com/practice/66e0054ff6b345afa47bcd4e8ceb72d7"
+ },
+ "BISHI100": {
+  "acceptRate": 42.8,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "图",
+   "贪心"
+  ],
+  "title": "二分图判定",
+  "url": "https://www.nowcoder.com/practice/f4b8d0481c7b4278b9b406b636e3c7db"
+ },
+ "BISHI101": {
+  "acceptRate": 51.41,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "世界树上找米库",
+  "url": "https://www.nowcoder.com/practice/9dd512f784b24ece85c81600aa3bc06c"
+ },
+ "BISHI102": {
+  "acceptRate": 49.79,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】并查集",
+  "url": "https://www.nowcoder.com/practice/513111e4477c4fad8f19f14d4cdf49dc"
+ },
+ "BISHI103": {
+  "acceptRate": 36.44,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】有依赖的背包问题",
+  "url": "https://www.nowcoder.com/practice/f0a110f831de4cc6bebc6243a26166e6"
+ },
+ "BISHI104": {
+  "acceptRate": 64.71,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "修复公路",
+  "url": "https://www.nowcoder.com/practice/8111efc8c04d472da349b6e5010e1951"
+ },
+ "BISHI105": {
+  "acceptRate": 51.52,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】单源最短路Ⅰ ‖ 无权图",
+  "url": "https://www.nowcoder.com/practice/359e14832ce1476fadc70dd4bc36b991"
+ },
+ "BISHI106": {
+  "acceptRate": 36.85,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】单源最短路Ⅲ ‖ 非负权图",
+  "url": "https://www.nowcoder.com/practice/d7fafd4f3340439e90597532850257b5"
+ },
+ "BISHI107": {
+  "acceptRate": 56.89,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】最小生成树",
+  "url": "https://www.nowcoder.com/practice/6434142fe980434899c396a6124b0778"
+ },
+ "BISHI108": {
+  "acceptRate": 48.29,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "最优乘车",
+  "url": "https://www.nowcoder.com/practice/83101a4f624042b59a629089e83b6dd1"
+ },
+ "BISHI109": {
+  "acceptRate": 72.39,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "邮递员送信",
+  "url": "https://www.nowcoder.com/practice/2b0c636cf77d441fa96d40ac64290d39"
+ },
+ "BISHI11": {
+  "acceptRate": 47.66,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "变幻莫测",
+  "url": "https://www.nowcoder.com/practice/5e702b6c7c114e64b5db4650d0ce0051"
+ },
+ "BISHI110": {
+  "acceptRate": 47.74,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】静态区间和（前缀和）",
+  "url": "https://www.nowcoder.com/practice/ac79a1a4a66646cc87525d6faa86e021"
+ },
+ "BISHI111": {
+  "acceptRate": 43.48,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】差分",
+  "url": "https://www.nowcoder.com/practice/4bbc401a5df140309edd6f14debdba42"
+ },
+ "BISHI112": {
+  "acceptRate": 43.63,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】二维前缀和",
+  "url": "https://www.nowcoder.com/practice/99eb8040d116414ea3296467ce81cbbc"
+ },
+ "BISHI113": {
+  "acceptRate": 53.76,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】二维差分",
+  "url": "https://www.nowcoder.com/practice/50e1a93989df42efb0b1dec386fb4ccc"
+ },
+ "BISHI114": {
+  "acceptRate": 50.01,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "【模板】滑动窗口",
+  "url": "https://www.nowcoder.com/practice/be419f584a3f4c5b818833f1ce856626"
+ },
+ "BISHI115": {
+  "acceptRate": 31.24,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "可匹配子段计数",
+  "url": "https://www.nowcoder.com/practice/cfc8ae6269cd445d83686f12da66023c"
+ },
+ "BISHI116": {
+  "acceptRate": 18.74,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "【模板】双指针",
+  "url": "https://www.nowcoder.com/practice/a2fd81391e1e4177aa6d506da895381b"
+ },
+ "BISHI117": {
+  "acceptRate": 31.52,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "小苯的IDE括号问题（easy）",
+  "url": "https://www.nowcoder.com/practice/0a526c7863474220aaef082ab5f2a00a"
+ },
+ "BISHI118": {
+  "acceptRate": 30.81,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "相差不超过k的最多数",
+  "url": "https://www.nowcoder.com/practice/562630ca90ac40ce89443c91060574c6"
+ },
+ "BISHI119": {
+  "acceptRate": 26.13,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "小红的01子序列构造（easy）",
+  "url": "https://www.nowcoder.com/practice/ee0b6c6baa2642c182df8b4390126f9a"
+ },
+ "BISHI12": {
+  "acceptRate": 35.05,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "元素方碑",
+  "url": "https://www.nowcoder.com/practice/5c6e7ed4726e41f4ac99a4dedf1e5bb2"
+ },
+ "BISHI120": {
+  "acceptRate": 59.77,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "双指针"
+  ],
+  "title": "？？？",
+  "url": "https://www.nowcoder.com/practice/b6b8bfcde03841e4880c2b9ef00329c6"
+ },
+ "BISHI121": {
+  "acceptRate": 51.16,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "数列后缀极大位置统计",
+  "url": "https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68"
+ },
+ "BISHI122": {
+  "acceptRate": 25.6,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "区间后缀极大位置计数",
+  "url": "https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235"
+ },
+ "BISHI123": {
+  "acceptRate": 24.12,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "环形字符串跃迁",
+  "url": "https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339"
+ },
+ "BISHI124": {
+  "acceptRate": 69.05,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】最近公共祖先（LCA）",
+  "url": "https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217"
+ },
+ "BISHI125": {
+  "acceptRate": 58.29,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】静态区间最值",
+  "url": "https://www.nowcoder.com/practice/831a314449d44ea0b1db90ca626bcd1a"
+ },
+ "BISHI126": {
+  "acceptRate": 47.7,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】动态区间和Ⅱ ‖ 区间修改 + 区间查询",
+  "url": "https://www.nowcoder.com/practice/ef7a50cf0377447b9b435b0f95e48e70"
+ },
+ "BISHI127": {
+  "acceptRate": 41.92,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "区间根号与区间求和",
+  "url": "https://www.nowcoder.com/practice/56547df6934f4048a80ec75838d60c8f"
+ },
+ "BISHI128": {
+  "acceptRate": 25.37,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "区间加乘与单点求值",
+  "url": "https://www.nowcoder.com/practice/7a1de22fa7a1456f8ba519f21de31c84"
+ },
+ "BISHI129": {
+  "acceptRate": 46.26,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "区间增量与区间小于计数",
+  "url": "https://www.nowcoder.com/practice/74481dd14e3b4875a190952f86e6ffab"
+ },
+ "BISHI13": {
+  "acceptRate": 42.98,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "九倍平方数",
+  "url": "https://www.nowcoder.com/practice/032c72fab5fe4a2ea8e11d40378a493d"
+ },
+ "BISHI130": {
+  "acceptRate": 49.96,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "区间取反与区间数一",
+  "url": "https://www.nowcoder.com/practice/55d474a878a84f4b84dca4b177a8c45c"
+ },
+ "BISHI131": {
+  "acceptRate": 44.09,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "数楼梯",
+  "url": "https://www.nowcoder.com/practice/c7e5f164fa5d471f8f83c90fe4ee3f05"
+ },
+ "BISHI132": {
+  "acceptRate": 69.15,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "小红的地砖",
+  "url": "https://www.nowcoder.com/practice/8cd083c66a5f43489a532164e2a2304d"
+ },
+ "BISHI133": {
+  "acceptRate": 44.39,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "最长不下降子序列",
+  "url": "https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062"
+ },
+ "BISHI134": {
+  "acceptRate": 39.38,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "最大子段和",
+  "url": "https://www.nowcoder.com/practice/f04519cd1d904f50b68f4229a126ab08"
+ },
+ "BISHI135": {
+  "acceptRate": 29.07,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "三角形取数(Hard Version)",
+  "url": "https://www.nowcoder.com/practice/ceea5825472940dabfec917ef93538e6"
+ },
+ "BISHI136": {
+  "acceptRate": 36.44,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】01背包",
+  "url": "https://www.nowcoder.com/practice/fd55637d3f24484e96dad9e992d3f62e"
+ },
+ "BISHI137": {
+  "acceptRate": 40.02,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】完全背包",
+  "url": "https://www.nowcoder.com/practice/deda4293d9b24ce1aeaf1813c88b8c25"
+ },
+ "BISHI138": {
+  "acceptRate": 30.25,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】多重背包",
+  "url": "https://www.nowcoder.com/practice/8fa10063d33a43dd9652c1511a34d461"
+ },
+ "BISHI139": {
+  "acceptRate": 60.68,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "【模板】二维费用背包",
+  "url": "https://www.nowcoder.com/practice/84b88177894c4c82980017e6b4a15fb3"
+ },
+ "BISHI14": {
+  "acceptRate": 29.28,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "特殊的科学计数法",
+  "url": "https://www.nowcoder.com/practice/ca0962879d3b40d8bb598fb9a905ac7a"
+ },
+ "BISHI140": {
+  "acceptRate": 62.96,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】分组背包",
+  "url": "https://www.nowcoder.com/practice/32a6c222213c42efa902da6b5c9f8e99"
+ },
+ "BISHI141": {
+  "acceptRate": 31.46,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "来硬的",
+  "url": "https://www.nowcoder.com/practice/08dbc77ec79942c1914b002f488b87ee"
+ },
+ "BISHI142": {
+  "acceptRate": 63.65,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "最大学分",
+  "url": "https://www.nowcoder.com/practice/66403297dfe04faaacf7d0e905fea7ac"
+ },
+ "BISHI143": {
+  "acceptRate": 65.87,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "没有上司的舞会",
+  "url": "https://www.nowcoder.com/practice/f703237089ee42d9b37e01d70e14e2fc"
+ },
+ "BISHI144": {
+  "acceptRate": 35.52,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "食物链计数",
+  "url": "https://www.nowcoder.com/practice/9844dd9f531e46e29f5749e8fcc4bd0b"
+ },
+ "BISHI145": {
+  "acceptRate": 60.71,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "石子合并",
+  "url": "https://www.nowcoder.com/practice/237337887b094938bfc6e9557f92c3e9"
+ },
+ "BISHI146": {
+  "acceptRate": 30.56,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "收集金币",
+  "url": "https://www.nowcoder.com/practice/bde230df252c4b41a059c9b06fcf65b6"
+ },
+ "BISHI147": {
+  "acceptRate": 33.06,
+  "difficulty": "困难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "旅行者的大逃脱",
+  "url": "https://www.nowcoder.com/practice/3a02e2b818144c2dbad8dd3dc28d04cf"
+ },
+ "BISHI15": {
+  "acceptRate": 52.99,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "小红的夹吃棋",
+  "url": "https://www.nowcoder.com/practice/94648fd37a644c76adb2adb29c2a3037"
+ },
+ "BISHI16": {
+  "acceptRate": 61.97,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "模拟",
+   "基础数学"
+  ],
+  "title": "计算一年中的第几天",
+  "url": "https://www.nowcoder.com/practice/178aa3dafb144bb8b0445edb5e9b812a"
+ },
+ "BISHI17": {
+  "acceptRate": 37.38,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "纸牌游戏",
+  "url": "https://www.nowcoder.com/practice/74f915e366094b19b94334de8b68e733"
+ },
+ "BISHI18": {
+  "acceptRate": 29.58,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多项式输出",
+  "url": "https://www.nowcoder.com/practice/142ee43d3e7345d385328faca9f636e5"
+ },
+ "BISHI19": {
+  "acceptRate": 34.53,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "乒乓球",
+  "url": "https://www.nowcoder.com/practice/78660925b1cd49b6b2e43cb375ed7945"
+ },
+ "BISHI2": {
+  "acceptRate": 53.54,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】栈的操作",
+  "url": "https://www.nowcoder.com/practice/cdf02ea916454957b575585634e5773a"
+ },
+ "BISHI20": {
+  "acceptRate": 38.57,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "回文日期",
+  "url": "https://www.nowcoder.com/practice/0372242deac541d0b578cc6563395681"
+ },
+ "BISHI21": {
+  "acceptRate": 53.34,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "排序"
+  ],
+  "title": "【模板】排序",
+  "url": "https://www.nowcoder.com/practice/40bf74658879460bbf5f1bfe772e8580"
+ },
+ "BISHI22": {
+  "acceptRate": 44.37,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "排序"
+  ],
+  "title": "分数线划定",
+  "url": "https://www.nowcoder.com/practice/2395fa7b6c6e452e8d8310a7cfdbe902"
+ },
+ "BISHI23": {
+  "acceptRate": 67.81,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "哈希",
+   "排序"
+  ],
+  "title": "小红书推荐系统",
+  "url": "https://www.nowcoder.com/practice/e5b39c9034a84bf2a5e026b2b9b973d0"
+ },
+ "BISHI24": {
+  "acceptRate": 30.61,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "排序"
+  ],
+  "title": "谐距下标对",
+  "url": "https://www.nowcoder.com/practice/12fd032361704c978bcb9c2c2b3bb93d"
+ },
+ "BISHI25": {
+  "acceptRate": 31.79,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "排序"
+  ],
+  "title": "最大 FST 距离",
+  "url": "https://www.nowcoder.com/practice/6295f81acd1b4fb59c8beed92577f64b"
+ },
+ "BISHI26": {
+  "acceptRate": 73.62,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "数论"
+  ],
+  "title": "构造C的歪",
+  "url": "https://www.nowcoder.com/practice/56735b3fe2fc4ed5916f5427dc787156"
+ },
+ "BISHI27": {
+  "acceptRate": 51.66,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "构造数对",
+  "url": "https://www.nowcoder.com/practice/c16b86c1149a43eaaa0fd85aaee51290"
+ },
+ "BISHI28": {
+  "acceptRate": 67.12,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "构造数独",
+  "url": "https://www.nowcoder.com/practice/bf8ffcbf95f743d7bbb2dd96bafa1a3c"
+ },
+ "BISHI29": {
+  "acceptRate": 36.55,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "小红的排列构造①",
+  "url": "https://www.nowcoder.com/practice/2b0a9318cc0740d1a78eec06162e7bea"
+ },
+ "BISHI3": {
+  "acceptRate": 59.79,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】队列操作",
+  "url": "https://www.nowcoder.com/practice/1137c8f6ffac4d5d94cc1b0cb08723f9"
+ },
+ "BISHI30": {
+  "acceptRate": 32.22,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "位运算"
+  ],
+  "title": "二进制数1",
+  "url": "https://www.nowcoder.com/practice/bc4c7936f5ed42cbb9131b6f39aa272b"
+ },
+ "BISHI31": {
+  "acceptRate": 60.1,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "位运算"
+  ],
+  "title": "二进制不同位数",
+  "url": "https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868"
+ },
+ "BISHI32": {
+  "acceptRate": 76.8,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "被打乱的异或和",
+  "url": "https://www.nowcoder.com/practice/116db6858c424fb89b821125053bbc15"
+ },
+ "BISHI33": {
+  "acceptRate": 43.57,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "Poi 的新加法（Easy Version）",
+  "url": "https://www.nowcoder.com/practice/9f766daa7e4042a786633c341fe9d7e2"
+ },
+ "BISHI34": {
+  "acceptRate": 44.09,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "甜蜜的博弈",
+  "url": "https://www.nowcoder.com/practice/d3934f2d05624c8fa1a748ef225d0460"
+ },
+ "BISHI35": {
+  "acceptRate": 67.43,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】巴什博弈",
+  "url": "https://www.nowcoder.com/practice/9bb882504d574ec287f69e967ce0fb95"
+ },
+ "BISHI36": {
+  "acceptRate": 48.81,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】扩展巴什博弈",
+  "url": "https://www.nowcoder.com/practice/4b0d36a3d3884cf69f618cf4c2511d82"
+ },
+ "BISHI37": {
+  "acceptRate": 41.32,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "数位差与数值和的构造",
+  "url": "https://www.nowcoder.com/practice/36f3593e553c4c67987abf88a3d4d105"
+ },
+ "BISHI38": {
+  "acceptRate": 35.57,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "有向二分图构造",
+  "url": "https://www.nowcoder.com/practice/e56757bb703b4cee9d641d1682b54b63"
+ },
+ "BISHI39": {
+  "acceptRate": 34.15,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】Pollard-Pho算法",
+  "url": "https://www.nowcoder.com/practice/9da360a56fa846708542b0fb3985c647"
+ },
+ "BISHI4": {
+  "acceptRate": 27.48,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】集合操作",
+  "url": "https://www.nowcoder.com/practice/a37b91f84cdf490b8d8b990794211135"
+ },
+ "BISHI40": {
+  "acceptRate": 50.65,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "数组取精",
+  "url": "https://www.nowcoder.com/practice/6f77d207b40c41d899d23627d6bd122a"
+ },
+ "BISHI41": {
+  "acceptRate": 44.77,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】整除分块",
+  "url": "https://www.nowcoder.com/practice/6b0b510b32484281bd21abb71ef7ba0b"
+ },
+ "BISHI42": {
+  "acceptRate": 35.3,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "余数求和",
+  "url": "https://www.nowcoder.com/practice/5d18ffe2c6cd45ac8d8040be19c96f14"
+ },
+ "BISHI43": {
+  "acceptRate": 62.68,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "讨厌鬼进货",
+  "url": "https://www.nowcoder.com/practice/e364bac751204aa0b2d27389ca8e3c94"
+ },
+ "BISHI44": {
+  "acceptRate": 45.33,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "灵异背包？",
+  "url": "https://www.nowcoder.com/practice/812bcedbbe244c9b86e459a244af5ddf"
+ },
+ "BISHI45": {
+  "acceptRate": 32.06,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "小红的矩阵染色",
+  "url": "https://www.nowcoder.com/practice/dcbaf862c0e046d79e9cd297abd76bcf"
+ },
+ "BISHI46": {
+  "acceptRate": 63.91,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "小红的魔法药剂",
+  "url": "https://www.nowcoder.com/practice/1ede2daa3ab445bc8ac8ea62b6ca8201"
+ },
+ "BISHI47": {
+  "acceptRate": 43.74,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "交换到最大",
+  "url": "https://www.nowcoder.com/practice/73fd35bbfaa5483d8aa8b03cd27887a8"
+ },
+ "BISHI48": {
+  "acceptRate": 42.46,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "小红的整数配对",
+  "url": "https://www.nowcoder.com/practice/66b9810e4fe34956a8d1f5c67aacc6dc"
+ },
+ "BISHI49": {
+  "acceptRate": 21.47,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心",
+   "堆"
+  ],
+  "title": "小红闯关",
+  "url": "https://www.nowcoder.com/practice/7ce4b75f7a304be481e73bc4dd2705a4"
+ },
+ "BISHI5": {
+  "acceptRate": 34.36,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】多重集合操作",
+  "url": "https://www.nowcoder.com/practice/aaf8b53f6ea74ad6beabed77bb275725"
+ },
+ "BISHI50": {
+  "acceptRate": 37.2,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "[JSOI2007]建筑抢修",
+  "url": "https://www.nowcoder.com/practice/e69a484a4dfb4015b34c2e0ff2ae2ac8"
+ },
+ "BISHI51": {
+  "acceptRate": 47.36,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "低买高卖",
+  "url": "https://www.nowcoder.com/practice/61ad3cbe0e7d4db9b64fc2b7b503dfd8"
+ },
+ "BISHI52": {
+  "acceptRate": 25.93,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "奥赛组队",
+  "url": "https://www.nowcoder.com/practice/8809c78fe4fa445ab8218cee5b69910f"
+ },
+ "BISHI53": {
+  "acceptRate": 64.15,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "[P1080] 国王游戏(简化版)",
+  "url": "https://www.nowcoder.com/practice/145c3426577f40f8b2b5e51ca6f61523"
+ },
+ "BISHI54": {
+  "acceptRate": 48.77,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "货物堆放",
+  "url": "https://www.nowcoder.com/practice/22541f98215747aeb0b8217ae1dd97e8"
+ },
+ "BISHI55": {
+  "acceptRate": 30.81,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "判断质数",
+  "url": "https://www.nowcoder.com/practice/9f418ff48b5e4e879f398352bed6118d"
+ },
+ "BISHI56": {
+  "acceptRate": 51.75,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "分解质因数",
+  "url": "https://www.nowcoder.com/practice/35723516d6f841ca8869ecbcf3ddacaf"
+ },
+ "BISHI57": {
+  "acceptRate": 50.13,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "最大公因数与最小公倍数",
+  "url": "https://www.nowcoder.com/practice/ee732bec4f174cd9b4abc6427ba90584"
+ },
+ "BISHI58": {
+  "acceptRate": 51.71,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "矩形游戏",
+  "url": "https://www.nowcoder.com/practice/5b6c2c824a434b55a5e3b77619c54a90"
+ },
+ "BISHI59": {
+  "acceptRate": 16.89,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "基础数学"
+  ],
+  "title": "阶乘末尾非零数字",
+  "url": "https://www.nowcoder.com/practice/248c8fbee56e491aa147b67b9c082da0"
+ },
+ "BISHI6": {
+  "acceptRate": 64.98,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】整数优先队列",
+  "url": "https://www.nowcoder.com/practice/a88e9711f7b04369982bbe8902278ae4"
+ },
+ "BISHI60": {
+  "acceptRate": 81.18,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "大水题",
+  "url": "https://www.nowcoder.com/practice/6b9770de551c426287252421742f6ebf"
+ },
+ "BISHI61": {
+  "acceptRate": 39.65,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "小q的数列",
+  "url": "https://www.nowcoder.com/practice/8ea1e0d996f64e15961ae42e658a04a7"
+ },
+ "BISHI62": {
+  "acceptRate": 41.22,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "基础数学",
+   "递归"
+  ],
+  "title": "斐波那契数列",
+  "url": "https://www.nowcoder.com/practice/c245af6cfdce49ceb5435f649ee14f89"
+ },
+ "BISHI63": {
+  "acceptRate": 35.28,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "计算阶乘",
+  "url": "https://www.nowcoder.com/practice/b93729ad46d74a62801bdc320be2aa8e"
+ },
+ "BISHI64": {
+  "acceptRate": 45.12,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】快速幂Ⅰ ‖ 整数",
+  "url": "https://www.nowcoder.com/practice/3d624107a6904da1bd0e8c9c85e17167"
+ },
+ "BISHI65": {
+  "acceptRate": 58.74,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】分数取模",
+  "url": "https://www.nowcoder.com/practice/23839ef20d5f4dbaa9664daa51864291"
+ },
+ "BISHI66": {
+  "acceptRate": 35.39,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "子数列求积",
+  "url": "https://www.nowcoder.com/practice/5daab034da954f5697dcf96c1808d34f"
+ },
+ "BISHI67": {
+  "acceptRate": 62.31,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "穿搭大挑战",
+  "url": "https://www.nowcoder.com/practice/cd190da0f3614a8393c84981a11d024e"
+ },
+ "BISHI68": {
+  "acceptRate": 78.43,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "刷题统计",
+  "url": "https://www.nowcoder.com/practice/99ddb1a6e71d47dcbbe4f272aba532b8"
+ },
+ "BISHI69": {
+  "acceptRate": 42.59,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "[HNOI2008]越狱",
+  "url": "https://www.nowcoder.com/practice/33d5016548d84cbe8cdb08ca0c13c2f1"
+ },
+ "BISHI7": {
+  "acceptRate": 78.6,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "字符串哈希",
+  "url": "https://www.nowcoder.com/practice/dadbd37fee7c43f0ae407db11b16b4bf"
+ },
+ "BISHI70": {
+  "acceptRate": 39.84,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】组合数",
+  "url": "https://www.nowcoder.com/practice/53f82db091b2452bae5fef4437ffd0bb"
+ },
+ "BISHI71": {
+  "acceptRate": 41.3,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "人员分组问题",
+  "url": "https://www.nowcoder.com/practice/482f31bf028f46aa9b7882a4b921ffcf"
+ },
+ "BISHI72": {
+  "acceptRate": 35.22,
+  "difficulty": "较难",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "中位数之和",
+  "url": "https://www.nowcoder.com/practice/4bc8c3535b8e488eb608c73f8946d9cb"
+ },
+ "BISHI73": {
+  "acceptRate": 73.12,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】欧拉函数Ⅰ ‖ 单个整数",
+  "url": "https://www.nowcoder.com/practice/6a22f91ad3904c6cbd624ae5ff6a4eac"
+ },
+ "BISHI74": {
+  "acceptRate": 68.56,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】非质模数下的乘法逆元",
+  "url": "https://www.nowcoder.com/practice/52328883c41f475c8eb228726af2ce2f"
+ },
+ "BISHI75": {
+  "acceptRate": 21.15,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】欧拉降幂",
+  "url": "https://www.nowcoder.com/practice/da7a14c1a58b48bd80e63771b82e50c5"
+ },
+ "BISHI76": {
+  "acceptRate": 46.9,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "dfs"
+  ],
+  "title": "迷宫寻路",
+  "url": "https://www.nowcoder.com/practice/0c8930e517444d04b426e9703d483ed4"
+ },
+ "BISHI77": {
+  "acceptRate": 66.14,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "dfs"
+  ],
+  "title": "数水坑",
+  "url": "https://www.nowcoder.com/practice/664ca4289fcf457ba3109fdf4a7a1a05"
+ },
+ "BISHI78": {
+  "acceptRate": 67.37,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "dfs"
+  ],
+  "title": "全排列",
+  "url": "https://www.nowcoder.com/practice/1d1fe38275da44b5848add89f9e223b1"
+ },
+ "BISHI79": {
+  "acceptRate": 39.14,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "dfs"
+  ],
+  "title": "取数游戏",
+  "url": "https://www.nowcoder.com/practice/b002b8eb564245fdbb8a02db8dcf03e4"
+ },
+ "BISHI8": {
+  "acceptRate": 38.13,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "大整数哈希",
+  "url": "https://www.nowcoder.com/practice/29f0cff8a69b4ab6a2f63fb7386defa3"
+ },
+ "BISHI80": {
+  "acceptRate": 36.59,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "走迷宫",
+  "url": "https://www.nowcoder.com/practice/e88b41dc6e764b2893bc4221777ffe64"
+ },
+ "BISHI81": {
+  "acceptRate": 54.52,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "剪纸游戏",
+  "url": "https://www.nowcoder.com/practice/33054daa2cc04fd6b97a0d18ccfc66a0"
+ },
+ "BISHI82": {
+  "acceptRate": 24.99,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "没挡住洪水",
+  "url": "https://www.nowcoder.com/practice/6d62436fda5f4ef997e68d1ce1dd6eb2"
+ },
+ "BISHI83": {
+  "acceptRate": 35.21,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "迷宫问题",
+  "url": "https://www.nowcoder.com/practice/cf24906056f4488c9ddb132f317e03bc"
+ },
+ "BISHI84": {
+  "acceptRate": 50.43,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "广度优先搜索(BFS)"
+  ],
+  "title": "时津风的资源收集",
+  "url": "https://www.nowcoder.com/practice/5a6f83a0e0214ba5a77f6cdc71a3027b"
+ },
+ "BISHI85": {
+  "acceptRate": 63.19,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】整数域二分",
+  "url": "https://www.nowcoder.com/practice/d483ab6bf19245518730a75c6ea108ae"
+ },
+ "BISHI86": {
+  "acceptRate": 31.41,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "圆覆盖",
+  "url": "https://www.nowcoder.com/practice/4f96afe5dfe74dad88dbe419d33f9536"
+ },
+ "BISHI87": {
+  "acceptRate": 32.4,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "[CQOI2010]扑克牌",
+  "url": "https://www.nowcoder.com/practice/b77ff162bbab446993913fd684489cde"
+ },
+ "BISHI88": {
+  "acceptRate": 26.42,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [
+   "贪心",
+   "二分",
+   "字符串"
+  ],
+  "title": "小苯的魔法染色",
+  "url": "https://www.nowcoder.com/practice/2e27509b990d4d02a70c0f208f078cdf"
+ },
+ "BISHI89": {
+  "acceptRate": 25.54,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "山峰数组计数",
+  "url": "https://www.nowcoder.com/practice/aac1989d183d4e6daf6ee2e1ca62b50c"
+ },
+ "BISHI9": {
+  "acceptRate": 47.72,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "田忌赛马",
+  "url": "https://www.nowcoder.com/practice/49d799f65a0749588e9cd7e6135a4a9a"
+ },
+ "BISHI90": {
+  "acceptRate": 26.12,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】记忆化搜索",
+  "url": "https://www.nowcoder.com/practice/211c9fa6ea984185a16c6005e9793736"
+ },
+ "BISHI91": {
+  "acceptRate": 38.39,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "拼接木棍",
+  "url": "https://www.nowcoder.com/practice/e0f5370bf8bb4d7d9c89c832c30da460"
+ },
+ "BISHI92": {
+  "acceptRate": 57.19,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】前缀函数（kmp）",
+  "url": "https://www.nowcoder.com/practice/f347bf9d731d47a0bc87bc7e2415cef1"
+ },
+ "BISHI93": {
+  "acceptRate": 55.31,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】Trie 字典树",
+  "url": "https://www.nowcoder.com/practice/feed1cd7546a4901965751b9fbf5f8a1"
+ },
+ "BISHI94": {
+  "acceptRate": 47.9,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】马拉车算法",
+  "url": "https://www.nowcoder.com/practice/c01a7b5e88e544db841a009a035bd125"
+ },
+ "BISHI95": {
+  "acceptRate": 53.74,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "【模板】链式前向星",
+  "url": "https://www.nowcoder.com/practice/23f622c8b15f4b37bffe1a986eeea185"
+ },
+ "BISHI96": {
+  "acceptRate": 57.69,
+  "difficulty": "简单",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "先序遍历、中序遍历和后序遍历",
+  "url": "https://www.nowcoder.com/practice/15fdb346838545d0b272e43957e1cb2a"
+ },
+ "BISHI97": {
+  "acceptRate": 47.23,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "旺仔哥哥走迷宫",
+  "url": "https://www.nowcoder.com/practice/4b4ee516c23d4bd2b838646363b5c395"
+ },
+ "BISHI98": {
+  "acceptRate": 62.29,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "谍中谍中谍中谍中谍...",
+  "url": "https://www.nowcoder.com/practice/ee1246384c9b4066b67043ebb37fd9c9"
+ },
+ "BISHI99": {
+  "acceptRate": 51.22,
+  "difficulty": "中等",
+  "mode": "acm",
+  "set": "bishi",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "我朋友的朋友不是我的朋友",
+  "url": "https://www.nowcoder.com/practice/9656866233614f4191f5555a0cdcae4b"
+ },
+ "BM1": {
+  "acceptRate": 40.22,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "反转链表",
+  "url": "https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca"
+ },
+ "BM10": {
+  "acceptRate": 37.42,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "两个链表的第一个公共结点",
+  "url": "https://www.nowcoder.com/practice/6ab1d9a29e88450685099d45c9e31e46"
+ },
+ "BM100": {
+  "acceptRate": 42.14,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "哈希",
+   "模拟"
+  ],
+  "title": "设计LRU缓存结构",
+  "url": "https://www.nowcoder.com/practice/5dfded165916435d9defb053c63f1e84"
+ },
+ "BM101": {
+  "acceptRate": 30.74,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "模拟"
+  ],
+  "title": "设计LFU缓存结构",
+  "url": "https://www.nowcoder.com/practice/93aacb4a887b46d897b00823f30bfea1"
+ },
+ "BM11": {
+  "acceptRate": 34.62,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "模拟"
+  ],
+  "title": "链表相加(二)",
+  "url": "https://www.nowcoder.com/practice/c56f6c70fb3f4849bc56e33ff2a50b6b"
+ },
+ "BM12": {
+  "acceptRate": 44.4,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "排序"
+  ],
+  "title": "单链表的排序",
+  "url": "https://www.nowcoder.com/practice/f23604257af94d939848729b1a5cda08"
+ },
+ "BM13": {
+  "acceptRate": 31.64,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "双指针"
+  ],
+  "title": "判断一个链表是否为回文结构",
+  "url": "https://www.nowcoder.com/practice/3fed228444e740c8be66232ce8b87c2f"
+ },
+ "BM14": {
+  "acceptRate": 42.38,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "排序"
+  ],
+  "title": "链表的奇偶重排",
+  "url": "https://www.nowcoder.com/practice/02bf49ea45cd486daa031614f9bd6fc3"
+ },
+ "BM15": {
+  "acceptRate": 36.83,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "删除有序链表中重复的元素-I",
+  "url": "https://www.nowcoder.com/practice/c087914fae584da886a0091e877f2c79"
+ },
+ "BM16": {
+  "acceptRate": 31.68,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "删除有序链表中重复的元素-II",
+  "url": "https://www.nowcoder.com/practice/71cef9f8b5564579bf7ed93fbe0b2024"
+ },
+ "BM17": {
+  "acceptRate": 30.75,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "二分"
+  ],
+  "title": "二分查找-I",
+  "url": "https://www.nowcoder.com/practice/d3df40bd23594118b57554129cadf47b"
+ },
+ "BM18": {
+  "acceptRate": 26.39,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组"
+  ],
+  "title": "二维数组中的查找",
+  "url": "https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e"
+ },
+ "BM19": {
+  "acceptRate": 28.51,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组"
+  ],
+  "title": "寻找峰值",
+  "url": "https://www.nowcoder.com/practice/fcf87540c4f347bcb4cf720b5b350c76"
+ },
+ "BM2": {
+  "acceptRate": 28.24,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "链表内指定区间反转",
+  "url": "https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c"
+ },
+ "BM20": {
+  "acceptRate": 17.44,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组"
+  ],
+  "title": "数组中的逆序对",
+  "url": "https://www.nowcoder.com/practice/96bd6684e04a44eb80e6a68efc0ec6c5"
+ },
+ "BM21": {
+  "acceptRate": 32.96,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "二分"
+  ],
+  "title": "旋转数组的最小数字",
+  "url": "https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba"
+ },
+ "BM22": {
+  "acceptRate": 27.92,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "双指针"
+  ],
+  "title": "比较版本号",
+  "url": "https://www.nowcoder.com/practice/2b317e02f14247a49ffdbdba315459e7"
+ },
+ "BM23": {
+  "acceptRate": 54.67,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "递归",
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "二叉树的前序遍历",
+  "url": "https://www.nowcoder.com/practice/5e2135f4d2b14eb8a5b06fab4c938635"
+ },
+ "BM24": {
+  "acceptRate": 59.23,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "递归",
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "二叉树的中序遍历",
+  "url": "https://www.nowcoder.com/practice/0bf071c135e64ee2a027783b80bf781d"
+ },
+ "BM25": {
+  "acceptRate": 66.77,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "递归",
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "二叉树的后序遍历",
+  "url": "https://www.nowcoder.com/practice/1291064f4d5d4bdeaefbf0dd47d78541"
+ },
+ "BM26": {
+  "acceptRate": 45.94,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "广度优先搜索(BFS)"
+  ],
+  "title": "求二叉树的层序遍历",
+  "url": "https://www.nowcoder.com/practice/04a5560e43e24e9db4595865dc9c63a3"
+ },
+ "BM27": {
+  "acceptRate": 29.06,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "栈",
+   "队列",
+   "树"
+  ],
+  "title": "按之字形顺序打印二叉树",
+  "url": "https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0"
+ },
+ "BM28": {
+  "acceptRate": 61.0,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "dfs"
+  ],
+  "title": "二叉树的最大深度",
+  "url": "https://www.nowcoder.com/practice/8a2b2bf6c19b4f23a9bdb9b233eefa73"
+ },
+ "BM29": {
+  "acceptRate": 37.2,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "dfs"
+  ],
+  "title": "二叉树中和为某一值的路径(一)",
+  "url": "https://www.nowcoder.com/practice/508378c0823c423baa723ce448cbfd0c"
+ },
+ "BM3": {
+  "acceptRate": 37.42,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "链表中的节点每k个一组翻转",
+  "url": "https://www.nowcoder.com/practice/b49c3dc907814e9bbfa8437c251b028e"
+ },
+ "BM30": {
+  "acceptRate": 32.27,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "分治"
+  ],
+  "title": "二叉搜索树与双向链表",
+  "url": "https://www.nowcoder.com/practice/947f6eb80d944a84850b0538bf0ec3a5"
+ },
+ "BM31": {
+  "acceptRate": 32.73,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树"
+  ],
+  "title": "对称的二叉树",
+  "url": "https://www.nowcoder.com/practice/ff05d44dfdb04e1d83bdbdab320efbcb"
+ },
+ "BM32": {
+  "acceptRate": 69.43,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树"
+  ],
+  "title": "合并二叉树",
+  "url": "https://www.nowcoder.com/practice/7298353c24cc42e3bd5f0e0bd3d1d759"
+ },
+ "BM33": {
+  "acceptRate": 65.78,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树"
+  ],
+  "title": "二叉树的镜像",
+  "url": "https://www.nowcoder.com/practice/a9d0ecbacef9410ca97463e4a5c83be7"
+ },
+ "BM34": {
+  "acceptRate": 28.69,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树"
+  ],
+  "title": "判断是不是二叉搜索树",
+  "url": "https://www.nowcoder.com/practice/a69242b39baf45dea217815c7dedb52b"
+ },
+ "BM35": {
+  "acceptRate": 32.91,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "判断是不是完全二叉树",
+  "url": "https://www.nowcoder.com/practice/8daa4dff9e36409abba2adbe413d6fae"
+ },
+ "BM36": {
+  "acceptRate": 38.55,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "dfs"
+  ],
+  "title": "判断是不是平衡二叉树",
+  "url": "https://www.nowcoder.com/practice/8b3b95850edb4115918ecebdf1b4d222"
+ },
+ "BM37": {
+  "acceptRate": 42.13,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树",
+   "递归"
+  ],
+  "title": "二叉搜索树的最近公共祖先",
+  "url": "https://www.nowcoder.com/practice/d9820119321945f588ed6a26f0a6991f"
+ },
+ "BM38": {
+  "acceptRate": 41.04,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树"
+  ],
+  "title": "在二叉树中找到两个节点的最近公共祖先",
+  "url": "https://www.nowcoder.com/practice/e0cc33a83afe4530bcec46eba3325116"
+ },
+ "BM39": {
+  "acceptRate": 25.14,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "队列",
+   "树"
+  ],
+  "title": "序列化二叉树",
+  "url": "https://www.nowcoder.com/practice/cf7e25aa97c04cc1a68c8f040e71fb84"
+ },
+ "BM4": {
+  "acceptRate": 32.8,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "合并两个排序的链表",
+  "url": "https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337"
+ },
+ "BM40": {
+  "acceptRate": 28.07,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "树",
+   "dfs"
+  ],
+  "title": "重建二叉树",
+  "url": "https://www.nowcoder.com/practice/8a19cbe657394eeaac2f6ea9b0f6fcf6"
+ },
+ "BM41": {
+  "acceptRate": 54.01,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "树"
+  ],
+  "title": "输出二叉树的右视图",
+  "url": "https://www.nowcoder.com/practice/c9480213597e45f4807880c763ddd5f0"
+ },
+ "BM42": {
+  "acceptRate": 41.95,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "栈"
+  ],
+  "title": "用两个栈实现队列",
+  "url": "https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6"
+ },
+ "BM43": {
+  "acceptRate": 35.27,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "栈"
+  ],
+  "title": "包含min函数的栈",
+  "url": "https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49"
+ },
+ "BM44": {
+  "acceptRate": 30.37,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "栈"
+  ],
+  "title": "有效括号序列",
+  "url": "https://www.nowcoder.com/practice/37548e94a270412c8b9fb85643c8ccc2"
+ },
+ "BM45": {
+  "acceptRate": 27.38,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "队列",
+   "堆",
+   "双指针"
+  ],
+  "title": "滑动窗口的最大值",
+  "url": "https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788"
+ },
+ "BM46": {
+  "acceptRate": 28.12,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "堆",
+   "排序",
+   "分治"
+  ],
+  "title": "最小的K个数",
+  "url": "https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf"
+ },
+ "BM47": {
+  "acceptRate": 28.6,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "堆",
+   "分治"
+  ],
+  "title": "寻找第K大",
+  "url": "https://www.nowcoder.com/practice/e016ad9b7f0b45048c58a9f27ba618bf"
+ },
+ "BM48": {
+  "acceptRate": 30.27,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "堆",
+   "排序"
+  ],
+  "title": "数据流中的中位数",
+  "url": "https://www.nowcoder.com/practice/9be0172896bd43948f8a32fb954e1be1"
+ },
+ "BM49": {
+  "acceptRate": 37.37,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "栈",
+   "递归"
+  ],
+  "title": "表达式求值",
+  "url": "https://www.nowcoder.com/practice/c215ba61c8b1443b996351df929dc4d4"
+ },
+ "BM5": {
+  "acceptRate": 34.88,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "堆",
+   "分治"
+  ],
+  "title": "合并k个已排序的链表",
+  "url": "https://www.nowcoder.com/practice/65cfde9e5b9b4cf2b6bafa5f3ef33fa6"
+ },
+ "BM50": {
+  "acceptRate": 34.76,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "哈希"
+  ],
+  "title": "两数之和",
+  "url": "https://www.nowcoder.com/practice/20ef0972485e41019e39543e8e895b7f"
+ },
+ "BM51": {
+  "acceptRate": 33.6,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "哈希"
+  ],
+  "title": "数组中出现次数超过一半的数字",
+  "url": "https://www.nowcoder.com/practice/e8a1b01a2df14cb2b228b30ee6a92163"
+ },
+ "BM52": {
+  "acceptRate": 52.12,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "哈希",
+   "位运算"
+  ],
+  "title": "数组中只出现一次的两个数字",
+  "url": "https://www.nowcoder.com/practice/389fc1c3d3be4479a154f63f495abff8"
+ },
+ "BM53": {
+  "acceptRate": 34.78,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "哈希"
+  ],
+  "title": "缺失的第一个正整数",
+  "url": "https://www.nowcoder.com/practice/50ec6a5b0e4e45348544348278cdcee5"
+ },
+ "BM54": {
+  "acceptRate": 22.68,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "排序",
+   "双指针"
+  ],
+  "title": "三数之和",
+  "url": "https://www.nowcoder.com/practice/345e2ed5f81d4017bbb8cc6055b0b711"
+ },
+ "BM55": {
+  "acceptRate": 57.31,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "递归"
+  ],
+  "title": "没有重复项数字的全排列",
+  "url": "https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1"
+ },
+ "BM56": {
+  "acceptRate": 36.07,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "递归"
+  ],
+  "title": "有重复项数字的全排列",
+  "url": "https://www.nowcoder.com/practice/a43a2b986ef34843ac4fdd9159b69863"
+ },
+ "BM57": {
+  "acceptRate": 39.97,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "广度优先搜索(BFS)",
+   "dfs"
+  ],
+  "title": "岛屿数量",
+  "url": "https://www.nowcoder.com/practice/0c9664d1554e466aa107d899418e814e"
+ },
+ "BM58": {
+  "acceptRate": 23.58,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "递归"
+  ],
+  "title": "字符串的排列",
+  "url": "https://www.nowcoder.com/practice/fe6b651b66ae47d7acce78ffdd9a96c7"
+ },
+ "BM59": {
+  "acceptRate": 43.54,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "递归"
+  ],
+  "title": "N皇后问题",
+  "url": "https://www.nowcoder.com/practice/c76408782512486d91eea181107293b6"
+ },
+ "BM6": {
+  "acceptRate": 36.1,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "哈希",
+   "双指针"
+  ],
+  "title": "判断链表中是否有环",
+  "url": "https://www.nowcoder.com/practice/650474f313294468a4ded3ce0f7898b9"
+ },
+ "BM60": {
+  "acceptRate": 51.69,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "递归"
+  ],
+  "title": "括号生成",
+  "url": "https://www.nowcoder.com/practice/c9addb265cdf4cdd92c092c655d164ca"
+ },
+ "BM61": {
+  "acceptRate": 33.1,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "图",
+   "动态规划",
+   "dfs"
+  ],
+  "title": "矩阵最长递增路径",
+  "url": "https://www.nowcoder.com/practice/7a71a88cdf294ce6bdf54c899be967a2"
+ },
+ "BM62": {
+  "acceptRate": 37.12,
+  "difficulty": "入门",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "递归",
+   "动态规划",
+   "快速幂",
+   "记忆化搜索"
+  ],
+  "title": "斐波那契数列",
+  "url": "https://www.nowcoder.com/practice/c6c7742f5ba7442aada113136ddea0c3"
+ },
+ "BM63": {
+  "acceptRate": 40.65,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "递归",
+   "动态规划",
+   "记忆化搜索"
+  ],
+  "title": "跳台阶",
+  "url": "https://www.nowcoder.com/practice/8c82a5b80378478f9484d87d1c5f12a4"
+ },
+ "BM64": {
+  "acceptRate": 44.51,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "最小花费爬楼梯",
+  "url": "https://www.nowcoder.com/practice/6fe0302a058a4e4a834ee44af88435c7"
+ },
+ "BM65": {
+  "acceptRate": 31.88,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "最长公共子序列(二)",
+  "url": "https://www.nowcoder.com/practice/6d29638c85bb4ffd80c020fe244baf11"
+ },
+ "BM66": {
+  "acceptRate": 31.92,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "最长公共子串",
+  "url": "https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac"
+ },
+ "BM67": {
+  "acceptRate": 44.19,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "不同路径的数目(一)",
+  "url": "https://www.nowcoder.com/practice/166eaff8439d4cd898e3ba933fbc6358"
+ },
+ "BM68": {
+  "acceptRate": 48.59,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "动态规划"
+  ],
+  "title": "矩阵的最小路径和",
+  "url": "https://www.nowcoder.com/practice/7d21b6be4c6b429bb92d219341c4f8bb"
+ },
+ "BM69": {
+  "acceptRate": 16.6,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "把数字翻译成字符串",
+  "url": "https://www.nowcoder.com/practice/046a55e6cd274cffb88fc32dba695668"
+ },
+ "BM7": {
+  "acceptRate": 36.09,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "哈希",
+   "双指针"
+  ],
+  "title": "链表中环的入口结点",
+  "url": "https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4"
+ },
+ "BM70": {
+  "acceptRate": 33.93,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "兑换零钱(一)",
+  "url": "https://www.nowcoder.com/practice/3911a20b3f8743058214ceaa099eeb45"
+ },
+ "BM71": {
+  "acceptRate": 25.43,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "最长上升子序列(一)",
+  "url": "https://www.nowcoder.com/practice/5164f38b67f846fb8699e9352695cd2f"
+ },
+ "BM72": {
+  "acceptRate": 39.48,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "贪心",
+   "动态规划"
+  ],
+  "title": "连续子数组的最大和",
+  "url": "https://www.nowcoder.com/practice/459bd355da1549fa8a49e350bf3df484"
+ },
+ "BM73": {
+  "acceptRate": 35.19,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "动态规划"
+  ],
+  "title": "最长回文子串",
+  "url": "https://www.nowcoder.com/practice/b4525d1d84934cf280439aeecc36f4af"
+ },
+ "BM74": {
+  "acceptRate": 35.53,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串"
+  ],
+  "title": "数字字符串转化成IP地址",
+  "url": "https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e"
+ },
+ "BM75": {
+  "acceptRate": 44.53,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "动态规划"
+  ],
+  "title": "编辑距离(一)",
+  "url": "https://www.nowcoder.com/practice/6a1483b5be1547b1acd7940f867be0da"
+ },
+ "BM76": {
+  "acceptRate": 27.23,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "递归",
+   "动态规划"
+  ],
+  "title": "正则表达式匹配",
+  "url": "https://www.nowcoder.com/practice/28970c15befb4ff3a264189087b99ad4"
+ },
+ "BM77": {
+  "acceptRate": 25.51,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "栈",
+   "动态规划"
+  ],
+  "title": "最长的括号子串",
+  "url": "https://www.nowcoder.com/practice/45fd68024a4c4e97a8d6c45fc61dc6ad"
+ },
+ "BM78": {
+  "acceptRate": 38.33,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "打家劫舍(一)",
+  "url": "https://www.nowcoder.com/practice/c5fbf7325fbd4c0ea3d0c3ea6bc6cc79"
+ },
+ "BM79": {
+  "acceptRate": 39.97,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "打家劫舍(二)",
+  "url": "https://www.nowcoder.com/practice/a5c127769dd74a63ada7bff37d9c5815"
+ },
+ "BM8": {
+  "acceptRate": 31.84,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表"
+  ],
+  "title": "链表中倒数最后k个结点",
+  "url": "https://www.nowcoder.com/practice/886370fe658f41b498d40fb34ae76ff9"
+ },
+ "BM80": {
+  "acceptRate": 52.8,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "贪心",
+   "动态规划"
+  ],
+  "title": "买卖股票的最好时机(一)",
+  "url": "https://www.nowcoder.com/practice/64b4262d4e6d4f6181cd45446a5821ec"
+ },
+ "BM81": {
+  "acceptRate": 62.53,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "贪心",
+   "动态规划"
+  ],
+  "title": "买卖股票的最好时机(二)",
+  "url": "https://www.nowcoder.com/practice/9e5e3c2603064829b0a0bbfca10594e9"
+ },
+ "BM82": {
+  "acceptRate": 43.17,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划"
+  ],
+  "title": "买卖股票的最好时机(三)",
+  "url": "https://www.nowcoder.com/practice/4892d3ff304a4880b7a89ba01f48daf9"
+ },
+ "BM83": {
+  "acceptRate": 22.69,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串"
+  ],
+  "title": "字符串变形",
+  "url": "https://www.nowcoder.com/practice/c3120c1c1bc44ad986259c0cf0f0b80e"
+ },
+ "BM84": {
+  "acceptRate": 30.75,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串"
+  ],
+  "title": "最长公共前缀",
+  "url": "https://www.nowcoder.com/practice/28eb3175488f4434a4a6207f6f484f47"
+ },
+ "BM85": {
+  "acceptRate": 18.01,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串"
+  ],
+  "title": "验证IP地址",
+  "url": "https://www.nowcoder.com/practice/55fb3c68d08d46119f76ae2df7566880"
+ },
+ "BM86": {
+  "acceptRate": 38.96,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "模拟"
+  ],
+  "title": "大数加法",
+  "url": "https://www.nowcoder.com/practice/11ae12e8c6fe48f883cad618c2e81475"
+ },
+ "BM87": {
+  "acceptRate": 36.36,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "双指针"
+  ],
+  "title": "合并两个有序的数组",
+  "url": "https://www.nowcoder.com/practice/89865d4375634fc484f3a24b7fe65665"
+ },
+ "BM88": {
+  "acceptRate": 59.34,
+  "difficulty": "入门",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串"
+  ],
+  "title": "判断是否为回文字符串",
+  "url": "https://www.nowcoder.com/practice/e297fdd8e9f543059b0b5f05f3a7f3b2"
+ },
+ "BM89": {
+  "acceptRate": 26.56,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "排序"
+  ],
+  "title": "合并区间",
+  "url": "https://www.nowcoder.com/practice/69f4e5b7ad284a478777cb2a17fb5e6a"
+ },
+ "BM9": {
+  "acceptRate": 36.9,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "链表",
+   "双指针"
+  ],
+  "title": "删除链表的倒数第n个节点",
+  "url": "https://www.nowcoder.com/practice/f95dcdafbde44b22a6d741baf71653f6"
+ },
+ "BM90": {
+  "acceptRate": 27.35,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "哈希",
+   "双指针"
+  ],
+  "title": "最小覆盖子串",
+  "url": "https://www.nowcoder.com/practice/c466d480d20c4c7c9d322d12ca7955ac"
+ },
+ "BM91": {
+  "acceptRate": 65.92,
+  "difficulty": "入门",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "字符串",
+   "双指针"
+  ],
+  "title": "反转字符串",
+  "url": "https://www.nowcoder.com/practice/c3a6afee325e472386a1c4eb1ef987f3"
+ },
+ "BM92": {
+  "acceptRate": 29.8,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "哈希",
+   "双指针"
+  ],
+  "title": "最长无重复子数组",
+  "url": "https://www.nowcoder.com/practice/b56799ebfd684fb394bd315e89324fb4"
+ },
+ "BM93": {
+  "acceptRate": 41.78,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "双指针"
+  ],
+  "title": "盛水最多的容器",
+  "url": "https://www.nowcoder.com/practice/3d8d6a8e516e4633a2244d2934e5aa47"
+ },
+ "BM94": {
+  "acceptRate": 41.24,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "动态规划",
+   "单调栈",
+   "双指针"
+  ],
+  "title": "接雨水问题",
+  "url": "https://www.nowcoder.com/practice/31c1aed01b394f0b8b7734de0324e00f"
+ },
+ "BM95": {
+  "acceptRate": 23.72,
+  "difficulty": "较难",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "分糖果问题",
+  "url": "https://www.nowcoder.com/practice/76039109dd0b47e994c08d8319faa352"
+ },
+ "BM96": {
+  "acceptRate": 23.87,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "贪心"
+  ],
+  "title": "主持人调度（二）",
+  "url": "https://www.nowcoder.com/practice/4edf6e6d01554870a12f218c94e8a299"
+ },
+ "BM97": {
+  "acceptRate": 42.44,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组"
+  ],
+  "title": "旋转数组",
+  "url": "https://www.nowcoder.com/practice/e19927a8fd5d477794dac67096862042"
+ },
+ "BM98": {
+  "acceptRate": 27.65,
+  "difficulty": "简单",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组"
+  ],
+  "title": "螺旋矩阵",
+  "url": "https://www.nowcoder.com/practice/7edf70f2d29c4b599693dc3aaeea1d31"
+ },
+ "BM99": {
+  "acceptRate": 53.34,
+  "difficulty": "中等",
+  "mode": "core",
+  "set": "bm",
+  "site": "nowcoder",
+  "tags": [
+   "数组",
+   "基础数学"
+  ],
+  "title": "顺时针旋转矩阵",
+  "url": "https://www.nowcoder.com/practice/2e95333fbdd4451395066957e24909cc"
+ },
+ "LC1": {
+  "acceptRate": 55.2,
+  "difficulty": "简单",
+  "group": "哈希",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表"
+  ],
+  "title": "两数之和",
+  "url": "https://leetcode.cn/problems/two-sum/"
+ },
+ "LC101": {
+  "acceptRate": 63.8,
+  "difficulty": "简单",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "广度优先搜索",
+   "二叉树"
+  ],
+  "title": "对称二叉树",
+  "url": "https://leetcode.cn/problems/symmetric-tree/"
+ },
+ "LC102": {
+  "acceptRate": 70.8,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "广度优先搜索",
+   "二叉树"
+  ],
+  "title": "二叉树的层序遍历",
+  "url": "https://leetcode.cn/problems/binary-tree-level-order-traversal/"
+ },
+ "LC104": {
+  "acceptRate": 79.0,
+  "difficulty": "简单",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "广度优先搜索",
+   "二叉树"
+  ],
+  "title": "二叉树的最大深度",
+  "url": "https://leetcode.cn/problems/maximum-depth-of-binary-tree/"
+ },
+ "LC105": {
+  "acceptRate": 73.3,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "数组",
+   "哈希表",
+   "分治",
+   "二叉树"
+  ],
+  "title": "从前序与中序遍历序列构造二叉树",
+  "url": "https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+ },
+ "LC108": {
+  "acceptRate": 80.6,
+  "difficulty": "简单",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "二叉搜索树",
+   "数组",
+   "分治",
+   "二叉树"
+  ],
+  "title": "将有序数组转换为二叉搜索树",
+  "url": "https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/"
+ },
+ "LC11": {
+  "acceptRate": 61.9,
+  "difficulty": "中等",
+  "group": "双指针",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "贪心",
+   "数组",
+   "双指针"
+  ],
+  "title": "盛最多水的容器",
+  "url": "https://leetcode.cn/problems/container-with-most-water/"
+ },
+ "LC114": {
+  "acceptRate": 76.2,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "树",
+   "深度优先搜索",
+   "链表",
+   "二叉树"
+  ],
+  "title": "二叉树展开为链表",
+  "url": "https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/"
+ },
+ "LC1143": {
+  "acceptRate": 67.8,
+  "difficulty": "中等",
+  "group": "多维动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "字符串",
+   "动态规划",
+   "最长公共子序列"
+  ],
+  "title": "最长公共子序列",
+  "url": "https://leetcode.cn/problems/longest-common-subsequence/"
+ },
+ "LC118": {
+  "acceptRate": 77.9,
+  "difficulty": "简单",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "动态规划"
+  ],
+  "title": "杨辉三角",
+  "url": "https://leetcode.cn/problems/pascals-triangle/"
+ },
+ "LC121": {
+  "acceptRate": 60.2,
+  "difficulty": "简单",
+  "group": "贪心算法",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "动态规划"
+  ],
+  "title": "买卖股票的最佳时机",
+  "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/"
+ },
+ "LC124": {
+  "acceptRate": 48.3,
+  "difficulty": "困难",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "动态规划",
+   "二叉树",
+   "树形 DP"
+  ],
+  "title": "二叉树中的最大路径和",
+  "url": "https://leetcode.cn/problems/binary-tree-maximum-path-sum/"
+ },
+ "LC128": {
+  "acceptRate": 48.7,
+  "difficulty": "中等",
+  "group": "哈希",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "并查集",
+   "数组",
+   "哈希表"
+  ],
+  "title": "最长连续序列",
+  "url": "https://leetcode.cn/problems/longest-consecutive-sequence/"
+ },
+ "LC131": {
+  "acceptRate": 75.1,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "字符串",
+   "动态规划",
+   "回溯"
+  ],
+  "title": "分割回文串",
+  "url": "https://leetcode.cn/problems/palindrome-partitioning/"
+ },
+ "LC136": {
+  "acceptRate": 77.0,
+  "difficulty": "简单",
+  "group": "技巧",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "位运算",
+   "数组"
+  ],
+  "title": "只出现一次的数字",
+  "url": "https://leetcode.cn/problems/single-number/"
+ },
+ "LC138": {
+  "acceptRate": 70.6,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "链表"
+  ],
+  "title": "随机链表的复制",
+  "url": "https://leetcode.cn/problems/copy-list-with-random-pointer/"
+ },
+ "LC139": {
+  "acceptRate": 60.6,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "字典树",
+   "记忆化",
+   "数组",
+   "哈希表",
+   "字符串",
+   "动态规划",
+   "Brute-Force Search"
+  ],
+  "title": "单词拆分",
+  "url": "https://leetcode.cn/problems/word-break/"
+ },
+ "LC141": {
+  "acceptRate": 55.0,
+  "difficulty": "简单",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "链表",
+   "双指针",
+   "Floyd 判圈算法"
+  ],
+  "title": "环形链表",
+  "url": "https://leetcode.cn/problems/linked-list-cycle/"
+ },
+ "LC142": {
+  "acceptRate": 63.2,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "链表",
+   "双指针",
+   "Floyd 判圈算法"
+  ],
+  "title": "环形链表 II",
+  "url": "https://leetcode.cn/problems/linked-list-cycle-ii/"
+ },
+ "LC146": {
+  "acceptRate": 55.6,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "设计",
+   "哈希表",
+   "链表",
+   "双向链表"
+  ],
+  "title": "LRU 缓存",
+  "url": "https://leetcode.cn/problems/lru-cache/"
+ },
+ "LC148": {
+  "acceptRate": 67.7,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "链表",
+   "双指针",
+   "分治",
+   "排序",
+   "归并排序"
+  ],
+  "title": "排序链表",
+  "url": "https://leetcode.cn/problems/sort-list/"
+ },
+ "LC15": {
+  "acceptRate": 40.6,
+  "difficulty": "中等",
+  "group": "双指针",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "双指针",
+   "排序"
+  ],
+  "title": "三数之和",
+  "url": "https://leetcode.cn/problems/3sum/"
+ },
+ "LC152": {
+  "acceptRate": 44.6,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "动态规划"
+  ],
+  "title": "乘积最大子数组",
+  "url": "https://leetcode.cn/problems/maximum-product-subarray/"
+ },
+ "LC153": {
+  "acceptRate": 59.4,
+  "difficulty": "中等",
+  "group": "二分查找",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找"
+  ],
+  "title": "寻找旋转排序数组中的最小值",
+  "url": "https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/"
+ },
+ "LC155": {
+  "acceptRate": 62.9,
+  "difficulty": "中等",
+  "group": "栈",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "设计"
+  ],
+  "title": "最小栈",
+  "url": "https://leetcode.cn/problems/min-stack/"
+ },
+ "LC160": {
+  "acceptRate": 68.5,
+  "difficulty": "简单",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "链表",
+   "双指针"
+  ],
+  "title": "相交链表",
+  "url": "https://leetcode.cn/problems/intersection-of-two-linked-lists/"
+ },
+ "LC169": {
+  "acceptRate": 67.3,
+  "difficulty": "简单",
+  "group": "技巧",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表",
+   "分治",
+   "计数",
+   "排序",
+   "摩尔投票算法"
+  ],
+  "title": "多数元素",
+  "url": "https://leetcode.cn/problems/majority-element/"
+ },
+ "LC17": {
+  "acceptRate": 63.9,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "字符串",
+   "回溯"
+  ],
+  "title": "电话号码的字母组合",
+  "url": "https://leetcode.cn/problems/letter-combinations-of-a-phone-number/"
+ },
+ "LC189": {
+  "acceptRate": 48.4,
+  "difficulty": "中等",
+  "group": "普通数组",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "数学",
+   "双指针"
+  ],
+  "title": "轮转数组",
+  "url": "https://leetcode.cn/problems/rotate-array/"
+ },
+ "LC19": {
+  "acceptRate": 53.6,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "链表",
+   "双指针"
+  ],
+  "title": "删除链表的倒数第 N 个结点",
+  "url": "https://leetcode.cn/problems/remove-nth-node-from-end-of-list/"
+ },
+ "LC198": {
+  "acceptRate": 56.6,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "动态规划"
+  ],
+  "title": "打家劫舍",
+  "url": "https://leetcode.cn/problems/house-robber/"
+ },
+ "LC199": {
+  "acceptRate": 73.8,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "广度优先搜索",
+   "二叉树"
+  ],
+  "title": "二叉树的右视图",
+  "url": "https://leetcode.cn/problems/binary-tree-right-side-view/"
+ },
+ "LC2": {
+  "acceptRate": 47.1,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "递归",
+   "链表",
+   "数学"
+  ],
+  "title": "两数相加",
+  "url": "https://leetcode.cn/problems/add-two-numbers/"
+ },
+ "LC20": {
+  "acceptRate": 45.8,
+  "difficulty": "简单",
+  "group": "栈",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "字符串",
+   "括号序列"
+  ],
+  "title": "有效的括号",
+  "url": "https://leetcode.cn/problems/valid-parentheses/"
+ },
+ "LC200": {
+  "acceptRate": 64.1,
+  "difficulty": "中等",
+  "group": "图论",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "深度优先搜索",
+   "广度优先搜索",
+   "并查集",
+   "数组",
+   "矩阵"
+  ],
+  "title": "岛屿数量",
+  "url": "https://leetcode.cn/problems/number-of-islands/"
+ },
+ "LC206": {
+  "acceptRate": 76.5,
+  "difficulty": "简单",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "递归",
+   "链表"
+  ],
+  "title": "反转链表",
+  "url": "https://leetcode.cn/problems/reverse-linked-list/"
+ },
+ "LC207": {
+  "acceptRate": 57.4,
+  "difficulty": "中等",
+  "group": "图论",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "深度优先搜索",
+   "广度优先搜索",
+   "图",
+   "拓扑排序",
+   "有向无环图"
+  ],
+  "title": "课程表",
+  "url": "https://leetcode.cn/problems/course-schedule/"
+ },
+ "LC208": {
+  "acceptRate": 72.5,
+  "difficulty": "中等",
+  "group": "图论",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "设计",
+   "字典树",
+   "哈希表",
+   "字符串"
+  ],
+  "title": "实现 Trie (前缀树)",
+  "url": "https://leetcode.cn/problems/implement-trie-prefix-tree/"
+ },
+ "LC21": {
+  "acceptRate": 68.3,
+  "difficulty": "简单",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "递归",
+   "链表"
+  ],
+  "title": "合并两个有序链表",
+  "url": "https://leetcode.cn/problems/merge-two-sorted-lists/"
+ },
+ "LC215": {
+  "acceptRate": 60.0,
+  "difficulty": "中等",
+  "group": "堆",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "分治",
+   "快速选择",
+   "排序",
+   "堆（优先队列）"
+  ],
+  "title": "数组中的第K个最大元素",
+  "url": "https://leetcode.cn/problems/kth-largest-element-in-an-array/"
+ },
+ "LC22": {
+  "acceptRate": 79.0,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "字符串",
+   "动态规划",
+   "回溯",
+   "括号序列"
+  ],
+  "title": "括号生成",
+  "url": "https://leetcode.cn/problems/generate-parentheses/"
+ },
+ "LC226": {
+  "acceptRate": 82.5,
+  "difficulty": "简单",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "广度优先搜索",
+   "二叉树"
+  ],
+  "title": "翻转二叉树",
+  "url": "https://leetcode.cn/problems/invert-binary-tree/"
+ },
+ "LC23": {
+  "acceptRate": 64.0,
+  "difficulty": "困难",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "链表",
+   "分治",
+   "堆（优先队列）",
+   "归并排序",
+   "锦标赛排序"
+  ],
+  "title": "合并 K 个升序链表",
+  "url": "https://leetcode.cn/problems/merge-k-sorted-lists/"
+ },
+ "LC230": {
+  "acceptRate": 79.8,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "二叉搜索树",
+   "二叉树"
+  ],
+  "title": "二叉搜索树中第 K 小的元素",
+  "url": "https://leetcode.cn/problems/kth-smallest-element-in-a-bst/"
+ },
+ "LC234": {
+  "acceptRate": 58.5,
+  "difficulty": "简单",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "递归",
+   "链表",
+   "双指针"
+  ],
+  "title": "回文链表",
+  "url": "https://leetcode.cn/problems/palindrome-linked-list/"
+ },
+ "LC236": {
+  "acceptRate": 75.3,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "二叉树",
+   "最近公共祖先",
+   "Binary Lifting"
+  ],
+  "title": "二叉树的最近公共祖先",
+  "url": "https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/"
+ },
+ "LC238": {
+  "acceptRate": 77.7,
+  "difficulty": "中等",
+  "group": "普通数组",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "前缀和"
+  ],
+  "title": "除了自身以外数组的乘积",
+  "url": "https://leetcode.cn/problems/product-of-array-except-self/"
+ },
+ "LC239": {
+  "acceptRate": 50.3,
+  "difficulty": "困难",
+  "group": "子串",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "队列",
+   "数组",
+   "滑动窗口",
+   "单调队列",
+   "堆（优先队列）",
+   "区间最值查询"
+  ],
+  "title": "滑动窗口最大值",
+  "url": "https://leetcode.cn/problems/sliding-window-maximum/"
+ },
+ "LC24": {
+  "acceptRate": 75.1,
+  "difficulty": "中等",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "递归",
+   "链表"
+  ],
+  "title": "两两交换链表中的节点",
+  "url": "https://leetcode.cn/problems/swap-nodes-in-pairs/"
+ },
+ "LC240": {
+  "acceptRate": 57.5,
+  "difficulty": "中等",
+  "group": "矩阵",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找",
+   "分治",
+   "矩阵"
+  ],
+  "title": "搜索二维矩阵 II",
+  "url": "https://leetcode.cn/problems/search-a-2d-matrix-ii/"
+ },
+ "LC25": {
+  "acceptRate": 69.9,
+  "difficulty": "困难",
+  "group": "链表",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "递归",
+   "链表"
+  ],
+  "title": "K 个一组翻转链表",
+  "url": "https://leetcode.cn/problems/reverse-nodes-in-k-group/"
+ },
+ "LC279": {
+  "acceptRate": 68.3,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "广度优先搜索",
+   "数学",
+   "动态规划",
+   "背包问题",
+   "完全背包"
+  ],
+  "title": "完全平方数",
+  "url": "https://leetcode.cn/problems/perfect-squares/"
+ },
+ "LC283": {
+  "acceptRate": 63.8,
+  "difficulty": "简单",
+  "group": "双指针",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "双指针"
+  ],
+  "title": "移动零",
+  "url": "https://leetcode.cn/problems/move-zeroes/"
+ },
+ "LC287": {
+  "acceptRate": 68.0,
+  "difficulty": "中等",
+  "group": "技巧",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "位运算",
+   "数组",
+   "双指针",
+   "二分查找",
+   "Floyd 判圈算法",
+   "抽屉原理"
+  ],
+  "title": "寻找重复数",
+  "url": "https://leetcode.cn/problems/find-the-duplicate-number/"
+ },
+ "LC295": {
+  "acceptRate": 59.7,
+  "difficulty": "困难",
+  "group": "堆",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "设计",
+   "双指针",
+   "数据流",
+   "排序",
+   "堆（优先队列）"
+  ],
+  "title": "数据流的中位数",
+  "url": "https://leetcode.cn/problems/find-median-from-data-stream/"
+ },
+ "LC3": {
+  "acceptRate": 42.8,
+  "difficulty": "中等",
+  "group": "滑动窗口",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "字符串",
+   "滑动窗口"
+  ],
+  "title": "无重复字符的最长子串",
+  "url": "https://leetcode.cn/problems/longest-substring-without-repeating-characters/"
+ },
+ "LC300": {
+  "acceptRate": 58.9,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找",
+   "动态规划",
+   "最长上升子序列"
+  ],
+  "title": "最长递增子序列",
+  "url": "https://leetcode.cn/problems/longest-increasing-subsequence/"
+ },
+ "LC31": {
+  "acceptRate": 43.1,
+  "difficulty": "中等",
+  "group": "技巧",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "双指针"
+  ],
+  "title": "下一个排列",
+  "url": "https://leetcode.cn/problems/next-permutation/"
+ },
+ "LC32": {
+  "acceptRate": 42.5,
+  "difficulty": "困难",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "字符串",
+   "动态规划",
+   "括号序列"
+  ],
+  "title": "最长有效括号",
+  "url": "https://leetcode.cn/problems/longest-valid-parentheses/"
+ },
+ "LC322": {
+  "acceptRate": 53.3,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "广度优先搜索",
+   "数组",
+   "动态规划",
+   "背包问题",
+   "完全背包"
+  ],
+  "title": "零钱兑换",
+  "url": "https://leetcode.cn/problems/coin-change/"
+ },
+ "LC33": {
+  "acceptRate": 46.4,
+  "difficulty": "中等",
+  "group": "二分查找",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找"
+  ],
+  "title": "搜索旋转排序数组",
+  "url": "https://leetcode.cn/problems/search-in-rotated-sorted-array/"
+ },
+ "LC34": {
+  "acceptRate": 47.0,
+  "difficulty": "中等",
+  "group": "二分查找",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找"
+  ],
+  "title": "在排序数组中查找元素的第一个和最后一个位置",
+  "url": "https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/"
+ },
+ "LC347": {
+  "acceptRate": 66.0,
+  "difficulty": "中等",
+  "group": "堆",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表",
+   "分治",
+   "桶排序",
+   "计数",
+   "快速选择",
+   "排序",
+   "堆（优先队列）"
+  ],
+  "title": "前 K 个高频元素",
+  "url": "https://leetcode.cn/problems/top-k-frequent-elements/"
+ },
+ "LC35": {
+  "acceptRate": 49.8,
+  "difficulty": "简单",
+  "group": "二分查找",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找"
+  ],
+  "title": "搜索插入位置",
+  "url": "https://leetcode.cn/problems/search-insert-position/"
+ },
+ "LC39": {
+  "acceptRate": 74.0,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "回溯"
+  ],
+  "title": "组合总和",
+  "url": "https://leetcode.cn/problems/combination-sum/"
+ },
+ "LC394": {
+  "acceptRate": 61.8,
+  "difficulty": "中等",
+  "group": "栈",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "递归",
+   "字符串"
+  ],
+  "title": "字符串解码",
+  "url": "https://leetcode.cn/problems/decode-string/"
+ },
+ "LC4": {
+  "acceptRate": 44.8,
+  "difficulty": "困难",
+  "group": "二分查找",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找",
+   "分治"
+  ],
+  "title": "寻找两个正序数组的中位数",
+  "url": "https://leetcode.cn/problems/median-of-two-sorted-arrays/"
+ },
+ "LC41": {
+  "acceptRate": 49.7,
+  "difficulty": "困难",
+  "group": "普通数组",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表"
+  ],
+  "title": "缺失的第一个正数",
+  "url": "https://leetcode.cn/problems/first-missing-positive/"
+ },
+ "LC416": {
+  "acceptRate": 54.3,
+  "difficulty": "中等",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "动态规划",
+   "背包问题",
+   "0-1 背包"
+  ],
+  "title": "分割等和子集",
+  "url": "https://leetcode.cn/problems/partition-equal-subset-sum/"
+ },
+ "LC42": {
+  "acceptRate": 66.1,
+  "difficulty": "困难",
+  "group": "双指针",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "数组",
+   "双指针",
+   "动态规划",
+   "单调栈"
+  ],
+  "title": "接雨水",
+  "url": "https://leetcode.cn/problems/trapping-rain-water/"
+ },
+ "LC437": {
+  "acceptRate": 49.3,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "二叉树"
+  ],
+  "title": "路径总和 III",
+  "url": "https://leetcode.cn/problems/path-sum-iii/"
+ },
+ "LC438": {
+  "acceptRate": 54.6,
+  "difficulty": "中等",
+  "group": "滑动窗口",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "字符串",
+   "滑动窗口"
+  ],
+  "title": "找到字符串中所有字母异位词",
+  "url": "https://leetcode.cn/problems/find-all-anagrams-in-a-string/"
+ },
+ "LC45": {
+  "acceptRate": 46.0,
+  "difficulty": "中等",
+  "group": "贪心算法",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "贪心",
+   "数组",
+   "动态规划"
+  ],
+  "title": "跳跃游戏 II",
+  "url": "https://leetcode.cn/problems/jump-game-ii/"
+ },
+ "LC46": {
+  "acceptRate": 80.1,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "回溯"
+  ],
+  "title": "全排列",
+  "url": "https://leetcode.cn/problems/permutations/"
+ },
+ "LC48": {
+  "acceptRate": 79.5,
+  "difficulty": "中等",
+  "group": "矩阵",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "数学",
+   "矩阵"
+  ],
+  "title": "旋转图像",
+  "url": "https://leetcode.cn/problems/rotate-image/"
+ },
+ "LC49": {
+  "acceptRate": 69.4,
+  "difficulty": "中等",
+  "group": "哈希",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表",
+   "字符串",
+   "排序"
+  ],
+  "title": "字母异位词分组",
+  "url": "https://leetcode.cn/problems/group-anagrams/"
+ },
+ "LC5": {
+  "acceptRate": 41.1,
+  "difficulty": "中等",
+  "group": "多维动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "双指针",
+   "字符串",
+   "动态规划",
+   "Manacher 算法"
+  ],
+  "title": "最长回文子串",
+  "url": "https://leetcode.cn/problems/longest-palindromic-substring/"
+ },
+ "LC51": {
+  "acceptRate": 75.2,
+  "difficulty": "困难",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "回溯",
+   "X 算法"
+  ],
+  "title": "N 皇后",
+  "url": "https://leetcode.cn/problems/n-queens/"
+ },
+ "LC53": {
+  "acceptRate": 56.8,
+  "difficulty": "中等",
+  "group": "普通数组",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "分治",
+   "动态规划"
+  ],
+  "title": "最大子数组和",
+  "url": "https://leetcode.cn/problems/maximum-subarray/"
+ },
+ "LC54": {
+  "acceptRate": 55.6,
+  "difficulty": "中等",
+  "group": "矩阵",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "矩阵",
+   "模拟"
+  ],
+  "title": "螺旋矩阵",
+  "url": "https://leetcode.cn/problems/spiral-matrix/"
+ },
+ "LC543": {
+  "acceptRate": 64.4,
+  "difficulty": "简单",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "二叉树",
+   "树形 DP"
+  ],
+  "title": "二叉树的直径",
+  "url": "https://leetcode.cn/problems/diameter-of-binary-tree/"
+ },
+ "LC55": {
+  "acceptRate": 45.2,
+  "difficulty": "中等",
+  "group": "贪心算法",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "贪心",
+   "数组",
+   "动态规划"
+  ],
+  "title": "跳跃游戏",
+  "url": "https://leetcode.cn/problems/jump-game/"
+ },
+ "LC56": {
+  "acceptRate": 54.0,
+  "difficulty": "中等",
+  "group": "普通数组",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "排序",
+   "快速排序"
+  ],
+  "title": "合并区间",
+  "url": "https://leetcode.cn/problems/merge-intervals/"
+ },
+ "LC560": {
+  "acceptRate": 46.9,
+  "difficulty": "中等",
+  "group": "子串",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表",
+   "前缀和"
+  ],
+  "title": "和为 K 的子数组",
+  "url": "https://leetcode.cn/problems/subarray-sum-equals-k/"
+ },
+ "LC62": {
+  "acceptRate": 70.4,
+  "difficulty": "中等",
+  "group": "多维动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数学",
+   "动态规划",
+   "组合数学"
+  ],
+  "title": "不同路径",
+  "url": "https://leetcode.cn/problems/unique-paths/"
+ },
+ "LC64": {
+  "acceptRate": 72.5,
+  "difficulty": "中等",
+  "group": "多维动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "动态规划",
+   "矩阵"
+  ],
+  "title": "最小路径和",
+  "url": "https://leetcode.cn/problems/minimum-path-sum/"
+ },
+ "LC70": {
+  "acceptRate": 55.8,
+  "difficulty": "简单",
+  "group": "动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "记忆化",
+   "数学",
+   "动态规划"
+  ],
+  "title": "爬楼梯",
+  "url": "https://leetcode.cn/problems/climbing-stairs/"
+ },
+ "LC72": {
+  "acceptRate": 64.2,
+  "difficulty": "中等",
+  "group": "多维动态规划",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "字符串",
+   "动态规划"
+  ],
+  "title": "编辑距离",
+  "url": "https://leetcode.cn/problems/edit-distance/"
+ },
+ "LC73": {
+  "acceptRate": 71.5,
+  "difficulty": "中等",
+  "group": "矩阵",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "哈希表",
+   "矩阵"
+  ],
+  "title": "矩阵置零",
+  "url": "https://leetcode.cn/problems/set-matrix-zeroes/"
+ },
+ "LC739": {
+  "acceptRate": 69.7,
+  "difficulty": "中等",
+  "group": "栈",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "数组",
+   "单调栈"
+  ],
+  "title": "每日温度",
+  "url": "https://leetcode.cn/problems/daily-temperatures/"
+ },
+ "LC74": {
+  "acceptRate": 52.7,
+  "difficulty": "中等",
+  "group": "二分查找",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "二分查找",
+   "矩阵"
+  ],
+  "title": "搜索二维矩阵",
+  "url": "https://leetcode.cn/problems/search-a-2d-matrix/"
+ },
+ "LC75": {
+  "acceptRate": 63.9,
+  "difficulty": "中等",
+  "group": "技巧",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "数组",
+   "双指针",
+   "冒泡排序",
+   "排序",
+   "快速排序"
+  ],
+  "title": "颜色分类",
+  "url": "https://leetcode.cn/problems/sort-colors/"
+ },
+ "LC76": {
+  "acceptRate": 49.5,
+  "difficulty": "困难",
+  "group": "子串",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "哈希表",
+   "字符串",
+   "滑动窗口"
+  ],
+  "title": "最小覆盖子串",
+  "url": "https://leetcode.cn/problems/minimum-window-substring/"
+ },
+ "LC763": {
+  "acceptRate": 79.0,
+  "difficulty": "中等",
+  "group": "贪心算法",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "贪心",
+   "哈希表",
+   "双指针",
+   "字符串"
+  ],
+  "title": "划分字母区间",
+  "url": "https://leetcode.cn/problems/partition-labels/"
+ },
+ "LC78": {
+  "acceptRate": 81.8,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "位运算",
+   "数组",
+   "回溯"
+  ],
+  "title": "子集",
+  "url": "https://leetcode.cn/problems/subsets/"
+ },
+ "LC79": {
+  "acceptRate": 51.4,
+  "difficulty": "中等",
+  "group": "回溯",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "深度优先搜索",
+   "数组",
+   "字符串",
+   "回溯",
+   "矩阵"
+  ],
+  "title": "单词搜索",
+  "url": "https://leetcode.cn/problems/word-search/"
+ },
+ "LC84": {
+  "acceptRate": 49.8,
+  "difficulty": "困难",
+  "group": "栈",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "数组",
+   "单调栈",
+   "区间最值查询"
+  ],
+  "title": "柱状图中最大的矩形",
+  "url": "https://leetcode.cn/problems/largest-rectangle-in-histogram/"
+ },
+ "LC94": {
+  "acceptRate": 78.3,
+  "difficulty": "简单",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "栈",
+   "树",
+   "深度优先搜索",
+   "二叉树"
+  ],
+  "title": "二叉树的中序遍历",
+  "url": "https://leetcode.cn/problems/binary-tree-inorder-traversal/"
+ },
+ "LC98": {
+  "acceptRate": 41.3,
+  "difficulty": "中等",
+  "group": "二叉树",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "树",
+   "深度优先搜索",
+   "二叉搜索树",
+   "二叉树"
+  ],
+  "title": "验证二叉搜索树",
+  "url": "https://leetcode.cn/problems/validate-binary-search-tree/"
+ },
+ "LC994": {
+  "acceptRate": 55.7,
+  "difficulty": "中等",
+  "group": "图论",
+  "mode": "core",
+  "set": "hot100",
+  "site": "leetcode",
+  "tags": [
+   "广度优先搜索",
+   "数组",
+   "矩阵"
+  ],
+  "title": "腐烂的橘子",
+  "url": "https://leetcode.cn/problems/rotting-oranges/"
+ },
+ "PIO1": {
+  "acceptRate": 72.46,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "只有输出",
+  "url": "https://www.nowcoder.com/practice/c988a1f1814041c4b8b3d9547e91865a"
+ },
+ "PIO10": {
+  "acceptRate": 71.74,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_字符串",
+  "url": "https://www.nowcoder.com/practice/e3a57b2ff6de4aefb82af98925df544e"
+ },
+ "PIO11": {
+  "acceptRate": 78.8,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_字符串_T组形式",
+  "url": "https://www.nowcoder.com/practice/35f6f4e9173943e3b3f462b697fefd8b"
+ },
+ "PIO12": {
+  "acceptRate": 69.79,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_二维字符数组",
+  "url": "https://www.nowcoder.com/practice/2316c1fedff14a8d91694a26c9da3310"
+ },
+ "PIO13": {
+  "acceptRate": 62.96,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_带空格的字符串_T组形式",
+  "url": "https://www.nowcoder.com/practice/cff28a28d7f54419a640a8bb19f4275f"
+ },
+ "PIO14": {
+  "acceptRate": 76.13,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_保留小数位数",
+  "url": "https://www.nowcoder.com/practice/a4bccea7f4644fbda1208f8e0d397bab"
+ },
+ "PIO15": {
+  "acceptRate": 84.83,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_补充前导零",
+  "url": "https://www.nowcoder.com/practice/c5b1fb6a4b1644e590b49a4cbca7930e"
+ },
+ "PIO16": {
+  "acceptRate": 84.11,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_spj判断YES与NO",
+  "url": "https://www.nowcoder.com/practice/4dffedb2a0734a0e9ce759f2eaeeda65"
+ },
+ "PIO17": {
+  "acceptRate": 91.29,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_spj判断浮点误差",
+  "url": "https://www.nowcoder.com/practice/6652094c6a0e4381911b541ed664d8b7"
+ },
+ "PIO18": {
+  "acceptRate": 55.1,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_spj判断数组之和",
+  "url": "https://www.nowcoder.com/practice/da783089da3b4a3188d240e1b7ac4b23"
+ },
+ "PIO2": {
+  "acceptRate": 82.54,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_A+B",
+  "url": "https://www.nowcoder.com/practice/72195b26cb0a4483a1f9fdf314ad63fa"
+ },
+ "PIO3": {
+  "acceptRate": 86.88,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_A+B_EOF形式",
+  "url": "https://www.nowcoder.com/practice/295063bf1bce4c2e819a8f18a5efcd20"
+ },
+ "PIO4": {
+  "acceptRate": 78.93,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_A+B_T组形式",
+  "url": "https://www.nowcoder.com/practice/cc937d32225340469bfb60a0797bad77"
+ },
+ "PIO5": {
+  "acceptRate": 84.4,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_A+B_零尾模式",
+  "url": "https://www.nowcoder.com/practice/a561ad77e7bb45679db2bd7317fded84"
+ },
+ "PIO6": {
+  "acceptRate": 48.6,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_一维数组",
+  "url": "https://www.nowcoder.com/practice/f3a0631c336d42099103c187a9c65e62"
+ },
+ "PIO7": {
+  "acceptRate": 64.05,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_一维数组_T组形式",
+  "url": "https://www.nowcoder.com/practice/90cdc8e31ef74b6e9fd44c1e03077b57"
+ },
+ "PIO8": {
+  "acceptRate": 65.93,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "单组_二维数组",
+  "url": "https://www.nowcoder.com/practice/4df606b6c3764d9c969f8759c8a4807b"
+ },
+ "PIO9": {
+  "acceptRate": 75.15,
+  "difficulty": "入门",
+  "mode": "acm",
+  "set": "pio",
+  "site": "nowcoder",
+  "tags": [],
+  "title": "多组_二维数组_T组形式",
+  "url": "https://www.nowcoder.com/practice/fe1e902e076b46dd82e7d42e12617893"
+ }
+}

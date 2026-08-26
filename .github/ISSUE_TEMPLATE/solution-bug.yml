@@ -1,0 +1,33 @@
+name: 题解问题
+description: 某道题的题解跑不过、结果不对、或超时
+title: "[题解] "
+labels: ["题解"]
+body:
+  - type: input
+    id: no
+    attributes:
+      label: 题号
+      placeholder: BM45 / LC239 / BISHI64 / PIO3
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: 哪个用例
+      description: 输入数据；核心代码模式的题请写清调用参数
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望输出 与 实际输出
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: 环境与报错
+      description: Python 版本、完整报错栈（如果有）。本地跑的命令也贴一下。
+      render: text

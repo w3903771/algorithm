@@ -1,0 +1,320 @@
+site_name: 算法笔记
+site_description: 面向笔试与竞赛的 Python 算法教程
+site_url: https://algorithm.ebook.ttzg.site/
+repo_name: w3903771/algorithm
+repo_url: https://github.com/w3903771/algorithm
+
+theme:
+  name: material
+  custom_dir: overrides    # overrides/main.html：往每页 <head> 注入 Cloudflare Web Analytics
+  language: zh
+  # 标题栏图标与浏览器标签页图标。两份是同一张图的不同尺寸：
+  # logo 512（顶栏会缩到 24px，但高分屏要两倍图）、favicon 128。
+  # 母版 docs/assets/logo-source.png 1254×1254 留着，改尺寸时从它重新缩。
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  # 不走 Google Fonts：国内加载慢甚至超时，字体栈在 stylesheets/extra.css 里定义。
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色
+  features:
+    - navigation.tabs          # 十个部分做顶部标签，侧栏只显示当前部分
+    - navigation.indexes       # 部分索引页挂到部分标题上，省掉一行「学习索引」
+    - navigation.tracking      # 地址栏跟随当前小节，方便复制深链
+    - navigation.top
+    - navigation.footer        # 上一章 / 下一章
+    - navigation.instant
+    - navigation.instant.progress
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/table-filter.js
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# 构建期生成题解页、注入章节盘。scripts/ 不入库，构建期代码放 hooks/。
+hooks:
+  - hooks/build_pages.py
+
+plugins:
+  - search:
+      lang: zh
+  - redirects:
+      # 旧 URL 301 到新 URL，02 号文件 §9.2 第 4 条要求保留至少一年。
+      # 与 dev/_redirects.yml 逐行一致，由 scripts/migrate.py --apply 生成。
+      redirect_maps:
+        "appendix/A-题单总索引.md": appendix/a-problems.md
+        "appendix/B-Python算法模板速查.md": appendix/b2-python-templates.md
+        "appendix/C-Python竞赛避坑清单.md": appendix/c-pitfalls.md
+        "part1-python基础/01-语法与执行模型.md": python/syntax.md
+        "part1-python基础/02-数据类型与转换.md": python/types.md
+        "part1-python基础/03-运算符与位运算.md": python/operators.md
+        "part1-python基础/04-字符串.md": python/string.md
+        "part1-python基础/05-列表.md": python/list.md
+        "part1-python基础/06-元组与序列通论.md": python/sequence.md
+        "part1-python基础/07-字典.md": python/dict.md
+        "part1-python基础/08-集合.md": python/set.md
+        "part1-python基础/09-推导式.md": python/comprehension.md
+        "part1-python基础/10-条件与循环.md": python/control-flow.md
+        "part1-python基础/11-函数.md": python/function.md
+        "part1-python基础/12-自定义排序.md": python/sorting.md
+        "part1-python基础/13-内置函数速查.md": python/builtins.md
+        "part1-python基础/14-标准库速查.md": python/stdlib.md
+        "part1-python基础/15-面向对象与迭代器生成器.md": python/oop-iterator.md
+        "part1-python基础/16-模块-异常-文件.md": python/module-io.md
+        "part1-python基础/index.md": python/index.md
+        "part10-进阶专题/110-计算几何入门.md": geometry/basic.md
+        "part10-进阶专题/111-偏序集与Dilworth定理.md": math/order-theory.md
+        "part10-进阶专题/112-连通性-强连通分量与割点.md": graph/scc.md
+        "part10-进阶专题/113-树链剖分.md": graph/tree/hld.md
+        "part10-进阶专题/114-同余方程组与离散对数.md": math/number/congruence.md
+        "part10-进阶专题/115-高级搜索与精确覆盖.md": search/dlx.md
+        "part10-进阶专题/116-平衡树与有序集合.md": ds/balanced-tree.md
+        "part10-进阶专题/117-图论进阶-k短路与关键路径.md": graph/kth-path.md
+        "part10-进阶专题/118-分治进阶-整体二分与CDQ.md": technique/cdq.md
+        # 整部解散、没有单一后继页，指向首页的全书章节盘（详见 scripts/migrate.py 的 _EXTRA_REDIRECTS）
+        "part10-进阶专题/index.md": index.md
+        "part2-竞赛基本功/20-输入输出处理.md": toolkit/io.md
+        "part2-竞赛基本功/21-复杂度与Python性能.md": toolkit/complexity.md
+        "part2-竞赛基本功/22-高精度与大整数.md": toolkit/bignum.md
+        "part2-竞赛基本功/23-浮点与科学计数法.md": toolkit/float.md
+        "part2-竞赛基本功/24-多项式.md": math/poly/basic.md
+        "part2-竞赛基本功/index.md": toolkit/index.md
+        "part3-数据结构/30-序列与数组.md": ds/array.md
+        "part3-数据结构/31-链表.md": ds/linked-list.md
+        "part3-数据结构/32-栈.md": ds/stack.md
+        "part3-数据结构/33-队列与双端队列.md": ds/queue.md
+        "part3-数据结构/34-集合与多重集合.md": ds/multiset.md
+        "part3-数据结构/35-优先队列与堆.md": ds/heap.md
+        "part3-数据结构/36-哈希与字符串哈希.md": ds/hash.md
+        "part3-数据结构/37-单调栈与单调队列.md": ds/monotonic-stack.md
+        "part3-数据结构/38-并查集.md": ds/dsu.md
+        "part3-数据结构/39-树状数组与线段树.md": ds/fenwick.md
+        "part3-数据结构/index.md": ds/index.md
+        "part4-基础算法/40-排序.md": basic/sorting.md
+        "part4-基础算法/41-桶计数与离散化.md": basic/discretization.md
+        "part4-基础算法/42-前缀和与差分.md": basic/prefix-sum.md
+        "part4-基础算法/43-双指针与滑动窗口.md": basic/two-pointer.md
+        "part4-基础算法/44-二分.md": basic/binary-search.md
+        "part4-基础算法/45-倍增.md": basic/binary-lifting.md
+        "part4-基础算法/46-位运算.md": basic/bit.md
+        "part4-基础算法/47-贪心.md": basic/greedy.md
+        "part4-基础算法/48-构造.md": basic/construction.md
+        "part4-基础算法/49-模拟.md": basic/simulation.md
+        "part4-基础算法/50-博弈论.md": math/game/impartial.md
+        "part4-基础算法/index.md": basic/index.md
+        "part5-搜索/60-DFS深度优先搜索.md": search/dfs.md
+        "part5-搜索/61-BFS广度优先搜索.md": search/bfs.md
+        "part5-搜索/62-记忆化搜索与剪枝.md": search/memoization.md
+        "part5-搜索/index.md": search/index.md
+        "part6-字符串/70-字符串处理.md": string/basic.md
+        "part6-字符串/71-字符串匹配KMP.md": string/kmp.md
+        "part6-字符串/72-回文.md": string/manacher.md
+        "part6-字符串/73-Trie字典树.md": string/trie.md
+        "part6-字符串/index.md": string/index.md
+        "part7-数学/80-数论基础.md": math/number/basic.md
+        "part7-数学/81-快速幂与逆元.md": math/number/inverse.md
+        "part7-数学/82-欧拉函数与欧拉降幂.md": math/number/euler.md
+        "part7-数学/83-整除分块与数论进阶.md": math/number/sqrt-decomposition.md
+        "part7-数学/84-组合数学.md": math/combi/basic.md
+        "part7-数学/85-基础数学与递推.md": math/recurrence.md
+        "part7-数学/index.md": math/index.md
+        "part8-图与树/90-图的表示与遍历.md": graph/basic.md
+        "part8-图与树/91-最短路.md": graph/shortest-path.md
+        "part8-图与树/92-最小生成树.md": graph/mst.md
+        "part8-图与树/93-拓扑排序与二分图.md": graph/topo.md
+        "part8-图与树/94-树上算法.md": graph/tree/basic.md
+        "part8-图与树/index.md": graph/index.md
+        "part9-动态规划/100-DP入门.md": dp/basic.md
+        "part9-动态规划/101-背包问题.md": dp/knapsack.md
+        "part9-动态规划/102-线性DP.md": dp/linear.md
+        "part9-动态规划/103-区间树形状压DP.md": dp/interval.md
+        "part9-动态规划/104-DP优化.md": dp/opt/basic.md
+        "part9-动态规划/index.md": dp/index.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  # 行内 $...$ 与独立 $$...$$ 交给 MathJax 渲染；
+  # generic 模式产出 \(...\)，不依赖 MathJax 自己扫 $ 符号。
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  # MkDocs 默认的 slugify 会剥掉所有非 ASCII 字符，中文标题的锚点会退化成 _1、_2……
+  # 换成 pymdownx 的 Unicode 版，锚点才会保留中文，跨章节的 #锚点 链接也才能命中。
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+nav:
+  - 首页: index.md
+  - 卷一 · 核心卷:
+      - Python 基础:
+          - python/index.md
+          - 01 · 语法与执行模型: python/syntax.md
+          - 02 · 数据类型与转换: python/types.md
+          - 03 · 运算符与位运算: python/operators.md
+          - 04 · 字符串: python/string.md
+          - 05 · 列表: python/list.md
+          - 06 · 元组与序列通论: python/sequence.md
+          - 07 · 字典: python/dict.md
+          - 08 · 集合: python/set.md
+          - 09 · 推导式: python/comprehension.md
+          - 10 · 条件与循环: python/control-flow.md
+          - 11 · 函数: python/function.md
+          - 12 · 自定义排序: python/sorting.md
+          - 13 · 内置函数速查: python/builtins.md
+          - 14 · 标准库速查: python/stdlib.md
+          - 15 · 面向对象、迭代器与生成器: python/oop-iterator.md
+          - 16 · 模块、异常与文件: python/module-io.md
+      - 竞赛基本功:
+          - toolkit/index.md
+          - 20 · 输入输出处理: toolkit/io.md
+          - 21 · 复杂度与 Python 性能: toolkit/complexity.md
+          - 22 · 高精度与大整数: toolkit/bignum.md
+          - 23 · 浮点与科学计数法: toolkit/float.md
+      - 数据结构:
+          - ds/index.md
+          - 30 · 序列与数组: ds/array.md
+          - 31 · 链表: ds/linked-list.md
+          - 32 · 栈: ds/stack.md
+          - 33 · 队列与双端队列: ds/queue.md
+          - 34 · 集合与多重集合: ds/multiset.md
+          - 35 · 优先队列与堆: ds/heap.md
+          - 36 · 哈希表: ds/hash.md
+          - 37 · 单调栈: ds/monotonic-stack.md
+          - 37A · 单调队列: ds/monotonic-queue.md
+          - 38 · 并查集: ds/dsu.md
+      - 基础算法:
+          - basic/index.md
+          - 40 · 排序: basic/sorting.md
+          - 41 · 桶计数与离散化: basic/discretization.md
+          - 42 · 前缀和与差分: basic/prefix-sum.md
+          - 43 · 双指针与滑动窗口: basic/two-pointer.md
+          - 44 · 二分: basic/binary-search.md
+          - 46 · 位运算: basic/bit.md
+          - 47 · 贪心: basic/greedy.md
+          - 48 · 构造: basic/construction.md
+          - 49 · 模拟: basic/simulation.md
+          - 118B · 分治的三步框架: basic/divide-conquer.md
+      - 搜索:
+          - search/index.md
+          - 60 · DFS 深度优先搜索: search/dfs.md
+          - 61 · BFS 广度优先搜索: search/bfs.md
+          - 62 · 记忆化搜索与剪枝: search/memoization.md
+      - 字符串:
+          - string/index.md
+          - 36A · 字符串哈希: string/hash.md
+          - 70 · 字符串处理: string/basic.md
+          - 73 · Trie 字典树: string/trie.md
+      - 数学:
+          - math/index.md
+          - 80 · 数论基础: math/number/basic.md
+          - 81 · 快速幂与逆元: math/number/inverse.md
+          - 85 · 基础数学与递推: math/recurrence.md
+      - 图与树:
+          - graph/index.md
+          - 90 · 图的表示与遍历: graph/basic.md
+      - 动态规划:
+          - dp/index.md
+          - 100 · DP 入门: dp/basic.md
+          - 101 · 背包问题: dp/knapsack.md
+          - 102 · 线性 DP: dp/linear.md
+  - 卷二 · 提高卷:
+      - 数据结构:
+          - 39 · 树状数组: ds/fenwick.md
+          - 39A · 线段树: ds/segment-tree.md
+          - 39B · 分块: ds/block.md
+          - 39C · ST 表: ds/sparse-table.md
+      - 基础算法:
+          - 45 · 倍增: basic/binary-lifting.md
+      - 字符串:
+          - 71 · 字符串匹配 KMP: string/kmp.md
+          - 72 · 回文: string/manacher.md
+      - 数学:
+          - 24 · 多项式: math/poly/basic.md
+          - 50 · 博弈论: math/game/impartial.md
+          - 82 · 欧拉函数与欧拉降幂: math/number/euler.md
+          - 83 · 整除分块与数论进阶: math/number/sqrt-decomposition.md
+          - 84 · 组合数学: math/combi/basic.md
+          - 111 · 偏序集与 Dilworth 定理: math/order-theory.md
+          - 114 · 同余方程组与离散对数: math/number/congruence.md
+      - 图与树:
+          - 91 · 最短路: graph/shortest-path.md
+          - 92 · 最小生成树: graph/mst.md
+          - 93 · 拓扑排序: graph/topo.md
+          - 93A · 二分图: graph/match/bipartite.md
+          - 94 · 树的基础与遍历: graph/tree/basic.md
+          - 94A · LCA 与树上路径: graph/tree/lca.md
+          - 112 · 强连通分量: graph/scc.md
+          - 112A · 割点与桥: graph/cut.md
+          - 113 · 树链剖分: graph/tree/hld.md
+      - 动态规划:
+          - 103 · 区间 DP: dp/interval.md
+          - 103A · 树形 DP: dp/tree.md
+          - 103B · 状压 DP: dp/state.md
+          - 103C · DAG 上的 DP: dp/dag.md
+          - 104 · DP 优化: dp/opt/basic.md
+      - 计算几何:
+          - geometry/index.md
+          - 110 · 计算几何入门: geometry/basic.md
+  - 卷三 · 竞赛卷:
+      - 数据结构:
+          - 116 · 平衡树与有序集合: ds/balanced-tree.md
+      - 搜索:
+          - 115 · 精确覆盖与 Dancing Links: search/dlx.md
+          - 115A · 迭代加深与 IDA*: search/iterative-deepening.md
+          - 115B · 双向搜索: search/bidirectional.md
+      - 图与树:
+          - 117 · 图论进阶：k 短路与关键路径: graph/kth-path.md
+      - 通用技巧:
+          - technique/index.md
+          - 118 · CDQ 分治: technique/cdq.md
+          - 118A · 整体二分: technique/parallel-binsearch.md
+  - 题解: solutions/index.md
+  - 附录:
+      - 题单总索引: appendix/a-problems.md
+      - Python 算法模板速查: appendix/b2-python-templates.md
+      - Python 竞赛避坑清单: appendix/c-pitfalls.md

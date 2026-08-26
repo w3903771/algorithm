@@ -1,0 +1,794 @@
+{
+  "_comment": "章节定义（键为新 id，顺序即原章号顺序，P-M① 迁移后口径） + 牛客 165 题的归属映射。scripts/audit_outline.py 会据此校验大纲的覆盖完整性。",
+  "chapters": {
+    "python/syntax": [
+      "PIO1"
+    ],
+    "python/types": [
+      "BISHI30",
+      "BISHI31",
+      "BISHI14"
+    ],
+    "python/operators": [
+      "BISHI30",
+      "BISHI31",
+      "BISHI32",
+      "BISHI57"
+    ],
+    "python/string": [
+      "PIO10",
+      "PIO11",
+      "PIO12",
+      "PIO13"
+    ],
+    "python/list": [
+      "BISHI1"
+    ],
+    "python/sequence": [
+      "BISHI24"
+    ],
+    "python/dict": [
+      "BISHI23"
+    ],
+    "python/set": [
+      "BISHI4",
+      "BISHI5"
+    ],
+    "python/comprehension": [
+      "PIO6",
+      "PIO8"
+    ],
+    "python/control-flow": [
+      "BISHI16",
+      "BISHI19"
+    ],
+    "python/function": [
+      "BISHI78"
+    ],
+    "python/sorting": [
+      "BISHI21",
+      "BISHI22",
+      "BISHI23",
+      "BISHI24",
+      "BISHI25",
+      "BISHI12"
+    ],
+    "python/builtins": [
+      "BISHI21",
+      "BISHI55",
+      "BISHI63"
+    ],
+    "python/stdlib": [
+      "BISHI3",
+      "BISHI6",
+      "BISHI85"
+    ],
+    "python/oop-iterator": [
+      "BISHI6"
+    ],
+    "python/module-io": [
+      "PIO3"
+    ],
+    "toolkit/io": [
+      "PIO1",
+      "PIO2",
+      "PIO3",
+      "PIO4",
+      "PIO5",
+      "PIO6",
+      "PIO7",
+      "PIO8",
+      "PIO9",
+      "PIO10",
+      "PIO11",
+      "PIO12",
+      "PIO13",
+      "PIO14",
+      "PIO15",
+      "PIO16",
+      "PIO17",
+      "PIO18"
+    ],
+    "toolkit/complexity": [
+      "PIO7",
+      "PIO9",
+      "BISHI21"
+    ],
+    "toolkit/bignum": [
+      "BISHI33",
+      "BISHI63",
+      "BM86"
+    ],
+    "toolkit/float": [
+      "BISHI14",
+      "PIO14",
+      "PIO17"
+    ],
+    "math/poly/basic": [
+      "BISHI18"
+    ],
+    "ds/array": [
+      "BISHI1",
+      "BM97",
+      "LC41",
+      "LC48",
+      "LC73",
+      "LC189"
+    ],
+    "ds/linked-list": [
+      "BISHI1",
+      "BISHI96",
+      "BM1",
+      "BM2",
+      "BM3",
+      "BM4",
+      "BM6",
+      "BM7",
+      "BM8",
+      "BM9",
+      "BM10",
+      "BM11",
+      "BM13",
+      "BM14",
+      "BM15",
+      "BM16",
+      "BM100",
+      "LC206",
+      "LC2",
+      "LC19",
+      "LC21",
+      "LC23",
+      "LC24",
+      "LC25",
+      "LC138",
+      "LC141",
+      "LC142",
+      "LC146",
+      "LC148",
+      "LC160",
+      "LC234"
+    ],
+    "ds/stack": [
+      "BISHI2",
+      "BISHI117",
+      "BM42",
+      "BM43",
+      "BM44",
+      "BM49",
+      "BM77",
+      "LC20",
+      "LC32",
+      "LC155",
+      "LC394"
+    ],
+    "ds/queue": [
+      "BISHI3"
+    ],
+    "ds/multiset": [
+      "BISHI4",
+      "BISHI5"
+    ],
+    "ds/heap": [
+      "BISHI6",
+      "BISHI49",
+      "BISHI50",
+      "BISHI51",
+      "BM46",
+      "BM48",
+      "LC215",
+      "LC295",
+      "LC347"
+    ],
+    "ds/hash": [
+      "BISHI8",
+      "BISHI23",
+      "BISHI99",
+      "BM50",
+      "BM51",
+      "BM53",
+      "BM101",
+      "LC1",
+      "LC49",
+      "LC128",
+      "LC169"
+    ],
+    "ds/monotonic-stack": [
+      "BISHI121",
+      "BISHI122",
+      "BM94",
+      "LC42",
+      "LC84",
+      "LC739"
+    ],
+    "ds/monotonic-queue": [
+      "BISHI114",
+      "BM45",
+      "LC239"
+    ],
+    "ds/dsu": [
+      "BISHI102",
+      "BISHI98",
+      "BISHI104"
+    ],
+    "ds/fenwick": [],
+    "ds/segment-tree": [
+      "BISHI126",
+      "BISHI127",
+      "BISHI128",
+      "BISHI130"
+    ],
+    "ds/block": [
+      "BISHI129"
+    ],
+    "ds/sparse-table": [
+      "BISHI125"
+    ],
+    "basic/sorting": [
+      "BISHI21",
+      "BISHI22",
+      "BISHI25",
+      "BISHI9",
+      "BISHI12",
+      "BM89",
+      "LC56"
+    ],
+    "basic/discretization": [
+      "BISHI24",
+      "BISHI118"
+    ],
+    "basic/prefix-sum": [
+      "BISHI110",
+      "BISHI111",
+      "BISHI112",
+      "BISHI113",
+      "BISHI68",
+      "LC238",
+      "LC560"
+    ],
+    "basic/two-pointer": [
+      "BISHI114",
+      "BISHI115",
+      "BISHI116",
+      "BISHI117",
+      "BISHI118",
+      "BISHI119",
+      "BISHI120",
+      "BM54",
+      "BM87",
+      "BM90",
+      "BM92",
+      "BM93",
+      "LC15",
+      "LC76",
+      "LC3",
+      "LC11",
+      "LC75",
+      "LC283",
+      "LC287",
+      "LC438"
+    ],
+    "basic/binary-search": [
+      "BISHI85",
+      "BISHI86",
+      "BISHI87",
+      "BISHI88",
+      "BISHI89",
+      "BISHI91",
+      "BM17",
+      "BM18",
+      "BM19",
+      "BM21",
+      "LC4",
+      "LC33",
+      "LC34",
+      "LC35",
+      "LC74",
+      "LC153",
+      "LC240"
+    ],
+    "basic/binary-lifting": [
+      "BISHI64",
+      "BISHI124",
+      "BISHI125"
+    ],
+    "basic/bit": [
+      "BISHI30",
+      "BISHI31",
+      "BISHI32",
+      "BM52",
+      "LC136"
+    ],
+    "basic/greedy": [
+      "BISHI43",
+      "BISHI44",
+      "BISHI45",
+      "BISHI46",
+      "BISHI47",
+      "BISHI48",
+      "BISHI49",
+      "BISHI50",
+      "BISHI51",
+      "BISHI52",
+      "BISHI53",
+      "BISHI54",
+      "BISHI9",
+      "BM95",
+      "BM96",
+      "LC45",
+      "LC55",
+      "LC763"
+    ],
+    "basic/construction": [
+      "BISHI26",
+      "BISHI27",
+      "BISHI28",
+      "BISHI29",
+      "BISHI37",
+      "BISHI38",
+      "LC31"
+    ],
+    "basic/simulation": [
+      "BISHI10",
+      "BISHI11",
+      "BISHI13",
+      "BISHI15",
+      "BISHI16",
+      "BISHI17",
+      "BISHI19",
+      "BISHI20",
+      "BISHI67",
+      "BM98",
+      "BM99",
+      "LC54"
+    ],
+    "basic/divide-conquer": [
+      "BM5",
+      "BM12",
+      "BM20",
+      "BM47"
+    ],
+    "math/game/impartial": [
+      "BISHI34",
+      "BISHI35",
+      "BISHI36"
+    ],
+    "search/dfs": [
+      "BISHI76",
+      "BISHI77",
+      "BISHI78",
+      "BISHI79",
+      "BISHI83",
+      "BM55",
+      "BM56",
+      "BM58",
+      "BM59",
+      "BM60",
+      "LC22",
+      "LC17",
+      "LC39",
+      "LC46",
+      "LC51",
+      "LC78",
+      "LC79",
+      "LC131"
+    ],
+    "search/bfs": [
+      "BISHI80",
+      "BISHI81",
+      "BISHI82",
+      "BISHI83",
+      "BISHI84",
+      "BISHI97",
+      "BISHI105",
+      "BISHI101",
+      "BM57",
+      "LC200",
+      "LC102",
+      "LC199",
+      "LC994"
+    ],
+    "search/memoization": [
+      "BISHI90",
+      "BISHI79",
+      "BISHI146",
+      "BM61"
+    ],
+    "string/hash": [
+      "BISHI7"
+    ],
+    "string/basic": [
+      "BISHI10",
+      "BISHI123",
+      "BM22",
+      "BM74",
+      "BM83",
+      "BM84",
+      "BM85",
+      "BM88",
+      "BM91"
+    ],
+    "string/kmp": [
+      "BISHI92"
+    ],
+    "string/manacher": [
+      "BISHI94",
+      "BISHI20",
+      "BM73",
+      "LC5"
+    ],
+    "string/trie": [
+      "BISHI93",
+      "LC208"
+    ],
+    "math/number/basic": [
+      "BISHI55",
+      "BISHI56",
+      "BISHI57",
+      "BISHI58",
+      "BISHI13"
+    ],
+    "math/number/inverse": [
+      "BISHI64",
+      "BISHI65",
+      "BISHI74"
+    ],
+    "math/number/euler": [
+      "BISHI73",
+      "BISHI75"
+    ],
+    "math/number/sqrt-decomposition": [
+      "BISHI41",
+      "BISHI42",
+      "BISHI39",
+      "BISHI40"
+    ],
+    "math/combi/basic": [
+      "BISHI70",
+      "BISHI69",
+      "BISHI71",
+      "BISHI67",
+      "BISHI66"
+    ],
+    "math/recurrence": [
+      "BISHI62",
+      "BISHI63",
+      "BISHI72",
+      "BISHI131",
+      "BISHI59",
+      "BISHI60",
+      "BISHI61"
+    ],
+    "graph/basic": [
+      "BISHI95",
+      "BISHI99"
+    ],
+    "graph/shortest-path": [
+      "BISHI105",
+      "BISHI106",
+      "BISHI108",
+      "BISHI109"
+    ],
+    "graph/mst": [
+      "BISHI107",
+      "BISHI104"
+    ],
+    "graph/topo": [
+      "LC207"
+    ],
+    "graph/match/bipartite": [
+      "BISHI100",
+      "BISHI38"
+    ],
+    "graph/tree/basic": [
+      "BISHI96",
+      "BM23",
+      "BM24",
+      "BM25",
+      "BM26",
+      "BM27",
+      "BM28",
+      "BM29",
+      "BM30",
+      "BM31",
+      "BM32",
+      "BM33",
+      "BM34",
+      "BM35",
+      "BM39",
+      "BM40",
+      "BM41",
+      "BM36",
+      "LC94",
+      "LC104",
+      "LC98",
+      "LC101",
+      "LC105",
+      "LC108",
+      "LC114",
+      "LC226",
+      "LC230",
+      "LC437",
+      "LC543"
+    ],
+    "graph/tree/lca": [
+      "BISHI124",
+      "BM37",
+      "BM38",
+      "LC236"
+    ],
+    "dp/basic": [
+      "BISHI131",
+      "BISHI132",
+      "BM62",
+      "BM63",
+      "BM64",
+      "LC62",
+      "LC64",
+      "LC70",
+      "LC118"
+    ],
+    "dp/knapsack": [
+      "BISHI136",
+      "BISHI137",
+      "BISHI138",
+      "BISHI139",
+      "BISHI140",
+      "BISHI103",
+      "BISHI141",
+      "BISHI142",
+      "BISHI44",
+      "BM70",
+      "LC139",
+      "LC279",
+      "LC322",
+      "LC416"
+    ],
+    "dp/linear": [
+      "BISHI133",
+      "BISHI134",
+      "BISHI135",
+      "BM65",
+      "BM66",
+      "BM67",
+      "BM68",
+      "BM69",
+      "BM71",
+      "BM72",
+      "BM75",
+      "BM76",
+      "BM78",
+      "BM79",
+      "BM80",
+      "BM81",
+      "BM82",
+      "LC53",
+      "LC72",
+      "LC121",
+      "LC152",
+      "LC198",
+      "LC300",
+      "LC1143"
+    ],
+    "dp/interval": [
+      "BISHI145"
+    ],
+    "dp/tree": [
+      "BISHI143",
+      "LC124"
+    ],
+    "dp/state": [],
+    "dp/dag": [
+      "BISHI144"
+    ],
+    "dp/opt/basic": [
+      "BISHI146",
+      "BISHI147",
+      "BISHI121"
+    ],
+    "geometry/basic": [
+      "BISHI86",
+      "BISHI15"
+    ],
+    "math/order-theory": [
+      "BISHI133",
+      "BISHI9"
+    ],
+    "graph/scc": [
+      "BISHI98"
+    ],
+    "graph/cut": [],
+    "graph/tree/hld": [
+      "BISHI124",
+      "BISHI126"
+    ],
+    "math/number/congruence": [
+      "BISHI74",
+      "BISHI65"
+    ],
+    "search/dlx": [
+      "BISHI28"
+    ],
+    "search/iterative-deepening": [],
+    "search/bidirectional": [],
+    "ds/balanced-tree": [
+      "BISHI5",
+      "BISHI129"
+    ],
+    "graph/kth-path": [
+      "BISHI109",
+      "BISHI108"
+    ],
+    "technique/cdq": [
+      "BISHI72"
+    ],
+    "technique/parallel-binsearch": []
+  },
+  "required_topics": {
+    "_comment": "用户原始需求清单逐条 -> 负责章节。审计脚本据此检查是否有遗漏。",
+    "基础-python语法": [
+      "python/syntax",
+      "python/control-flow"
+    ],
+    "基础-数据类型": [
+      "python/types"
+    ],
+    "基础-类型转换": [
+      "python/types"
+    ],
+    "基础-内置函数": [
+      "python/builtins"
+    ],
+    "基础-列表": [
+      "python/list"
+    ],
+    "基础-元组": [
+      "python/sequence"
+    ],
+    "基础-字典": [
+      "python/dict"
+    ],
+    "基础-推导式": [
+      "python/comprehension"
+    ],
+    "基础-函数与自定义函数": [
+      "python/function"
+    ],
+    "基础-字符串": [
+      "python/string",
+      "string/basic"
+    ],
+    "基础-自定义排序": [
+      "python/sorting"
+    ],
+    "算法-输入输出处理": [
+      "toolkit/io"
+    ],
+    "算法-字符串": [
+      "string/basic",
+      "string/kmp",
+      "string/manacher",
+      "string/trie"
+    ],
+    "算法-序列": [
+      "ds/array"
+    ],
+    "算法-栈": [
+      "ds/stack"
+    ],
+    "算法-队列": [
+      "ds/queue"
+    ],
+    "算法-集合": [
+      "ds/multiset"
+    ],
+    "算法-多重集合": [
+      "ds/multiset"
+    ],
+    "算法-优先队列": [
+      "ds/heap"
+    ],
+    "算法-字符串哈希": [
+      "ds/hash"
+    ],
+    "算法-大数哈希": [
+      "ds/hash"
+    ],
+    "算法-数论": [
+      "math/number/basic",
+      "math/number/inverse",
+      "math/number/euler",
+      "math/number/sqrt-decomposition"
+    ],
+    "算法-科学计数法": [
+      "toolkit/float"
+    ],
+    "算法-多项式": [
+      "math/poly/basic"
+    ],
+    "算法-回文": [
+      "string/manacher"
+    ],
+    "算法-模拟": [
+      "basic/simulation"
+    ],
+    "算法-排序": [
+      "basic/sorting"
+    ],
+    "算法-桶": [
+      "basic/discretization"
+    ],
+    "算法-构造": [
+      "basic/construction"
+    ],
+    "算法-位运算": [
+      "basic/bit"
+    ],
+    "算法-博弈论": [
+      "math/game/impartial"
+    ],
+    "算法-贪心": [
+      "basic/greedy"
+    ],
+    "算法-动规": [
+      "dp/basic",
+      "dp/knapsack",
+      "dp/linear",
+      "dp/interval",
+      "dp/tree",
+      "dp/state",
+      "dp/dag",
+      "dp/opt/basic"
+    ],
+    "算法-深搜": [
+      "search/dfs"
+    ],
+    "算法-广搜": [
+      "search/bfs"
+    ],
+    "算法-二分": [
+      "basic/binary-search"
+    ],
+    "算法-记忆化剪枝": [
+      "search/memoization"
+    ],
+    "算法-字符串匹配": [
+      "string/kmp"
+    ],
+    "算法-图": [
+      "graph/basic",
+      "graph/shortest-path",
+      "graph/mst",
+      "graph/topo",
+      "graph/match/bipartite"
+    ],
+    "算法-树": [
+      "graph/tree/basic",
+      "graph/tree/lca",
+      "ds/fenwick"
+    ],
+    "算法-并查集": [
+      "ds/dsu"
+    ],
+    "算法-最短路": [
+      "graph/shortest-path"
+    ],
+    "算法-生成树": [
+      "graph/mst"
+    ],
+    "算法-前缀和差分": [
+      "basic/prefix-sum"
+    ],
+    "算法-双指针": [
+      "basic/two-pointer"
+    ],
+    "算法-单调栈单调队列": [
+      "ds/monotonic-stack"
+    ],
+    "算法-倍增": [
+      "basic/binary-lifting"
+    ],
+    "算法-背包": [
+      "dp/knapsack"
+    ]
+  }
+}

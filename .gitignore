@@ -1,0 +1,30 @@
+# 依赖与缓存
+.venv/
+__pycache__/
+*.pyc
+uv.lock
+
+# 登录凭据，绝对不要提交
+.auth/
+
+# 抓取来源，不入库
+# 其中 sources/OI-wiki/ 只在规划阶段用于跑差集脚本，正文不引用也不外链（07 号文件 §1）
+sources/
+
+# mkdocs 本地构建产物
+# site/ 是 mkdocs build 的默认输出目录。
+# 注意：.gitignore 不支持行尾注释——这一行原本写成 `site/  # ...`，
+# 于是模式变成了「site/ 加一串空格加那句中文」，什么都匹配不到，site/ 一直没被忽略。
+site/
+_site/
+_site_test/
+_site_check/
+
+# 脚本缓存（diff_build 快照等）
+.cache/
+
+# 开发侧文档与数据：改造方案、批次小结、审计报告、开发数据。
+# 它自己是一个独立的 git 仓库（私有），推到 w3903771/algorithm-dev。
+# **站点构建要读的那 5 份数据不在这里**——P-S① 已搬到根 data/，随本仓库发布。
+# 方案见（私有）dev/notes/README与仓库公开方案.md。
+dev/

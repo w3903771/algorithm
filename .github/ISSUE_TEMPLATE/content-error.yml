@@ -1,0 +1,31 @@
+name: 内容纠错
+description: 正文里有事实错误、笔误、或讲错了的地方
+title: "[纠错] "
+labels: ["纠错"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        写清「在哪、是什么、应该是什么」这三件事就够了，不必长篇描述。
+  - type: input
+    id: where
+    attributes:
+      label: 哪一章
+      description: 页面地址或章节标题都行
+      placeholder: https://algorithm.ebook.ttzg.site/basic/binary-search/ 的「§3 边界」
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: 原文是什么
+      description: 把有问题的那一句或那段代码贴过来
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: 应该是什么
+      description: 正确的写法，以及依据（标准文档、反例、实测结果……）
+    validations:
+      required: true
