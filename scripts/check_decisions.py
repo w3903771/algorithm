@@ -187,6 +187,65 @@ def _redirect_rows(lines: list) -> list:
     return rows
 
 
+def probe_readme_markers(_a: dict) -> tuple[bool, str]:
+    """README 里那几个「构建期同步的数」的标记，形态得是好的、数得是对的。
+
+    两件事一起查：
+
+    1. **没有被改坏的标记。** 写成 `<!--N:chapters-->`（尖括号里不留空格）时，
+       markdown 格式化插件会把它当成自动链接，改写成
+       `[!--N:chapters--](!--N:chapters--)`——**这一版真被推上过线**，
+       GitHub 仓库首页上明晃晃印着 `!--N:chapters--`。改成带空格的形态就免疫了，
+       但没人拦着谁再写回去。
+    2. **标记里的数与实测一致。** 等价于「`gen_index.py` 跑过且没被回改」。
+
+    这一条是 09 教训十八的又一个实例，但方向反过来：那一条讲「规则写了却不生效」，
+    这一条讲**「产物看着对，渲染出来却不对」**——`git diff` 干净、脚本全绿，
+    而 GitHub 页面上是坏的，因为**没有任何闸门看渲染结果**。
+
+    **看不见的**：只查 README。站点那一侧的 `<!-- N:xxx -->` 由 hook 在构建期吃掉，
+    渲染不出来就是空字符串，那一类要靠 build 之后数页面里的数字。
+    """
+    body = text("README.md")
+    if body is None:
+        return False, "README.md 不存在"
+
+    broken = re.findall(r"\[!--\s*/?N[:\w]*\s*--\]", body)
+    if broken:
+        return False, (f"README 里有 {len(broken)} 处标记被改写成了 markdown 链接 "
+                       f"{broken[:3]}——多半是编辑器的 markdown 格式化插件干的，"
+                       f"标记要写成 `<!-- N:xxx -->`（尖括号里留空格）")
+
+    pairs = re.findall(r"<!--\s*(N:\w+)\s*-->([^<]*)<!--\s*/N\s*-->", body)
+    if not pairs:
+        return False, "README 里一个 `<!-- N:xxx -->` 标记都没有——是被整段删掉了吗"
+
+    want = {}
+    mp = json.loads((ROOT / "data" / "_mapping.json").read_text(encoding="utf-8"))["chapters"]
+    want["N:chapters"] = str(len(mp))
+    probs = json.loads((ROOT / "data" / "_problems.json").read_text(encoding="utf-8"))
+    want["N:problems"] = str(len(probs))
+    vols: dict = {}
+    for f in sorted((ROOT / "docs").rglob("*.md")):
+        rel = f.relative_to(ROOT / "docs")
+        if f.name == "index.md" or rel.parts[0] == "appendix":
+            continue
+        m = re.search(r"^volume:\s*(\d+)\s*$", f.read_text(encoding="utf-8"), re.M)
+        if m:
+            vols[m.group(1)] = vols.get(m.group(1), 0) + 1
+    for v, n in vols.items():
+        want["N:vol" + v] = str(n)
+
+    stale = [(k, got, want.get(k)) for k, got in pairs
+             if k in want and got.strip() != want[k]]
+    unknown = sorted({k for k, _ in pairs if k not in want})
+    if stale:
+        return False, f"{len(stale)} 处标记的数过期了 {stale[:3]}——跑一次 gen_index.py"
+    if unknown:
+        return False, f"README 里有本探针不认识的标记 {unknown}——加了新标记就要在这里登记"
+    return True, f"{len(pairs)} 处标记形态正常、数与实测一致"
+
+
 def probe_py39_pinned(_a: dict) -> tuple[bool, str]:
     """「全书代码兼容 Python 3.9」这句承诺，得有人真的在那个版本上验。
 
@@ -894,6 +953,7 @@ PROBES = {
     "examples_generated": probe_examples_generated,
     "volume_counts_agree": probe_volume_counts_agree,
     "py39_pinned": probe_py39_pinned,
+    "readme_markers": probe_readme_markers,
     "judge_count": probe_judge_count,
     "submitlang_count": probe_submitlang_count, "result_count": probe_result_count,
     "verify_state": probe_verify_state, "topics": probe_topics,

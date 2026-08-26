@@ -1,0 +1,15 @@
+{
+  // 本仓库的 markdown 不要自动格式化。
+  // README 里有 `<!-- N:chapters -->` 这类构建期同步标记，格式化插件会把
+  // 不留空格的写法当成 markdown 自动链接改写成 `[!--N:chapters--](!--N:chapters--)`
+  // （这个坑真的上过线，仓库首页印出过 `!--N:chapters--`），
+  // 同时还会给表格重新对齐、和 gen_index.py 打架。
+  "[markdown]": {
+    "editor.formatOnSave": false
+  }
+
+  // 关于 dev/ 那个嵌套的私有仓：**不要指望 git.scanRepositories**。
+  // 那个设置对嵌套仓库不可靠（microsoft/vscode#96372 / #133577）。
+  // 要在源代码管理里同时看到两个仓库，用**多根工作区**：
+  // 打开 E:\Programming\Python\study\algorithm.code-workspace。
+}

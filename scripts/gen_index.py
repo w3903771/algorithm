@@ -144,6 +144,22 @@ def write_chapter_map(mapping: dict, titles: dict) -> None:
     MAP_OUT.write_text("\n".join(L) + "\n", encoding="utf-8")
 
 
+def folder_titles() -> dict:
+    """顶层目录 -> 中文名，取各目录索引页的一级标题。
+
+    源码树里目录名是英文 slug（`ds` / `basic`），那是 URL 兼 id（02 §3）；
+    面向读者的名字只有目录索引页的 `# 数据结构` 那一行有。
+    不另开一份映射表——多一份就多一处会漂的东西（09 教训七）。
+    """
+    out = {}
+    for f in sorted(DOCS.glob("*/index.md")):
+        for line in f.read_text(encoding="utf-8").split("\n"):
+            if line.startswith("# "):
+                out[f.parent.name] = line[2:].strip()
+                break
+    return out
+
+
 def sync_dir_index(mapping: dict) -> None:
     """改写 docs/<目录>/index.md 里的「本部分 N 章，配套 M 道牛客真题」。
 
@@ -287,25 +303,54 @@ def main() -> int:
         by_dir = {}
         for ch in mapping["chapters"]:
             by_dir.setdefault(ch.split("/")[0], []).append(ch)
-        lines = ["| 目录 | 章数 | 正文 |", "| --- | --- | --- |"]
-        tot_w = tot_a = 0
+        # 表按**读者**的口径列：中文部分名、章数、配套例题数。
+        # 原先列的是英文目录名与「正文 16 / 16」——那是维护者的一致性自检
+        # （磁盘文件数 vs `_mapping` 章数），对读者是噪声，而且它恒等于 N / N，
+        # 真不一致时也有四向差集在管。目录名保持英文同样是内部口径（那是 URL 的 slug）。
+        titles = folder_titles()
+        lines = ["| 部分 | 章数 | 配套例题 |", "| --- | --- | --- |"]
+        tot_w = tot_a = tot_q = 0
         for folder, chs in by_dir.items():
             d = DOCS / folder
             w = len([p for p in d.rglob("*.md") if p.name != "index.md"]) if d.exists() else 0
             a = len(chs)
-            lines.append(f"| {folder} | {a} | {w} / {a} |")
+            q = sum(len(mapping["chapters"][c]) for c in chs)
+            lines.append(f"| {titles.get(folder, folder)} | {a} | {q} |")
             tot_w += w
             tot_a += a
-        lines += [f"| **合计** | **{tot_a}** | **{tot_w} / {tot_a}** |", ""]
+            tot_q += q
+        lines += [f"| **合计** | **{tot_a}** | **{tot_q}** |", ""]
+        if tot_w != tot_a:
+            # 磁盘章文件数与 _mapping 对不上——不写进 README（那是给读者看的），
+            # 但也不能悄悄咽下去（09 教训四：闸门只覆盖它看得见的东西）。
+            print(f"  ⚠ 磁盘章文件 {tot_w} 份，_mapping 登记 {tot_a} 章，对不上")
 
-        lines += ["| 题单 | 题数 | 判题模式 | 已写题解 | 通过样例 |",
-                  "| --- | --- | --- | --- | --- |"]
+        # **四套题单只有这一张表。** 原先 README 里有两张：上一节「题目来源」
+        # 一张（来源 / 题单 / 题号段 / 判题模式），这一节又一张（题单 / 题数 / …）——
+        # 同样四行、讲同一批题单，读者不知道该看哪一张。删掉一列不解决问题，
+        # 两张表就是两处会各自漂的东西（09 教训七 / 二十六）。
+        # 合成一张之后，「题目来源」那一节只剩散文，不再有表。
+        #
+        # 来源链接与题号段都从 `data/_sources.json` 取（`sites[].url` / `sets[].range`），
+        # 不在 README 里手写——加一套题单只改注册表那一份。
+        lines += ["| 来源 | 题单 | 题号段 | 判题模式 | 题数 | 已写题解 | 通过样例 |",
+                  "| --- | --- | --- | --- | --- | --- | --- |"]
+        seen_site = set()
         for s in sets_:
             rows = by_set[s["key"]]
-            lines.append(f"| {sites[s['site']]['name']} · {s['name']} | {len(rows)} | "
-                         f"{MODE.get(s['mode'], s['mode'])} | {sum(r['has_sol'] for r in rows)} | "
+            site = sites[s["site"]]
+            # 同一来源的多套题单只在第一行给链接，后面写「同上」——
+            # 四行里三个一样的长链接，读者只会觉得吵
+            if s["site"] in seen_site:
+                cell = "同上"
+            else:
+                cell = f"[{site['fullName']}]({site['url']})"
+                seen_site.add(s["site"])
+            lines.append(f"| {cell} | {s['name']} | {s.get('range', '—')} | "
+                         f"{MODE.get(s['mode'], s['mode'])} | {len(rows)} | "
+                         f"{sum(r['has_sol'] for r in rows)} | "
                          f"{sum('✅' in r['status'] for r in rows)} |")
-        lines.append(f"| **合计** | **{total}** | — | **{has_sol}** | **{done}** |")
+        lines.append(f"| **合计** | — | — | — | **{total}** | **{has_sol}** | **{done}** |")
         lines.append("")
 
         # 判题机实测与 PyPy3 登记也一并生成，否则每次重跑都会把手写的说明冲掉。
@@ -331,19 +376,33 @@ def main() -> int:
                       "> 算法已是最优形态，纯粹是 CPython 的常数过不去。",
                       "> 提交语言登记在各题的 `meta.json`（`langs.py.submitLang`），"
                       "理由写在各题解的文档字符串里。"]
-        # 「## 进度」之外还有几个散落在导语里的数（首页那句「全书 N 章」）。
-        # 它们同样是「加一章就会变」的量（09 教训七），但塞在句子中间，
-        # 没法整段重写——所以用一对注释标记框住，只换中间那一段。
-        # 标记在 GitHub 上不显示，**但不能放进代码围栏**（围栏里注释会原样印出来），
+        # 「## 进度」之外还有几个散落在导语里的数（README 开头那句「全书 N 章」、
+        # 三卷表的章数、支持项目那一段）。它们同样是「加一章就会变」的量（09 教训七），
+        # 但塞在句子中间，没法整段重写——所以用一对注释标记框住，只换中间那一段。
+        #
+        # **标记里的空格是必须的。** 写成 `<!--N:chapters-->`（尖括号里没有空格）时，
+        # 有些 markdown 格式化插件会把它当成自动链接 `<...>`，改写成
+        # `[!--N:chapters--](!--N:chapters--)` —— 这一版真的被推上过线，
+        # GitHub 仓库首页上明晃晃印着 `!--N:chapters--`。
+        # 加了空格就不再是自动链接的候选。`check_decisions` 的 `readme_markers` 盯着这件事。
+        #
+        # 标记本身在 GitHub 上不显示，**但不能放进代码围栏**（围栏里注释会原样印出来），
         # 所以目录树那一处是直接不写数。
-        t = re.sub(r"(<!--N:chapters-->)[^<]*(<!--/N-->)",
-                   lambda m: m.group(1) + str(tot_a) + m.group(2), t)
-        t = re.sub(r"(<!--N:problems-->)[^<]*(<!--/N-->)",
-                   lambda m: m.group(1) + str(total) + m.group(2), t)
-        vols = volume_counts()
-        for v, n in vols.items():
-            t = re.sub(r"(<!--N:vol%s-->)[^<]*(<!--/N-->)" % v,
-                       lambda m, n=n: m.group(1) + str(n) + m.group(2), t)
+        def _sync(body: str, key: str, val) -> str:
+            return re.sub(r"(<!--\s*N:%s\s*-->)[^<]*(<!--\s*/N\s*-->)" % key,
+                          lambda m: m.group(1) + str(val) + m.group(2), body)
+
+        t = _sync(t, "chapters", tot_a)
+        t = _sync(t, "problems", total)
+        for v, n in volume_counts().items():
+            t = _sync(t, "vol" + v, n)
+
+        # 「进度」是 README 第一大块（读者路径）的最后一节，块与块之间要有分隔线。
+        # 那条 `---` **必须由这里吐出来**：它落在下面那个正则的替换区间里
+        # （`[\s\S]*?` 懒到下一个 `
+## ` 才停），手工写在正文里会被重跑一次就吃掉。
+        lines.append("")
+        lines.append("---")
 
         # 只吃「## 进度」这一节，遇到下一个二级标题就停手。
         # 原写法吃到文件尾，README 末尾新增的「仓库维护」小节在 P-M② 第 2 步

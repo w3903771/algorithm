@@ -332,7 +332,19 @@ def main(argv) -> int:
             state = json.loads(STATE.read_text(encoding="utf-8"))
         except Exception:
             state = {}
+    # **`NO_PROBLEM` 不许写回去。** 它不是一个结论，是「这一趟没验成」——
+    # 缺题面 json 时就是这个值，而题面（`sources/**/raw/`）不入库。
+    # 于是在 clone 下来的检出里跑一次 `verify.py`，会把已经验过的
+    # `✅ PASS` 全部覆盖成 `⚠️ NO_PROBLEM`，**并且把两个入库文件改脏**
+    # （`_verify_state.json` 与 `_verify_report.md`），贡献者很容易顺手提进 PR。
+    # 实测：新 clone 里跑 `verify.py PIO`，19 道题的记录当场被抹掉。
+    #
+    # 「没验成」与「验失败」是两回事，只有后者该改写结论（09 教训十四的同一句话：
+    # 让数字变好看的做法里，只有一种保留信息）。
+    skipped = [r["no"] for r in results if r["status"] == "NO_PROBLEM"]
     for r in results:
+        if r["status"] == "NO_PROBLEM":
+            continue
         state[r["no"]] = {k: v for k, v in r.items() if k != "fails"}
     STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -373,6 +385,17 @@ def main(argv) -> int:
         mark = {"PASS": "  ok  ", "FAIL": " FAIL "}.get(r["status"], f" {r['status']} ")
         print(f"[{mark}] {r['no']:<10} {r.get('mode','-'):<6} {r.get('cases','-')} 样例  {r.get('time',0):.2f}s")
     print(f"\n通过 {npass} / 失败 {nfail} / 其它 {other}   报告 -> {REPORT}")
+
+    if skipped:
+        # **这一段必须在汇总之后。** 上面那行「通过 N / 失败 0 / 其它 0」念的是
+        # 累积状态，而这一趟其实一道题都没验成——先看到那行的人会以为验过了。
+        print(f"\n[跳过] {len(skipped)} 道题这一趟没验成（缺题面 json），"
+              f"原有结论保持不变：{'、'.join(skipped[:6])}"
+              f"{' …' if len(skipped) > 6 else ''}")
+        print("       题面与官方样例不入库（体量与版权），"
+              "所以 clone 下来的检出跑不了 verify——")
+        print("       上面那行数字念的是仓库里存着的结论，不是这一趟的结果。")
+        print("       改了题解想自测，在 PR 里写清用例，维护者会替你跑一遍。")
     return 1 if nfail else 0
 
 

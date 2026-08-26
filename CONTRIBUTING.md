@@ -23,9 +23,19 @@ uv run mkdocs serve      # http://127.0.0.1:8000
 | 想改 | 改哪个文件 | 改完跑什么 |
 | --- | --- | --- |
 | 一段正文 | `docs/<主题>/<slug>.md` | `uv run mkdocs serve` 看渲染 |
-| 一份题解 | `solutions/<site>/<题号>/sol.py` | `uv run python scripts/verify.py <题号>` |
-| 题解页上的讲解文字 | 同上——`sol.py` 的**文档字符串就是题解页正文** | 同上 |
+| 一份题解 | `solutions/<site>/<题号>/sol.py` | 见下面的「⚠️ 关于 `verify.py`」 |
+| 题解页上的讲解文字 | 同上——`sol.py` 的**文档字符串就是题解页正文** | `uv run mkdocs serve` 看渲染 |
 | 某章挂哪几道例题 | `data/_mapping.json` | `uv run python scripts/check_orphan.py` |
+
+### ⚠️ 关于 `verify.py`
+
+**它在 clone 下来的检出里跑不了。** 它要读各题的官方样例，
+而题面与样例不入库（体量与版权，`data/_problems.json` 只是题目元信息的快照）。
+跑它会得到一串 `NO_PROBLEM`，脚本会在末尾提示你这件事，
+并且**不会**把「没验成」写回仓库里已有的验证结论。
+
+**改了题解想自测**：自己造几组输入手动跑一遍 `sol.py`，
+在 PR 里写清**用例与预期输出**，维护者会替你过一遍判题机。
 
 **这些别手改**，它们是生成的，重跑即覆盖：
 
@@ -65,9 +75,10 @@ uv run python scripts/check_prose.py
 
 1. Fork → clone → **切一个新分支**（别直接在 `main` 上改）；
 2. 改动，本地跑一遍 `mkdocs serve` 确认渲染正常；
-3. 改了题解就跑 `verify.py <题号>`，改了正文就跑 `check_prose.py`；
-   动过任何 `.py` 都跑一次 `uv run python scripts/check_syntax.py`——
-   **全书代码承诺兼容 Python 3.9**，`match`（3.10）、`int | None` 类型联合（3.10）这类新语法都会被它拦下；
+3. 改了正文就跑 `check_prose.py`；动过任何 `.py` 都跑一次
+   `uv run python scripts/check_syntax.py`——**全书代码承诺兼容 Python 3.9**，
+   `match`（3.10）、`int | None` 类型联合（3.10）这类新语法都会被它拦下。
+   改了题解**不必**跑 `verify.py`（跑不了，见上），把用例写在 PR 里即可；
 4. commit 信息写清**改了什么、为什么**，一句话即可；
 5. 推到你的 fork，提 PR。
 

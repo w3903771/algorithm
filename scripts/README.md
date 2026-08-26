@@ -25,14 +25,8 @@ uv sync                                     # 装依赖（Python 3.9+ 与 uv）
 uv run mkdocs serve                         # http://127.0.0.1:8000
 uv run mkdocs build                         # 静态产物到 site/
 
-# 验证题解跑官方样例。ACM 与核心代码两种判题模式按题单自动分派
-uv run python scripts/verify.py             # 全部 366 道
-uv run python scripts/verify.py PIO         # 只跑 PIO 开头的
-uv run python scripts/verify.py BISHI136    # 单独一道
-uv run python scripts/test_corejudge.py     # 核心代码判题链路自测
-
-# 验证**正文里印出来的代码**（与题解是两份东西）
-uv run python scripts/verify_docs.py
+# 核心代码判题链路自测（自带临时夹具，不依赖 sources/）
+uv run python scripts/test_corejudge.py
 
 # CI 跑的就是这两条
 uv run python scripts/check_syntax.py       # 全库源码的 3.9 语法闸门
@@ -47,16 +41,29 @@ uv run python scripts/check_links.py --fix   # 自动改正能改的那些
 
 | 命令 | 缺什么就跑不了 |
 | --- | --- |
+| **`verify.py`** · **`verify_docs.py`** | **`sources/**/raw/` 的官方样例**。跑起来只会得到一串 `NO_PROBLEM`。脚本会在末尾提示，并且**不把「没验成」写回**仓库里已有的结论——早期版本会覆盖，新 clone 跑一次 `verify.py PIO` 就把 18 道题的 `✅ PASS` 抹成 `⚠️ NO_PROBLEM`，两个入库文件当场变脏 |
 | `gen_index.py` | **`sources/` 的题单 JSON**。题面与抓取产物不入库（体量与版权），`data/_problems.json` 是它们的发布快照——站点构建读快照，不需要重新生成 |
 | `audit_topics.py` · `audit_depth.py` · `audit_sources.py` · `check_decisions.py` | **`dev/data/` 的 `_topics` / `_source_topics` / `_decisions`**。这三份是开发侧数据，不随仓库发布 |
-| `check_orphan.py` · `audit_outline.py` · `audit_newsets.py` · `check_templates.py` | 能跑，但报告写进 `dev/audit/`，该目录不随仓库发布——首次跑会自己建 |
+| `check_orphan.py` · `audit_outline.py` · `audit_newsets.py` · `check_templates.py` | 能跑，但报告写进 `dev/audit/` |
 | `nc_*.py` · `lc_*.py` | **`.auth/` 里的登录会话**。先跑一次 `nc_login.py` / `lc_login.py` 手动登录 |
 | `extract_local.py` · `extract_legacy.py` · `runoob_*.py` | **本地原始资料**（C++ 代码库、竞赛课件、rar 里的 .doc/.ppt），`extract_legacy` 还要装 Office |
 | `migrate.py` · `migrate_solutions.py` · `diff_build.py` | 一次性迁移工具，已经跑完；留着是为了留痕与复算 |
 
+> **它们会在 clone 里凭空建一个 `dev/` 目录**来放报告（`dev/audit/`、`dev/notes/`）。
+> 维护者那边 `dev/` 本来就在（是另一个私有仓），所以是对的；
+> 在 clone 里它只是个空壳，且被 `.gitignore` 盖着看不见——**直接删掉即可**，
+> 不影响任何东西。这一条写在这里，是因为「被 gitignore 盖住的副作用」
+> 恰恰是最难自己发现的那一类。
+
 ### 0.3 维护者日常
 
 ```bash
+# 验证题解跑官方样例。ACM 与核心代码两种判题模式按题单自动分派
+uv run python scripts/verify.py             # 全部 366 道
+uv run python scripts/verify.py PIO         # 只跑 PIO 开头的
+uv run python scripts/verify.py BISHI136    # 单独一道
+uv run python scripts/verify_docs.py        # 验**正文里印出来的代码**（与题解是两份东西）
+
 # 写一道核心代码题之前，先生成带正确签名的骨架
 uv run python scripts/new_solution.py LC1
 
