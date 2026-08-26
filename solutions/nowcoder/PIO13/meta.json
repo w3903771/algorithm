@@ -1,0 +1,21 @@
+{
+  "no": "PIO13",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "多组_带空格的字符串_T组形式",
+  "url": "https://www.nowcoder.com/practice/cff28a28d7f54419a640a8bb19f4275f",
+  "topics": [
+    "python/string",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048752,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

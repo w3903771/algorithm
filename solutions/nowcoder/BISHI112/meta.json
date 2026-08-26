@@ -1,0 +1,20 @@
+{
+  "no": "BISHI112",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】二维前缀和",
+  "url": "https://www.nowcoder.com/practice/99eb8040d116414ea3296467ce81cbbc",
+  "topics": [
+    "basic/prefix-sum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048384,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

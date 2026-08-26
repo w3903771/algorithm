@@ -1,0 +1,25 @@
+{
+  "no": "LC55",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "跳跃游戏",
+  "url": "https://leetcode.cn/problems/jump-game/",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20456000,
+      "memory_percentile": 64.6934000000001,
+      "runtime_percentile": 97.4101,
+      "status": "AC",
+      "status_memory": "20 MB",
+      "status_runtime": "11 ms",
+      "submissionId": 743342985,
+      "verdict": "Accepted"
+    }
+  }
+}

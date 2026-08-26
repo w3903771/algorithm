@@ -1,0 +1,20 @@
+{
+  "no": "BISHI90",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】记忆化搜索",
+  "url": "https://www.nowcoder.com/practice/211c9fa6ea984185a16c6005e9793736",
+  "topics": [
+    "search/memoization"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048177,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

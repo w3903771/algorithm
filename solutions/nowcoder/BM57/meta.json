@@ -1,0 +1,20 @@
+{
+  "no": "BM57",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "岛屿数量",
+  "url": "https://www.nowcoder.com/practice/0c9664d1554e466aa107d899418e814e",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077516,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM93",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "盛水最多的容器",
+  "url": "https://www.nowcoder.com/practice/3d8d6a8e516e4633a2244d2934e5aa47",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077932,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

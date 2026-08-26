@@ -1,0 +1,21 @@
+{
+  "no": "BISHI109",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "邮递员送信",
+  "url": "https://www.nowcoder.com/practice/2b0c636cf77d441fa96d40ac64290d39",
+  "topics": [
+    "graph/kth-path",
+    "graph/shortest-path"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048356,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

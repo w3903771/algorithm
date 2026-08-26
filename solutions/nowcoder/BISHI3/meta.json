@@ -1,0 +1,21 @@
+{
+  "no": "BISHI3",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】队列操作",
+  "url": "https://www.nowcoder.com/practice/1137c8f6ffac4d5d94cc1b0cb08723f9",
+  "topics": [
+    "ds/queue",
+    "python/stdlib"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047292,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "no": "PIO16",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_spj判断YES与NO",
+  "url": "https://www.nowcoder.com/practice/4dffedb2a0734a0e9ce759f2eaeeda65",
+  "topics": [
+    "toolkit/io"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048772,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

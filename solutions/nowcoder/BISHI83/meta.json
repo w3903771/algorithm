@@ -1,0 +1,23 @@
+{
+  "no": "BISHI83",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "迷宫问题",
+  "url": "https://www.nowcoder.com/practice/cf24906056f4488c9ddb132f317e03bc",
+  "topics": [
+    "search/bfs",
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048109,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM14",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "链表的奇偶重排",
+  "url": "https://www.nowcoder.com/practice/02bf49ea45cd486daa031614f9bd6fc3",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076990,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

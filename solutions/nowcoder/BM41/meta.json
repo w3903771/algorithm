@@ -1,0 +1,20 @@
+{
+  "no": "BM41",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "输出二叉树的右视图",
+  "url": "https://www.nowcoder.com/practice/c9480213597e45f4807880c763ddd5f0",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077352,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

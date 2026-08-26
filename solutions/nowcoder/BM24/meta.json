@@ -1,0 +1,20 @@
+{
+  "no": "BM24",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉树的中序遍历",
+  "url": "https://www.nowcoder.com/practice/0bf071c135e64ee2a027783b80bf781d",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077129,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

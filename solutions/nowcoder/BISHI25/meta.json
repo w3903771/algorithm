@@ -1,0 +1,21 @@
+{
+  "no": "BISHI25",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "最大 FST 距离",
+  "url": "https://www.nowcoder.com/practice/6295f81acd1b4fb59c8beed92577f64b",
+  "topics": [
+    "basic/sorting",
+    "python/sorting"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047510,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

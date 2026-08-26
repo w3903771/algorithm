@@ -1,0 +1,20 @@
+{
+  "no": "BM98",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "螺旋矩阵",
+  "url": "https://www.nowcoder.com/practice/7edf70f2d29c4b599693dc3aaeea1d31",
+  "topics": [
+    "basic/simulation"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077973,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

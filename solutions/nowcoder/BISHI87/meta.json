@@ -1,0 +1,20 @@
+{
+  "no": "BISHI87",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "[CQOI2010]扑克牌",
+  "url": "https://www.nowcoder.com/practice/b77ff162bbab446993913fd684489cde",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048150,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

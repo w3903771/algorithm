@@ -1,0 +1,20 @@
+{
+  "no": "BISHI140",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】分组背包",
+  "url": "https://www.nowcoder.com/practice/32a6c222213c42efa902da6b5c9f8e99",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048629,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

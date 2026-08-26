@@ -1,0 +1,20 @@
+{
+  "no": "BM5",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "合并k个已排序的链表",
+  "url": "https://www.nowcoder.com/practice/65cfde9e5b9b4cf2b6bafa5f3ef33fa6",
+  "topics": [
+    "basic/divide-conquer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076879,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

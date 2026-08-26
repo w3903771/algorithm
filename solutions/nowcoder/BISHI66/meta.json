@@ -1,0 +1,20 @@
+{
+  "no": "BISHI66",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "子数列求积",
+  "url": "https://www.nowcoder.com/practice/5daab034da954f5697dcf96c1808d34f",
+  "topics": [
+    "math/combi/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047937,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

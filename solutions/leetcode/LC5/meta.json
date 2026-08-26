@@ -1,0 +1,25 @@
+{
+  "no": "LC5",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最长回文子串",
+  "url": "https://leetcode.cn/problems/longest-palindromic-substring/",
+  "topics": [
+    "string/manacher"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19736000,
+      "memory_percentile": 43.22799999999997,
+      "runtime_percentile": 93.6066999999999,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "175 ms",
+      "submissionId": 743341171,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "PIO4",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "多组_A+B_T组形式",
+  "url": "https://www.nowcoder.com/practice/cc937d32225340469bfb60a0797bad77",
+  "topics": [
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047255,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

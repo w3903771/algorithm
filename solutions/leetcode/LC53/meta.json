@@ -1,0 +1,25 @@
+{
+  "no": "LC53",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最大子数组和",
+  "url": "https://leetcode.cn/problems/maximum-subarray/",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 31548000,
+      "memory_percentile": 83.2819999999999,
+      "runtime_percentile": 99.4859,
+      "status": "AC",
+      "status_memory": "30.8 MB",
+      "status_runtime": "19 ms",
+      "submissionId": 743342828,
+      "verdict": "Accepted"
+    }
+  }
+}

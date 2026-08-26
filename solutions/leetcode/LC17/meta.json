@@ -1,0 +1,28 @@
+{
+  "no": "LC17",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "电话号码的字母组合",
+  "url": "https://leetcode.cn/problems/letter-combinations-of-a-phone-number/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "题面：答案可以按任意顺序返回"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19532000,
+      "memory_percentile": 77.59400000000004,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.1 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743341376,
+      "verdict": "Accepted"
+    }
+  }
+}

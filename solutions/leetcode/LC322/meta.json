@@ -1,0 +1,25 @@
+{
+  "no": "LC322",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "零钱兑换",
+  "url": "https://leetcode.cn/problems/coin-change/",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19812000,
+      "memory_percentile": 78.47800000000011,
+      "runtime_percentile": 99.74360000000004,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "315 ms",
+      "submissionId": 743347228,
+      "verdict": "Accepted"
+    }
+  }
+}

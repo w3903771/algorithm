@@ -1,0 +1,28 @@
+{
+  "no": "LC131",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "分割回文串",
+  "url": "https://leetcode.cn/problems/palindrome-partitioning/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "官方判题接受任意顺序；每种分割内部的子串顺序有意义，只放宽外层"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 33728000,
+      "memory_percentile": 75.13450000000016,
+      "runtime_percentile": 97.5965,
+      "status": "AC",
+      "status_memory": "32.9 MB",
+      "status_runtime": "35 ms",
+      "submissionId": 743344854,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "no": "LC56",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "合并区间",
+  "url": "https://leetcode.cn/problems/merge-intervals/",
+  "topics": [
+    "basic/sorting"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 23332000,
+      "memory_percentile": 22.265500000000138,
+      "runtime_percentile": 72.3452,
+      "status": "AC",
+      "status_memory": "22.8 MB",
+      "status_runtime": "7 ms",
+      "submissionId": 743343066,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "no": "PIO14",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_保留小数位数",
+  "url": "https://www.nowcoder.com/practice/a4bccea7f4644fbda1208f8e0d397bab",
+  "topics": [
+    "toolkit/float",
+    "toolkit/io"
+  ],
+  "judge": {
+    "mode": "exact"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048760,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

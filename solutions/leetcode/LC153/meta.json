@@ -1,0 +1,25 @@
+{
+  "no": "LC153",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "寻找旋转排序数组中的最小值",
+  "url": "https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19768000,
+      "memory_percentile": 22.248400000000043,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743345460,
+      "verdict": "Accepted"
+    }
+  }
+}

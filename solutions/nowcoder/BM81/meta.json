@@ -1,0 +1,20 @@
+{
+  "no": "BM81",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "买卖股票的最好时机(二)",
+  "url": "https://www.nowcoder.com/practice/9e5e3c2603064829b0a0bbfca10594e9",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077793,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

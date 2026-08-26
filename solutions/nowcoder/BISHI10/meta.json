@@ -1,0 +1,21 @@
+{
+  "no": "BISHI10",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小红的字符串修改",
+  "url": "https://www.nowcoder.com/practice/66e0054ff6b345afa47bcd4e8ceb72d7",
+  "topics": [
+    "basic/simulation",
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047351,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

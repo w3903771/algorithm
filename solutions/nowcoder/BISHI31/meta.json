@@ -1,0 +1,22 @@
+{
+  "no": "BISHI31",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "二进制不同位数",
+  "url": "https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868",
+  "topics": [
+    "basic/bit",
+    "python/operators",
+    "python/types"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047562,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

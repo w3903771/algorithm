@@ -1,0 +1,20 @@
+{
+  "no": "BM45",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "滑动窗口的最大值",
+  "url": "https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788",
+  "topics": [
+    "ds/monotonic-queue"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077396,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

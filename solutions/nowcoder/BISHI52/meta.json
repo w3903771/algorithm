@@ -1,0 +1,22 @@
+{
+  "no": "BISHI52",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "奥赛组队",
+  "url": "https://www.nowcoder.com/practice/8809c78fe4fa445ab8218cee5b69910f",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047787,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM4",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "合并两个排序的链表",
+  "url": "https://www.nowcoder.com/practice/d8b6b4358f774294a89de2a6ac4d9337",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076869,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI108",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "最优乘车",
+  "url": "https://www.nowcoder.com/practice/83101a4f624042b59a629089e83b6dd1",
+  "topics": [
+    "graph/kth-path",
+    "graph/shortest-path"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048348,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

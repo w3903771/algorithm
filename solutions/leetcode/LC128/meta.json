@@ -1,0 +1,25 @@
+{
+  "no": "LC128",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最长连续序列",
+  "url": "https://leetcode.cn/problems/longest-consecutive-sequence/",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 36680000,
+      "memory_percentile": 90.9141999999994,
+      "runtime_percentile": 11.379299999999954,
+      "status": "AC",
+      "status_memory": "35.8 MB",
+      "status_runtime": "73 ms",
+      "submissionId": 743344784,
+      "verdict": "Accepted"
+    }
+  }
+}

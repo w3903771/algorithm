@@ -1,0 +1,20 @@
+{
+  "no": "BM13",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "判断一个链表是否为回文结构",
+  "url": "https://www.nowcoder.com/practice/3fed228444e740c8be66232ce8b87c2f",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076977,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

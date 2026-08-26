@@ -1,0 +1,28 @@
+{
+  "no": "LC46",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "全排列",
+  "url": "https://leetcode.cn/problems/permutations/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "题面：可以按任意顺序返回答案；但每个排列本身是有序的，故只放宽外层"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19796000,
+      "memory_percentile": 53.38830000000004,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743342534,
+      "verdict": "Accepted"
+    }
+  }
+}

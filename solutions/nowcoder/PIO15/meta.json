@@ -1,0 +1,20 @@
+{
+  "no": "PIO15",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_补充前导零",
+  "url": "https://www.nowcoder.com/practice/c5b1fb6a4b1644e590b49a4cbca7930e",
+  "topics": [
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048765,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

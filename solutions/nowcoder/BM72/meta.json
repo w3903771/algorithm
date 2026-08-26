@@ -1,0 +1,20 @@
+{
+  "no": "BM72",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "连续子数组的最大和",
+  "url": "https://www.nowcoder.com/practice/459bd355da1549fa8a49e350bf3df484",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077695,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

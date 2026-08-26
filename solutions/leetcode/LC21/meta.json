@@ -1,0 +1,25 @@
+{
+  "no": "LC21",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "合并两个有序链表",
+  "url": "https://leetcode.cn/problems/merge-two-sorted-lists/",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19468000,
+      "memory_percentile": 88.73189999999991,
+      "runtime_percentile": 16.0499,
+      "status": "AC",
+      "status_memory": "19 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743341600,
+      "verdict": "Accepted"
+    }
+  }
+}

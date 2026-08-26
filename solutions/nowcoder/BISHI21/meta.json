@@ -1,0 +1,23 @@
+{
+  "no": "BISHI21",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】排序",
+  "url": "https://www.nowcoder.com/practice/40bf74658879460bbf5f1bfe772e8580",
+  "topics": [
+    "basic/sorting",
+    "python/builtins",
+    "python/sorting",
+    "toolkit/complexity"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047464,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

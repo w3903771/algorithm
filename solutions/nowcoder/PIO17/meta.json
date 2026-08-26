@@ -1,0 +1,24 @@
+{
+  "no": "PIO17",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_spj判断浮点误差",
+  "url": "https://www.nowcoder.com/practice/6652094c6a0e4381911b541ed664d8b7",
+  "topics": [
+    "toolkit/float",
+    "toolkit/io"
+  ],
+  "judge": {
+    "eps": 0.001,
+    "mode": "float"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048782,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

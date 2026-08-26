@@ -1,0 +1,25 @@
+{
+  "no": "LC114",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉树展开为链表",
+  "url": "https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19732000,
+      "memory_percentile": 70.16460000000002,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743344459,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "no": "LC64",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最小路径和",
+  "url": "https://leetcode.cn/problems/minimum-path-sum/",
+  "topics": [
+    "dp/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20496000,
+      "memory_percentile": 97.07389999999991,
+      "runtime_percentile": 95.1165,
+      "status": "AC",
+      "status_memory": "20 MB",
+      "status_runtime": "7 ms",
+      "submissionId": 743343200,
+      "verdict": "Accepted"
+    }
+  }
+}

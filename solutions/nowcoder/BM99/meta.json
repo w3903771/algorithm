@@ -1,0 +1,20 @@
+{
+  "no": "BM99",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "顺时针旋转矩阵",
+  "url": "https://www.nowcoder.com/practice/2e95333fbdd4451395066957e24909cc",
+  "topics": [
+    "basic/simulation"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077986,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

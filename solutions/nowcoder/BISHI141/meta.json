@@ -1,0 +1,20 @@
+{
+  "no": "BISHI141",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "来硬的",
+  "url": "https://www.nowcoder.com/practice/08dbc77ec79942c1914b002f488b87ee",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048640,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI85",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】整数域二分",
+  "url": "https://www.nowcoder.com/practice/d483ab6bf19245518730a75c6ea108ae",
+  "topics": [
+    "basic/binary-search",
+    "python/stdlib"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048128,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

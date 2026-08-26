@@ -1,0 +1,20 @@
+{
+  "no": "BM55",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "没有重复项数字的全排列",
+  "url": "https://www.nowcoder.com/practice/4bcf3081067a4d028f95acee3ddcd2b1",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077496,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

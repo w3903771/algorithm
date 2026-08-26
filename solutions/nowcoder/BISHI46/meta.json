@@ -1,0 +1,20 @@
+{
+  "no": "BISHI46",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小红的魔法药剂",
+  "url": "https://www.nowcoder.com/practice/1ede2daa3ab445bc8ac8ea62b6ca8201",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047721,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

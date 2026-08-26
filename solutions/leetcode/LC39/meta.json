@@ -1,0 +1,28 @@
+{
+  "no": "LC39",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "组合总和",
+  "url": "https://leetcode.cn/problems/combination-sum/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered_deep",
+    "note": "题面：你可以按任意顺序返回这些组合；组合内顺序同样不重要"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20028000,
+      "memory_percentile": 18.964500000000072,
+      "runtime_percentile": 46.78620000000001,
+      "status": "AC",
+      "status_memory": "19.6 MB",
+      "status_runtime": "8 ms",
+      "submissionId": 743342282,
+      "verdict": "Accepted"
+    }
+  }
+}

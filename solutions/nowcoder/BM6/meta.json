@@ -1,0 +1,20 @@
+{
+  "no": "BM6",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "判断链表中是否有环",
+  "url": "https://www.nowcoder.com/practice/650474f313294468a4ded3ce0f7898b9",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076887,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

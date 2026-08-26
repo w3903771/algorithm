@@ -1,0 +1,20 @@
+{
+  "no": "BISHI41",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】整除分块",
+  "url": "https://www.nowcoder.com/practice/6b0b510b32484281bd21abb71ef7ba0b",
+  "topics": [
+    "math/number/sqrt-decomposition"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047667,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

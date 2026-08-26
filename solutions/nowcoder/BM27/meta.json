@@ -1,0 +1,20 @@
+{
+  "no": "BM27",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "按之字形顺序打印二叉树",
+  "url": "https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077163,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

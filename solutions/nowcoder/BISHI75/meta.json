@@ -1,0 +1,20 @@
+{
+  "no": "BISHI75",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】欧拉降幂",
+  "url": "https://www.nowcoder.com/practice/da7a14c1a58b48bd80e63771b82e50c5",
+  "topics": [
+    "math/number/euler"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048025,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM40",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "重建二叉树",
+  "url": "https://www.nowcoder.com/practice/8a19cbe657394eeaac2f6ea9b0f6fcf6",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077342,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

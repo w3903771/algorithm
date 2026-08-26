@@ -1,0 +1,20 @@
+{
+  "no": "BM67",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "不同路径的数目(一)",
+  "url": "https://www.nowcoder.com/practice/166eaff8439d4cd898e3ba933fbc6358",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077641,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

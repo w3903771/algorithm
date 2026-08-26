@@ -1,0 +1,20 @@
+{
+  "no": "PIO5",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "多组_A+B_零尾模式",
+  "url": "https://www.nowcoder.com/practice/a561ad77e7bb45679db2bd7317fded84",
+  "topics": [
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047260,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM96",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "主持人调度（二）",
+  "url": "https://www.nowcoder.com/practice/4edf6e6d01554870a12f218c94e8a299",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077954,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

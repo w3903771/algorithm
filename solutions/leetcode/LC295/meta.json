@@ -1,0 +1,25 @@
+{
+  "no": "LC295",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "数据流的中位数",
+  "url": "https://leetcode.cn/problems/find-median-from-data-stream/",
+  "topics": [
+    "ds/heap"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 42148000,
+      "memory_percentile": 61.3811000000001,
+      "runtime_percentile": 33.97290000000003,
+      "status": "AC",
+      "status_memory": "41.2 MB",
+      "status_runtime": "220 ms",
+      "submissionId": 743347074,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "no": "LC199",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉树的右视图",
+  "url": "https://leetcode.cn/problems/binary-tree-right-side-view/",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19692000,
+      "memory_percentile": 26.689999999999962,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.2 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743345857,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI71",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "人员分组问题",
+  "url": "https://www.nowcoder.com/practice/482f31bf028f46aa9b7882a4b921ffcf",
+  "topics": [
+    "math/combi/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047986,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

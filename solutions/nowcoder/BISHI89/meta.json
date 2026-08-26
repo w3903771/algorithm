@@ -1,0 +1,20 @@
+{
+  "no": "BISHI89",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "山峰数组计数",
+  "url": "https://www.nowcoder.com/practice/aac1989d183d4e6daf6ee2e1ca62b50c",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048169,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

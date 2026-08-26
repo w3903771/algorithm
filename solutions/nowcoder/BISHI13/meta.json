@@ -1,0 +1,21 @@
+{
+  "no": "BISHI13",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "九倍平方数",
+  "url": "https://www.nowcoder.com/practice/032c72fab5fe4a2ea8e11d40378a493d",
+  "topics": [
+    "basic/simulation",
+    "math/number/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047379,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

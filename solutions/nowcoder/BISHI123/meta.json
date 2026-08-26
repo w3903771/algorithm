@@ -1,0 +1,20 @@
+{
+  "no": "BISHI123",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "环形字符串跃迁",
+  "url": "https://www.nowcoder.com/practice/84c36745b9984c25839bdc36f7f83339",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048473,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

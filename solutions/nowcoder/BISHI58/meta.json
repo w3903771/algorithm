@@ -1,0 +1,20 @@
+{
+  "no": "BISHI58",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "矩形游戏",
+  "url": "https://www.nowcoder.com/practice/5b6c2c824a434b55a5e3b77619c54a90",
+  "topics": [
+    "math/number/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047853,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

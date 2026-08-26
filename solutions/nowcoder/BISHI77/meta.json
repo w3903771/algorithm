@@ -1,0 +1,20 @@
+{
+  "no": "BISHI77",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "数水坑",
+  "url": "https://www.nowcoder.com/practice/664ca4289fcf457ba3109fdf4a7a1a05",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048046,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

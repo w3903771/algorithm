@@ -1,0 +1,25 @@
+{
+  "no": "LC155",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最小栈",
+  "url": "https://leetcode.cn/problems/min-stack/",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 31520000,
+      "memory_percentile": 53.329499999999925,
+      "runtime_percentile": 42.97090000000003,
+      "status": "AC",
+      "status_memory": "30.8 MB",
+      "status_runtime": "111 ms",
+      "submissionId": 743345523,
+      "verdict": "Accepted"
+    }
+  }
+}

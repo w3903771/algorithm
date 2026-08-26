@@ -1,0 +1,29 @@
+{
+  "no": "LC4",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "寻找两个正序数组的中位数",
+  "url": "https://leetcode.cn/problems/median-of-two-sorted-arrays/",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {
+    "eps": 1e-05,
+    "mode": "exact",
+    "note": "返回中位数，浮点比较按相对误差"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19784000,
+      "memory_percentile": 65.02600000000001,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743341093,
+      "verdict": "Accepted"
+    }
+  }
+}

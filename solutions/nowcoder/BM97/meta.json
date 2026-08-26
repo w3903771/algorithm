@@ -1,0 +1,20 @@
+{
+  "no": "BM97",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "旋转数组",
+  "url": "https://www.nowcoder.com/practice/e19927a8fd5d477794dac67096862042",
+  "topics": [
+    "ds/array"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077963,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

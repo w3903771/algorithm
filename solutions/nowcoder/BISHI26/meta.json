@@ -1,0 +1,22 @@
+{
+  "no": "BISHI26",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "构造C的歪",
+  "url": "https://www.nowcoder.com/practice/56735b3fe2fc4ed5916f5427dc787156",
+  "topics": [
+    "basic/construction"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047520,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI137",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】完全背包",
+  "url": "https://www.nowcoder.com/practice/deda4293d9b24ce1aeaf1813c88b8c25",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048603,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

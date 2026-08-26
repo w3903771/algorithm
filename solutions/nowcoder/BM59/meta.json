@@ -1,0 +1,20 @@
+{
+  "no": "BM59",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "N皇后问题",
+  "url": "https://www.nowcoder.com/practice/c76408782512486d91eea181107293b6",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077535,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

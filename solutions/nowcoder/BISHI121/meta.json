@@ -1,0 +1,21 @@
+{
+  "no": "BISHI121",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "数列后缀极大位置统计",
+  "url": "https://www.nowcoder.com/practice/9b791983564d4ad9a1bf298670562c68",
+  "topics": [
+    "dp/opt/basic",
+    "ds/monotonic-stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048454,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

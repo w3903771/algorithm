@@ -1,0 +1,20 @@
+{
+  "no": "BISHI53",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "[P1080] 国王游戏(简化版)",
+  "url": "https://www.nowcoder.com/practice/145c3426577f40f8b2b5e51ca6f61523",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047800,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

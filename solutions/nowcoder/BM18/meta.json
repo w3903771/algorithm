@@ -1,0 +1,20 @@
+{
+  "no": "BM18",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二维数组中的查找",
+  "url": "https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077042,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

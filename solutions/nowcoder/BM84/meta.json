@@ -1,0 +1,20 @@
+{
+  "no": "BM84",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最长公共前缀",
+  "url": "https://www.nowcoder.com/practice/28eb3175488f4434a4a6207f6f484f47",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077830,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

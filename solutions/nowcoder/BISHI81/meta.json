@@ -1,0 +1,20 @@
+{
+  "no": "BISHI81",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "剪纸游戏",
+  "url": "https://www.nowcoder.com/practice/33054daa2cc04fd6b97a0d18ccfc66a0",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048081,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI115",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "可匹配子段计数",
+  "url": "https://www.nowcoder.com/practice/cfc8ae6269cd445d83686f12da66023c",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048412,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

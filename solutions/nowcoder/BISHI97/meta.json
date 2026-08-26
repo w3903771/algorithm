@@ -1,0 +1,20 @@
+{
+  "no": "BISHI97",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "旺仔哥哥走迷宫",
+  "url": "https://www.nowcoder.com/practice/4b4ee516c23d4bd2b838646363b5c395",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048241,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

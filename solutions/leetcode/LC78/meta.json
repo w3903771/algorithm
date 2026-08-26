@@ -1,0 +1,28 @@
+{
+  "no": "LC78",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "子集",
+  "url": "https://leetcode.cn/problems/subsets/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered_deep",
+    "note": "题面：你可以按任意顺序返回解集；子集内顺序也不限"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19528000,
+      "memory_percentile": 94.74700000000006,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.1 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743343673,
+      "verdict": "Accepted"
+    }
+  }
+}

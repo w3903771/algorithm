@@ -1,0 +1,20 @@
+{
+  "no": "BM50",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "两数之和",
+  "url": "https://www.nowcoder.com/practice/20ef0972485e41019e39543e8e895b7f",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077454,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

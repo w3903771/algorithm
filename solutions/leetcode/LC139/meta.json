@@ -1,0 +1,25 @@
+{
+  "no": "LC139",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "单词拆分",
+  "url": "https://leetcode.cn/problems/word-break/",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19548000,
+      "memory_percentile": 72.3846,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.1 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743345070,
+      "verdict": "Accepted"
+    }
+  }
+}

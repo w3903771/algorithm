@@ -1,0 +1,25 @@
+{
+  "no": "LC138",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "随机链表的复制",
+  "url": "https://leetcode.cn/problems/copy-list-with-random-pointer/",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20460000,
+      "memory_percentile": 15.979799999999942,
+      "runtime_percentile": 86.599,
+      "status": "AC",
+      "status_memory": "20 MB",
+      "status_runtime": "47 ms",
+      "submissionId": 743345003,
+      "verdict": "Accepted"
+    }
+  }
+}

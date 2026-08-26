@@ -1,0 +1,25 @@
+{
+  "no": "LC72",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "编辑距离",
+  "url": "https://leetcode.cn/problems/edit-distance/",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19540000,
+      "memory_percentile": 97.26659999999997,
+      "runtime_percentile": 99.39000000000003,
+      "status": "AC",
+      "status_memory": "19.1 MB",
+      "status_runtime": "23 ms",
+      "submissionId": 743343338,
+      "verdict": "Accepted"
+    }
+  }
+}

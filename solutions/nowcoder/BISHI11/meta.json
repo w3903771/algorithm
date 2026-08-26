@@ -1,0 +1,20 @@
+{
+  "no": "BISHI11",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "变幻莫测",
+  "url": "https://www.nowcoder.com/practice/5e702b6c7c114e64b5db4650d0ce0051",
+  "topics": [
+    "basic/simulation"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047358,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

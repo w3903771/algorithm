@@ -1,0 +1,28 @@
+{
+  "no": "LC347",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "前 K 个高频元素",
+  "url": "https://leetcode.cn/problems/top-k-frequent-elements/",
+  "topics": [
+    "ds/heap"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "题面：你可以按任意顺序返回答案"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 23032000,
+      "memory_percentile": 66.59720000000006,
+      "runtime_percentile": 85.1514,
+      "status": "AC",
+      "status_memory": "22.5 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743347301,
+      "verdict": "Accepted"
+    }
+  }
+}

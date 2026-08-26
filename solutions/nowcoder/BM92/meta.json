@@ -1,0 +1,20 @@
+{
+  "no": "BM92",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最长无重复子数组",
+  "url": "https://www.nowcoder.com/practice/b56799ebfd684fb394bd315e89324fb4",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077922,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI17",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "纸牌游戏",
+  "url": "https://www.nowcoder.com/practice/74f915e366094b19b94334de8b68e733",
+  "topics": [
+    "basic/simulation"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047415,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

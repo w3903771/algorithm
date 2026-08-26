@@ -1,0 +1,20 @@
+{
+  "no": "BM15",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "删除有序链表中重复的元素-I",
+  "url": "https://www.nowcoder.com/practice/c087914fae584da886a0091e877f2c79",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077007,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

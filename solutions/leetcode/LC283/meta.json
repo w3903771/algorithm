@@ -1,0 +1,25 @@
+{
+  "no": "LC283",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "移动零",
+  "url": "https://leetcode.cn/problems/move-zeroes/",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20944000,
+      "memory_percentile": 6.065799999999924,
+      "runtime_percentile": 83.53819999999999,
+      "status": "AC",
+      "status_memory": "20.5 MB",
+      "status_runtime": "2 ms",
+      "submissionId": 743346937,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "no": "LC98",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "验证二叉搜索树",
+  "url": "https://leetcode.cn/problems/validate-binary-search-tree/",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 21048000,
+      "memory_percentile": 79.36640000000014,
+      "runtime_percentile": 39.229,
+      "status": "AC",
+      "status_memory": "20.6 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743343983,
+      "verdict": "Accepted"
+    }
+  }
+}

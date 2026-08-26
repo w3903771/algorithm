@@ -1,0 +1,22 @@
+{
+  "no": "BISHI37",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "数位差与数值和的构造",
+  "url": "https://www.nowcoder.com/practice/36f3593e553c4c67987abf88a3d4d105",
+  "topics": [
+    "basic/construction"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047635,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

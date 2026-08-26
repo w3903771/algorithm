@@ -1,0 +1,25 @@
+{
+  "no": "LC22",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "括号生成",
+  "url": "https://leetcode.cn/problems/generate-parentheses/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19768000,
+      "memory_percentile": 31.778799999999954,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743341681,
+      "verdict": "Accepted"
+    }
+  }
+}

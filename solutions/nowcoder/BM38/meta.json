@@ -1,0 +1,20 @@
+{
+  "no": "BM38",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "在二叉树中找到两个节点的最近公共祖先",
+  "url": "https://www.nowcoder.com/practice/e0cc33a83afe4530bcec46eba3325116",
+  "topics": [
+    "graph/tree/lca"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077310,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

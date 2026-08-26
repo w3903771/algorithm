@@ -1,0 +1,20 @@
+{
+  "no": "BISHI33",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "Poi 的新加法（Easy Version）",
+  "url": "https://www.nowcoder.com/practice/9f766daa7e4042a786633c341fe9d7e2",
+  "topics": [
+    "toolkit/bignum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047586,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

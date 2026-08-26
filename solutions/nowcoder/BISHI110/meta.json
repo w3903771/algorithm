@@ -1,0 +1,20 @@
+{
+  "no": "BISHI110",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】静态区间和（前缀和）",
+  "url": "https://www.nowcoder.com/practice/ac79a1a4a66646cc87525d6faa86e021",
+  "topics": [
+    "basic/prefix-sum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048367,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

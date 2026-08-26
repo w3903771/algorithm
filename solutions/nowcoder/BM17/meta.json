@@ -1,0 +1,20 @@
+{
+  "no": "BM17",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二分查找-I",
+  "url": "https://www.nowcoder.com/practice/d3df40bd23594118b57554129cadf47b",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077030,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

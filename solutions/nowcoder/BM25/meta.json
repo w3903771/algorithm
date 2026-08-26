@@ -1,0 +1,20 @@
+{
+  "no": "BM25",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉树的后序遍历",
+  "url": "https://www.nowcoder.com/practice/1291064f4d5d4bdeaefbf0dd47d78541",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077139,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

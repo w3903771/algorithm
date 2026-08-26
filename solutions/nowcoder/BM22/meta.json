@@ -1,0 +1,20 @@
+{
+  "no": "BM22",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "比较版本号",
+  "url": "https://www.nowcoder.com/practice/2b317e02f14247a49ffdbdba315459e7",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077103,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

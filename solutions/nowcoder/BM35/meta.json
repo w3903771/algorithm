@@ -1,0 +1,20 @@
+{
+  "no": "BM35",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "判断是不是完全二叉树",
+  "url": "https://www.nowcoder.com/practice/8daa4dff9e36409abba2adbe413d6fae",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077273,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

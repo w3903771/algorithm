@@ -1,0 +1,25 @@
+{
+  "no": "LC45",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "跳跃游戏 II",
+  "url": "https://leetcode.cn/problems/jump-game-ii/",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20496000,
+      "memory_percentile": 14.599999999999998,
+      "runtime_percentile": 91.37,
+      "status": "AC",
+      "status_memory": "20 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743342467,
+      "verdict": "Accepted"
+    }
+  }
+}

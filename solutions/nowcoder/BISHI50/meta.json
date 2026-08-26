@@ -1,0 +1,21 @@
+{
+  "no": "BISHI50",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "[JSOI2007]建筑抢修",
+  "url": "https://www.nowcoder.com/practice/e69a484a4dfb4015b34c2e0ff2ae2ac8",
+  "topics": [
+    "basic/greedy",
+    "ds/heap"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047765,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

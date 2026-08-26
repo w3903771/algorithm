@@ -1,0 +1,20 @@
+{
+  "no": "BM2",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "链表内指定区间反转",
+  "url": "https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076843,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

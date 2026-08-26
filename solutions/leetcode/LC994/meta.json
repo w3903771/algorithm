@@ -1,0 +1,25 @@
+{
+  "no": "LC994",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "腐烂的橘子",
+  "url": "https://leetcode.cn/problems/rotting-oranges/",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19444000,
+      "memory_percentile": 96.41500000000002,
+      "runtime_percentile": 14.507100000000001,
+      "status": "AC",
+      "status_memory": "19 MB",
+      "status_runtime": "7 ms",
+      "submissionId": 743347954,
+      "verdict": "Accepted"
+    }
+  }
+}

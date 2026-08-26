@@ -1,0 +1,20 @@
+{
+  "no": "BM87",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "合并两个有序的数组",
+  "url": "https://www.nowcoder.com/practice/89865d4375634fc484f3a24b7fe65665",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077856,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

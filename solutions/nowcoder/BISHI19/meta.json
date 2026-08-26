@@ -1,0 +1,21 @@
+{
+  "no": "BISHI19",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "乒乓球",
+  "url": "https://www.nowcoder.com/practice/78660925b1cd49b6b2e43cb375ed7945",
+  "topics": [
+    "basic/simulation",
+    "python/control-flow"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047434,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

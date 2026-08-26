@@ -1,0 +1,20 @@
+{
+  "no": "BM90",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最小覆盖子串",
+  "url": "https://www.nowcoder.com/practice/c466d480d20c4c7c9d322d12ca7955ac",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077895,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

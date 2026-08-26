@@ -1,0 +1,22 @@
+{
+  "no": "BISHI30",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "二进制数1",
+  "url": "https://www.nowcoder.com/practice/bc4c7936f5ed42cbb9131b6f39aa272b",
+  "topics": [
+    "basic/bit",
+    "python/operators",
+    "python/types"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047548,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

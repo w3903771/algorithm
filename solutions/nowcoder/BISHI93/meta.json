@@ -1,0 +1,20 @@
+{
+  "no": "BISHI93",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】Trie 字典树",
+  "url": "https://www.nowcoder.com/practice/feed1cd7546a4901965751b9fbf5f8a1",
+  "topics": [
+    "string/trie"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048203,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

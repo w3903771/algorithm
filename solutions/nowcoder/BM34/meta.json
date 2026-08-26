@@ -1,0 +1,20 @@
+{
+  "no": "BM34",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "判断是不是二叉搜索树",
+  "url": "https://www.nowcoder.com/practice/a69242b39baf45dea217815c7dedb52b",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077257,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

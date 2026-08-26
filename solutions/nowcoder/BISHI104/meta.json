@@ -1,0 +1,21 @@
+{
+  "no": "BISHI104",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "修复公路",
+  "url": "https://www.nowcoder.com/practice/8111efc8c04d472da349b6e5010e1951",
+  "topics": [
+    "ds/dsu",
+    "graph/mst"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048310,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

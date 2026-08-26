@@ -1,0 +1,20 @@
+{
+  "no": "BM71",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最长上升子序列(一)",
+  "url": "https://www.nowcoder.com/practice/5164f38b67f846fb8699e9352695cd2f",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077685,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

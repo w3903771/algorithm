@@ -1,0 +1,20 @@
+{
+  "no": "BM54",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "三数之和",
+  "url": "https://www.nowcoder.com/practice/345e2ed5f81d4017bbb8cc6055b0b711",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077488,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

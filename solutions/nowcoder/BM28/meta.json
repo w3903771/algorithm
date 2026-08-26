@@ -1,0 +1,20 @@
+{
+  "no": "BM28",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉树的最大深度",
+  "url": "https://www.nowcoder.com/practice/8a2b2bf6c19b4f23a9bdb9b233eefa73",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077178,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

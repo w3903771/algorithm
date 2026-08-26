@@ -1,0 +1,22 @@
+{
+  "no": "BISHI1",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】序列操作",
+  "url": "https://www.nowcoder.com/practice/12da4185c0bb45918cfdc3072e544069",
+  "topics": [
+    "ds/array",
+    "ds/linked-list",
+    "python/list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481075586,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

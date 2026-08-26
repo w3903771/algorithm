@@ -1,0 +1,21 @@
+{
+  "no": "BISHI16",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "计算一年中的第几天",
+  "url": "https://www.nowcoder.com/practice/178aa3dafb144bb8b0445edb5e9b812a",
+  "topics": [
+    "basic/simulation",
+    "python/control-flow"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047408,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

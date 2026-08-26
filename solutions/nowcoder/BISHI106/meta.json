@@ -1,0 +1,20 @@
+{
+  "no": "BISHI106",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】单源最短路Ⅲ ‖ 非负权图",
+  "url": "https://www.nowcoder.com/practice/d7fafd4f3340439e90597532850257b5",
+  "topics": [
+    "graph/shortest-path"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048328,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

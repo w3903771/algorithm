@@ -1,0 +1,22 @@
+{
+  "no": "BISHI124",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】最近公共祖先（LCA）",
+  "url": "https://www.nowcoder.com/practice/8004903f8eff4473b5c590b85afd7217",
+  "topics": [
+    "basic/binary-lifting",
+    "graph/tree/hld",
+    "graph/tree/lca"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048485,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

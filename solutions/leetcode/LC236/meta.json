@@ -1,0 +1,28 @@
+{
+  "no": "LC236",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉树的最近公共祖先",
+  "url": "https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/",
+  "topics": [
+    "graph/tree/lca"
+  ],
+  "judge": {
+    "mode": "exact",
+    "note": "metaData 的 p/q 是整数而官方签名收 TreeNode，且期望输出只是结点值；判题走 driver.py"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 51052000,
+      "memory_percentile": 24.50690000000078,
+      "runtime_percentile": 13.305600000000112,
+      "status": "AC",
+      "status_memory": "49.9 MB",
+      "status_runtime": "166 ms",
+      "submissionId": 743346542,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI15",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小红的夹吃棋",
+  "url": "https://www.nowcoder.com/practice/94648fd37a644c76adb2adb29c2a3037",
+  "topics": [
+    "basic/simulation",
+    "geometry/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047394,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

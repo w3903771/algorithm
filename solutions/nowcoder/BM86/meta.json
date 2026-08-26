@@ -1,0 +1,20 @@
+{
+  "no": "BM86",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "大数加法",
+  "url": "https://www.nowcoder.com/practice/11ae12e8c6fe48f883cad618c2e81475",
+  "topics": [
+    "toolkit/bignum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077850,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

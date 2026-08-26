@@ -1,0 +1,25 @@
+{
+  "no": "LC32",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最长有效括号",
+  "url": "https://leetcode.cn/problems/longest-valid-parentheses/",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20648000,
+      "memory_percentile": 61.44799999999978,
+      "runtime_percentile": 34.701600000000006,
+      "status": "AC",
+      "status_memory": "20.2 MB",
+      "status_runtime": "14 ms",
+      "submissionId": 743342011,
+      "verdict": "Accepted"
+    }
+  }
+}

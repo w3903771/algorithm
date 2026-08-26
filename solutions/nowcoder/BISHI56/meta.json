@@ -1,0 +1,20 @@
+{
+  "no": "BISHI56",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "分解质因数",
+  "url": "https://www.nowcoder.com/practice/35723516d6f841ca8869ecbcf3ddacaf",
+  "topics": [
+    "math/number/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047830,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI114",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】滑动窗口",
+  "url": "https://www.nowcoder.com/practice/be419f584a3f4c5b818833f1ce856626",
+  "topics": [
+    "basic/two-pointer",
+    "ds/monotonic-queue"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048402,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

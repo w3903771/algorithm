@@ -1,0 +1,28 @@
+{
+  "no": "LC49",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "字母异位词分组",
+  "url": "https://leetcode.cn/problems/group-anagrams/",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {
+    "mode": "unordered_deep",
+    "note": "题面：可以按任意顺序返回结果列表；组内单词顺序也不限"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 22176000,
+      "memory_percentile": 73.34589999999987,
+      "runtime_percentile": 33.446999999999974,
+      "status": "AC",
+      "status_memory": "21.7 MB",
+      "status_runtime": "16 ms",
+      "submissionId": 743342674,
+      "verdict": "Accepted"
+    }
+  }
+}

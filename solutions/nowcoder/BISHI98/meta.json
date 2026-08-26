@@ -1,0 +1,21 @@
+{
+  "no": "BISHI98",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "谍中谍中谍中谍中谍...",
+  "url": "https://www.nowcoder.com/practice/ee1246384c9b4066b67043ebb37fd9c9",
+  "topics": [
+    "ds/dsu",
+    "graph/scc"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048248,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

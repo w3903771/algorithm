@@ -1,0 +1,21 @@
+{
+  "no": "BISHI103",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】有依赖的背包问题",
+  "url": "https://www.nowcoder.com/practice/f0a110f831de4cc6bebc6243a26166e6",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "submitLang": "pypy3",
+      "lang": "Pypy3",
+      "status": "AC",
+      "submissionId": 481049437,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

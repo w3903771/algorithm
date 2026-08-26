@@ -1,0 +1,20 @@
+{
+  "no": "BM32",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "合并二叉树",
+  "url": "https://www.nowcoder.com/practice/7298353c24cc42e3bd5f0e0bd3d1d759",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077233,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

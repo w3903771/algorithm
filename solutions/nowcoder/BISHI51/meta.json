@@ -1,0 +1,21 @@
+{
+  "no": "BISHI51",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "低买高卖",
+  "url": "https://www.nowcoder.com/practice/61ad3cbe0e7d4db9b64fc2b7b503dfd8",
+  "topics": [
+    "basic/greedy",
+    "ds/heap"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047777,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

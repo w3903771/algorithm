@@ -1,0 +1,20 @@
+{
+  "no": "BISHI68",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "刷题统计",
+  "url": "https://www.nowcoder.com/practice/99ddb1a6e71d47dcbbe4f272aba532b8",
+  "topics": [
+    "basic/prefix-sum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047952,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

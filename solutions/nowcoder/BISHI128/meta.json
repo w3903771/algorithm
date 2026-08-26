@@ -1,0 +1,21 @@
+{
+  "no": "BISHI128",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "区间加乘与单点求值",
+  "url": "https://www.nowcoder.com/practice/7a1de22fa7a1456f8ba519f21de31c84",
+  "topics": [
+    "ds/segment-tree"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "submitLang": "pypy3",
+      "lang": "Pypy3",
+      "status": "AC",
+      "submissionId": 481049440,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

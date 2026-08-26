@@ -1,0 +1,20 @@
+{
+  "no": "BM60",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "括号生成",
+  "url": "https://www.nowcoder.com/practice/c9addb265cdf4cdd92c092c655d164ca",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077548,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

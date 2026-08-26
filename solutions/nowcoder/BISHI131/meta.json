@@ -1,0 +1,21 @@
+{
+  "no": "BISHI131",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "数楼梯",
+  "url": "https://www.nowcoder.com/practice/c7e5f164fa5d471f8f83c90fe4ee3f05",
+  "topics": [
+    "dp/basic",
+    "math/recurrence"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048557,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

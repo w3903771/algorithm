@@ -1,0 +1,25 @@
+{
+  "no": "LC238",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "除了自身以外数组的乘积",
+  "url": "https://leetcode.cn/problems/product-of-array-except-self/",
+  "topics": [
+    "basic/prefix-sum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 25760000,
+      "memory_percentile": 69.10929999999975,
+      "runtime_percentile": 99.34319999999998,
+      "status": "AC",
+      "status_memory": "25.2 MB",
+      "status_runtime": "15 ms",
+      "submissionId": 743346600,
+      "verdict": "Accepted"
+    }
+  }
+}

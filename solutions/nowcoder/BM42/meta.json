@@ -1,0 +1,20 @@
+{
+  "no": "BM42",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "用两个栈实现队列",
+  "url": "https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077362,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

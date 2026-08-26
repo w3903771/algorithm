@@ -1,0 +1,21 @@
+{
+  "no": "BISHI49",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小红闯关",
+  "url": "https://www.nowcoder.com/practice/7ce4b75f7a304be481e73bc4dd2705a4",
+  "topics": [
+    "basic/greedy",
+    "ds/heap"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047754,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

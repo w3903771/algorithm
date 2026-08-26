@@ -1,0 +1,23 @@
+{
+  "no": "BISHI32",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "被打乱的异或和",
+  "url": "https://www.nowcoder.com/practice/116db6858c424fb89b821125053bbc15",
+  "topics": [
+    "basic/bit",
+    "python/operators"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047579,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

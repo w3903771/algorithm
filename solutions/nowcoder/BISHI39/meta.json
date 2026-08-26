@@ -1,0 +1,20 @@
+{
+  "no": "BISHI39",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】Pollard-Pho算法",
+  "url": "https://www.nowcoder.com/practice/9da360a56fa846708542b0fb3985c647",
+  "topics": [
+    "math/number/sqrt-decomposition"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047653,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI44",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "灵异背包？",
+  "url": "https://www.nowcoder.com/practice/812bcedbbe244c9b86e459a244af5ddf",
+  "topics": [
+    "basic/greedy",
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047697,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

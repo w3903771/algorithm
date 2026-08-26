@@ -1,0 +1,20 @@
+{
+  "no": "BISHI35",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】巴什博弈",
+  "url": "https://www.nowcoder.com/practice/9bb882504d574ec287f69e967ce0fb95",
+  "topics": [
+    "math/game/impartial"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047610,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

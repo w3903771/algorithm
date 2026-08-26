@@ -1,0 +1,21 @@
+{
+  "no": "BISHI57",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "最大公因数与最小公倍数",
+  "url": "https://www.nowcoder.com/practice/ee732bec4f174cd9b4abc6427ba90584",
+  "topics": [
+    "math/number/basic",
+    "python/operators"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047846,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

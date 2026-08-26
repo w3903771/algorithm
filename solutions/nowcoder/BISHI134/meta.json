@@ -1,0 +1,20 @@
+{
+  "no": "BISHI134",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "最大子段和",
+  "url": "https://www.nowcoder.com/practice/f04519cd1d904f50b68f4229a126ab08",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048572,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

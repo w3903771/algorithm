@@ -1,0 +1,20 @@
+{
+  "no": "BISHI18",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "多项式输出",
+  "url": "https://www.nowcoder.com/practice/142ee43d3e7345d385328faca9f636e5",
+  "topics": [
+    "math/poly/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047424,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

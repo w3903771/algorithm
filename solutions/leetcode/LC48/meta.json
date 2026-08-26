@@ -1,0 +1,25 @@
+{
+  "no": "LC48",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "旋转图像",
+  "url": "https://leetcode.cn/problems/rotate-image/",
+  "topics": [
+    "ds/array"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19604000,
+      "memory_percentile": 43.312699999999964,
+      "runtime_percentile": 2.0845000000000047,
+      "status": "AC",
+      "status_memory": "19.1 MB",
+      "status_runtime": "4 ms",
+      "submissionId": 743342603,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM33",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉树的镜像",
+  "url": "https://www.nowcoder.com/practice/a9d0ecbacef9410ca97463e4a5c83be7",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077245,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

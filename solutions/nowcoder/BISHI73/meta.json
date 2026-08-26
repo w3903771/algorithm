@@ -1,0 +1,20 @@
+{
+  "no": "BISHI73",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】欧拉函数Ⅰ ‖ 单个整数",
+  "url": "https://www.nowcoder.com/practice/6a22f91ad3904c6cbd624ae5ff6a4eac",
+  "topics": [
+    "math/number/euler"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048007,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

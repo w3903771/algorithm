@@ -1,0 +1,20 @@
+{
+  "no": "BISHI42",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "余数求和",
+  "url": "https://www.nowcoder.com/practice/5d18ffe2c6cd45ac8d8040be19c96f14",
+  "topics": [
+    "math/number/sqrt-decomposition"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047676,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

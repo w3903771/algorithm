@@ -1,0 +1,21 @@
+{
+  "no": "BISHI138",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】多重背包",
+  "url": "https://www.nowcoder.com/practice/8fa10063d33a43dd9652c1511a34d461",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "submitLang": "pypy3",
+      "lang": "Pypy3",
+      "status": "AC",
+      "submissionId": 481049448,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

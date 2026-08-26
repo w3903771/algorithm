@@ -1,0 +1,20 @@
+{
+  "no": "BM73",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最长回文子串",
+  "url": "https://www.nowcoder.com/practice/b4525d1d84934cf280439aeecc36f4af",
+  "topics": [
+    "string/manacher"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077701,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

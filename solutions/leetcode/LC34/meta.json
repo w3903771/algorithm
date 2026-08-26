@@ -1,0 +1,25 @@
+{
+  "no": "LC34",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "在排序数组中查找元素的第一个和最后一个位置",
+  "url": "https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 21008000,
+      "memory_percentile": 12.070899999999984,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "20.5 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743342128,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM48",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "数据流中的中位数",
+  "url": "https://www.nowcoder.com/practice/9be0172896bd43948f8a32fb954e1be1",
+  "topics": [
+    "ds/heap"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077435,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

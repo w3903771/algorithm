@@ -1,0 +1,25 @@
+{
+  "no": "LC124",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉树中的最大路径和",
+  "url": "https://leetcode.cn/problems/binary-tree-maximum-path-sum/",
+  "topics": [
+    "dp/tree"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 25904000,
+      "memory_percentile": 5.076800000000022,
+      "runtime_percentile": 7.071200000000001,
+      "status": "AC",
+      "status_memory": "25.3 MB",
+      "status_runtime": "19 ms",
+      "submissionId": 743344692,
+      "verdict": "Accepted"
+    }
+  }
+}

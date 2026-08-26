@@ -1,0 +1,20 @@
+{
+  "no": "BM68",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "矩阵的最小路径和",
+  "url": "https://www.nowcoder.com/practice/7d21b6be4c6b429bb92d219341c4f8bb",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077659,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

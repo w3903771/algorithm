@@ -1,0 +1,20 @@
+{
+  "no": "BM95",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "分糖果问题",
+  "url": "https://www.nowcoder.com/practice/76039109dd0b47e994c08d8319faa352",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077949,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

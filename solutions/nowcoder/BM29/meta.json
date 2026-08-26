@@ -1,0 +1,20 @@
+{
+  "no": "BM29",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉树中和为某一值的路径(一)",
+  "url": "https://www.nowcoder.com/practice/508378c0823c423baa723ce448cbfd0c",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077188,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

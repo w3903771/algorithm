@@ -1,0 +1,25 @@
+{
+  "no": "LC148",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "排序链表",
+  "url": "https://leetcode.cn/problems/sort-list/",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 40876000,
+      "memory_percentile": 58.489699999999964,
+      "runtime_percentile": 45.664899999999875,
+      "status": "AC",
+      "status_memory": "39.9 MB",
+      "status_runtime": "196 ms",
+      "submissionId": 743345328,
+      "verdict": "Accepted"
+    }
+  }
+}

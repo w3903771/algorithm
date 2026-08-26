@@ -1,0 +1,23 @@
+{
+  "no": "BISHI38",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "有向二分图构造",
+  "url": "https://www.nowcoder.com/practice/e56757bb703b4cee9d641d1682b54b63",
+  "topics": [
+    "basic/construction",
+    "graph/match/bipartite"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047645,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI117",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小苯的IDE括号问题（easy）",
+  "url": "https://www.nowcoder.com/practice/0a526c7863474220aaef082ab5f2a00a",
+  "topics": [
+    "basic/two-pointer",
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048431,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

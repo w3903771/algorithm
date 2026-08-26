@@ -1,0 +1,20 @@
+{
+  "no": "BISHI7",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "字符串哈希",
+  "url": "https://www.nowcoder.com/practice/dadbd37fee7c43f0ae407db11b16b4bf",
+  "topics": [
+    "string/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047327,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

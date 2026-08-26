@@ -1,0 +1,20 @@
+{
+  "no": "BM10",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "两个链表的第一个公共结点",
+  "url": "https://www.nowcoder.com/practice/6ab1d9a29e88450685099d45c9e31e46",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076934,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

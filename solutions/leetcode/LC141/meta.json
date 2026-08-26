@@ -1,0 +1,25 @@
+{
+  "no": "LC141",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "环形链表",
+  "url": "https://leetcode.cn/problems/linked-list-cycle/",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 22676000,
+      "memory_percentile": 79.06830000000022,
+      "runtime_percentile": 51.294200000000004,
+      "status": "AC",
+      "status_memory": "22.1 MB",
+      "status_runtime": "61 ms",
+      "submissionId": 743345136,
+      "verdict": "Accepted"
+    }
+  }
+}

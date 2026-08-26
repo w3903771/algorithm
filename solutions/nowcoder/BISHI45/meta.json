@@ -1,0 +1,20 @@
+{
+  "no": "BISHI45",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小红的矩阵染色",
+  "url": "https://www.nowcoder.com/practice/dcbaf862c0e046d79e9cd297abd76bcf",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047708,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

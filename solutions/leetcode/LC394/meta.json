@@ -1,0 +1,25 @@
+{
+  "no": "LC394",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "字符串解码",
+  "url": "https://leetcode.cn/problems/decode-string/",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19740000,
+      "memory_percentile": 16.94720000000001,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743347392,
+      "verdict": "Accepted"
+    }
+  }
+}

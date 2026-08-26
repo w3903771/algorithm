@@ -1,0 +1,25 @@
+{
+  "no": "LC279",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "完全平方数",
+  "url": "https://leetcode.cn/problems/perfect-squares/",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19876000,
+      "memory_percentile": 36.65119999999983,
+      "runtime_percentile": 77.82059999999937,
+      "status": "AC",
+      "status_memory": "19.4 MB",
+      "status_runtime": "1079 ms",
+      "submissionId": 743346844,
+      "verdict": "Accepted"
+    }
+  }
+}

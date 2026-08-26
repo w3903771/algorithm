@@ -1,0 +1,22 @@
+{
+  "no": "BISHI29",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "小红的排列构造①",
+  "url": "https://www.nowcoder.com/practice/2b0a9318cc0740d1a78eec06162e7bea",
+  "topics": [
+    "basic/construction"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047544,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

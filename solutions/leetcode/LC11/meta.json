@@ -1,0 +1,25 @@
+{
+  "no": "LC11",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "盛最多水的容器",
+  "url": "https://leetcode.cn/problems/container-with-most-water/",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 29956000,
+      "memory_percentile": 25.10720000000013,
+      "runtime_percentile": 91.0533,
+      "status": "AC",
+      "status_memory": "29.3 MB",
+      "status_runtime": "46 ms",
+      "submissionId": 743341235,
+      "verdict": "Accepted"
+    }
+  }
+}

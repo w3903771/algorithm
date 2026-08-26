@@ -1,0 +1,21 @@
+{
+  "no": "PIO11",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "多组_字符串_T组形式",
+  "url": "https://www.nowcoder.com/practice/35f6f4e9173943e3b3f462b697fefd8b",
+  "topics": [
+    "python/string",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048738,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

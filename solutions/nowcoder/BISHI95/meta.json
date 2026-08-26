@@ -1,0 +1,20 @@
+{
+  "no": "BISHI95",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】链式前向星",
+  "url": "https://www.nowcoder.com/practice/23f622c8b15f4b37bffe1a986eeea185",
+  "topics": [
+    "graph/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048223,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

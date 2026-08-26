@@ -1,0 +1,20 @@
+{
+  "no": "BM51",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "数组中出现次数超过一半的数字",
+  "url": "https://www.nowcoder.com/practice/e8a1b01a2df14cb2b228b30ee6a92163",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077458,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

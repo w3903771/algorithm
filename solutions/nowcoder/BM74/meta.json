@@ -1,0 +1,20 @@
+{
+  "no": "BM74",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "数字字符串转化成IP地址",
+  "url": "https://www.nowcoder.com/practice/ce73540d47374dbe85b3125f57727e1e",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077712,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

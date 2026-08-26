@@ -1,0 +1,20 @@
+{
+  "no": "PIO2",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_A+B",
+  "url": "https://www.nowcoder.com/practice/72195b26cb0a4483a1f9fdf314ad63fa",
+  "topics": [
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048691,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

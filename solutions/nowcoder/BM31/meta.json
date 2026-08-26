@@ -1,0 +1,20 @@
+{
+  "no": "BM31",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "对称的二叉树",
+  "url": "https://www.nowcoder.com/practice/ff05d44dfdb04e1d83bdbdab320efbcb",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077219,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

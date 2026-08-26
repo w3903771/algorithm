@@ -1,0 +1,21 @@
+{
+  "no": "BISHI12",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "元素方碑",
+  "url": "https://www.nowcoder.com/practice/5c6e7ed4726e41f4ac99a4dedf1e5bb2",
+  "topics": [
+    "basic/sorting",
+    "python/sorting"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047368,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

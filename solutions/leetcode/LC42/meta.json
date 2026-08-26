@@ -1,0 +1,25 @@
+{
+  "no": "LC42",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "接雨水",
+  "url": "https://leetcode.cn/problems/trapping-rain-water/",
+  "topics": [
+    "ds/monotonic-stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 21284000,
+      "memory_percentile": 52.097599999999964,
+      "runtime_percentile": 98.55680000000001,
+      "status": "AC",
+      "status_memory": "20.8 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743342397,
+      "verdict": "Accepted"
+    }
+  }
+}

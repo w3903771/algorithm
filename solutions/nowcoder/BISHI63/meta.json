@@ -1,0 +1,22 @@
+{
+  "no": "BISHI63",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "计算阶乘",
+  "url": "https://www.nowcoder.com/practice/b93729ad46d74a62801bdc320be2aa8e",
+  "topics": [
+    "math/recurrence",
+    "python/builtins",
+    "toolkit/bignum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047904,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

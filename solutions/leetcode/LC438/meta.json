@@ -1,0 +1,25 @@
+{
+  "no": "LC438",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "找到字符串中所有字母异位词",
+  "url": "https://leetcode.cn/problems/find-all-anagrams-in-a-string/",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20144000,
+      "memory_percentile": 35.34429999999992,
+      "runtime_percentile": 75.8968,
+      "status": "AC",
+      "status_memory": "19.7 MB",
+      "status_runtime": "31 ms",
+      "submissionId": 743347596,
+      "verdict": "Accepted"
+    }
+  }
+}

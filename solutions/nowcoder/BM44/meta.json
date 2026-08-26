@@ -1,0 +1,20 @@
+{
+  "no": "BM44",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "有效括号序列",
+  "url": "https://www.nowcoder.com/practice/37548e94a270412c8b9fb85643c8ccc2",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077388,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

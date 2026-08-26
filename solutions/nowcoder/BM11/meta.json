@@ -1,0 +1,20 @@
+{
+  "no": "BM11",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "链表相加(二)",
+  "url": "https://www.nowcoder.com/practice/c56f6c70fb3f4849bc56e33ff2a50b6b",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076953,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

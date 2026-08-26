@@ -1,0 +1,20 @@
+{
+  "no": "BM9",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "删除链表的倒数第n个节点",
+  "url": "https://www.nowcoder.com/practice/f95dcdafbde44b22a6d741baf71653f6",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076923,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

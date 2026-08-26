@@ -1,0 +1,21 @@
+{
+  "no": "PIO7",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "多组_一维数组_T组形式",
+  "url": "https://www.nowcoder.com/practice/90cdc8e31ef74b6e9fd44c1e03077b57",
+  "topics": [
+    "toolkit/complexity",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048712,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

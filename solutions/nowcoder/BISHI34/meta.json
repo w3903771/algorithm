@@ -1,0 +1,20 @@
+{
+  "no": "BISHI34",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "甜蜜的博弈",
+  "url": "https://www.nowcoder.com/practice/d3934f2d05624c8fa1a748ef225d0460",
+  "topics": [
+    "math/game/impartial"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047597,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

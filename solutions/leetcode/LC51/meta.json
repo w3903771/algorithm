@@ -1,0 +1,28 @@
+{
+  "no": "LC51",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "N 皇后",
+  "url": "https://leetcode.cn/problems/n-queens/",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "官方判题接受任意顺序；每个解的棋盘按行有序，只放宽外层"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20016000,
+      "memory_percentile": 36.040600000000055,
+      "runtime_percentile": 66.6516,
+      "status": "AC",
+      "status_memory": "19.5 MB",
+      "status_runtime": "11 ms",
+      "submissionId": 743342750,
+      "verdict": "Accepted"
+    }
+  }
+}

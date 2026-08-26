@@ -1,0 +1,20 @@
+{
+  "no": "BISHI135",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "三角形取数(Hard Version)",
+  "url": "https://www.nowcoder.com/practice/ceea5825472940dabfec917ef93538e6",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048581,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI2",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】栈的操作",
+  "url": "https://www.nowcoder.com/practice/cdf02ea916454957b575585634e5773a",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047278,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

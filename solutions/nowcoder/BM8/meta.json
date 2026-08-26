@@ -1,0 +1,20 @@
+{
+  "no": "BM8",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "链表中倒数最后k个结点",
+  "url": "https://www.nowcoder.com/practice/886370fe658f41b498d40fb34ae76ff9",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076909,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

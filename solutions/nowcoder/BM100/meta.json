@@ -1,0 +1,20 @@
+{
+  "no": "BM100",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "设计LRU缓存结构",
+  "url": "https://www.nowcoder.com/practice/5dfded165916435d9defb053c63f1e84",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077995,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

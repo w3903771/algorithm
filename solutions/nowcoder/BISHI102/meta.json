@@ -1,0 +1,20 @@
+{
+  "no": "BISHI102",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】并查集",
+  "url": "https://www.nowcoder.com/practice/513111e4477c4fad8f19f14d4cdf49dc",
+  "topics": [
+    "ds/dsu"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048289,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

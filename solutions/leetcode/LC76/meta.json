@@ -1,0 +1,25 @@
+{
+  "no": "LC76",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "最小覆盖子串",
+  "url": "https://leetcode.cn/problems/minimum-window-substring/",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20040000,
+      "memory_percentile": 35.05899999999991,
+      "runtime_percentile": 90.39720000000003,
+      "status": "AC",
+      "status_memory": "19.6 MB",
+      "status_runtime": "55 ms",
+      "submissionId": 743343604,
+      "verdict": "Accepted"
+    }
+  }
+}

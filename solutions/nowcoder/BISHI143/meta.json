@@ -1,0 +1,20 @@
+{
+  "no": "BISHI143",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "没有上司的舞会",
+  "url": "https://www.nowcoder.com/practice/f703237089ee42d9b37e01d70e14e2fc",
+  "topics": [
+    "dp/tree"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048654,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM75",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "编辑距离(一)",
+  "url": "https://www.nowcoder.com/practice/6a1483b5be1547b1acd7940f867be0da",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077721,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

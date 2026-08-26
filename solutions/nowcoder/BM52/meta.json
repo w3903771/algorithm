@@ -1,0 +1,20 @@
+{
+  "no": "BM52",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "数组中只出现一次的两个数字",
+  "url": "https://www.nowcoder.com/practice/389fc1c3d3be4479a154f63f495abff8",
+  "topics": [
+    "basic/bit"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077466,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

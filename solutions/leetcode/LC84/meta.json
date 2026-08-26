@@ -1,0 +1,25 @@
+{
+  "no": "LC84",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "柱状图中最大的矩形",
+  "url": "https://leetcode.cn/problems/largest-rectangle-in-histogram/",
+  "topics": [
+    "ds/monotonic-stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 30580000,
+      "memory_percentile": 96.40830000000017,
+      "runtime_percentile": 88.08610000000004,
+      "status": "AC",
+      "status_memory": "29.9 MB",
+      "status_runtime": "119 ms",
+      "submissionId": 743343828,
+      "verdict": "Accepted"
+    }
+  }
+}

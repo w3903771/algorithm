@@ -1,0 +1,20 @@
+{
+  "no": "BM39",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "序列化二叉树",
+  "url": "https://www.nowcoder.com/practice/cf7e25aa97c04cc1a68c8f040e71fb84",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077325,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

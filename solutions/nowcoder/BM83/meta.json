@@ -1,0 +1,20 @@
+{
+  "no": "BM83",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "字符串变形",
+  "url": "https://www.nowcoder.com/practice/c3120c1c1bc44ad986259c0cf0f0b80e",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077820,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

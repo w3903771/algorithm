@@ -1,0 +1,20 @@
+{
+  "no": "BISHI142",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "最大学分",
+  "url": "https://www.nowcoder.com/practice/66403297dfe04faaacf7d0e905fea7ac",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048650,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

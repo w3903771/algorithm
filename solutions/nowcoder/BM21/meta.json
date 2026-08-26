@@ -1,0 +1,20 @@
+{
+  "no": "BM21",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "旋转数组的最小数字",
+  "url": "https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077088,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

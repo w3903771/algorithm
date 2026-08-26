@@ -1,0 +1,20 @@
+{
+  "no": "BM78",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "打家劫舍(一)",
+  "url": "https://www.nowcoder.com/practice/c5fbf7325fbd4c0ea3d0c3ea6bc6cc79",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077751,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

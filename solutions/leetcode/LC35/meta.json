@@ -1,0 +1,25 @@
+{
+  "no": "LC35",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "搜索插入位置",
+  "url": "https://leetcode.cn/problems/search-insert-position/",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20196000,
+      "memory_percentile": 58.666300000000156,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.7 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743342207,
+      "verdict": "Accepted"
+    }
+  }
+}

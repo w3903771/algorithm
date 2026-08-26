@@ -1,0 +1,20 @@
+{
+  "no": "BM91",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "反转字符串",
+  "url": "https://www.nowcoder.com/practice/c3a6afee325e472386a1c4eb1ef987f3",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077910,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

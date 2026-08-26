@@ -1,0 +1,25 @@
+{
+  "no": "LC74",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "搜索二维矩阵",
+  "url": "https://leetcode.cn/problems/search-a-2d-matrix/",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19696000,
+      "memory_percentile": 76.25460000000007,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.2 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743343472,
+      "verdict": "Accepted"
+    }
+  }
+}

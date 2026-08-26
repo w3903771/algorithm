@@ -1,0 +1,20 @@
+{
+  "no": "BM26",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "求二叉树的层序遍历",
+  "url": "https://www.nowcoder.com/practice/04a5560e43e24e9db4595865dc9c63a3",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077150,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI43",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "讨厌鬼进货",
+  "url": "https://www.nowcoder.com/practice/e364bac751204aa0b2d27389ca8e3c94",
+  "topics": [
+    "basic/greedy"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047691,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

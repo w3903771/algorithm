@@ -1,0 +1,25 @@
+{
+  "no": "LC200",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "岛屿数量",
+  "url": "https://leetcode.cn/problems/number-of-islands/",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 22048000,
+      "memory_percentile": 13.633400000000044,
+      "runtime_percentile": 7.240000000000047,
+      "status": "AC",
+      "status_memory": "21.5 MB",
+      "status_runtime": "314 ms",
+      "submissionId": 743345914,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM88",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "判断是否为回文字符串",
+  "url": "https://www.nowcoder.com/practice/e297fdd8e9f543059b0b5f05f3a7f3b2",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077870,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

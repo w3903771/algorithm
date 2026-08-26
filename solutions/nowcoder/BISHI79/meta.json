@@ -1,0 +1,21 @@
+{
+  "no": "BISHI79",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "取数游戏",
+  "url": "https://www.nowcoder.com/practice/b002b8eb564245fdbb8a02db8dcf03e4",
+  "topics": [
+    "search/dfs",
+    "search/memoization"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048065,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

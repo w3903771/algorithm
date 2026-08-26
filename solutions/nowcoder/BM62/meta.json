@@ -1,0 +1,20 @@
+{
+  "no": "BM62",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "斐波那契数列",
+  "url": "https://www.nowcoder.com/practice/c6c7742f5ba7442aada113136ddea0c3",
+  "topics": [
+    "dp/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077578,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

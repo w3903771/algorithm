@@ -1,0 +1,21 @@
+{
+  "no": "BISHI96",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "先序遍历、中序遍历和后序遍历",
+  "url": "https://www.nowcoder.com/practice/15fdb346838545d0b272e43957e1cb2a",
+  "topics": [
+    "ds/linked-list",
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048231,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

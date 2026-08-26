@@ -1,0 +1,25 @@
+{
+  "no": "LC234",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "回文链表",
+  "url": "https://leetcode.cn/problems/palindrome-linked-list/",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 42564000,
+      "memory_percentile": 86.39110000000015,
+      "runtime_percentile": 56.96999999999999,
+      "status": "AC",
+      "status_memory": "41.6 MB",
+      "status_runtime": "40 ms",
+      "submissionId": 743346459,
+      "verdict": "Accepted"
+    }
+  }
+}

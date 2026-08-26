@@ -1,0 +1,21 @@
+{
+  "no": "BISHI126",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】动态区间和Ⅱ ‖ 区间修改 + 区间查询",
+  "url": "https://www.nowcoder.com/practice/ef7a50cf0377447b9b435b0f95e48e70",
+  "topics": [
+    "ds/segment-tree",
+    "graph/tree/hld"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048506,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

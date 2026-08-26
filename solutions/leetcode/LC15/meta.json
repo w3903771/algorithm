@@ -1,0 +1,28 @@
+{
+  "no": "LC15",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "三数之和",
+  "url": "https://leetcode.cn/problems/3sum/",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {
+    "mode": "unordered_deep",
+    "note": "题面：输出的顺序和三元组的顺序并不重要"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 22348000,
+      "memory_percentile": 88.99550000000013,
+      "runtime_percentile": 99.09330000000011,
+      "status": "AC",
+      "status_memory": "21.8 MB",
+      "status_runtime": "403 ms",
+      "submissionId": 743341309,
+      "verdict": "Accepted"
+    }
+  }
+}

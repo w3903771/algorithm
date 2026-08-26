@@ -1,0 +1,25 @@
+{
+  "no": "LC3",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "无重复字符的最长子串",
+  "url": "https://leetcode.cn/problems/longest-substring-without-repeating-characters/",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20152000,
+      "memory_percentile": 16.481300000000036,
+      "runtime_percentile": 30.417799999999975,
+      "status": "AC",
+      "status_memory": "19.7 MB",
+      "status_runtime": "159 ms",
+      "submissionId": 743341028,
+      "verdict": "Accepted"
+    }
+  }
+}

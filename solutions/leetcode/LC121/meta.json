@@ -1,0 +1,25 @@
+{
+  "no": "LC121",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "买卖股票的最佳时机",
+  "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 28672000,
+      "memory_percentile": 97.54590000000006,
+      "runtime_percentile": 99.77710000000002,
+      "status": "AC",
+      "status_memory": "28 MB",
+      "status_runtime": "11 ms",
+      "submissionId": 743344594,
+      "verdict": "Accepted"
+    }
+  }
+}

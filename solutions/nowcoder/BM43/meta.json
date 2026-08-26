@@ -1,0 +1,20 @@
+{
+  "no": "BM43",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "包含min函数的栈",
+  "url": "https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077379,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

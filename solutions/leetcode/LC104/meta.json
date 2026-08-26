@@ -1,0 +1,25 @@
+{
+  "no": "LC104",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉树的最大深度",
+  "url": "https://leetcode.cn/problems/maximum-depth-of-binary-tree/",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 22448000,
+      "memory_percentile": 47.91389999999984,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "21.9 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743344270,
+      "verdict": "Accepted"
+    }
+  }
+}

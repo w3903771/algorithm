@@ -1,0 +1,20 @@
+{
+  "no": "BM49",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "表达式求值",
+  "url": "https://www.nowcoder.com/practice/c215ba61c8b1443b996351df929dc4d4",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077444,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

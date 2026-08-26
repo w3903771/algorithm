@@ -1,0 +1,20 @@
+{
+  "no": "BM101",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "设计LFU缓存结构",
+  "url": "https://www.nowcoder.com/practice/93aacb4a887b46d897b00823f30bfea1",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481078008,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

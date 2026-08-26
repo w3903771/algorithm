@@ -1,0 +1,25 @@
+{
+  "no": "LC62",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "不同路径",
+  "url": "https://leetcode.cn/problems/unique-paths/",
+  "topics": [
+    "dp/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19484000,
+      "memory_percentile": 85.41030000000002,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743343138,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BISHI62",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "斐波那契数列",
+  "url": "https://www.nowcoder.com/practice/c245af6cfdce49ceb5435f649ee14f89",
+  "topics": [
+    "math/recurrence"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047896,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

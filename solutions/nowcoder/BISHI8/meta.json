@@ -1,0 +1,20 @@
+{
+  "no": "BISHI8",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "大整数哈希",
+  "url": "https://www.nowcoder.com/practice/29f0cff8a69b4ab6a2f63fb7386defa3",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047336,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

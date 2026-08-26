@@ -1,0 +1,25 @@
+{
+  "no": "LC215",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "数组中的第K个最大元素",
+  "url": "https://leetcode.cn/problems/kth-largest-element-in-an-array/",
+  "topics": [
+    "ds/heap"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 31284000,
+      "memory_percentile": 51.49479999999965,
+      "runtime_percentile": 42.87889999999997,
+      "status": "AC",
+      "status_memory": "30.6 MB",
+      "status_runtime": "91 ms",
+      "submissionId": 743346246,
+      "verdict": "Accepted"
+    }
+  }
+}

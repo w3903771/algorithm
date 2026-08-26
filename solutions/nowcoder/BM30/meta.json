@@ -1,0 +1,23 @@
+{
+  "no": "BM30",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉搜索树与双向链表",
+  "url": "https://www.nowcoder.com/practice/947f6eb80d944a84850b0538bf0ec3a5",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {
+    "mode": "raw",
+    "note": "返回的是用 TreeNode 表示的双向链表，判题走 driver.py；期望输出是没加引号的整句话，只能按原始文本比"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077201,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

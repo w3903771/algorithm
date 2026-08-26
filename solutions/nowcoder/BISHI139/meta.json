@@ -1,0 +1,20 @@
+{
+  "no": "BISHI139",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】二维费用背包",
+  "url": "https://www.nowcoder.com/practice/84b88177894c4c82980017e6b4a15fb3",
+  "topics": [
+    "dp/knapsack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048625,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

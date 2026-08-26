@@ -1,0 +1,25 @@
+{
+  "no": "LC437",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "路径总和 III",
+  "url": "https://leetcode.cn/problems/path-sum-iii/",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20204000,
+      "memory_percentile": 85.74850000000005,
+      "runtime_percentile": 93.266,
+      "status": "AC",
+      "status_memory": "19.7 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743347527,
+      "verdict": "Accepted"
+    }
+  }
+}

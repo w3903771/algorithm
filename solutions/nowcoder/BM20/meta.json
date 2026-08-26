@@ -1,0 +1,20 @@
+{
+  "no": "BM20",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "数组中的逆序对",
+  "url": "https://www.nowcoder.com/practice/96bd6684e04a44eb80e6a68efc0ec6c5",
+  "topics": [
+    "basic/divide-conquer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077074,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

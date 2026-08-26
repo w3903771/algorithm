@@ -1,0 +1,21 @@
+{
+  "no": "BISHI4",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】集合操作",
+  "url": "https://www.nowcoder.com/practice/a37b91f84cdf490b8d8b990794211135",
+  "topics": [
+    "ds/multiset",
+    "python/set"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048843,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

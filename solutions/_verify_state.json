@@ -1,0 +1,2564 @@
+{
+  "BISHI1": {
+    "no": "BISHI1",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.11830520629882812
+  },
+  "BISHI2": {
+    "no": "BISHI2",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06459760665893555
+  },
+  "BISHI3": {
+    "no": "BISHI3",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.061707258224487305
+  },
+  "BISHI4": {
+    "no": "BISHI4",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13934040069580078
+  },
+  "BISHI5": {
+    "no": "BISHI5",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.11690950393676758
+  },
+  "BISHI6": {
+    "no": "BISHI6",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.08816146850585938
+  },
+  "BISHI7": {
+    "no": "BISHI7",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06539702415466309
+  },
+  "BISHI8": {
+    "no": "BISHI8",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06942296028137207
+  },
+  "BISHI9": {
+    "no": "BISHI9",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.1270155906677246
+  },
+  "BISHI10": {
+    "no": "BISHI10",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13958740234375
+  },
+  "BISHI11": {
+    "no": "BISHI11",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12366557121276855
+  },
+  "BISHI12": {
+    "no": "BISHI12",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07569742202758789
+  },
+  "BISHI13": {
+    "no": "BISHI13",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06888175010681152
+  },
+  "BISHI14": {
+    "no": "BISHI14",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.15386652946472168
+  },
+  "BISHI15": {
+    "no": "BISHI15",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07918477058410645
+  },
+  "BISHI16": {
+    "no": "BISHI16",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07009410858154297
+  },
+  "BISHI17": {
+    "no": "BISHI17",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06480979919433594
+  },
+  "BISHI18": {
+    "no": "BISHI18",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12536048889160156
+  },
+  "BISHI19": {
+    "no": "BISHI19",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06475305557250977
+  },
+  "BISHI20": {
+    "no": "BISHI20",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.14256739616394043
+  },
+  "BISHI21": {
+    "no": "BISHI21",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06322669982910156
+  },
+  "BISHI22": {
+    "no": "BISHI22",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07031536102294922
+  },
+  "BISHI23": {
+    "no": "BISHI23",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06739139556884766
+  },
+  "BISHI24": {
+    "no": "BISHI24",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07360243797302246
+  },
+  "BISHI25": {
+    "no": "BISHI25",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06596207618713379
+  },
+  "BISHI26": {
+    "no": "BISHI26",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.12910246849060059
+  },
+  "BISHI27": {
+    "no": "BISHI27",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.12620949745178223
+  },
+  "BISHI28": {
+    "no": "BISHI28",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.1391756534576416
+  },
+  "BISHI29": {
+    "no": "BISHI29",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.13467192649841309
+  },
+  "BISHI30": {
+    "no": "BISHI30",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13403677940368652
+  },
+  "BISHI31": {
+    "no": "BISHI31",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13472723960876465
+  },
+  "BISHI32": {
+    "no": "BISHI32",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.06731152534484863
+  },
+  "BISHI33": {
+    "no": "BISHI33",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06583189964294434
+  },
+  "BISHI34": {
+    "no": "BISHI34",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06701064109802246
+  },
+  "BISHI35": {
+    "no": "BISHI35",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06599068641662598
+  },
+  "BISHI36": {
+    "no": "BISHI36",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0632634162902832
+  },
+  "BISHI37": {
+    "no": "BISHI37",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.07145118713378906
+  },
+  "BISHI38": {
+    "no": "BISHI38",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.06953287124633789
+  },
+  "BISHI39": {
+    "no": "BISHI39",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0650026798248291
+  },
+  "BISHI40": {
+    "no": "BISHI40",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.0768435001373291
+  },
+  "BISHI41": {
+    "no": "BISHI41",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06772327423095703
+  },
+  "BISHI42": {
+    "no": "BISHI42",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06376338005065918
+  },
+  "BISHI43": {
+    "no": "BISHI43",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06657552719116211
+  },
+  "BISHI44": {
+    "no": "BISHI44",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.1253187656402588
+  },
+  "BISHI45": {
+    "no": "BISHI45",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13019824028015137
+  },
+  "BISHI46": {
+    "no": "BISHI46",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06269693374633789
+  },
+  "BISHI47": {
+    "no": "BISHI47",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07116508483886719
+  },
+  "BISHI48": {
+    "no": "BISHI48",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0659630298614502
+  },
+  "BISHI49": {
+    "no": "BISHI49",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 3,
+    "time": 0.19506192207336426
+  },
+  "BISHI50": {
+    "no": "BISHI50",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06484532356262207
+  },
+  "BISHI51": {
+    "no": "BISHI51",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07661771774291992
+  },
+  "BISHI52": {
+    "no": "BISHI52",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.0722496509552002
+  },
+  "BISHI53": {
+    "no": "BISHI53",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06374073028564453
+  },
+  "BISHI54": {
+    "no": "BISHI54",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06511950492858887
+  },
+  "BISHI55": {
+    "no": "BISHI55",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 3,
+    "time": 0.18358683586120605
+  },
+  "BISHI56": {
+    "no": "BISHI56",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12795352935791016
+  },
+  "BISHI57": {
+    "no": "BISHI57",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.14227581024169922
+  },
+  "BISHI58": {
+    "no": "BISHI58",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.11952018737792969
+  },
+  "BISHI59": {
+    "no": "BISHI59",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13738393783569336
+  },
+  "BISHI60": {
+    "no": "BISHI60",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13983559608459473
+  },
+  "BISHI61": {
+    "no": "BISHI61",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06430912017822266
+  },
+  "BISHI62": {
+    "no": "BISHI62",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06393027305603027
+  },
+  "BISHI63": {
+    "no": "BISHI63",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07418084144592285
+  },
+  "BISHI64": {
+    "no": "BISHI64",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06776809692382812
+  },
+  "BISHI65": {
+    "no": "BISHI65",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13252496719360352
+  },
+  "BISHI66": {
+    "no": "BISHI66",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0627439022064209
+  },
+  "BISHI67": {
+    "no": "BISHI67",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06671643257141113
+  },
+  "BISHI68": {
+    "no": "BISHI68",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07218551635742188
+  },
+  "BISHI69": {
+    "no": "BISHI69",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.061934471130371094
+  },
+  "BISHI70": {
+    "no": "BISHI70",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07927680015563965
+  },
+  "BISHI71": {
+    "no": "BISHI71",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07757043838500977
+  },
+  "BISHI72": {
+    "no": "BISHI72",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07968473434448242
+  },
+  "BISHI73": {
+    "no": "BISHI73",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06841826438903809
+  },
+  "BISHI74": {
+    "no": "BISHI74",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06386065483093262
+  },
+  "BISHI75": {
+    "no": "BISHI75",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13247323036193848
+  },
+  "BISHI76": {
+    "no": "BISHI76",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06805205345153809
+  },
+  "BISHI77": {
+    "no": "BISHI77",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07105183601379395
+  },
+  "BISHI78": {
+    "no": "BISHI78",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06513452529907227
+  },
+  "BISHI79": {
+    "no": "BISHI79",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0649416446685791
+  },
+  "BISHI80": {
+    "no": "BISHI80",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 3,
+    "time": 0.20124459266662598
+  },
+  "BISHI81": {
+    "no": "BISHI81",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07213711738586426
+  },
+  "BISHI82": {
+    "no": "BISHI82",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06461000442504883
+  },
+  "BISHI83": {
+    "no": "BISHI83",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.14527010917663574
+  },
+  "BISHI84": {
+    "no": "BISHI84",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0657658576965332
+  },
+  "BISHI85": {
+    "no": "BISHI85",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06335282325744629
+  },
+  "BISHI86": {
+    "no": "BISHI86",
+    "status": "PASS",
+    "mode": "float",
+    "cases": 2,
+    "time": 0.12992119789123535
+  },
+  "BISHI87": {
+    "no": "BISHI87",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13002467155456543
+  },
+  "BISHI88": {
+    "no": "BISHI88",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06264400482177734
+  },
+  "BISHI89": {
+    "no": "BISHI89",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.061963796615600586
+  },
+  "BISHI90": {
+    "no": "BISHI90",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.2289590835571289
+  },
+  "BISHI91": {
+    "no": "BISHI91",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06224179267883301
+  },
+  "BISHI92": {
+    "no": "BISHI92",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06349897384643555
+  },
+  "BISHI93": {
+    "no": "BISHI93",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06743454933166504
+  },
+  "BISHI94": {
+    "no": "BISHI94",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06573486328125
+  },
+  "BISHI95": {
+    "no": "BISHI95",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0625765323638916
+  },
+  "BISHI96": {
+    "no": "BISHI96",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06084585189819336
+  },
+  "BISHI97": {
+    "no": "BISHI97",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07239389419555664
+  },
+  "BISHI98": {
+    "no": "BISHI98",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06379008293151855
+  },
+  "BISHI99": {
+    "no": "BISHI99",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06283807754516602
+  },
+  "BISHI100": {
+    "no": "BISHI100",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.14174365997314453
+  },
+  "BISHI101": {
+    "no": "BISHI101",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06991052627563477
+  },
+  "BISHI102": {
+    "no": "BISHI102",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06216692924499512
+  },
+  "BISHI103": {
+    "no": "BISHI103",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06863808631896973
+  },
+  "BISHI104": {
+    "no": "BISHI104",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06822800636291504
+  },
+  "BISHI105": {
+    "no": "BISHI105",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12975049018859863
+  },
+  "BISHI106": {
+    "no": "BISHI106",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12138652801513672
+  },
+  "BISHI107": {
+    "no": "BISHI107",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.1177968978881836
+  },
+  "BISHI108": {
+    "no": "BISHI108",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.08505415916442871
+  },
+  "BISHI109": {
+    "no": "BISHI109",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.061267852783203125
+  },
+  "BISHI110": {
+    "no": "BISHI110",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.05766797065734863
+  },
+  "BISHI111": {
+    "no": "BISHI111",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.058013916015625
+  },
+  "BISHI112": {
+    "no": "BISHI112",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.060288429260253906
+  },
+  "BISHI113": {
+    "no": "BISHI113",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12384724617004395
+  },
+  "BISHI114": {
+    "no": "BISHI114",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 3,
+    "time": 0.1832113265991211
+  },
+  "BISHI115": {
+    "no": "BISHI115",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06550478935241699
+  },
+  "BISHI116": {
+    "no": "BISHI116",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06275153160095215
+  },
+  "BISHI117": {
+    "no": "BISHI117",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13483500480651855
+  },
+  "BISHI118": {
+    "no": "BISHI118",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0663456916809082
+  },
+  "BISHI119": {
+    "no": "BISHI119",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.13123583793640137
+  },
+  "BISHI120": {
+    "no": "BISHI120",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.06635165214538574
+  },
+  "BISHI121": {
+    "no": "BISHI121",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06274914741516113
+  },
+  "BISHI122": {
+    "no": "BISHI122",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06940484046936035
+  },
+  "BISHI123": {
+    "no": "BISHI123",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06411957740783691
+  },
+  "BISHI124": {
+    "no": "BISHI124",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06516838073730469
+  },
+  "BISHI125": {
+    "no": "BISHI125",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07068943977355957
+  },
+  "BISHI126": {
+    "no": "BISHI126",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.062407732009887695
+  },
+  "BISHI127": {
+    "no": "BISHI127",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0641181468963623
+  },
+  "BISHI128": {
+    "no": "BISHI128",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07486534118652344
+  },
+  "BISHI129": {
+    "no": "BISHI129",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.1271822452545166
+  },
+  "BISHI130": {
+    "no": "BISHI130",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07449674606323242
+  },
+  "BISHI131": {
+    "no": "BISHI131",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 3,
+    "time": 0.17827820777893066
+  },
+  "BISHI132": {
+    "no": "BISHI132",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12475872039794922
+  },
+  "BISHI133": {
+    "no": "BISHI133",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12233471870422363
+  },
+  "BISHI134": {
+    "no": "BISHI134",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13428306579589844
+  },
+  "BISHI135": {
+    "no": "BISHI135",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13829946517944336
+  },
+  "BISHI136": {
+    "no": "BISHI136",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12936043739318848
+  },
+  "BISHI137": {
+    "no": "BISHI137",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07279729843139648
+  },
+  "BISHI138": {
+    "no": "BISHI138",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0669705867767334
+  },
+  "BISHI139": {
+    "no": "BISHI139",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.1328904628753662
+  },
+  "BISHI140": {
+    "no": "BISHI140",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06389427185058594
+  },
+  "BISHI141": {
+    "no": "BISHI141",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06604552268981934
+  },
+  "BISHI142": {
+    "no": "BISHI142",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06783819198608398
+  },
+  "BISHI143": {
+    "no": "BISHI143",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06457304954528809
+  },
+  "BISHI144": {
+    "no": "BISHI144",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.0638589859008789
+  },
+  "BISHI145": {
+    "no": "BISHI145",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06441020965576172
+  },
+  "BISHI146": {
+    "no": "BISHI146",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.12724685668945312
+  },
+  "BISHI147": {
+    "no": "BISHI147",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.1353442668914795
+  },
+  "PIO1": {
+    "no": "PIO1",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06667160987854004
+  },
+  "PIO2": {
+    "no": "PIO2",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.08907675743103027
+  },
+  "PIO3": {
+    "no": "PIO3",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.08292651176452637
+  },
+  "PIO4": {
+    "no": "PIO4",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07803797721862793
+  },
+  "PIO5": {
+    "no": "PIO5",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06283164024353027
+  },
+  "PIO6": {
+    "no": "PIO6",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07828903198242188
+  },
+  "PIO7": {
+    "no": "PIO7",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06370925903320312
+  },
+  "PIO8": {
+    "no": "PIO8",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07406449317932129
+  },
+  "PIO9": {
+    "no": "PIO9",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06716275215148926
+  },
+  "PIO10": {
+    "no": "PIO10",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.07642769813537598
+  },
+  "PIO11": {
+    "no": "PIO11",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06984257698059082
+  },
+  "PIO12": {
+    "no": "PIO12",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06358170509338379
+  },
+  "PIO13": {
+    "no": "PIO13",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 1,
+    "time": 0.06164288520812988
+  },
+  "PIO14": {
+    "no": "PIO14",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 3,
+    "time": 0.21853351593017578
+  },
+  "PIO15": {
+    "no": "PIO15",
+    "status": "PASS",
+    "mode": "exact",
+    "cases": 2,
+    "time": 0.13865232467651367
+  },
+  "PIO16": {
+    "no": "PIO16",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 2,
+    "time": 0.13341546058654785
+  },
+  "PIO17": {
+    "no": "PIO17",
+    "status": "PASS",
+    "mode": "float",
+    "cases": 1,
+    "time": 0.06401181221008301
+  },
+  "PIO18": {
+    "no": "PIO18",
+    "status": "PASS",
+    "mode": "spj",
+    "cases": 1,
+    "time": 0.07446718215942383
+  },
+  "BM1": {
+    "no": "BM1",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18501615524291992,
+    "status": "PASS"
+  },
+  "BM2": {
+    "no": "BM2",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2722611427307129,
+    "status": "PASS"
+  },
+  "BM3": {
+    "no": "BM3",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17932868003845215,
+    "status": "PASS"
+  },
+  "BM4": {
+    "no": "BM4",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.299910306930542,
+    "status": "PASS"
+  },
+  "BM5": {
+    "no": "BM5",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19647836685180664,
+    "status": "PASS"
+  },
+  "BM6": {
+    "no": "BM6",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.30960988998413086,
+    "status": "PASS"
+  },
+  "BM7": {
+    "no": "BM7",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.28725385665893555,
+    "status": "PASS"
+  },
+  "BM8": {
+    "no": "BM8",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18785500526428223,
+    "status": "PASS"
+  },
+  "BM9": {
+    "no": "BM9",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.0893394947052002,
+    "status": "PASS"
+  },
+  "BM10": {
+    "no": "BM10",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.184281587600708,
+    "status": "PASS"
+  },
+  "BM11": {
+    "no": "BM11",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18299317359924316,
+    "status": "PASS"
+  },
+  "BM12": {
+    "no": "BM12",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17681288719177246,
+    "status": "PASS"
+  },
+  "BM13": {
+    "no": "BM13",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2814140319824219,
+    "status": "PASS"
+  },
+  "BM14": {
+    "no": "BM14",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19604897499084473,
+    "status": "PASS"
+  },
+  "BM15": {
+    "no": "BM15",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1802670955657959,
+    "status": "PASS"
+  },
+  "BM16": {
+    "no": "BM16",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16518688201904297,
+    "status": "PASS"
+  },
+  "BM17": {
+    "no": "BM17",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2649405002593994,
+    "status": "PASS"
+  },
+  "BM18": {
+    "no": "BM18",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2504563331604004,
+    "status": "PASS"
+  },
+  "BM19": {
+    "no": "BM19",
+    "mode": "core/spj",
+    "cases": 2,
+    "time": 0.16720843315124512,
+    "status": "PASS"
+  },
+  "BM20": {
+    "no": "BM20",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17087817192077637,
+    "status": "PASS"
+  },
+  "BM21": {
+    "no": "BM21",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20267415046691895,
+    "status": "PASS"
+  },
+  "BM22": {
+    "no": "BM22",
+    "mode": "core/exact",
+    "cases": 5,
+    "time": 0.4815945625305176,
+    "status": "PASS"
+  },
+  "BM23": {
+    "no": "BM23",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.08789920806884766,
+    "status": "PASS"
+  },
+  "BM24": {
+    "no": "BM24",
+    "mode": "core/exact",
+    "cases": 4,
+    "time": 0.3440835475921631,
+    "status": "PASS"
+  },
+  "BM25": {
+    "no": "BM25",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18180632591247559,
+    "status": "PASS"
+  },
+  "BM26": {
+    "no": "BM26",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1972026824951172,
+    "status": "PASS"
+  },
+  "BM27": {
+    "no": "BM27",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3007643222808838,
+    "status": "PASS"
+  },
+  "BM28": {
+    "no": "BM28",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20358967781066895,
+    "status": "PASS"
+  },
+  "BM29": {
+    "no": "BM29",
+    "mode": "core/exact",
+    "cases": 4,
+    "time": 0.38128662109375,
+    "status": "PASS"
+  },
+  "BM30": {
+    "no": "BM30",
+    "mode": "core/raw",
+    "cases": 2,
+    "time": 0.17546963691711426,
+    "status": "PASS"
+  },
+  "BM31": {
+    "no": "BM31",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17337822914123535,
+    "status": "PASS"
+  },
+  "BM32": {
+    "no": "BM32",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18015742301940918,
+    "status": "PASS"
+  },
+  "BM33": {
+    "no": "BM33",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20730066299438477,
+    "status": "PASS"
+  },
+  "BM34": {
+    "no": "BM34",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.2041153907775879,
+    "status": "PASS"
+  },
+  "BM35": {
+    "no": "BM35",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3015270233154297,
+    "status": "PASS"
+  },
+  "BM36": {
+    "no": "BM36",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17969536781311035,
+    "status": "PASS"
+  },
+  "BM37": {
+    "no": "BM37",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1934528350830078,
+    "status": "PASS"
+  },
+  "BM38": {
+    "no": "BM38",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19967889785766602,
+    "status": "PASS"
+  },
+  "BM39": {
+    "no": "BM39",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1914081573486328,
+    "status": "PASS"
+  },
+  "BM40": {
+    "no": "BM40",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.26421523094177246,
+    "status": "PASS"
+  },
+  "BM41": {
+    "no": "BM41",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.09073257446289062,
+    "status": "PASS"
+  },
+  "BM42": {
+    "no": "BM42",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20768380165100098,
+    "status": "PASS"
+  },
+  "BM43": {
+    "no": "BM43",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.09436583518981934,
+    "status": "PASS"
+  },
+  "BM44": {
+    "no": "BM44",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16640424728393555,
+    "status": "PASS"
+  },
+  "BM45": {
+    "no": "BM45",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.27608489990234375,
+    "status": "PASS"
+  },
+  "BM46": {
+    "no": "BM46",
+    "mode": "core/unordered",
+    "cases": 3,
+    "time": 0.2572150230407715,
+    "status": "PASS"
+  },
+  "BM47": {
+    "no": "BM47",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16862249374389648,
+    "status": "PASS"
+  },
+  "BM48": {
+    "no": "BM48",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17461585998535156,
+    "status": "PASS"
+  },
+  "BM49": {
+    "no": "BM49",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2563652992248535,
+    "status": "PASS"
+  },
+  "BM50": {
+    "no": "BM50",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15793180465698242,
+    "status": "PASS"
+  },
+  "BM51": {
+    "no": "BM51",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2371675968170166,
+    "status": "PASS"
+  },
+  "BM52": {
+    "no": "BM52",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15295839309692383,
+    "status": "PASS"
+  },
+  "BM53": {
+    "no": "BM53",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2734372615814209,
+    "status": "PASS"
+  },
+  "BM54": {
+    "no": "BM54",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.23116636276245117,
+    "status": "PASS"
+  },
+  "BM55": {
+    "no": "BM55",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16541075706481934,
+    "status": "PASS"
+  },
+  "BM56": {
+    "no": "BM56",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15001773834228516,
+    "status": "PASS"
+  },
+  "BM57": {
+    "no": "BM57",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.24851250648498535,
+    "status": "PASS"
+  },
+  "BM58": {
+    "no": "BM58",
+    "mode": "core/unordered",
+    "cases": 4,
+    "time": 0.30591368675231934,
+    "status": "PASS"
+  },
+  "BM59": {
+    "no": "BM59",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15572190284729004,
+    "status": "PASS"
+  },
+  "BM60": {
+    "no": "BM60",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15209364891052246,
+    "status": "PASS"
+  },
+  "BM61": {
+    "no": "BM61",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15263772010803223,
+    "status": "PASS"
+  },
+  "BM62": {
+    "no": "BM62",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.22932076454162598,
+    "status": "PASS"
+  },
+  "BM63": {
+    "no": "BM63",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15014982223510742,
+    "status": "PASS"
+  },
+  "BM64": {
+    "no": "BM64",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15144920349121094,
+    "status": "PASS"
+  },
+  "BM65": {
+    "no": "BM65",
+    "mode": "core/exact",
+    "cases": 4,
+    "time": 0.29758644104003906,
+    "status": "PASS"
+  },
+  "BM66": {
+    "no": "BM66",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.08074140548706055,
+    "status": "PASS"
+  },
+  "BM67": {
+    "no": "BM67",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15631532669067383,
+    "status": "PASS"
+  },
+  "BM68": {
+    "no": "BM68",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15923643112182617,
+    "status": "PASS"
+  },
+  "BM69": {
+    "no": "BM69",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1511988639831543,
+    "status": "PASS"
+  },
+  "BM70": {
+    "no": "BM70",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.24424004554748535,
+    "status": "PASS"
+  },
+  "BM71": {
+    "no": "BM71",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.07852792739868164,
+    "status": "PASS"
+  },
+  "BM72": {
+    "no": "BM72",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.22405505180358887,
+    "status": "PASS"
+  },
+  "BM73": {
+    "no": "BM73",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.22661924362182617,
+    "status": "PASS"
+  },
+  "BM74": {
+    "no": "BM74",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.25902676582336426,
+    "status": "PASS"
+  },
+  "BM75": {
+    "no": "BM75",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.24100422859191895,
+    "status": "PASS"
+  },
+  "BM76": {
+    "no": "BM76",
+    "mode": "core/exact",
+    "cases": 4,
+    "time": 0.33513617515563965,
+    "status": "PASS"
+  },
+  "BM77": {
+    "no": "BM77",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16594958305358887,
+    "status": "PASS"
+  },
+  "BM78": {
+    "no": "BM78",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.27599287033081055,
+    "status": "PASS"
+  },
+  "BM79": {
+    "no": "BM79",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.15308666229248047,
+    "status": "PASS"
+  },
+  "BM80": {
+    "no": "BM80",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.27030396461486816,
+    "status": "PASS"
+  },
+  "BM81": {
+    "no": "BM81",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3095269203186035,
+    "status": "PASS"
+  },
+  "BM82": {
+    "no": "BM82",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2582557201385498,
+    "status": "PASS"
+  },
+  "BM83": {
+    "no": "BM83",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.24794673919677734,
+    "status": "PASS"
+  },
+  "BM84": {
+    "no": "BM84",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18140912055969238,
+    "status": "PASS"
+  },
+  "BM85": {
+    "no": "BM85",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.295011043548584,
+    "status": "PASS"
+  },
+  "BM86": {
+    "no": "BM86",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17888927459716797,
+    "status": "PASS"
+  },
+  "BM87": {
+    "no": "BM87",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18380141258239746,
+    "status": "PASS"
+  },
+  "BM88": {
+    "no": "BM88",
+    "mode": "core/exact",
+    "cases": 4,
+    "time": 0.3973538875579834,
+    "status": "PASS"
+  },
+  "BM89": {
+    "no": "BM89",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18712925910949707,
+    "status": "PASS"
+  },
+  "BM90": {
+    "no": "BM90",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19693541526794434,
+    "status": "PASS"
+  },
+  "BM91": {
+    "no": "BM91",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.179276704788208,
+    "status": "PASS"
+  },
+  "BM92": {
+    "no": "BM92",
+    "mode": "core/exact",
+    "cases": 5,
+    "time": 0.4821767807006836,
+    "status": "PASS"
+  },
+  "BM93": {
+    "no": "BM93",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3002142906188965,
+    "status": "PASS"
+  },
+  "BM94": {
+    "no": "BM94",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20146989822387695,
+    "status": "PASS"
+  },
+  "BM95": {
+    "no": "BM95",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19752264022827148,
+    "status": "PASS"
+  },
+  "BM96": {
+    "no": "BM96",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19726848602294922,
+    "status": "PASS"
+  },
+  "BM97": {
+    "no": "BM97",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19774174690246582,
+    "status": "PASS"
+  },
+  "BM98": {
+    "no": "BM98",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18666815757751465,
+    "status": "PASS"
+  },
+  "BM99": {
+    "no": "BM99",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.0913693904876709,
+    "status": "PASS"
+  },
+  "BM100": {
+    "no": "BM100",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.09202265739440918,
+    "status": "PASS"
+  },
+  "BM101": {
+    "no": "BM101",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.09195518493652344,
+    "status": "PASS"
+  },
+  "LC1": {
+    "no": "LC1",
+    "mode": "core/unordered",
+    "cases": 3,
+    "time": 0.2677276134490967,
+    "status": "PASS"
+  },
+  "LC2": {
+    "no": "LC2",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2814173698425293,
+    "status": "PASS"
+  },
+  "LC3": {
+    "no": "LC3",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.28696608543395996,
+    "status": "PASS"
+  },
+  "LC4": {
+    "no": "LC4",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19839978218078613,
+    "status": "PASS"
+  },
+  "LC5": {
+    "no": "LC5",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19979619979858398,
+    "status": "PASS"
+  },
+  "LC11": {
+    "no": "LC11",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.2014148235321045,
+    "status": "PASS"
+  },
+  "LC15": {
+    "no": "LC15",
+    "mode": "core/unordered_deep",
+    "cases": 3,
+    "time": 0.33244752883911133,
+    "status": "PASS"
+  },
+  "LC17": {
+    "no": "LC17",
+    "mode": "core/unordered",
+    "cases": 2,
+    "time": 0.19851064682006836,
+    "status": "PASS"
+  },
+  "LC19": {
+    "no": "LC19",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.275829553604126,
+    "status": "PASS"
+  },
+  "LC20": {
+    "no": "LC20",
+    "mode": "core/exact",
+    "cases": 5,
+    "time": 0.46167492866516113,
+    "status": "PASS"
+  },
+  "LC21": {
+    "no": "LC21",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.25174784660339355,
+    "status": "PASS"
+  },
+  "LC22": {
+    "no": "LC22",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18064379692077637,
+    "status": "PASS"
+  },
+  "LC23": {
+    "no": "LC23",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.28005075454711914,
+    "status": "PASS"
+  },
+  "LC24": {
+    "no": "LC24",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2518436908721924,
+    "status": "PASS"
+  },
+  "LC25": {
+    "no": "LC25",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17476296424865723,
+    "status": "PASS"
+  },
+  "LC31": {
+    "no": "LC31",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.27852582931518555,
+    "status": "PASS"
+  },
+  "LC32": {
+    "no": "LC32",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.260059118270874,
+    "status": "PASS"
+  },
+  "LC33": {
+    "no": "LC33",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.26038694381713867,
+    "status": "PASS"
+  },
+  "LC34": {
+    "no": "LC34",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3013319969177246,
+    "status": "PASS"
+  },
+  "LC35": {
+    "no": "LC35",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.30123400688171387,
+    "status": "PASS"
+  },
+  "LC39": {
+    "no": "LC39",
+    "mode": "core/unordered_deep",
+    "cases": 3,
+    "time": 0.28206682205200195,
+    "status": "PASS"
+  },
+  "LC41": {
+    "no": "LC41",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2504615783691406,
+    "status": "PASS"
+  },
+  "LC42": {
+    "no": "LC42",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17068099975585938,
+    "status": "PASS"
+  },
+  "LC45": {
+    "no": "LC45",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1810307502746582,
+    "status": "PASS"
+  },
+  "LC46": {
+    "no": "LC46",
+    "mode": "core/unordered",
+    "cases": 3,
+    "time": 0.2558314800262451,
+    "status": "PASS"
+  },
+  "LC48": {
+    "no": "LC48",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17013239860534668,
+    "status": "PASS"
+  },
+  "LC49": {
+    "no": "LC49",
+    "mode": "core/unordered_deep",
+    "cases": 3,
+    "time": 0.27231907844543457,
+    "status": "PASS"
+  },
+  "LC51": {
+    "no": "LC51",
+    "mode": "core/unordered",
+    "cases": 2,
+    "time": 0.1762089729309082,
+    "status": "PASS"
+  },
+  "LC53": {
+    "no": "LC53",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2490096092224121,
+    "status": "PASS"
+  },
+  "LC54": {
+    "no": "LC54",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19394421577453613,
+    "status": "PASS"
+  },
+  "LC55": {
+    "no": "LC55",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.202589750289917,
+    "status": "PASS"
+  },
+  "LC56": {
+    "no": "LC56",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2618684768676758,
+    "status": "PASS"
+  },
+  "LC62": {
+    "no": "LC62",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1654055118560791,
+    "status": "PASS"
+  },
+  "LC64": {
+    "no": "LC64",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16909027099609375,
+    "status": "PASS"
+  },
+  "LC70": {
+    "no": "LC70",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19911742210388184,
+    "status": "PASS"
+  },
+  "LC72": {
+    "no": "LC72",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.2025904655456543,
+    "status": "PASS"
+  },
+  "LC73": {
+    "no": "LC73",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19854140281677246,
+    "status": "PASS"
+  },
+  "LC74": {
+    "no": "LC74",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1995391845703125,
+    "status": "PASS"
+  },
+  "LC75": {
+    "no": "LC75",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19907784461975098,
+    "status": "PASS"
+  },
+  "LC76": {
+    "no": "LC76",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3009781837463379,
+    "status": "PASS"
+  },
+  "LC78": {
+    "no": "LC78",
+    "mode": "core/unordered_deep",
+    "cases": 2,
+    "time": 0.19743561744689941,
+    "status": "PASS"
+  },
+  "LC79": {
+    "no": "LC79",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2969398498535156,
+    "status": "PASS"
+  },
+  "LC84": {
+    "no": "LC84",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20134401321411133,
+    "status": "PASS"
+  },
+  "LC94": {
+    "no": "LC94",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.28370213508605957,
+    "status": "PASS"
+  },
+  "LC98": {
+    "no": "LC98",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.2213423252105713,
+    "status": "PASS"
+  },
+  "LC101": {
+    "no": "LC101",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19927382469177246,
+    "status": "PASS"
+  },
+  "LC102": {
+    "no": "LC102",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.29406213760375977,
+    "status": "PASS"
+  },
+  "LC104": {
+    "no": "LC104",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20287752151489258,
+    "status": "PASS"
+  },
+  "LC105": {
+    "no": "LC105",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19477391242980957,
+    "status": "PASS"
+  },
+  "LC108": {
+    "no": "LC108",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20335650444030762,
+    "status": "PASS"
+  },
+  "LC114": {
+    "no": "LC114",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.30042171478271484,
+    "status": "PASS"
+  },
+  "LC118": {
+    "no": "LC118",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20216059684753418,
+    "status": "PASS"
+  },
+  "LC121": {
+    "no": "LC121",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20212411880493164,
+    "status": "PASS"
+  },
+  "LC124": {
+    "no": "LC124",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19971942901611328,
+    "status": "PASS"
+  },
+  "LC128": {
+    "no": "LC128",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2992684841156006,
+    "status": "PASS"
+  },
+  "LC131": {
+    "no": "LC131",
+    "mode": "core/unordered",
+    "cases": 2,
+    "time": 0.19989871978759766,
+    "status": "PASS"
+  },
+  "LC136": {
+    "no": "LC136",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.29907751083374023,
+    "status": "PASS"
+  },
+  "LC138": {
+    "no": "LC138",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.30240750312805176,
+    "status": "PASS"
+  },
+  "LC139": {
+    "no": "LC139",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.3034219741821289,
+    "status": "PASS"
+  },
+  "LC141": {
+    "no": "LC141",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.30098986625671387,
+    "status": "PASS"
+  },
+  "LC142": {
+    "no": "LC142",
+    "mode": "core/raw",
+    "cases": 3,
+    "time": 0.29790616035461426,
+    "status": "PASS"
+  },
+  "LC146": {
+    "no": "LC146",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.10199689865112305,
+    "status": "PASS"
+  },
+  "LC148": {
+    "no": "LC148",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.30109715461730957,
+    "status": "PASS"
+  },
+  "LC152": {
+    "no": "LC152",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19965672492980957,
+    "status": "PASS"
+  },
+  "LC153": {
+    "no": "LC153",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.29515790939331055,
+    "status": "PASS"
+  },
+  "LC155": {
+    "no": "LC155",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.10405158996582031,
+    "status": "PASS"
+  },
+  "LC160": {
+    "no": "LC160",
+    "mode": "core/raw",
+    "cases": 3,
+    "time": 0.30107545852661133,
+    "status": "PASS"
+  },
+  "LC169": {
+    "no": "LC169",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19997358322143555,
+    "status": "PASS"
+  },
+  "LC189": {
+    "no": "LC189",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19923090934753418,
+    "status": "PASS"
+  },
+  "LC198": {
+    "no": "LC198",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.2002091407775879,
+    "status": "PASS"
+  },
+  "LC199": {
+    "no": "LC199",
+    "mode": "core/exact",
+    "cases": 4,
+    "time": 0.38162779808044434,
+    "status": "PASS"
+  },
+  "LC200": {
+    "no": "LC200",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1794297695159912,
+    "status": "PASS"
+  },
+  "LC206": {
+    "no": "LC206",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.268906831741333,
+    "status": "PASS"
+  },
+  "LC207": {
+    "no": "LC207",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1843581199645996,
+    "status": "PASS"
+  },
+  "LC208": {
+    "no": "LC208",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.08687567710876465,
+    "status": "PASS"
+  },
+  "LC215": {
+    "no": "LC215",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17461872100830078,
+    "status": "PASS"
+  },
+  "LC226": {
+    "no": "LC226",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.24924683570861816,
+    "status": "PASS"
+  },
+  "LC230": {
+    "no": "LC230",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17270946502685547,
+    "status": "PASS"
+  },
+  "LC234": {
+    "no": "LC234",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1777040958404541,
+    "status": "PASS"
+  },
+  "LC236": {
+    "no": "LC236",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2524089813232422,
+    "status": "PASS"
+  },
+  "LC238": {
+    "no": "LC238",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16878199577331543,
+    "status": "PASS"
+  },
+  "LC239": {
+    "no": "LC239",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.20092535018920898,
+    "status": "PASS"
+  },
+  "LC240": {
+    "no": "LC240",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.17659378051757812,
+    "status": "PASS"
+  },
+  "LC279": {
+    "no": "LC279",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.18105006217956543,
+    "status": "PASS"
+  },
+  "LC283": {
+    "no": "LC283",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.16759634017944336,
+    "status": "PASS"
+  },
+  "LC287": {
+    "no": "LC287",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.26912713050842285,
+    "status": "PASS"
+  },
+  "LC295": {
+    "no": "LC295",
+    "mode": "core/exact",
+    "cases": 1,
+    "time": 0.19886183738708496,
+    "status": "PASS"
+  },
+  "LC300": {
+    "no": "LC300",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2577812671661377,
+    "status": "PASS"
+  },
+  "LC322": {
+    "no": "LC322",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.25323009490966797,
+    "status": "PASS"
+  },
+  "LC347": {
+    "no": "LC347",
+    "mode": "core/unordered",
+    "cases": 3,
+    "time": 0.2399306297302246,
+    "status": "PASS"
+  },
+  "LC394": {
+    "no": "LC394",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.24971747398376465,
+    "status": "PASS"
+  },
+  "LC416": {
+    "no": "LC416",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.19338011741638184,
+    "status": "PASS"
+  },
+  "LC437": {
+    "no": "LC437",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1823103427886963,
+    "status": "PASS"
+  },
+  "LC438": {
+    "no": "LC438",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1847231388092041,
+    "status": "PASS"
+  },
+  "LC543": {
+    "no": "LC543",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1645970344543457,
+    "status": "PASS"
+  },
+  "LC560": {
+    "no": "LC560",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1815037727355957,
+    "status": "PASS"
+  },
+  "LC739": {
+    "no": "LC739",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.2650742530822754,
+    "status": "PASS"
+  },
+  "LC763": {
+    "no": "LC763",
+    "mode": "core/exact",
+    "cases": 2,
+    "time": 0.1853623390197754,
+    "status": "PASS"
+  },
+  "LC994": {
+    "no": "LC994",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.287428617477417,
+    "status": "PASS"
+  },
+  "LC1143": {
+    "no": "LC1143",
+    "mode": "core/exact",
+    "cases": 3,
+    "time": 0.28975939750671387,
+    "status": "PASS"
+  }
+}

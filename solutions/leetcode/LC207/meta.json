@@ -1,0 +1,25 @@
+{
+  "no": "LC207",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "课程表",
+  "url": "https://leetcode.cn/problems/course-schedule/",
+  "topics": [
+    "graph/topo"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 20736000,
+      "memory_percentile": 55.81910000000005,
+      "runtime_percentile": 37.072399999999995,
+      "status": "AC",
+      "status_memory": "20.2 MB",
+      "status_runtime": "7 ms",
+      "submissionId": 743346087,
+      "verdict": "Accepted"
+    }
+  }
+}

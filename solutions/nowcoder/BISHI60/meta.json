@@ -1,0 +1,20 @@
+{
+  "no": "BISHI60",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "大水题",
+  "url": "https://www.nowcoder.com/practice/6b9770de551c426287252421742f6ebf",
+  "topics": [
+    "math/recurrence"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047876,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

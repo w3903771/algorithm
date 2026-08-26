@@ -1,0 +1,24 @@
+{
+  "no": "BISHI86",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "圆覆盖",
+  "url": "https://www.nowcoder.com/practice/4f96afe5dfe74dad88dbe419d33f9536",
+  "topics": [
+    "basic/binary-search",
+    "geometry/basic"
+  ],
+  "judge": {
+    "eps": 1e-06,
+    "mode": "float"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048138,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

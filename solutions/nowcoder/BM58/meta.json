@@ -1,0 +1,23 @@
+{
+  "no": "BM58",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "字符串的排列",
+  "url": "https://www.nowcoder.com/practice/fe6b651b66ae47d7acce78ffdd9a96c7",
+  "topics": [
+    "search/dfs"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "题面：你可以以任意顺序返回这个字符串数组"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077524,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

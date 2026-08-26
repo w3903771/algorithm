@@ -1,0 +1,20 @@
+{
+  "no": "BISHI113",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】二维差分",
+  "url": "https://www.nowcoder.com/practice/50e1a93989df42efb0b1dec386fb4ccc",
+  "topics": [
+    "basic/prefix-sum"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048396,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

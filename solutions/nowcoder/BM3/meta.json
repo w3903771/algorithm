@@ -1,0 +1,20 @@
+{
+  "no": "BM3",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "链表中的节点每k个一组翻转",
+  "url": "https://www.nowcoder.com/practice/b49c3dc907814e9bbfa8437c251b028e",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076858,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

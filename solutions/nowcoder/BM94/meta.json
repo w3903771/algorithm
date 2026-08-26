@@ -1,0 +1,20 @@
+{
+  "no": "BM94",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "接雨水问题",
+  "url": "https://www.nowcoder.com/practice/31c1aed01b394f0b8b7734de0324e00f",
+  "topics": [
+    "ds/monotonic-stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077943,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

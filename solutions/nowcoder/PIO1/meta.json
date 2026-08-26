@@ -1,0 +1,21 @@
+{
+  "no": "PIO1",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "只有输出",
+  "url": "https://www.nowcoder.com/practice/c988a1f1814041c4b8b3d9547e91865a",
+  "topics": [
+    "python/syntax",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048684,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

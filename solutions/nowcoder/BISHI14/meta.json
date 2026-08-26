@@ -1,0 +1,21 @@
+{
+  "no": "BISHI14",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "特殊的科学计数法",
+  "url": "https://www.nowcoder.com/practice/ca0962879d3b40d8bb598fb9a905ac7a",
+  "topics": [
+    "python/types",
+    "toolkit/float"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047388,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI74",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】非质模数下的乘法逆元",
+  "url": "https://www.nowcoder.com/practice/52328883c41f475c8eb228726af2ce2f",
+  "topics": [
+    "math/number/congruence",
+    "math/number/inverse"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048019,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

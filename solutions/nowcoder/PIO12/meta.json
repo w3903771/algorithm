@@ -1,0 +1,21 @@
+{
+  "no": "PIO12",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_二维字符数组",
+  "url": "https://www.nowcoder.com/practice/2316c1fedff14a8d91694a26c9da3310",
+  "topics": [
+    "python/string",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048749,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

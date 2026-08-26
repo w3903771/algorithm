@@ -1,0 +1,20 @@
+{
+  "no": "BM37",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "二叉搜索树的最近公共祖先",
+  "url": "https://www.nowcoder.com/practice/d9820119321945f588ed6a26f0a6991f",
+  "topics": [
+    "graph/tree/lca"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077300,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

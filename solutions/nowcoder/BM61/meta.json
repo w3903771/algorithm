@@ -1,0 +1,20 @@
+{
+  "no": "BM61",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "矩阵最长递增路径",
+  "url": "https://www.nowcoder.com/practice/7a71a88cdf294ce6bdf54c899be967a2",
+  "topics": [
+    "search/memoization"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077561,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

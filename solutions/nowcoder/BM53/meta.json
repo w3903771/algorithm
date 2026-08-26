@@ -1,0 +1,20 @@
+{
+  "no": "BM53",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "缺失的第一个正整数",
+  "url": "https://www.nowcoder.com/practice/50ec6a5b0e4e45348544348278cdcee5",
+  "topics": [
+    "ds/hash"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077478,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

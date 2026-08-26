@@ -1,0 +1,22 @@
+{
+  "no": "BISHI120",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "？？？",
+  "url": "https://www.nowcoder.com/practice/b6b8bfcde03841e4880c2b9ef00329c6",
+  "topics": [
+    "basic/two-pointer"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048446,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

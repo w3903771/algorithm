@@ -1,0 +1,21 @@
+{
+  "no": "BISHI130",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "区间取反与区间数一",
+  "url": "https://www.nowcoder.com/practice/55d474a878a84f4b84dca4b177a8c45c",
+  "topics": [
+    "ds/segment-tree"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "submitLang": "pypy3",
+      "lang": "Pypy3",
+      "status": "AC",
+      "submissionId": 481049444,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

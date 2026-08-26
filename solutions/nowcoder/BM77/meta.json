@@ -1,0 +1,20 @@
+{
+  "no": "BM77",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最长的括号子串",
+  "url": "https://www.nowcoder.com/practice/45fd68024a4c4e97a8d6c45fc61dc6ad",
+  "topics": [
+    "ds/stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077738,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

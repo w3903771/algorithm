@@ -1,0 +1,25 @@
+{
+  "no": "LC230",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉搜索树中第 K 小的元素",
+  "url": "https://leetcode.cn/problems/kth-smallest-element-in-a-bst/",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 22416000,
+      "memory_percentile": 51.782900000000204,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "21.9 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743346384,
+      "verdict": "Accepted"
+    }
+  }
+}

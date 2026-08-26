@@ -1,0 +1,22 @@
+{
+  "no": "BISHI6",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】整数优先队列",
+  "url": "https://www.nowcoder.com/practice/a88e9711f7b04369982bbe8902278ae4",
+  "topics": [
+    "ds/heap",
+    "python/oop-iterator",
+    "python/stdlib"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047318,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

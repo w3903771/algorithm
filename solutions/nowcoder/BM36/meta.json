@@ -1,0 +1,20 @@
+{
+  "no": "BM36",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "判断是不是平衡二叉树",
+  "url": "https://www.nowcoder.com/practice/8b3b95850edb4115918ecebdf1b4d222",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077288,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

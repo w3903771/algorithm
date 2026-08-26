@@ -1,0 +1,25 @@
+{
+  "no": "LC239",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "滑动窗口最大值",
+  "url": "https://leetcode.cn/problems/sliding-window-maximum/",
+  "topics": [
+    "ds/monotonic-queue"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 36520000,
+      "memory_percentile": 13.16429999999994,
+      "runtime_percentile": 89.35459999999996,
+      "status": "AC",
+      "status_memory": "35.7 MB",
+      "status_runtime": "167 ms",
+      "submissionId": 743346681,
+      "verdict": "Accepted"
+    }
+  }
+}

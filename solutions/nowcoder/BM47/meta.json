@@ -1,0 +1,20 @@
+{
+  "no": "BM47",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "寻找第K大",
+  "url": "https://www.nowcoder.com/practice/e016ad9b7f0b45048c58a9f27ba618bf",
+  "topics": [
+    "basic/divide-conquer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077422,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

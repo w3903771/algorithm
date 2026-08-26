@@ -1,0 +1,21 @@
+{
+  "no": "BISHI22",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "分数线划定",
+  "url": "https://www.nowcoder.com/practice/2395fa7b6c6e452e8d8310a7cfdbe902",
+  "topics": [
+    "basic/sorting",
+    "python/sorting"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047480,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "BISHI147",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "旅行者的大逃脱",
+  "url": "https://www.nowcoder.com/practice/3a02e2b818144c2dbad8dd3dc28d04cf",
+  "topics": [
+    "dp/opt/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "submitLang": "pypy3",
+      "lang": "Pypy3",
+      "status": "AC",
+      "submissionId": 481049452,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

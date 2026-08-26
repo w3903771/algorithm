@@ -1,0 +1,20 @@
+{
+  "no": "BISHI122",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "区间后缀极大位置计数",
+  "url": "https://www.nowcoder.com/practice/90f3f5e037264fae88b02918d07d7235",
+  "topics": [
+    "ds/monotonic-stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048462,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

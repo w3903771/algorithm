@@ -1,0 +1,20 @@
+{
+  "no": "BM69",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "把数字翻译成字符串",
+  "url": "https://www.nowcoder.com/practice/046a55e6cd274cffb88fc32dba695668",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077666,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

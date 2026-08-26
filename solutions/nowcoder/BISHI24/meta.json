@@ -1,0 +1,22 @@
+{
+  "no": "BISHI24",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "谐距下标对",
+  "url": "https://www.nowcoder.com/practice/12fd032361704c978bcb9c2c2b3bb93d",
+  "topics": [
+    "basic/discretization",
+    "python/sequence",
+    "python/sorting"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047499,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

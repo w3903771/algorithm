@@ -1,0 +1,20 @@
+{
+  "no": "BM1",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "反转链表",
+  "url": "https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076828,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

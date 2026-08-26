@@ -1,0 +1,20 @@
+{
+  "no": "BM85",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "验证IP地址",
+  "url": "https://www.nowcoder.com/practice/55fb3c68d08d46119f76ae2df7566880",
+  "topics": [
+    "string/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077842,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

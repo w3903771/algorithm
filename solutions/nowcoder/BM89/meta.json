@@ -1,0 +1,20 @@
+{
+  "no": "BM89",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "合并区间",
+  "url": "https://www.nowcoder.com/practice/69f4e5b7ad284a478777cb2a17fb5e6a",
+  "topics": [
+    "basic/sorting"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077883,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

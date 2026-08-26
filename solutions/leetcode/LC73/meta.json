@@ -1,0 +1,25 @@
+{
+  "no": "LC73",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "矩阵置零",
+  "url": "https://leetcode.cn/problems/set-matrix-zeroes/",
+  "topics": [
+    "ds/array"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 21016000,
+      "memory_percentile": 28.133399999999984,
+      "runtime_percentile": 24.764899999999994,
+      "status": "AC",
+      "status_memory": "20.5 MB",
+      "status_runtime": "11 ms",
+      "submissionId": 743343406,
+      "verdict": "Accepted"
+    }
+  }
+}

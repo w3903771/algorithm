@@ -1,0 +1,20 @@
+{
+  "no": "BISHI82",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "没挡住洪水",
+  "url": "https://www.nowcoder.com/practice/6d62436fda5f4ef997e68d1ce1dd6eb2",
+  "topics": [
+    "search/bfs"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048096,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "no": "BM12",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "单链表的排序",
+  "url": "https://www.nowcoder.com/practice/f23604257af94d939848729b1a5cda08",
+  "topics": [
+    "basic/divide-conquer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481076965,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

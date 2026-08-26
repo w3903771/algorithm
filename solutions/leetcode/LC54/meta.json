@@ -1,0 +1,25 @@
+{
+  "no": "LC54",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "螺旋矩阵",
+  "url": "https://leetcode.cn/problems/spiral-matrix/",
+  "topics": [
+    "basic/simulation"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19736000,
+      "memory_percentile": 14.490699999999974,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.3 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743342912,
+      "verdict": "Accepted"
+    }
+  }
+}

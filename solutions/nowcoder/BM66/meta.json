@@ -1,0 +1,20 @@
+{
+  "no": "BM66",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最长公共子串",
+  "url": "https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac",
+  "topics": [
+    "dp/linear"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077624,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

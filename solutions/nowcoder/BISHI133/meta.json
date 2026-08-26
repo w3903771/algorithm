@@ -1,0 +1,21 @@
+{
+  "no": "BISHI133",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "最长不下降子序列",
+  "url": "https://www.nowcoder.com/practice/25da45d0d4fb4faba45094cbb0649062",
+  "topics": [
+    "dp/linear",
+    "math/order-theory"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048565,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

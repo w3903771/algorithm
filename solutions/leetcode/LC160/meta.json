@@ -1,0 +1,28 @@
+{
+  "no": "LC160",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "相交链表",
+  "url": "https://leetcode.cn/problems/intersection-of-two-linked-lists/",
+  "topics": [
+    "ds/linked-list"
+  ],
+  "judge": {
+    "mode": "raw",
+    "note": "期望输出是散文「Intersected at 8」，判题走 driver.py 搭共享结点的 Y 型"
+  },
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 38336000,
+      "memory_percentile": 29.49480000000005,
+      "runtime_percentile": 64.0146,
+      "status": "AC",
+      "status_memory": "37.4 MB",
+      "status_runtime": "123 ms",
+      "submissionId": 743345578,
+      "verdict": "Accepted"
+    }
+  }
+}

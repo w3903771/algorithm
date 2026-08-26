@@ -1,0 +1,25 @@
+{
+  "no": "LC136",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "只出现一次的数字",
+  "url": "https://leetcode.cn/problems/single-number/",
+  "topics": [
+    "basic/bit"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 21460000,
+      "memory_percentile": 35.9232000000001,
+      "runtime_percentile": 60.9284,
+      "status": "AC",
+      "status_memory": "21 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743344915,
+      "verdict": "Accepted"
+    }
+  }
+}

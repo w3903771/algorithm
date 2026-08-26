@@ -1,0 +1,25 @@
+{
+  "no": "LC739",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "每日温度",
+  "url": "https://leetcode.cn/problems/daily-temperatures/",
+  "topics": [
+    "ds/monotonic-stack"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 29104000,
+      "memory_percentile": 15.83670000000021,
+      "runtime_percentile": 74.1774,
+      "status": "AC",
+      "status_memory": "28.4 MB",
+      "status_runtime": "91 ms",
+      "submissionId": 743347809,
+      "verdict": "Accepted"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "no": "BM46",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最小的K个数",
+  "url": "https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf",
+  "topics": [
+    "ds/heap"
+  ],
+  "judge": {
+    "mode": "unordered",
+    "note": "题面：最小的 K 个数，任意顺序皆可"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077409,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

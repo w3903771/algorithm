@@ -1,0 +1,20 @@
+{
+  "no": "BISHI92",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】前缀函数（kmp）",
+  "url": "https://www.nowcoder.com/practice/f347bf9d731d47a0bc87bc7e2415cef1",
+  "topics": [
+    "string/kmp"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048193,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

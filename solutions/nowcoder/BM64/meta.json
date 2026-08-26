@@ -1,0 +1,20 @@
+{
+  "no": "BM64",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "最小花费爬楼梯",
+  "url": "https://www.nowcoder.com/practice/6fe0302a058a4e4a834ee44af88435c7",
+  "topics": [
+    "dp/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077598,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

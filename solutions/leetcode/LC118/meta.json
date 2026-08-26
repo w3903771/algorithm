@@ -1,0 +1,25 @@
+{
+  "no": "LC118",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "杨辉三角",
+  "url": "https://leetcode.cn/problems/pascals-triangle/",
+  "topics": [
+    "dp/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 19708000,
+      "memory_percentile": 16.683599999999913,
+      "runtime_percentile": 100,
+      "status": "AC",
+      "status_memory": "19.2 MB",
+      "status_runtime": "0 ms",
+      "submissionId": 743344532,
+      "verdict": "Accepted"
+    }
+  }
+}

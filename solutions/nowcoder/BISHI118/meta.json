@@ -1,0 +1,21 @@
+{
+  "no": "BISHI118",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "相差不超过k的最多数",
+  "url": "https://www.nowcoder.com/practice/562630ca90ac40ce89443c91060574c6",
+  "topics": [
+    "basic/discretization",
+    "basic/two-pointer"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048434,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

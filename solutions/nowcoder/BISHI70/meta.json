@@ -1,0 +1,20 @@
+{
+  "no": "BISHI70",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】组合数",
+  "url": "https://www.nowcoder.com/practice/53f82db091b2452bae5fef4437ffd0bb",
+  "topics": [
+    "math/combi/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047968,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

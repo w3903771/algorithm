@@ -1,0 +1,21 @@
+{
+  "no": "PIO8",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "单组_二维数组",
+  "url": "https://www.nowcoder.com/practice/4df606b6c3764d9c969f8759c8a4807b",
+  "topics": [
+    "python/comprehension",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048714,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

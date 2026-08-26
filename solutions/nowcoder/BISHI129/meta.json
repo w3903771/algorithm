@@ -1,0 +1,21 @@
+{
+  "no": "BISHI129",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "区间增量与区间小于计数",
+  "url": "https://www.nowcoder.com/practice/74481dd14e3b4875a190952f86e6ffab",
+  "topics": [
+    "ds/balanced-tree",
+    "ds/block"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048532,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

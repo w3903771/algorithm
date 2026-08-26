@@ -1,0 +1,23 @@
+{
+  "no": "BM19",
+  "site": "nowcoder",
+  "set": "bm",
+  "mode": "core",
+  "title": "寻找峰值",
+  "url": "https://www.nowcoder.com/practice/fcf87540c4f347bcb4cf720b5b350c76",
+  "topics": [
+    "basic/binary-search"
+  ],
+  "judge": {
+    "mode": "spj",
+    "note": "题面原文「返回任何一个所在位置即可」，多解题；二分解法会落在另一座山峰上，按样例下标死比会误判"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481077055,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

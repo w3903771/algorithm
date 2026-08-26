@@ -1,0 +1,20 @@
+{
+  "no": "BISHI107",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "【模板】最小生成树",
+  "url": "https://www.nowcoder.com/practice/6434142fe980434899c396a6124b0778",
+  "topics": [
+    "graph/mst"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048340,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

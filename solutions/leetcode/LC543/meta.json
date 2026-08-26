@@ -1,0 +1,25 @@
+{
+  "no": "LC543",
+  "site": "leetcode",
+  "set": "hot100",
+  "mode": "core",
+  "title": "二叉树的直径",
+  "url": "https://leetcode.cn/problems/diameter-of-binary-tree/",
+  "topics": [
+    "graph/tree/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "python3",
+      "memory": 23456000,
+      "memory_percentile": 5.070999999999976,
+      "runtime_percentile": 86.77810000000001,
+      "status": "AC",
+      "status_memory": "22.9 MB",
+      "status_runtime": "3 ms",
+      "submissionId": 743347681,
+      "verdict": "Accepted"
+    }
+  }
+}

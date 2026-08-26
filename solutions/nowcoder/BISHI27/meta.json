@@ -1,0 +1,22 @@
+{
+  "no": "BISHI27",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "构造数对",
+  "url": "https://www.nowcoder.com/practice/c16b86c1149a43eaaa0fd85aaee51290",
+  "topics": [
+    "basic/construction"
+  ],
+  "judge": {
+    "mode": "spj"
+  },
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047525,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "no": "PIO3",
+  "site": "nowcoder",
+  "set": "pio",
+  "mode": "acm",
+  "title": "多组_A+B_EOF形式",
+  "url": "https://www.nowcoder.com/practice/295063bf1bce4c2e819a8f18a5efcd20",
+  "topics": [
+    "python/module-io",
+    "toolkit/io"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481048697,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}

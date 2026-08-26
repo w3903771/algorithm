@@ -1,0 +1,21 @@
+{
+  "no": "BISHI67",
+  "site": "nowcoder",
+  "set": "bishi",
+  "mode": "acm",
+  "title": "穿搭大挑战",
+  "url": "https://www.nowcoder.com/practice/cd190da0f3614a8393c84981a11d024e",
+  "topics": [
+    "basic/simulation",
+    "math/combi/basic"
+  ],
+  "judge": {},
+  "langs": {
+    "py": {
+      "lang": "Python 3",
+      "status": "AC",
+      "submissionId": 481047944,
+      "verdict": "恭喜！您提交的程序通过了所有的测试用例"
+    }
+  }
+}
