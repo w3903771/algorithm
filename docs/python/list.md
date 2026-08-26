@@ -1,0 +1,545 @@
+---
+id: python/list
+title: 列表
+volume: 1
+lang: py
+---
+
+# 第 5 章　列表
+
+<!-- CHAPTER-EXAMPLES -->
+
+`list` 是 Python 里用得最多的容器，一个类型同时扮演 C++ 里的 `std::vector`、`std::stack`、
+邻接表、DP 数组四种角色。
+
+它的底层就是**动态数组**（一块连续的指针数组，装满了就换一块更大的，见 §3 的「均摊」一节），
+所以它的性能特征和 `std::vector` 几乎一致：**尾部快、头部慢、随机访问 $O(1)$**。
+本章的核心就是把这张复杂度表刻进脑子里，外加一个必须知道的浅拷贝陷阱。
+
+---
+
+## 1　创建列表
+
+```python
+a = []                          # 空列表
+a = [1, 2, 3]                   # 字面量，元素类型可以不同
+a = [0] * n                     # n 个 0 —— 预分配数组的标准写法
+a = list(range(n))              # [0, 1, ..., n-1]
+a = list("abc")                 # ['a', 'b', 'c']
+a = list(map(int, input().split()))     # 读一行整数，竞赛第一高频
+a = [x * x for x in range(5)]   # 列表推导式，见第 9 章
+a = [[0] * m for _ in range(n)] # n 行 m 列的二维数组 —— 见 5.4，写法唯一正确
+```
+
+`[0] * n` 会一次性分配好内存，比 `for` 循环 `append` 快很多。
+DP 数组、访问标记、计数桶都用它初始化：
+
+```python
+dp = [0] * (n + 1)
+vis = [False] * n
+cnt = [0] * 26
+dist = [float("inf")] * n       # 最短路初始化
+```
+
+> 元素只是 0/1 标记时，用 **`bytearray(n)`** 更省内存（1 字节 vs 8 字节指针），
+> 而且写法一样：`vis = bytearray(n)`、`vis[i] = 1`、`if vis[i]:`。
+> $n = 10^7$ 时这是 10 MB 和 80 MB 的差别。
+
+---
+
+## 2　索引、切片与嵌套
+
+### 索引
+
+和字符串完全一致，支持负索引：
+
+```python
+a = [10, 20, 30, 40, 50]
+a[0]        # 10
+a[-1]       # 50      ← 最后一个，不用写 a[len(a)-1]
+a[-2]       # 40
+a[2] = 99   # 可以改！列表是可变的，这是它和 str/tuple 的根本差异
+a[5]        # IndexError: list index out of range
+```
+
+> **负索引不会报越界**，`a[-1]` 在 `a` 非空时永远合法。
+> 这既是便利也是陷阱：循环里算出的下标不小心变成 `-1`，
+> 看着像会崩，实际它安静地读到了最后一个元素，产生一个极难定位的 WA。
+> 涉及下标计算时加一句 `assert 0 <= i < n` 本地调试很值。
+
+### 切片
+
+```python
+a = [0, 1, 2, 3, 4, 5, 6]
+a[1:4]      # [1, 2, 3]     左闭右开
+a[:3]       # [0, 1, 2]
+a[3:]       # [3, 4, 5, 6]
+a[:]        # 完整副本（浅拷贝）
+a[::-1]     # [6, 5, 4, 3, 2, 1, 0]    反转
+a[::2]      # [0, 2, 4, 6]
+a[100:200]  # []            越界不报错
+```
+
+**列表切片还能当左值**，这是字符串没有的能力：
+
+```python
+a = [0, 1, 2, 3, 4]
+a[1:3] = [9, 9, 9]      # a = [0, 9, 9, 9, 3, 4]   连续切片赋值，长度可以变！
+a[1:3] = []             # a = [0, 9, 3, 4]         删除，等价于 del a[1:3]
+a[:] = [1, 2]           # a = [1, 2]               原地替换全部内容（与 a = [1,2] 的区别见 5.4）
+
+b = [0, 1, 2, 3, 4]     # 带步长的赋值换个列表演示，避免受上面几步的影响
+b[::2] = [7, 7, 7]      # b = [7, 1, 7, 3, 7]      b[::2] 选中 3 个位置，右边正好给 3 个
+# b[::2] = [7, 7]       # ValueError: attempt to assign sequence of size 2 to extended slice of size 3
+```
+
+> **连续切片和带步长切片的规则不一样**：`a[1:3] = [9,9,9]` 可以改变列表长度，
+> 而 `b[::2] = [...]` 右边的长度**必须严格等于**被选中的元素个数，多一个少一个都报错。
+> 原因是带步长选中的位置不连续，多出来的元素无处安放。
+
+### 删除
+
+```python
+del a[2]            # 按下标删，O(n)
+del a[1:3]          # 删一段
+del a[:]            # 清空（等价 a.clear()）
+a.remove(9)         # 按值删第一个匹配，O(n)，找不到抛 ValueError
+x = a.pop()         # 弹出末尾并返回，O(1)
+x = a.pop(0)        # 弹出开头并返回，O(n)  ← 见 5.6
+```
+
+> `del a[i]` 按**下标**删，`a.remove(x)` 按**值**删。写反了不会报错，只会答案不对。
+
+### 嵌套列表
+
+```python
+g = [[1, 2, 3],
+     [4, 5, 6]]
+g[0][1]         # 2
+len(g)          # 2   行数
+len(g[0])       # 3   列数
+```
+
+矩阵转置的惯用写法（见[元组与序列通论](sequence.md)的 `zip`）：
+
+```python
+g2 = [list(row) for row in zip(*g)]     # [[1,4],[2,5],[3,6]]
+```
+
+---
+
+## 3　列表方法全表与复杂度
+
+**复杂度表是本章最重要的东西**，它直接决定代码会不会 TLE。
+
+| 方法 / 操作 | 作用 | 复杂度 | 备注 |
+| --- | --- | --- | --- |
+| `a[i]` 读 / 写 | 随机访问 | $O(1)$ | |
+| `len(a)` | 长度 | $O(1)$ | 长度是存好的 |
+| ★ `a.append(x)` | 尾部添加 | **均摊 $O(1)$** | |
+| ★ `a.pop()` | 弹出尾部 | $O(1)$ | |
+| ★ `a.pop(0)` | 弹出头部 | **$O(n)$** | **竞赛大坑，见 §6** |
+| `a.insert(i, x)` | 在下标 `i` 前插入 | $O(n)$ | `insert(0,x)` 最慢 |
+| `a.remove(x)` | 删第一个等于 `x` 的 | $O(n)$ | 找不到抛 `ValueError` |
+| `del a[i]` | 按下标删 | $O(n)$ | |
+| `a.extend(b)` / `a += b` | 尾部批量添加 | 均摊 $O(\|b\|)$ | |
+| `a + b` | 拼接成新列表 | $O(\|a\|+\|b\|)$ | **循环里用 = $O(n^2)$** |
+| `a * k` | 重复 | $O(k\|a\|)$ | **浅拷贝！见 §4** |
+| `a[i:j]` | 切片 | $O(j-i)$ | 复制 |
+| ★ `x in a` | 成员判断 | **$O(n)$** | **换 `set` 是 $O(1)$** |
+| `a.index(x)` | 首个匹配下标 | $O(n)$ | 找不到抛 `ValueError` |
+| `a.count(x)` | 出现次数 | $O(n)$ | |
+| ★ `a.sort()` | **原地**排序 | $O(n \log n)$ | Timsort，稳定；**返回 `None`** |
+| `sorted(a)` | 返回新的有序列表 | $O(n \log n)$ | 不改原列表 |
+| `a.reverse()` | 原地反转 | $O(n)$ | 返回 `None` |
+| `a[::-1]` | 返回反转的新列表 | $O(n)$ | |
+| `a.copy()` / `a[:]` / `list(a)` | 浅拷贝 | $O(n)$ | |
+| `a.clear()` | 清空 | $O(n)$ | |
+| `min(a)` / `max(a)` / `sum(a)` | 聚合 | $O(n)$ | C 实现，比手写循环快数倍 |
+| `a == b` | 逐元素比较 | $O(n)$ | 长度不同直接 `False` |
+| `a < b` | 字典序比较 | $O(n)$ | 见 [运算符与位运算](operators.md#2-比较运算符) |
+
+### 关于「均摊 $O(1)$」
+
+`append` 在容量满时会申请一块更大的内存（CPython 大约按 $1.125$ 倍增长）并复制过去。
+单次扩容是 $O(n)$，但因为容量按比例增长，**$n$ 次 append 的总代价是 $O(n)$**，
+平摊到每次就是 $O(1)$。这跟 `std::vector::push_back` 是同一回事。
+
+结论：**放心大胆地 `append`，不需要预先 `reserve`。**
+
+### 三个必须记住的「返回 None」
+
+```python
+a = a.sort()            # ❌ a 变成了 None！
+a.sort()                # ✅ 原地排序
+
+a = a.reverse()         # ❌ 同上
+b = a.append(1)         # ❌ b 是 None
+```
+
+`sort` / `reverse` / `append` / `extend` / `insert` / `remove` / `clear` **全部原地修改并返回 `None`**。
+想要「新列表」请用 `sorted(a)` / `a[::-1]` / `a + [x]`。
+
+> 这是从 C++ 转过来最常犯的错之一：习惯了 `sort(a.begin(), a.end())` 之后，
+> 写 `a = a.sort()` 感觉很自然，然后下一行 `a[0]` 报 `TypeError: 'NoneType' object is not subscriptable`。
+
+---
+
+## 4　列表的复制
+
+先看三层区别：
+
+```python
+a = [1, 2, 3]
+
+b = a                   # ① 别名：b 和 a 是同一个对象
+c = a[:]                # ② 浅拷贝：新列表，元素还是原来那些对象
+import copy
+d = copy.deepcopy(a)    # ③ 深拷贝：连元素也递归复制
+```
+
+```python
+b.append(4)
+print(a)        # [1, 2, 3, 4]   ← a 跟着变了
+c.append(5)
+print(a)        # [1, 2, 3, 4]   ← a 没变
+```
+
+三种浅拷贝写法完全等价，随便挑：`a[:]`、`a.copy()`、`list(a)`。
+
+### 浅拷贝陷阱
+
+**这是 Python 算法题里最经典、最致命、也最难查的错误，没有之一。**
+
+问题的根源：`*` 和切片都是**浅**拷贝——它们复制的是**引用**，不是对象本身。
+当元素是不可变对象（`int`、`str`、`tuple`）时毫无问题；
+一旦元素是**可变对象**（`list`、`dict`、`set`），灾难就来了。
+
+#### 错误写法 `[[0] * m] * n`
+
+```python
+n, m = 3, 4
+g = [[0] * m] * n           # ❌ 看起来是 3 行 4 列
+g[0][0] = 1
+print(g)
+# [[1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]]
+#   ↑ 只改了第 0 行，结果三行全变了
+```
+
+原因：`[X] * 3` 生成的是 `[X, X, X]`——**同一个对象 `X` 被引用了三次**，
+而不是三个独立的副本。验证一下：
+
+```python
+print(id(g[0]) == id(g[1]))     # True     三行是同一个列表对象
+print(g[0] is g[1])             # True
+```
+
+内部的 `[0] * m` 没问题，因为 `0` 是不可变的 `int`，改 `g[0][0]` 是**替换引用**而不是修改对象；
+外层的 `* n` 才是罪魁祸首，它让三行共用了同一个内层列表。
+
+#### 正确写法
+
+```python
+g = [[0] * m for _ in range(n)]     # ✅ 每次循环都新建一个列表
+```
+
+列表推导式里的 `[0] * m` **每轮都重新求值**，产生 $n$ 个互不相干的对象。
+
+同样的道理适用于所有可变元素：
+
+```python
+adj = [[] for _ in range(n)]        # ✅ 邻接表
+adj = [[]] * n                      # ❌ 所有点共用一条邻接表
+
+seen = [set() for _ in range(n)]    # ✅
+dp = [[0] * (m + 1) for _ in range(n + 1)]      # ✅ 二维 DP
+```
+
+#### 三维及以上
+
+```python
+f = [[[0] * c for _ in range(b)] for _ in range(a)]     # ✅ a × b × c
+```
+
+层数一多就很难读，这时候**把多维压成一维**往往更快也更清楚：
+
+```python
+f = [0] * (a * b * c)
+f[(i * b + j) * c + k] = v          # 手动算下标
+```
+
+一维数组少一层指针跳转，在 $10^6$ 级别的 DP 里能快 30% 以上。
+
+#### 复制已有的二维数组
+
+```python
+g2 = g[:]                       # ❌ 只复制了外层，每一行还是共享的
+g2 = [row[:] for row in g]      # ✅ 逐行浅拷贝，对「元素是数字」的矩阵足够
+g2 = copy.deepcopy(g)           # ✅ 通用但慢，能不用就不用
+```
+
+`copy.deepcopy` 要递归遍历整个对象图并维护 memo 字典，比 `[row[:] for row in g]` 慢一个数量级。
+竞赛里几乎永远用后者。
+
+> **自检清单**：只要写出 `[... ] * n` 而方括号里装的是**列表 / 字典 / 集合**，
+> 就一定是错的。改成 `[... for _ in range(n)]`。
+
+---
+
+## 5　把 list 当数组用
+
+这是 `list` 最主要的角色，对应 C++ 的 `std::vector`。
+
+```python
+a = [0] * n                     # 定长数组
+a[i] = x                        # O(1) 随机写
+s = sum(a)                      # O(n)，C 实现
+mx = max(a)
+i = a.index(mx)                 # 最大值的下标
+```
+
+几个 C++ 选手容易漏掉的高效写法：
+
+```python
+# 前缀和：不要手写循环
+from itertools import accumulate
+pre = [0] + list(accumulate(a))         # pre[i] = a[0]+...+a[i-1]
+
+# 批量转换
+a = list(map(int, data))                # 比 [int(x) for x in data] 稍快
+
+# 同时拿下标和值
+for i, x in enumerate(a):               # 比 for i in range(len(a)) 快
+    ...
+
+# 找最大值的下标
+i = max(range(n), key=a.__getitem__)    # 或 a.index(max(a))
+```
+
+### 二维数组的正确初始化（再强调一次）
+
+```python
+g = [[0] * m for _ in range(n)]         # ✅
+g = [[0] * m] * n                       # ❌ 见 5.4
+```
+
+### 从输入读二维数组
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+n, m = int(data[0]), int(data[1])
+# 整份输入被拆成一维 token 流：前 2 个是 n 和 m，剩下的按行铺开。
+# 第 i 行占据 [2 + i*m, 2 + (i+1)*m)，切片左闭右开，正好是 m 个元素；
+# 那个 2 就是跳过 n、m 两个 token 的偏移量，漏掉它整张表会整体错位。
+g = [list(map(int, data[2 + i * m: 2 + (i + 1) * m])) for i in range(n)]
+```
+
+详见 [输入输出处理](../toolkit/io.md#4-数组的读入)。
+
+---
+
+## 6　把 list 当栈用，以及 `pop(0)` 的坑
+
+### 栈：完美契合
+
+```python
+stack = []
+stack.append(x)         # push，均摊 O(1)
+top = stack[-1]         # peek，O(1)
+x = stack.pop()         # pop，O(1)
+if not stack:           # 判空，直接用真值
+    ...
+```
+
+**不需要自己写 `Stack` 类**。把栈封装成类在竞赛里只会变慢——
+每次操作多一层 Python 函数调用开销。直接用 `list` 的 `append`/`pop`。
+
+括号匹配、表达式求值、单调栈都基于这三行，见
+[栈](../ds/stack.md)、[单调栈](../ds/monotonic-stack.md)。
+
+### 队列：`list.pop(0)` 是 $O(n)$
+
+```python
+# ❌ 用 list 模拟队列
+q = []
+q.append(x)
+head = q.pop(0)         # O(n)！每次都要把后面 n-1 个元素整体前移
+```
+
+$n$ 次 `pop(0)` 的总代价是 $O(n^2)$。BFS（Breadth-First Search，广度优先搜索——
+一层一层向外扩展的图搜索，靠一个队列维护「下一批要访问的点」，
+见 [BFS广度优先搜索](../search/bfs.md)）
+里队列长度到 $10^5$ 就已经 $10^{10}$ 次移动，必然 TLE。
+**这是 Python BFS 题最高频的超时原因。**
+
+正确做法是 `collections.deque`，它是双向链表式的块状结构，两端都是 $O(1)$：
+
+```python
+from collections import deque
+
+q = deque()
+q.append(x)             # 尾部入队 O(1)
+head = q.popleft()      # 头部出队 O(1)  ← 关键
+q.appendleft(x)         # 头部入队 O(1)
+q.pop()                 # 尾部出队 O(1)
+```
+
+| 操作 | `list` | `deque` |
+| --- | --- | --- |
+| 尾部 append / pop | $O(1)$ | $O(1)$ |
+| **头部 insert / pop** | **$O(n)$** | **$O(1)$** |
+| 随机访问 `a[i]` | $O(1)$ | **$O(n)$**（中间位置） |
+| 切片 | 支持 | **不支持** |
+
+代价是 `deque` 不支持切片、随机访问退化成 $O(n)$。
+所以：**要队列就 `deque`，要数组就 `list`**，别想着一个类型走天下。
+
+详见 [队列与双端队列](../ds/queue.md)。
+
+> 同理，`a.insert(0, x)`、`del a[0]`、`a[1:]`（在循环里）全都是 $O(n)$。
+> **看到「在列表开头操作」这几个字就该警觉。**
+>
+> 如果只是需要「按顺序处理一遍」，用下标游标代替出队更快：
+> ```python
+> q = [start]
+> head = 0
+> while head < len(q):
+>     u = q[head]; head += 1
+>     q.append(v)                 # 只在尾部追加，全程 O(1)
+> ```
+> 这个技巧在 BFS 里非常好用，还顺带保留了完整的访问序列。
+
+---
+
+## 7　排序简介
+
+```python
+a.sort()                        # 原地升序
+a.sort(reverse=True)            # 原地降序
+b = sorted(a)                   # 返回新列表
+b = sorted(a, key=len)          # 按长度排
+b = sorted(a, key=lambda p: (p[0], -p[1]))      # 多关键字：元组按位比较，
+                                                #   第 0 位升序，第 1 位取负号变成降序
+```
+
+要点：
+
+- Python 用的是 **Timsort**，$O(n \log n)$，**稳定**（相等元素保持原相对顺序）。
+  对部分有序的数据接近 $O(n)$，比 C++ 的 `std::sort` 在这类数据上更快。
+- **没有 `cmp` 参数**。C++ 的比较函数要用 `functools.cmp_to_key` 包装，而且慢——
+  优先想办法用 `key` 表达。
+- `key` 函数每个元素只调用一次（Schwartzian transform），所以 `key=len` 这种写法不用担心重复计算。
+
+完整讨论（多关键字、稳定性利用、`cmp_to_key`、`operator.itemgetter`）见
+[自定义排序](sorting.md) 和 [排序](../basic/sorting.md)。
+
+---
+
+## 8　例题：BISHI1 【模板】序列操作（简单）
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+
+> 维护一个初始为空的整数序列，支持 8 种操作：
+> `1 x` 尾部插入、`2` 删除尾部、`3 i` 输出下标 $i$ 的元素、
+> `4 i x` 在下标 $i$ 与 $i+1$ 之间插入 $x$、`5` 升序排序、`6` 降序排序、
+> `7` 输出长度、`8` 输出整个序列。操作数 $q \le 7 \times 10^3$。
+> 题面见 [原题](https://www.nowcoder.com/practice/12da4185c0bb45918cfdc3072e544069)。
+
+这是一道**为 `list` 量身定做的模板题**——8 个操作和 `list` 的方法一一对应：
+
+| 操作 | 语义 | Python |
+| --- | --- | --- |
+| `1 x` | 尾部插入 | `a.append(x)` |
+| `2` | 删除尾部 | `a.pop()` |
+| `3 i` | 输出第 $i$ 项 | `a[i]` |
+| `4 i x` | 在 $i$ 与 $i+1$ 之间插入 | `a.insert(i + 1, x)` |
+| `5` | 升序 | `a.sort()` |
+| `6` | 降序 | `a.sort(reverse=True)` |
+| `7` | 长度 | `len(a)` |
+| `8` | 输出全部 | `" ".join(map(str, a))` |
+
+```python
+import sys
+
+
+def main():
+    data = sys.stdin.buffer.read().split()
+    p = 0
+    q = int(data[p]); p += 1
+    a = []
+    out = []
+    for _ in range(q):
+        op = data[p]; p += 1                    # op 是 bytes，直接和 b"1" 比
+        if op == b"1":
+            a.append(int(data[p])); p += 1
+        elif op == b"2":
+            a.pop()
+        elif op == b"3":
+            i = int(data[p]); p += 1
+            out.append(str(a[i]))
+        elif op == b"4":
+            i = int(data[p]); x = int(data[p + 1]); p += 2
+            a.insert(i + 1, x)                  # 「在 i 和 i+1 之间」= 插到下标 i+1
+        elif op == b"5":
+            a.sort()
+        elif op == b"6":
+            a.sort(reverse=True)
+        elif op == b"7":
+            out.append(str(len(a)))
+        else:                                   # op == b"8"
+            out.append(" ".join(map(str, a)))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+main()
+```
+
+**四个容易踩的点：**
+
+1. **每行的 token 个数不一样**（操作 2/5/6/7/8 只有 1 个数，操作 4 有 3 个）。
+   所以必须用**游标推进的 token 流**，不能假设「每行两个数」。见
+   [输入输出处理](../toolkit/io.md#1-三种读入方式以及为什么必须区分)。
+
+2. **`insert(i + 1, x)` 不是 `insert(i, x)`**。题目说「在下标 $i$ 与 $i+1$ 的元素**之间**」，
+   插入后新元素占据下标 $i+1$。示例 2 里 $\{5,3,7\}$ 执行 `4 1 4` 得到 $\{5,3,4,7\}$，
+   正好验证了这一点。
+
+3. **不要在循环里 `print`**。操作 8 每次可能输出上千个数，$7000$ 次 `print` 的开销很可观。
+   统一攒进 `out` 最后一次写出。
+
+4. **`a.sort()` 返回 `None`**，写成 `a = a.sort()` 后面全崩。
+
+**复杂度**：`insert` 和 `sort` 都不是 $O(1)$，最坏情况下总复杂度是
+$O(q \cdot n + q \cdot n \log n)$。但 $q \le 7 \times 10^3$，且 `insert` 底层是一次 `memmove`
+（C 级别的连续内存移动，常数极小），实际运行远低于时限。
+
+> **什么时候这题的做法会不够用？** 如果 $q$ 提到 $10^5$ 且大量执行操作 4，
+> $O(qn) = 10^{10}$ 就撑不住了，需要平衡树 / 块状链表。
+> 见 [平衡树与有序集合](../ds/balanced-tree.md)。
+> 但对本题的数据范围，`list` 就是标准答案——**先看数据范围，再选数据结构**。
+
+---
+
+## 9　本章速查
+
+| 场景 | 写法 |
+| --- | --- |
+| 预分配长度 $n$ 的数组 | `a = [0] * n` |
+| 0/1 标记数组（省内存） | `vis = bytearray(n)` |
+| **二维数组** | **`[[0] * m for _ in range(n)]`，绝不用 `[[0]*m]*n`** |
+| 邻接表 | `adj = [[] for _ in range(n)]` |
+| 读一行整数 | `a = list(map(int, input().split()))` |
+| 反转 | `a.reverse()` 原地 / `a[::-1]` 新列表 |
+| 排序 | `a.sort()` 原地（**返回 `None`**）/ `sorted(a)` 新列表 |
+| 复制一维 | `a[:]`、`a.copy()`、`list(a)` |
+| 复制二维 | `[row[:] for row in g]`，别用 `deepcopy` |
+| 栈 | `append` / `pop` / `a[-1]`，别封装成类 |
+| **队列** | **`collections.deque` 的 `popleft`，绝不用 `pop(0)`** |
+| 判空 | `if not a:` |
+| **判存在** | **元素多时转 `set`**，`x in a` 是 $O(n)$ |
+| 前缀和 | `list(accumulate(a))` |
+| 同时取下标和值 | `for i, x in enumerate(a):` |
+| 拼接大量列表 | `res.extend(b)`，别用 `res = res + b` |
+| 多维 DP 提速 | 压成一维 `f[i * m + j]` |

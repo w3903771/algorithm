@@ -1,0 +1,691 @@
+---
+id: python/function
+title: 函数
+volume: 1
+lang: py
+---
+
+# 第 11 章　函数
+
+<!-- CHAPTER-EXAMPLES -->
+
+函数在竞赛里有三重身份：**代码复用**、**递归的载体**、以及一个容易被忽略的角色——
+**性能优化手段**（局部变量比全局变量快）。
+
+这一章把 Python 函数的全部语法讲完，重点在三个坑：
+**可变默认参数**、**LEGB 作用域**、**递归深度限制**。
+
+---
+
+## 1　定义与调用
+
+```python
+def 函数名(参数列表):
+    """文档字符串"""
+    函数体
+    return 返回值
+```
+
+```python
+def gcd(a, b):
+    """求最大公约数。"""
+    while b:
+        a, b = b, a % b
+    return a
+
+
+print(gcd(12, 18))          # 6
+```
+
+规则：
+
+- **没有返回类型声明**，也不需要前向声明——但**调用发生时函数必须已经定义**。
+  函数体内部调用另一个函数则不要求，因为名字在运行时才解析：
+
+  ```python
+  def f():
+      return g()          # 合法，g 只要在 f 被调用前定义好就行
+
+  def g():
+      return 1
+
+  print(f())              # 1
+  ```
+
+- **没有 `return` 或空 `return` 时返回 `None`**，不是 0、不是未定义行为。
+- **函数是一等对象**，可以赋值、传参、放进列表和字典：
+
+  ```python
+  ops = {"+": add, "-": sub}
+  ops["+"](1, 2)
+  ```
+
+### 参数传递：既不是值传递也不是引用传递
+
+Python 传的是**对象引用的副本**（call by object reference）。
+实际效果由对象**是否可变**决定：
+
+```python
+def f(x):
+    x = 100                 # 重新绑定，外面看不到
+
+def g(a):
+    a.append(4)             # 就地修改，外面看得到
+
+def h(a):
+    a = [9, 9]              # 重新绑定，外面看不到！
+
+n = 1;      f(n); print(n)      # 1
+lst = [1];  g(lst); print(lst)  # [1, 4]
+lst = [1];  h(lst); print(lst)  # [1]
+```
+
+| 操作 | 外部是否可见 |
+| --- | --- |
+| 对不可变对象（`int`/`str`/`tuple`）做任何操作 | 否 |
+| 对可变对象（`list`/`dict`/`set`）**就地修改**（`append`/`[i]=`/`+=`） | **是** |
+| 对可变对象**重新绑定**（`a = ...`） | 否 |
+
+> **竞赛含义**：把大数组传进递归函数**不会发生拷贝**，是 $O(1)$ 的。
+> 这和 C++ 的按值传 `vector` 完全不同，不需要写 `&`。
+> 但反过来，函数里对传进来的列表排序会**改到调用方的数据**，
+> 需要保留原数组时要显式 `a[:]` 拷一份。
+
+---
+
+## 2　四类参数
+
+```python
+def f(a, b=2, *args, **kwargs):
+    ...
+```
+
+| 类型 | 写法 | 说明 |
+| --- | --- | --- |
+| 位置参数 | `f(1, 2)` | 按顺序对应，必需 |
+| 关键字参数 | `f(b=2, a=1)` | 按名字对应，顺序随意 |
+| 默认参数 | `def f(a, b=2)` | 有默认值，调用时可省 |
+| 可变参数 | `*args` / `**kwargs` | 收集多余的位置 / 关键字参数 |
+
+### 位置参数与关键字参数
+
+```python
+def dist(x1, y1, x2, y2):
+    return abs(x1 - x2) + abs(y1 - y2)
+
+dist(0, 0, 3, 4)                        # 位置
+dist(x1=0, y1=0, x2=3, y2=4)            # 关键字
+dist(0, 0, x2=3, y2=4)                  # 混用：位置参数必须在前
+dist(x1=0, 0, 3, 4)                     # ❌ SyntaxError
+```
+
+**关键字参数一旦开始，后面就不能再出现位置参数。**
+
+### 默认参数
+
+```python
+def read_grid(n, m, fill=0):
+    return [[fill] * m for _ in range(n)]
+```
+
+两条硬规则：
+
+1. **有默认值的参数必须排在没有默认值的参数之后**，否则语法错。
+2. **默认值在函数「定义时」求值一次，而不是每次调用时**——这就是下一节的大坑。
+
+### `*args` 与 `**kwargs`
+
+```python
+def f(*args, **kwargs):
+    print(args)            # 元组
+    print(kwargs)          # 字典
+
+f(1, 2, 3, x=4, y=5)
+# (1, 2, 3)
+# {'x': 4, 'y': 5}
+```
+
+反过来，调用时的 `*` / `**` 是**解包**：
+
+```python
+a = [1, 2, 3]
+print(*a)                          # 等价 print(1, 2, 3)
+d = {"sep": "", "end": ""}
+print("x", **d)                    # 等价 print("x", sep="", end="")
+
+def dist(x1, y1, x2, y2): ...
+p, q = (0, 0), (3, 4)
+dist(*p, *q)                       # 解包两个元组
+```
+
+竞赛里 `*` 解包最常见的用途就是 `print(*a)` 和 `zip(*mat)`（转置）。
+
+> **`*` 在定义处是「打包」，在调用处是「解包」**。同一个符号两个方向，别搞混。
+
+### 仅位置参数 `/` 与仅关键字参数 `*`
+
+```python
+def f(a, b, /, c, d, *, e, f):
+    ...
+# a, b 只能按位置传
+# c, d 位置/关键字都行
+# e, f 只能按关键字传
+```
+
+`/`（3.8+）竞赛用不上，知道内建函数的文档里 `sorted(iterable, /, *, key=None, reverse=False)`
+是什么意思即可——它说明 **`key` 和 `reverse` 必须写成关键字形式**：
+
+```python
+sorted(a, key=len)              # ✅
+sorted(a, len)                  # ❌ TypeError
+```
+
+---
+
+## 3　可变默认参数陷阱（务必记住）
+
+```python
+def add(x, lst=[]):          # ❌ 危险
+    lst.append(x)
+    return lst
+
+
+print(add(1))                # [1]
+print(add(2))                # [1, 2]   ← 不是 [2]！
+print(add(3))                # [1, 2, 3]
+```
+
+原因：**默认值对象在 `def` 执行时创建一次，此后所有调用共享同一个对象**。
+只要函数里就地修改了它，修改就永久保留。
+
+可以直接看到证据：
+
+```python
+print(add.__defaults__)      # ([1, 2, 3],)   默认值就挂在函数对象上
+```
+
+正确写法是用 `None` 当哨兵：
+
+```python
+def add(x, lst=None):        # ✅
+    if lst is None:
+        lst = []
+    lst.append(x)
+    return lst
+```
+
+| 默认值类型 | 是否安全 |
+| --- | --- |
+| `int` / `float` / `str` / `bool` / `None` / `tuple` | 安全（不可变，改不了） |
+| **`list` / `dict` / `set`** | **危险** |
+| 函数调用的结果（如 `time.time()`） | 危险（只算一次，永远是定义时的值） |
+
+> 竞赛里这个坑最常出现在**递归函数的「路径」参数**上：
+>
+> ```python
+> def dfs(u, path=[]):        # ❌ 第二次调用 dfs 时 path 里还残留着上次的数据
+> ```
+>
+> 多组数据的题目里，第一组算对、第二组开始全错，十有八九是这个原因。
+
+---
+
+## 4　返回值与多返回值
+
+```python
+def divmod2(a, b):
+    return a // b, a % b        # 实际返回的是元组 (a//b, a%b)
+
+
+q, r = divmod2(17, 5)           # 解包
+t = divmod2(17, 5)              # t = (3, 2)
+```
+
+Python 「返回多个值」其实是**返回一个元组然后解包**，没有语言级的多返回值。
+这也意味着：
+
+```python
+def f():
+    return 1, 2
+
+a, b = f()          # ✅
+a, b, c = f()       # ❌ ValueError: not enough values to unpack (expected 3, got 2)
+a, = f()            # ❌ ValueError: too many values to unpack (expected 1)
+                    #    左边少了同样报错——数量必须严格相等，多一个少一个都不行
+```
+
+`return` 在循环里可以直接穿透所有层，这是跳出多重循环的最佳方式（见
+[条件与循环](control-flow.md#5-breakcontinue-与-else)）：
+
+```python
+def find(g, target):
+    for i in range(len(g)):
+        for j in range(len(g[0])):
+            if g[i][j] == target:
+                return i, j
+    return -1, -1
+```
+
+---
+
+## 5　作用域与 LEGB
+
+Python 查找一个名字时，按 **LEGB** 顺序，找到就停：
+
+| 层 | 名称 | 范围 |
+| --- | --- | --- |
+| **L** | Local | 当前函数内部 |
+| **E** | Enclosing | 外层嵌套函数（闭包） |
+| **G** | Global | 当前模块（文件）顶层 |
+| **B** | Built-in | 内建命名空间（`len`、`sum`、`print`…） |
+
+```python
+n = 10                       # G
+
+def outer():
+    x = 1                    # E（对 inner 而言）
+    def inner():
+        y = 2                # L
+        print(y, x, n, len)  # L → E → G → B
+    inner()
+```
+
+**只有函数（以及类、模块）会创建新作用域。**
+`if` / `for` / `while` / `try` **不创建作用域**——这和 C++ 完全不同：
+
+```python
+for i in range(3):
+    pass
+print(i)                     # 2，循环变量在循环外依然可见
+
+if True:
+    z = 5
+print(z)                     # 5
+```
+
+（例外：推导式有自己的作用域，见 [推导式](comprehension.md#循环变量不会泄漏)。）
+
+### 读全局可以，写全局要声明
+
+```python
+cnt = 0
+
+def bad():
+    cnt += 1                 # ❌ UnboundLocalError
+```
+
+报错原因很反直觉：Python 在**编译函数时**扫描函数体，
+只要看到 `cnt` 出现在赋值号左边（`=`、`+=`、`for cnt in`），
+就把 `cnt` 整个标记为**局部变量**。于是 `cnt += 1` 读的是「还没赋值的局部变量」。
+
+```python
+def ok1():
+    print(cnt)               # ✅ 只读全局，没问题
+
+def ok2():
+    global cnt               # ✅ 显式声明要写全局
+    cnt += 1
+```
+
+### `nonlocal`：写外层函数的变量
+
+```python
+def counter():
+    n = 0
+    def inc():
+        nonlocal n           # 声明 n 来自外层函数，不是全局也不是局部
+        n += 1
+        return n
+    return inc
+
+
+c = counter()
+c(); c(); print(c())         # 3
+```
+
+| 关键字 | 作用 | 竞赛用途 |
+| --- | --- | --- |
+| `global x` | `x` 指向模块全局 | DFS 里累加答案计数 |
+| `nonlocal x` | `x` 指向最近的外层函数 | 闭包式 DFS 里累加答案 |
+
+### 竞赛写法建议：用可变容器绕开声明
+
+`global`/`nonlocal` 写起来啰嗦，且 `global` 变量访问慢。
+竞赛里更常见的两种写法：
+
+```python
+# 写法一：用单元素列表当「可变的盒子」
+ans = [0]
+def dfs(u):
+    ans[0] += 1              # 不需要任何声明，因为这是就地修改不是重新绑定
+    ...
+
+# 写法二（推荐）：全部包进 main()，用 nonlocal
+def main():
+    ans = 0
+    def dfs(u):
+        nonlocal ans
+        ans += 1
+    dfs(0)
+    print(ans)
+```
+
+> **写法二还顺带解决了性能问题**：`main()` 内部的名字都是局部变量，
+> 访问走 `LOAD_FAST`（数组下标），比模块级的 `LOAD_GLOBAL`（查字典）快得多。
+> 这就是[语法与执行模型](syntax.md)说的「把主逻辑包进函数能快 20%–30%」。
+
+---
+
+## 6　lambda 匿名函数
+
+```python
+f = lambda x: x * 2
+f(3)                         # 6
+
+g = lambda x, y: x + y
+h = lambda: 0                # 无参
+```
+
+限制：**函数体只能是一个表达式**，不能有语句、不能有 `return`、不能有循环。
+
+竞赛里 lambda 只有两个正当用途：
+
+```python
+# 1. 排序的 key（最常见）
+a.sort(key=lambda p: (-p[1], p[0]))
+
+# 2. defaultdict 的工厂函数
+from collections import defaultdict
+d = defaultdict(lambda: [0] * 26)
+```
+
+**其它情况都不该用 lambda**：
+
+```python
+list(map(lambda x: x * 2, a))       # ❌ 比推导式慢（每次都是一次 Python 函数调用）
+[x * 2 for x in a]                  # ✅
+
+a.sort(key=lambda p: p[0])          # ❌ 有更快的写法
+from operator import itemgetter
+a.sort(key=itemgetter(0))           # ✅ C 实现，快约 20%
+```
+
+> **lambda 的闭包陷阱**：
+>
+> ```python
+> fs = [lambda: i for i in range(3)]
+> print([f() for f in fs])            # [2, 2, 2]  ← 不是 [0, 1, 2]
+> ```
+>
+> lambda 捕获的是**变量本身**而不是当时的值：闭包里存的是指向 `i` 那个存储单元的引用，
+> 函数体要到**被调用**时才去读这个单元。三个 lambda 共享同一个 `i`，
+> 而调用它们时循环早已结束，`i` 停在 2，于是三个都读到 2。
+>
+> 要捕获当时的值，用默认参数：`lambda i=i: i`——
+> 默认值在 `def`（这里是 lambda 定义）执行的那一刻就求值并存下来，
+> 每轮循环各存一份，之后 `i` 再变也影响不到它。
+> 这正是 §3 那个「默认值只算一次」的特性，在这里从坑变成了工具。
+
+详细的 `key` 用法见 [自定义排序](sorting.md)。
+
+---
+
+## 7　递归与递归深度
+
+```python
+def fact(n):
+    if n <= 1:               # 边界（递归出口）
+        return 1
+    return n * fact(n - 1)   # 递推
+```
+
+递归函数必须有**出口**和**规模递减**，缺一个就是死递归。
+
+### Python 递归的三个硬伤
+
+**1. 默认深度上限只有 1000。**
+
+DFS（Depth-First Search，深度优先搜索——沿一条路走到底再回头换分支的图/树搜索，
+见 [DFS深度优先搜索](../search/dfs.md)）
+是递归最常见的用武之地，也最容易撞上这个上限。
+
+```python
+import sys
+sys.setrecursionlimit(300000)
+```
+
+链状的树、退化的图、$n = 10^5$ 的 DFS，深度轻松破万。不改就是 `RecursionError`。
+这个 1000 是解释器自己设的护栏，作用是在真正压爆物理栈之前先抛一个能看懂的异常。
+
+**2. 改了限制还可能崩。** `setrecursionlimit` 只是解除解释器的**软**限制，
+真正的物理限制是**线程栈大小**。栈爆了评测机显示的是 RE 或段错误，不是异常。
+稳妥做法是开大栈线程：
+
+```python
+import sys
+import threading
+
+
+def main():
+    ...                                      # 全部逻辑写这里
+
+
+if __name__ == "__main__":
+    sys.setrecursionlimit(1 << 20)           # 解除软限制（约 100 万层，取够大即可）
+    # stack_size 只对「之后新建的线程」生效，改不了主线程的栈，
+    # 所以必须把逻辑挪进一个新线程里跑；1 << 26 = 64 MB，够十万层递归
+    threading.stack_size(1 << 26)
+    t = threading.Thread(target=main)
+    t.start()
+    t.join()                                 # 等它跑完，否则主线程会先退出
+```
+
+**3. Python 的函数调用极慢。** 一次 Python 函数调用大约相当于几十次简单运算。
+$10^6$ 次递归调用就是接近 1 秒的纯开销。
+
+> **结论**：**能写成迭代就写迭代**。
+> 递归深度可能超过 $10^4$ 时，要么开大栈线程，要么改成显式栈的迭代版本
+> （见 [DFS深度优先搜索](../search/dfs.md)）。
+
+### 记忆化：`functools.lru_cache`
+
+朴素递归的另一个杀手是**重复子问题**：
+
+```python
+def fib(n):
+    if n <= 2:
+        return 1
+    return fib(n - 1) + fib(n - 2)       # 复杂度 O(φ^n)，n=40 就要几秒
+```
+
+加一行装饰器就变成 $O(n)$：
+
+```python
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def fib(n):
+    if n <= 2:
+        return 1
+    return fib(n - 1) + fib(n - 2)
+```
+
+`@lru_cache` 是**装饰器**——`@f` 写在 `def g` 上面，等价于 `g = f(g)`，
+即用一个「带缓存的包装函数」替换原函数。
+
+| 注意点 | 说明 |
+| --- | --- |
+| 参数必须可哈希 | 传 `list` 会 `TypeError`，要转成 `tuple` |
+| `maxsize=None` | 无上限缓存，竞赛里一律这么写（有上限会淘汰，反而变慢） |
+| **不解决递归深度** | `fib(10**6)` 依然 `RecursionError` |
+| 内存 | 缓存条目数 = 不同参数组合数，状态多时会 MLE |
+
+Python 3.9 还提供了等价的 `functools.cache`（就是 `lru_cache(maxsize=None)` 的别名）。
+
+---
+
+## 8　函数与性能小结
+
+| 事实 | 竞赛含义 |
+| --- | --- |
+| 局部变量比全局快 | 主逻辑包进 `main()` |
+| 函数调用有固定开销（约几十次运算） | 不要为了三行代码封装函数并在 $10^6$ 循环里调用 |
+| 传大列表不拷贝 | 递归传数组是 $O(1)$，放心传 |
+| 内建函数在 C 层 | `sum(a)` 远快于自己写的 `mysum(a)` |
+| 属性/方法查找有开销 | `push = st.append` 提到循环外 |
+
+---
+
+## 9　例题
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+
+### BISHI78　全排列（简单，DFS）
+
+> 给定 $n\ (1 \le n \le 9)$，按**字典序**输出 $1 \sim n$ 的全部排列，
+> 每行 $n$ 个整数，空格分隔。
+> 题面见 [原题](https://www.nowcoder.com/practice/1d1fe38275da44b5848add89f9e223b1)。
+
+$n = 9$ 时有 $9! = 362880$ 行，每行 9 个数字加 8 个空格和 1 个换行共 18 字节，
+**输出量约 6.5 MB**——
+这题真正的难点不是生成排列，而是**别把时间花在输出上**。
+
+**写法一：标准库（竞赛首选）**
+
+```python
+import sys
+from itertools import permutations
+
+
+def main():
+    n = int(sys.stdin.readline())
+    out = []
+    for p in permutations(range(1, n + 1)):      # 输入有序 → 输出天然字典序
+        out.append(" ".join(map(str, p)))
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+main()
+```
+
+`itertools.permutations` 是 C 实现的，比手写 DFS 快数倍。
+**它按输入序列的顺序生成**，所以传入已排序的 `range(1, n+1)` 就直接是字典序，不需要额外排序。
+
+**写法二：手写 DFS（面试要求手写时）**
+
+```python
+import sys
+
+
+def main():
+    n = int(sys.stdin.readline())
+    used = [False] * (n + 1)
+    path = []
+    out = []
+
+    def dfs():
+        if len(path) == n:
+            out.append(" ".join(map(str, path)))
+            return
+        for v in range(1, n + 1):                # 从小到大枚举 → 字典序
+            if not used[v]:
+                used[v] = True
+                path.append(v)
+                dfs()
+                path.pop()                       # 回溯：撤销选择
+                used[v] = False
+
+    dfs()
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+main()
+```
+
+这段代码用到了本章几乎所有知识点：
+
+- **`used` / `path` / `out` 是闭包变量**（Enclosing 层）。
+  `path.append` 和 `used[v] = True` 都是**就地修改**，所以**不需要 `nonlocal`**。
+  如果写成 `path = path + [v]`（重新绑定），就必须 `nonlocal`，而且会退化成 $O(n)$ 拷贝。
+- **回溯三件套**：选择 → 递归 → **撤销**。`path.pop()` 和 `used[v] = False` 少一个都会错。
+- **`path` 不能写成默认参数**`def dfs(path=[])`——这就是 §3 的可变默认参数陷阱。
+- **递归深度是 $n \le 9$**，这题不需要 `setrecursionlimit`。
+- **绝对不要在 `dfs` 里 `print`**。36 万次 `print` 大概要 2–3 秒，
+  攒进 `out` 一次性 `write` 只要 0.1 秒。这是本题唯一的 TLE 原因。
+
+### BISHI62　斐波那契数列（简单，递归）
+
+> $F_1 = F_2 = 1$，$F_i = F_{i-1} + F_{i-2}$。给定 $k\ (1 \le k \le 10^6)$，
+> 输出 $F_k \bmod (10^9 + 7)$。
+> 题面见 [原题](https://www.nowcoder.com/practice/c245af6cfdce49ceb5435f649ee14f89)。
+
+这题是「**递归是陷阱**」的完美教材。三种写法，只有一种能过：
+
+```python
+# ❌ 写法一：朴素递归。复杂度 O(φ^k)，k=40 就跑不完，k=10^6 想都别想
+def fib(k):
+    return 1 if k <= 2 else fib(k - 1) + fib(k - 2)
+
+
+# ❌ 写法二：记忆化递归。复杂度对了（O(k)），但递归深度 10^6 直接 RecursionError；
+#    就算开大栈线程，10^6 次函数调用 + 缓存字典的开销也在 2 秒以上
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def fib(k):
+    return 1 if k <= 2 else fib(k - 1) + fib(k - 2)
+
+
+# ✅ 写法三：迭代递推
+def main():
+    MOD = 10 ** 9 + 7
+    k = int(input())
+    a, b = 1, 1                          # a = F_1, b = F_2
+    for _ in range(k - 1):
+        a, b = b, (a + b) % MOD          # 右边先整体求值，用的都是旧值
+    print(a % MOD)
+
+
+main()
+```
+
+几个要点：
+
+- **`a, b = b, (a + b) % MOD`** 是元组打包再解包，右侧用的全是旧值，
+  所以不需要临时变量（见 [运算符与位运算](operators.md#多重赋值与解包)）。
+- **循环 $k-1$ 次后 `a` 就是 $F_k$**。$k = 1$ 时循环 0 次，`a = 1`，边界自然正确——
+  写完递推一定要拿最小的 $k$ 手验一遍。
+- **每一步都取模**。不取模的话 $F_{10^6}$ 有约 20 万位，
+  Python 虽然能算但大整数加法变成 $O(\text{位数})$，总复杂度退化到 $O(k^2 / 64)$，必然 TLE。
+  这就是[数据类型与转换](types.md)「能取模就取模」的实战体现。
+- $10^6$ 次循环 + 一次取模，Python 大约 0.3–0.5 秒，稳过。
+
+> **如果 $k$ 大到 $10^{18}$ 呢？** 那就要用矩阵快速幂把复杂度降到 $O(\log k)$，
+> 见 [DP优化](../dp/opt/basic.md) 和
+> [倍增](../basic/binary-lifting.md)。
+
+完整题解：[`solutions/nowcoder/BISHI78/sol.py`](../solutions/BISHI78.md)、[`solutions/nowcoder/BISHI62/sol.py`](../solutions/BISHI62.md)
+
+---
+
+## 10　本章速查
+
+| 要点 | 结论 |
+| --- | --- |
+| 参数传递 | 传对象引用；可变对象就地改**外部可见**，重新绑定不可见 |
+| 传大数组 | 不拷贝，是 $O(1)$，不需要 C++ 的 `&` |
+| **可变默认参数** | `def f(a=[])` **永远是 bug**，用 `a=None` + `if a is None` |
+| 默认值求值时机 | `def` 执行时**只算一次** |
+| `*args` / `**kwargs` | 定义处打包，调用处解包（`print(*a)`、`zip(*mat)`） |
+| 返回多值 | 其实是返回元组再解包 |
+| 作用域 | LEGB；**`if`/`for`/`while` 不创建作用域** |
+| 写全局变量 | 必须 `global`，否则 `UnboundLocalError` |
+| 写外层函数变量 | `nonlocal`；或用列表/就地修改绕过 |
+| 竞赛结构 | 全部包进 `main()`，靠局部变量提速 20%–30% |
+| `lambda` | 只用于 `key` 和 `defaultdict` 工厂；别配 `map` |
+| `lambda` 闭包 | 捕获变量不是值，用 `lambda i=i: i` 固定 |
+| 递归深度 | 默认 1000；`sys.setrecursionlimit` + `threading.stack_size` |
+| 递归性能 | 函数调用很贵，$10^6$ 次约 1 秒；**能迭代就迭代** |
+| 记忆化 | `@lru_cache(maxsize=None)`；参数须可哈希；**不解决深度问题** |

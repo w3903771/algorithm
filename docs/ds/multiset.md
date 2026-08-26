@@ -1,0 +1,692 @@
+---
+id: ds/multiset
+title: 集合与多重集合
+volume: 1
+lang: py
+---
+
+# 第 34 章　集合与多重集合
+
+<!-- CHAPTER-EXAMPLES -->
+> **前置**：[集合](../python/set.md)、[序列与数组](array.md)
+
+C++ 选手拿到 BISHI4 会直接 `std::set`，拿到 BISHI5 会直接 `std::multiset`，五分钟收工。
+Python 选手会发现一个残酷的事实：
+
+> **Python 没有内置的有序集合，也没有多重集合，
+> 而牛客判题机上没有 `sortedcontainers`。**
+
+这一章讲的就是：**没有这两样东西，怎么办。**
+
+---
+
+## 1　先分清四种「集合」
+
+| 需求 | C++ | Python 内置 | 复杂度 |
+| --- | --- | --- | --- |
+| 无序去重集合 | `unordered_set` | **`set`** ✅ | $O(1)$ 平均 |
+| 无序计数（多重集合） | `unordered_map<T,int>` | **`Counter` / `dict`** ✅ | $O(1)$ 平均 |
+| **有序集合**（要前驱/后继/第 $k$ 小） | `set` / `map` | ❌ **没有** | — |
+| **有序多重集合** | `multiset` | ❌ **没有** | — |
+
+前两行 Python 完胜（哈希是 C 实现的），后两行要自己造。
+**所以第一步永远是问：这题真的需要「有序」吗？**
+
+很多题目只是要「判存在」「去重」「计数」，那 `set` / `Counter` 就够了，
+根本不需要平衡树。误判这一步，会把 5 行的题写成 80 行。
+
+---
+
+## 2　`set`：无序去重集合
+
+```python
+s = set()
+s = {1, 2, 3}                # 字面量（注意 {} 是空字典不是空集合）
+s = set(a)                   # 从可迭代对象构造，O(n)
+
+s.add(x)                     # O(1) 平均，已存在则无操作
+s.discard(x)                 # O(1)，不存在也不报错  ← 竞赛首选
+s.remove(x)                  # O(1)，不存在抛 KeyError
+x in s                       # O(1) 平均  ← set 的全部价值所在
+len(s)                       # O(1)
+s.pop()                      # O(1)，弹出任意一个元素（顺序不确定！）
+s.clear()
+```
+
+集合运算（$|s| = n$，$|t| = m$）：
+
+| 运算 | 写法 | 复杂度 |
+| --- | --- | --- |
+| 并 | `s \| t`、`s.union(t)` | $O(n+m)$ |
+| 交 | `s & t`、`s.intersection(t)` | $O(\min(n,m))$ |
+| 差 | `s - t` | $O(n)$ |
+| 对称差 | `s ^ t` | $O(n+m)$ |
+| 子集判定 | `s <= t`、`s.issubset(t)` | $O(n)$ |
+| 就地并 | `s \|= t`、`s.update(t)` | $O(m)$ |
+
+> **陷阱一**：`{}` 是**空字典**，空集合只能写 `set()`。
+>
+> **陷阱二**：`set` 的元素必须**可哈希**。`list` 不行，`tuple` 可以：
+> ```python
+> vis = set()
+> vis.add((x, y))          # ✅ 坐标去重的标准写法
+> vis.add([x, y])          # ❌ TypeError: unhashable type: 'list'
+> ```
+>
+> **陷阱三**：`for x in s` 的顺序**不保证**，且和插入顺序无关
+> （`dict` 从 3.7 起保序，`set` **不保序**）。要有序输出必须 `sorted(s)`。
+
+### `frozenset`：可以当字典键的集合
+
+```python
+memo = {}
+memo[frozenset(state)] = value        # 状态是「一组元素」且与顺序无关时
+```
+
+搜索题里用来给「集合状态」记忆化。但**小值域下用位掩码整数更快**
+（[位运算](../basic/bit.md)）。
+
+---
+
+## 3　`Counter`：无序多重集合
+
+`collections.Counter` 就是 `multiset` 的**无序版本**，本质是 `dict`。
+
+```python
+from collections import Counter
+
+c = Counter()                # 空
+c = Counter(a)               # 从序列计数，O(n)，C 层循环
+c = Counter("aabbc")         # Counter({'a':2, 'b':2, 'c':1})
+
+c[x] += 1                    # 插入一个 x，O(1)。缺键自动为 0，不会 KeyError
+c[x] -= 1                    # 删除一个 x
+if c[x] == 0: del c[x]       # ⚠️ 计数归零要手动删键，否则 len(c) 会算错
+
+c[x]                         # 查询个数，O(1)，不存在返回 0（不报错！）
+sum(c.values())              # 含重复的总个数，O(k)   ← 应该自己维护 total
+len(c)                       # 不同元素个数，O(1)
+c.most_common(k)             # 前 k 大，O(k' log k')
+```
+
+| 操作 | `Counter` | `dict` + `get` |
+| --- | --- | --- |
+| 缺键读取 | 返回 `0` | 需要 `d.get(x, 0)` |
+| 从序列建 | `Counter(a)`，C 层 | 手写循环，Python 层 |
+| 相加/相减 | `c1 + c2`、`c1 - c2` | 手写 |
+| 单次读写速度 | 略慢于 `dict` | **最快** |
+
+> **性能建议**：**批量计数用 `Counter(a)`**（C 层循环，快 3–5 倍）；
+> **循环里频繁增减用普通 `dict` + `get`**（少一层 `__missing__` 调用）。
+> 题解 [`solutions/nowcoder/BISHI5/sol.py`](../solutions/BISHI5.md) 用的就是后者。
+
+> **陷阱**：`c[x]` 读取一个不存在的键**不会**创建它（和 `defaultdict` 不同），
+> 但 `c[x] += 1` 会。所以 `len(c)` 只在手动删除了零计数键之后才等于「不同元素个数」。
+
+### `Counter` 的算术
+
+```python
+c1 + c2          # 各键计数相加
+c1 - c2          # 相减，结果中只保留正数计数
+c1 & c2          # 各键取 min（多重集合的交）
+c1 | c2          # 各键取 max（多重集合的并）
+```
+
+多重集合的交/并用它一行搞定，比手写循环清晰得多。
+
+---
+
+## 4　有序集合的五种替代方案
+
+现在进入本章的核心。当题目要求**前驱 / 后继 / 第 $k$ 小 / 区间计数**时，
+按下表选武器：
+
+| 方案 | 前驱/后继 | 第 $k$ 小 | 值域要求 | Python 现实性 |
+| --- | --- | --- | --- | --- |
+| **值域位图（两级）** | $O(1)$ | $O(V/w)$ | 值域小（$\le 10^7$） | ✅ **最快**，强烈推荐 |
+| **树状数组 + 倍增** | $O(\log V)$ | $O(\log V)$ | 值域小或可离散化 | ✅ 可用，$n\le10^5$ 稳 |
+| **堆 + 懒删除** | ❌ 只能取最值 | ❌ | 无 | ✅ 最值场景专用 |
+| 离线排序 + 树状数组 | $O(\log n)$ | $O(\log n)$ | 需要**离线** | ✅ 能离线就用 |
+| 手写平衡树 / 跳表 | $O(\log n)$ | $O(\log n)$ | 无 | ❌ **常数太大，别写** |
+| `sortedcontainers` | $O(\log n)$ | $O(\log n)$ | 无 | ❌ **判题机没装** |
+
+> **判题机没有 `sortedcontainers`。**
+> 本地测得再好，提交后就是 `ModuleNotFoundError`。
+> 全书代码只依赖标准库。
+
+### 关键判断：值域有多大？
+
+这是选型的第一个分叉点。
+
+| 值域 $V$ | 推荐 |
+| --- | --- |
+| $V \le 10^6$ | **值域位图**（$10^6$ bit = 125KB） |
+| $10^6 < V \le 10^7$ | 值域位图（1.25MB）或树状数组 |
+| $V$ 很大但**元素个数 $n$ 小** | **离散化**后按 $n$ 处理（[桶计数与离散化](../basic/discretization.md)） |
+| $V$ 很大且**在线**（无法预知全部值） | 只能堆 + 懒删除，或换算法 |
+
+**BISHI4 / BISHI5 的值域恰好是 $10^6$ 级别**，这不是巧合——
+出题人把值域限死，就是在暗示「开值域数据结构」。
+
+---
+
+## 5　模板一：值域位图有序集合（**首选**）
+
+思路：把值域切成若干块，**每块用一个 Python 大整数当位图**，
+再用一个「摘要位图」记录哪些块非空。
+
+- 插入 / 删除 / 存在性：一次位运算，$O(1)$；
+- 前驱 / 后继：先在本块内用位运算找，本块没有就去摘要里找相邻非空块，仍是 $O(1)$。
+
+为什么快？因为**所有循环都消失了**——大整数的 `&`、`|`、`>>`、`bit_length` 全是 C 层的多字长运算。
+一个 1024 位的块只占 16 个机器字，一次运算比一次 Python 层循环迭代还便宜。
+
+```python
+class ValueSet:
+    """基于两级位图的有序集合，值域 [0, maxv]。全部操作 O(1)。
+
+    依赖的两个位运算恒等式：
+        v & ((1 << r) - 1)          保留低于第 r 位的部分，最高位 = bit_length() - 1
+        v & -v                      lowbit，最低位的 1，位置 = (v & -v).bit_length() - 1
+
+    兼容 Python 3.9（未使用 int.bit_count）。
+    """
+
+    BITS = 1024                                   # 每块 1024 个值
+
+    def __init__(self, maxv):
+        self.nblk = maxv // self.BITS + 1         # 向上取整：值 maxv 也要有块可放
+        self.blk = [0] * self.nblk                # blk[b] 的第 r 位 = 值 b*BITS+r 是否存在
+        self.summ = 0                             # summ 的第 b 位 = 第 b 块是否非空
+        self.size = 0                             # 元素个数，单独维护，O(1) 回答
+
+    def add(self, x):
+        # BITS 是 2 的幂，divmod 等价于「块号 = x >> 10，位号 = x & 1023」
+        b, r = divmod(x, self.BITS)
+        if not (self.blk[b] >> r) & 1:            # 右移 r 位把目标位挪到最低位再取
+            self.blk[b] |= 1 << r                 # 点亮第 r 位
+            self.summ |= 1 << b                   # 本块至少有一个元素了
+            self.size += 1                        # 先判后改：重复插入不会把 size 算多
+
+    def discard(self, x):
+        b, r = divmod(x, self.BITS)
+        if (self.blk[b] >> r) & 1:                # 不在集合里就静默返回
+            v = self.blk[b] & ~(1 << r)           # 与「第 r 位为 0、其余全 1」的掩码相与
+            self.blk[b] = v
+            if v == 0:
+                self.summ &= ~(1 << b)            # 整块空了，从摘要里摘掉
+            self.size -= 1
+
+    def __contains__(self, x):
+        b, r = divmod(x, self.BITS)
+        return bool((self.blk[b] >> r) & 1)       # 支持 x in s 的写法
+
+    def prev(self, x):
+        """严格小于 x 的最大元素，不存在返回 -1。"""
+        b, r = divmod(x, self.BITS)
+        # (1 << r) - 1 是低 r 位全 1 的掩码，保留位号 0..r-1，恰好排除 x 自身
+        low = self.blk[b] & ((1 << r) - 1)        # 本块中小于 x 的部分
+        if low:
+            # bit_length() 数的是位数，减 1 才是最高位 1 的位号，也就是块内最大者
+            return b * self.BITS + low.bit_length() - 1
+        s = self.summ & ((1 << b) - 1)            # 更左边的非空块
+        if s:
+            bb = s.bit_length() - 1               # 摘要里最高位的 1 = 最靠右的非空块
+            return bb * self.BITS + self.blk[bb].bit_length() - 1    # 该块的最大元素
+        return -1                                 # 左边一个元素都没有
+
+    def next(self, x):
+        """严格大于 x 的最小元素，不存在返回 -1。"""
+        b, r = divmod(x, self.BITS)
+        # 右移 r+1 位丢掉第 0..r 位，剩下的第 j 位对应原来的第 r+1+j 位
+        hi = self.blk[b] >> (r + 1)               # 本块中大于 x 的部分
+        if hi:
+            # (hi & -hi) 取最低位的 1，减 1 后的位数就是位移量 j，原值 = x+1+j
+            return x + 1 + (hi & -hi).bit_length() - 1
+        s = self.summ >> (b + 1)                  # 更右边的非空块
+        if s:
+            bb = b + 1 + (s & -s).bit_length() - 1    # 同样的偏移换算，得到块号
+            v = self.blk[bb]
+            return bb * self.BITS + (v & -v).bit_length() - 1    # 该块的最小元素
+        return -1
+```
+
+### 三条要背下来的位运算恒等式
+
+| 目标 | 表达式 | 说明 |
+| --- | --- | --- |
+| 最高位的 1 的位置 | `v.bit_length() - 1` | $v > 0$ |
+| 最低位的 1（lowbit） | `v & -v` | 树状数组也用它 |
+| 最低位的 1 的位置 | `(v & -v).bit_length() - 1` | |
+| 保留低于第 $r$ 位 | `v & ((1 << r) - 1)` | 找前驱用 |
+| 保留高于第 $r$ 位 | `v >> (r + 1)` | 找后继用 |
+
+> **块大小怎么选？** 太小则摘要位图变大、块数变多；太大则单次大整数运算变慢。
+> 经验值 **512–2048**，取 1024 通常最优（16 个 64 位字）。
+> 值域 $2\times10^6$ 时块数约 1954，摘要本身也只是一个 1954 位的整数，同样一次运算搞定。
+
+### 支持多重性：加一个计数字典
+
+有序**多重**集合 = 上面的位图（管有序性）+ 一个 `dict`（管重复次数）：
+
+```python
+class ValueMultiset(ValueSet):
+    """有序多重集合。位图只记「该值是否出现过」，重数交给 cnt 字典。"""
+
+    def __init__(self, maxv):
+        super().__init__(maxv)
+        self.cnt = {}                             # 值 -> 出现次数；缺键即 0 次
+        self.total = 0                            # 含重复的总个数
+
+    def add(self, x):
+        c = self.cnt.get(x, 0)                    # get 带默认值，省掉一次 in 判断
+        self.cnt[x] = c + 1
+        self.total += 1
+        if c == 0:                                # 第一次出现才点亮位图
+            super().add(x)                        # 位图只管有序性，不管重数
+
+    def discard(self, x):
+        c = self.cnt.get(x, 0)
+        if not c:
+            return                                # 不存在则静默忽略，题面如此要求
+        self.total -= 1
+        if c == 1:                                # 归零才熄灭位图
+            del self.cnt[x]                       # 删键而不是留 0，避免 len(cnt) 失真
+            super().discard(x)
+        else:
+            self.cnt[x] = c - 1                   # 还有剩余，位图保持点亮
+
+    def count(self, x):
+        return self.cnt.get(x, 0)                 # 不存在返回 0，不抛 KeyError
+```
+
+**「位图与计数分离」是这个模板的精髓**：有序性由位图负责（$O(1)$），
+重数由哈希表负责（$O(1)$），两者互不干扰。
+
+---
+
+## 6　模板二：树状数组多重集合
+
+当值域大到位图放不下（比如 $10^8$）但可以离散化，或者还需要
+**「第 $k$ 小」「区间计数」** 时，用树状数组维护值域上的计数。
+
+```python
+class BITMultiset:
+    """树状数组实现的有序多重集合，值域 [0, V-1]。
+
+    insert / erase / count_less : O(log V)
+    kth / prev / next           : O(log V)（树状数组上倍增，不是二分套二分）
+    """
+
+    def __init__(self, V):
+        self.n = V
+        self.tree = [0] * (V + 1)                 # 树状数组用 1..V，下标 0 空置
+        self.total = 0                            # 含重复的元素总数
+        self.LOG = 1
+        while (1 << self.LOG) <= V:               # 预算出不超过 V 的最大 2 的幂的指数
+            self.LOG += 1
+        self.LOG -= 1                             # 退出时已经超了一格，退回来
+
+    def _add(self, i, v):
+        i += 1                                    # 内部 1-indexed
+        n = self.n
+        t = self.tree
+        while i <= n:
+            t[i] += v
+            i += i & -i                           # lowbit：跳到父节点
+        self.total += v                           # v 为 -1 时同一行也能表达删除
+
+    def insert(self, x):
+        self._add(x, 1)                           # 值 x 的计数 +1，允许重复
+
+    def erase(self, x):
+        self._add(x, -1)                          # 计数 -1；调用方需保证 x 确实存在
+
+    def count_le(self, x):
+        """<= x 的元素个数，O(log V)。"""
+        if x < 0:
+            return 0                              # 值域左端之外，一个都不可能有
+        if x >= self.n:
+            return self.total                     # 值域右端之外，全部都算上
+        i = x + 1                                 # 值 x 存在树状数组的第 x+1 格
+        t = self.tree
+        s = 0
+        while i > 0:
+            s += t[i]
+            i -= i & -i                           # 向前：剥掉最低位的 1，跳到左邻一段
+        return s
+
+    def count_less(self, x):
+        return self.count_le(x - 1)               # 严格小于 = 不超过 x-1
+
+    def kth(self, k):
+        """第 k 小（k 从 1 开始），不存在返回 -1。树状数组上倍增，O(log V)。"""
+        if k <= 0 or k > self.total:
+            return -1                             # 排名越界，直接判无解
+        pos = 0                                   # 不变量：前缀 [1, pos] 的计数恒 < k
+        t = self.tree
+        n = self.n
+        for j in range(self.LOG, -1, -1):         # 从高位到低位逐位拼出答案
+            nxt = pos + (1 << j)                  # pos 是 2^(j+1) 的倍数，lowbit(nxt) 即 1<<j
+            if nxt <= n and t[nxt] < k:           # t[nxt] 正好是 (pos, nxt] 整段的计数
+                pos = nxt                         # 整段跨过去，前缀计数仍不足 k
+                k -= t[pos]                       # 扣掉跨过的部分，k 变成剩余排名
+        return pos                                # 转回 0-indexed 的值
+
+    def prev(self, x):
+        """严格小于 x 的最大元素，不存在返回 -1。"""
+        c = self.count_less(x)                    # 小于 x 的有 c 个，那么前驱就是第 c 小
+        return self.kth(c) if c else -1
+
+    def next(self, x):
+        """严格大于 x 的最小元素，不存在返回 -1。"""
+        c = self.count_le(x)                      # 不超过 x 的有 c 个，后继就是第 c+1 小
+        return self.kth(c + 1) if c < self.total else -1
+```
+
+**`kth` 里的倍增是关键**：朴素写法是「二分答案 + 每次 $O(\log V)$ 查前缀和」= $O(\log^2 V)$，
+而在树状数组上从高位往低位试探只要 $O(\log V)$——**在 Python 里这一层优化能救命**。
+
+> **复杂度现实性**：$n = 10^5$、值域 $2\times10^6$ 时 $\log V \approx 21$，
+> 每次操作约 21 次 Python 层循环迭代，总共 $2\times10^6$ 次。
+> 在「其他语言 2 秒」的限制下**偏险但可过**。
+> 同一题用值域位图只要 $10^5$ 次 C 层大整数运算，**快一个数量级**。
+> 这就是 BISHI4/BISHI5 的题解选位图而不选树状数组的原因。
+
+---
+
+## 7　模板三：堆 + 懒删除
+
+只需要**最值**（不需要任意 $x$ 的前驱后继）时，这是最简单的方案。
+
+```python
+import heapq
+
+
+class LazyHeap:
+    """支持任意元素删除的小根堆（懒删除），均摊 O(log n)。
+
+    原理：删除时不真删，只在「待删表」里记一笔；
+          取堆顶时先把已经被标记删除的堆顶弹干净。
+    """
+
+    def __init__(self):
+        self.h = []                               # 物理堆，可能含已被标记删除的元素
+        self.dead = {}                            # 值 -> 待删次数
+        self.size = 0                             # 逻辑大小，不等于 len(self.h)
+
+    def push(self, x):
+        heapq.heappush(self.h, x)
+        self.size += 1
+
+    def erase(self, x):
+        """删除一个值为 x 的元素（保证存在）。O(1)。"""
+        self.dead[x] = self.dead.get(x, 0) + 1    # 只记账，不动堆，所以是 O(1)
+        self.size -= 1
+
+    def _clean(self):
+        h, dead = self.h, self.dead
+        while h and dead.get(h[0], 0):            # 堆顶还欠着删除，就一直弹
+            x = heapq.heappop(h)
+            c = dead[x] - 1
+            if c:
+                dead[x] = c                       # 还有同值的待删，留着计数
+            else:
+                del dead[x]                       # 销完账就删键，dead 不会无限膨胀
+            # 每个元素最多被清理一次，所以 n 次操作总代价仍是 O(n log n)
+
+    def top(self):
+        self._clean()                             # 读之前必须先把失效的堆顶清干净
+        return self.h[0]
+
+    def pop(self):
+        self._clean()
+        self.size -= 1
+        return heapq.heappop(self.h)
+```
+
+> **懒删除的均摊分析**：每个元素最多被 push 一次、被清理一次，
+> 所以 $n$ 次操作总共 $O(n \log n)$。**但堆的物理长度可能远大于逻辑大小**，
+> 所以要单独维护 `size`，不能用 `len(self.h)`。
+
+**局限**：只能回答「最小值是多少」，**回答不了「小于 $x$ 的最大值是多少」**。
+BISHI5 需要任意位置的前驱后继，所以堆方案在那里不适用。
+
+---
+
+## 8　例题
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+
+### BISHI4 【模板】集合操作（简单）
+
+> 维护初始为空的集合 $M$，$n \le 10^5$ 次操作，$0 \le x \le 10^6$：
+> 1 插入（已存在则忽略）；2 删除（不存在则忽略）；3 查询存在性输出 `YES`/`NO`；
+> 4 查询集合大小；5 查询**前驱**（小于 $x$ 的最大数），不存在输出 $-1$；
+> 6 查询**后继**（大于 $x$ 的最小数），不存在输出 $-1$。
+> 题面见 [原题](https://www.nowcoder.com/practice/a37b91f84cdf490b8d8b990794211135)。
+
+**读题的第一个信号是「$0 \le x \le 10^6$」**——值域小且固定，
+看上去不用离散化、不用平衡树，直接开值域数据结构就行。
+
+**但这个信号是假的。** 实测数据里有**负数**，按值域开数组会在 `divmod(x, 1024)`
+拿到负块号后炸在 `1 << b` 上（`ValueError: negative shift count`）。
+好在这题是离线的——$n$ 行操作可以一次读完，
+于是先把所有出现过的 $x$ 去重排序（至多 $10^5$ 个），后面全在下标上做。
+离散化还白捡一个好处：前驱/后继的答案必然是某个插入过的值，
+一定在离散化表里，所以在下标上找完再映射回去，答案不会丢。
+
+离散化之后用的正是 §5 的两级位图：`BITS = 1024`，至多 $10^5 / 1024 + 1 = 98$ 块。
+每次操作只做几次大整数位运算，总复杂度 $O(n \log n)$（瓶颈是排序那一步）。
+
+```python
+import sys
+
+BITS = 1024
+
+
+def main():
+    # 按行切而不是按空白切：操作 4 只有一个数字，按 token 盲读会错位
+    data = sys.stdin.buffer.read().split(b"\n")
+    n = int(data[0])
+
+    # 第一遍：读出操作，顺便收集所有出现过的 x
+    ops = []
+    vals = []
+    for k in range(1, n + 1):
+        p = data[k].split()
+        op = p[0]
+        if op == b"4":                     # 这一行只有一个数字
+            ops.append((4, 0))             # 补一个占位的 0，让元组结构统一
+        else:
+            x = int(p[1])
+            ops.append((int(op), x))
+            vals.append(x)                 # 收集值域：实测数据里 x 可能为负
+
+    # 离散化：把原值压成 0..len(uniq)-1 的连续下标，位图就不必假设值域范围
+    uniq = sorted(set(vals))                     # 下标 -> 原值
+    rank = {v: i for i, v in enumerate(uniq)}    # 原值 -> 下标
+
+    # 两级位图：blk[b] 的第 r 位记「下标 b*BITS+r 是否在集合里」，summ 的第 b 位记「块 b 是否非空」
+    blk = [0] * (len(uniq) // BITS + 1)          # 向上取整；至多 1e5/1024 + 1 = 98 块
+    summ = 0
+    size = 0
+    out = []
+    for op, x in ops:
+        if op == 4:
+            out.append(str(size))          # 集合大小单独维护，O(1)
+            continue
+        i = rank[x]                        # 一律在离散化下标上操作
+        b, r = divmod(i, BITS)             # b 是块号，r 是块内位号
+        if op == 1:
+            if not (blk[b] >> r) & 1:      # 已存在则忽略，避免把 size 算多
+                blk[b] |= 1 << r           # 点亮第 r 位
+                summ |= 1 << b             # 本块至少有一个元素
+                size += 1
+        elif op == 2:
+            if (blk[b] >> r) & 1:          # 不存在则忽略
+                v = blk[b] & ~(1 << r)     # 与「第 r 位为 0、其余全 1」的掩码相与
+                blk[b] = v
+                if v == 0:
+                    summ &= ~(1 << b)      # 整块空了才从摘要里摘掉
+                size -= 1
+        elif op == 3:
+            out.append("YES" if (blk[b] >> r) & 1 else "NO")
+        elif op == 5:                      # 前驱
+            # (1 << r) - 1 是低 r 位全 1 的掩码，保留位号 0..r-1，恰好排除 x 自身
+            low = blk[b] & ((1 << r) - 1)
+            if low:
+                # bit_length() 数位数，减 1 才是最高位 1 的位号，即本块中最大的小于 x 者
+                out.append(str(uniq[b * BITS + low.bit_length() - 1]))
+            else:
+                s = summ & ((1 << b) - 1)  # 本块没有，去更左边的块里找
+                if s:
+                    bb = s.bit_length() - 1        # 最靠右的非空块
+                    out.append(str(uniq[bb * BITS + blk[bb].bit_length() - 1]))
+                else:
+                    out.append("-1")       # 左边一个元素都没有
+        else:                              # 6 后继
+            # 右移 r+1 位丢掉第 0..r 位，剩下的第 j 位对应原来的第 r+1+j 位
+            hi = blk[b] >> (r + 1)
+            if hi:
+                # (hi & -hi) 取最低位的 1，其位数减 1 就是位移量 j，下标 = i+1+j
+                out.append(str(uniq[i + 1 + (hi & -hi).bit_length() - 1]))
+            else:
+                s = summ >> (b + 1)        # 本块没有，去更右边的块里找
+                if s:
+                    bb = b + 1 + (s & -s).bit_length() - 1    # 同样的偏移换算得块号
+                    v = blk[bb]
+                    out.append(str(uniq[bb * BITS + (v & -v).bit_length() - 1]))
+                else:
+                    out.append("-1")
+            # 答案必然是插入过的值，一定在 uniq 表里，所以映射回原值不会丢解
+    sys.stdout.write("\n".join(out) + "\n")      # 一次性输出，省下上万次系统调用
+
+
+main()
+```
+
+**五个坑**：
+
+1. 前驱是**严格**小于 $x$ 的最大值，后继是**严格**大于 $x$ 的最小值，
+   都不含 $x$ 本身，$x$ 在不在集合里都无所谓；
+2. **操作 4 这一行只有一个数字**（其他操作有两个），
+   所以要**按行 `split`** 而不是按 token 游标盲读，否则会错位；
+3. 插入重复元素 / 删除不存在元素都要静默忽略，且不能把 `size` 算错；
+4. 前驱后继不存在时输出 `-1`，不是空行；
+5. **题面写的值域不算数**。$0 \le x \le 10^6$ 只是「参考」，
+   真数据里有负数——这类越界在 OJ 上是常事。
+   离线题里，离散化是对值域假设最省心的免疫方式：多一次 $O(n \log n)$ 排序，
+   换掉「万一越界就当场炸」的全部风险。
+
+题解见 [`solutions/nowcoder/BISHI4/sol.py`](../solutions/BISHI4.md)。
+
+### BISHI5 【模板】多重集合操作（简单）
+
+> 同上，但集合**可重**，且 $|x| \le 10^6$（**有负数**）。
+> 操作 3 查「$x$ 出现的次数」，操作 4 查「含重复计数的总个数」。
+> 题面见 [原题](https://www.nowcoder.com/practice/aaf8b53f6ea74ad6beabed77bb275725)。
+
+在 BISHI4 的基础上加两件事：
+
+1. **平移偏移量**。$x \in [-10^6, 10^6]$，令 `OFFSET = 10**6`，
+   平移后值域变成 $[0, 2\times10^6]$，位图块数 $1954$。
+   **输出前驱后继时别忘了减回 `OFFSET`**——这是本题最容易漏的一行；
+2. **计数字典**。位图只记「该值是否出现过（次数 > 0）」，
+   重数交给 `cnt` 字典。删除时**只有计数从 1 掉到 0 才清位图**。
+
+```python
+# [片段] 只展示与 BISHI4 不同的两个分支，完整代码见 solutions/BISHI5.py
+if op == b"1":                                # 插入一个
+    c = cnt.get(x, 0)                         # 缺键返回 0，省掉一次 in 判断
+    cnt[x] = c + 1
+    total += 1                                # total 含重复，与位图里的元素数不同
+    if c == 0:                                # 第一次出现才点亮位图
+        blk[b] |= 1 << r                      # b、r 由平移后的值算出：divmod(x + OFFSET, BITS)
+        summ |= 1 << b
+elif op == b"2":                              # 删除一个
+    c = cnt.get(x, 0)
+    if c:                                     # 不存在则静默忽略
+        total -= 1
+        if c == 1:                            # 归零才熄灭位图
+            del cnt[x]                        # 删键而不是留 0，否则 len(cnt) 会失真
+            v = blk[b] & ~(1 << r)
+            blk[b] = v
+            if v == 0:
+                summ &= ~(1 << b)             # 整块空了才更新摘要
+        else:
+            cnt[x] = c - 1                    # 还有剩余，位图保持点亮
+```
+
+### 为什么不用其他方案？
+
+| 方案 | 为什么不行 |
+| --- | --- |
+| `Counter` + 每次 `sorted` 找前驱 | 单次 $O(k \log k)$，$10^5$ 次直接爆炸 |
+| `Counter` + `bisect` 维护有序列表 | `list.insert` 是 $O(k)$，最坏 $10^{10}$ 次搬移 |
+| 堆 + 懒删除 | **只能取最值，回答不了任意 $x$ 的前驱后继** |
+| 树状数组 + 倍增 | 正确，但 $10^5 \times 21 = 2\times10^6$ 次 Python 层循环，2 秒限制下偏险 |
+| `sortedcontainers` | **判题机没装** |
+| 手写 Treap / Splay | 每次旋转都是 Python 层对象操作，比树状数组还慢一个数量级 |
+
+题解见 [`solutions/nowcoder/BISHI5/sol.py`](../solutions/BISHI5.md)。
+
+---
+
+## 9　`bisect`：有序**列表**上的二分（不是有序集合）
+
+标准库的 `bisect` 常被误当成有序集合的替代品，它不是。
+
+```python
+import bisect
+
+bisect.bisect_left(a, x)      # 第一个 >= x 的下标，O(log n)
+bisect.bisect_right(a, x)     # 第一个 >  x 的下标，O(log n)
+bisect.insort(a, x)           # 保序插入 —— ⚠️ O(n)，因为 list.insert 是 O(n)
+```
+
+| 用途 | 可用性 |
+| --- | --- |
+| **静态**有序数组上查找 | ✅ $O(\log n)$，完美 |
+| 离线排序后二分 | ✅ 首选 |
+| **动态**插入删除 | ❌ `insort` 是 $O(n)$，$10^5$ 次就是 $10^{10}$ |
+
+> **一句话**：`bisect` 解决「查」，不解决「改」。
+> 需要边改边查，就得上位图 / 树状数组。
+
+`bisect` 的四种边界写法与二分答案，见 [二分](../basic/binary-search.md)。
+
+---
+
+## 10　本章速查
+
+| 需求 | 用什么 |
+| --- | --- |
+| 去重、判存在 | `set`，$O(1)$ |
+| 计数、无序多重集合 | `Counter` / `dict`，$O(1)$ |
+| **有序集合**（前驱/后继），值域小 | **两级值域位图**，$O(1)$ |
+| 有序多重集合，值域小 | **值域位图 + 计数字典**，$O(1)$ |
+| 第 $k$ 小 / 区间计数 | **树状数组 + 倍增**，$O(\log V)$ |
+| 只要最值 + 任意删除 | **堆 + 懒删除**，均摊 $O(\log n)$ |
+| 值域大但元素少 | 先**离散化** |
+| 静态有序数组查找 | `bisect` |
+| 有序集合（在线、值域无限） | 换算法，或接受 $O(\log^2)$ |
+
+| 陷阱 | 正确做法 |
+| --- | --- |
+| `{}` 是空字典 | 空集合写 `set()` |
+| `set` 元素不可哈希 | 坐标用 `tuple` 不用 `list` |
+| `set` / `Counter` 遍历无序 | 要有序输出必须 `sorted()` |
+| `Counter` 计数归零 | 手动 `del c[x]`，否则 `len` 算错 |
+| `bisect.insort` | **是 $O(n)$**，不是 $O(\log n)$ |
+| `sortedcontainers` | **判题机没装，禁止依赖** |
+| 前驱/后继 | 一律理解为**严格**小于 / 大于 |
+| 值域含负数 | 先加 `OFFSET` 平移，输出时减回来 |
+
+| 位运算恒等式（位图必备） | |
+| --- | --- |
+| `v.bit_length() - 1` | 最高位 1 的位置 |
+| `v & -v` | lowbit |
+| `(v & -v).bit_length() - 1` | 最低位 1 的位置 |
+| `v & ((1 << r) - 1)` | 保留低于第 $r$ 位 → 找前驱 |
+| `v >> (r + 1)` | 保留高于第 $r$ 位 → 找后继 |

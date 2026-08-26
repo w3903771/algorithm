@@ -1,0 +1,618 @@
+---
+id: python/control-flow
+title: 条件与循环
+volume: 1
+lang: py
+---
+
+# 第 10 章　条件与循环
+
+<!-- CHAPTER-EXAMPLES -->
+
+控制流是所有语言都有的东西，从 C++ 转过来基本不用学。这一章的重点因此放在**差异**上：
+Python 没有 `do-while`、没有 C 式三段 `for`、`switch` 要到 3.10 才有，
+却多了一个别的语言几乎没有的 **`for-else` / `while-else`**。
+
+另外还有一个纯竞赛话题：**Python 的循环本身就是性能瓶颈**，
+所以「怎么少写循环」比「循环怎么写」更重要。
+
+---
+
+## 1　if / elif / else
+
+```python
+if cond1:
+    ...
+elif cond2:
+    ...
+elif cond3:
+    ...
+else:
+    ...
+```
+
+和 C++ 的差异：
+
+| 项 | C++ | Python |
+| --- | --- | --- |
+| 条件括号 | `if (x > 0)` 必须有 | `if x > 0:` 不要写括号 |
+| 块的界定 | `{}` | 缩进 |
+| `else if` | `else if` | **`elif`**（一个词） |
+| 结尾 | 无 | 冒号 `:` 不能忘 |
+| 赋值笔误 | `if (x = 1)` 能编译 | `if x = 1:` 直接语法错 |
+
+最后一行是 Python 的一个小优点：**条件里不可能写出 `=` 笔误**，
+真要在条件里赋值必须显式用海象运算符 `:=`。
+
+### 条件可以是任何对象
+
+条件表达式不需要是 `bool`，Python 按「真值测试」规则判断（假值清单见
+[数据类型与转换](types.md#4-布尔-bool)）：
+
+```python
+if a:              # a 非空列表 / 非空串 / 非零数
+if not a:          # a 是 []、""、0、None、set()、{}
+while stack:       # 栈非空
+```
+
+> **坑**：`if not a` 分不清「空列表」「`None`」「`0`」。
+> 当 `0` 是合法数据时必须写 `if a is None`，否则 `a == 0` 会被误判成「没有数据」。
+
+### 链式比较与常见简写
+
+```python
+if 0 <= i < n and 0 <= j < m:            # 网格越界判断的标准写法
+    ...
+
+print("YES" if ok else "NO")             # 三元表达式
+ans = max(ans, cur)                      # 代替 if cur > ans: ans = cur
+```
+
+`max`/`min` 代替 `if` 是竞赛里的高频简化，既短又快（C 层比较）。
+
+### 单行 if 与嵌套
+
+```python
+if not ok: return -1                     # 冒号后只有一条简单语句，可以同行
+```
+
+嵌套 `if` 用缩进表达，没有 `{}` 的歧义问题：
+
+```python
+if x > 0:
+    if y > 0:
+        print("第一象限")
+    else:
+        print("第四象限")
+```
+
+> Python 里不存在 C 的「dangling else」问题——`else` 属于哪个 `if` 由缩进唯一确定。
+
+### 没有 switch（3.10 之前）
+
+Python 3.10 引入了 `match` 语句：
+
+```python
+# 仅作了解，本教程环境是 3.9，不能使用
+match cmd:
+    case 1:
+        ...
+    case 2 | 3:
+        ...
+    case _:
+        ...
+```
+
+它其实是「结构化模式匹配」，远比 `switch` 强大（能解构元组、列表、类），
+但**多数 OJ 的 Python 版本停留在 3.8/3.9，写了直接编译错误**。全书代码一律兼容 3.9。
+
+3.9 环境下的替代方案有两个：
+
+```python
+# 方案一：if / elif 链，最直白，分支少时用它
+if op == 1:
+    ...
+elif op == 2:
+    ...
+
+# 方案二：字典分派表，分支多且各分支是独立函数时用它
+handlers = {1: do_push, 2: do_pop, 3: do_top}
+handlers[op]()
+```
+
+字典分派是 $O(1)$ 的，`elif` 链是 $O(\text{分支数})$。但分支通常只有几个，
+`elif` 链的常数更小，**竞赛里绝大多数情况直接写 `elif` 即可**。
+
+---
+
+## 2　while
+
+```python
+while 条件:
+    循环体
+else:
+    正常结束时执行
+```
+
+```python
+lo, hi = 0, n - 1
+while lo < hi:                  # 区间还剩两个及以上元素时才继续缩小
+    mid = (lo + hi) // 2        # 向下取整，mid 落在左半边，保证 lo 一定会前进
+    if check(mid):
+        hi = mid                # mid 已满足条件，它本身可能就是答案，不能跳过
+    else:
+        lo = mid + 1            # mid 不满足条件，答案只可能在它右边
+```
+
+> 循环终止时 `lo == hi`，即区间收缩成一个点，那就是答案。
+> 二分的完整讨论（含「答案在左边」的另一种写法与开闭区间的取舍）见
+> [二分](../basic/binary-search.md)。
+
+### 没有 do-while
+
+Python 没有 `do { } while ();`。等价写法是「无限循环 + 尾部判断」：
+
+```python
+while True:
+    body()
+    if not cond:
+        break
+```
+
+### 无限循环的两个正当用途
+
+```python
+while True:                      # 用途一：读到没数据为止
+    line = sys.stdin.readline()
+    if not line:
+        break
+    ...
+
+while True:                      # 用途二：辗转相除等「算到收敛」的循环
+    if b == 0:
+        break
+    a, b = b, a % b
+```
+
+> `while 1:` 和 `while True:` 在 Python 3 里速度完全一样（`True` 是常量，会被折叠）。
+> Python 2 时代 `while 1` 更快的说法已经过时了。
+
+---
+
+## 3　for 与可迭代对象
+
+Python 的 `for` 是 **for-each**，不是 C 的三段式：
+
+```python
+for x in a:                    # 遍历元素
+for i in range(n):             # 遍历下标
+for i, x in enumerate(a):      # 同时要下标和元素
+for k, v in d.items():         # 遍历字典
+for x, y in zip(a, b):         # 并行遍历两个序列
+for ch in s:                   # 遍历字符串的每个字符
+```
+
+**没有 `for (int i = 0; i < n; i += 2)` 这种写法**，步长交给 `range` 的第三个参数。
+
+### 遍历时修改容器 = 未定义行为
+
+```python
+for x in a:
+    if x < 0:
+        a.remove(x)              # ❌ 会跳过元素，且结果不可预期
+```
+
+正确做法是**新建一个列表**（推导式）或**倒着遍历下标**：
+
+```python
+a = [x for x in a if x >= 0]                 # ✅ 推荐
+for i in range(len(a) - 1, -1, -1):          # ✅ 倒序删除，下标不会失效
+    if a[i] < 0:
+        del a[i]
+```
+
+字典更严格：遍历中增删键会直接抛 `RuntimeError: dictionary changed size during iteration`。
+要边遍历边删，先 `list(d.keys())` 拷一份键。
+
+---
+
+## 4　range 的三个参数
+
+```python
+range(stop)                # 0, 1, ..., stop-1
+range(start, stop)         # start, ..., stop-1
+range(start, stop, step)   # 按 step 递增，step 可以为负
+```
+
+**永远左闭右开**，和切片一致。
+
+```python
+range(5)                   # 0 1 2 3 4
+range(1, 6)                # 1 2 3 4 5
+range(0, 10, 2)            # 0 2 4 6 8
+range(10, 0, -1)           # 10 9 8 ... 1      ← 倒序，注意 stop=0 取不到
+range(len(a) - 1, -1, -1)  # n-1 ... 1 0       ← 倒序遍历下标的标准写法
+range(5, 1)                # 空，不报错
+range(1, 10, -1)           # 空，不报错
+```
+
+> **最高频的下标错误**：想倒着遍历到 0，`stop` 必须写 `-1` 而不是 `0`。
+> `range(n-1, 0, -1)` 会漏掉下标 0。
+
+### range 是对象，不是列表
+
+```python
+r = range(10 ** 9)          # 瞬间完成，不占内存
+len(r)                      # 1000000000
+r[500]                      # 500，支持索引
+5 in r                      # True，且是 O(1)（等差数列直接算）
+r[::2]                      # range(0, 1000000000, 2)，切片还是 range
+list(r)                     # ❌ 真的会分配 10 亿个元素，直接 MLE
+```
+
+`range` 存的只有 `start`/`stop`/`step` 三个数。所以 `for i in range(10**7)` 不占内存，
+但**循环本身依然要跑 $10^7$ 次**，Python 里大约 1 秒——这才是瓶颈。
+
+> `x in range(...)` 是 $O(1)$，但 `x in list(range(...))` 是 $O(n)$。差别巨大。
+
+### 用 range 生成等差数列
+
+```python
+list(range(0, 101, 10))     # [0, 10, 20, ..., 100]
+sum(range(1, n + 1))        # 1+2+...+n，C 层求和，比循环快得多
+```
+
+---
+
+## 5　break、continue 与 else
+
+### break / continue
+
+和 C++ 完全一致：`break` 跳出**最内层**循环，`continue` 进入下一次迭代。
+
+```python
+for x in a:
+    if x < 0:
+        continue             # 跳过负数
+    if x > limit:
+        break                # 遇到超限就停
+    process(x)
+```
+
+**Python 没有 `goto`，也没有带标签的 break。**跳出多层循环有三种办法：
+
+```python
+# 办法一：标志变量（最直白）
+found = False
+for i in range(n):
+    for j in range(m):
+        if g[i][j] == target:
+            found = True
+            break
+    if found:
+        break
+
+# 办法二：包成函数，用 return 跳出（推荐，最干净）
+def find(g):
+    for i in range(n):
+        for j in range(m):
+            if g[i][j] == target:
+                return i, j
+    return -1, -1
+
+# 办法三：用 for-else（见下）
+```
+
+> **办法二是竞赛里的最优解**：`return` 天然穿透所有层，而且函数内的局部变量访问更快。
+
+### for-else / while-else：`else` 的真实含义
+
+这是 Python 独有、且**名字起得最差**的一个语法。
+
+> **`else` 子句在「循环正常结束」时执行，也就是「没有被 `break` 打断」时执行。**
+> 把它读作 **`nobreak`** 就全对了。
+
+```python
+for x in a:
+    if x == target:
+        print("找到了")
+        break
+else:
+    print("没找到")          # 只有循环跑完一遍都没 break 才会执行
+```
+
+三条必须记牢的规则：
+
+| 情况 | `else` 是否执行 |
+| --- | --- |
+| 循环正常跑完（包括**一次都没循环**，如 `range(0)`） | **执行** |
+| 被 `break` 打断 | **不执行** |
+| 被 `return` / 异常带出去 | 不执行（函数都退出了） |
+| 循环体里用了 `continue` | 不影响，正常结束照样执行 |
+
+`while-else` 同理，「正常结束」指**条件变为假而退出**：
+
+```python
+while lo < hi:
+    ...
+    if bad:
+        break
+else:
+    print("二分正常收敛")
+```
+
+### for-else 在竞赛里的典型用法
+
+**判素数**——「试除到底都没找到因子」正是 `nobreak` 语义：
+
+```python
+import math
+
+def is_prime(n):
+    if n < 2:                              # 0 和 1 不是素数，负数同理
+        return False
+    # 合数 n 必有一个不超过 sqrt(n) 的因子，所以试除到 sqrt(n) 就够了；
+    # isqrt 是整数平方根（向下取整），+1 是因为 range 右端不含，
+    # 不加就会漏掉 n 是完全平方数的情形（如 n = 9 时 i 取不到 3）
+    for i in range(2, math.isqrt(n) + 1):
+        if n % i == 0:
+            return False
+    return True
+```
+
+上面用 `return` 更清楚。但在不方便包函数的地方，`for-else` 能省掉标志变量：
+
+```python
+for i in range(2, math.isqrt(n) + 1):
+    if n % i == 0:
+        print("No")
+        break
+else:
+    print("Yes")
+```
+
+**搜索类问题**——「所有分支都试过了仍无解」：
+
+```python
+for cand in candidates:
+    if check(cand):
+        ans = cand
+        break
+else:
+    ans = -1                 # 全试过了，无解
+```
+
+> **要不要用 for-else？** 自己写可以用，但要留一行注释。
+> 它确实能消除标志变量，但绝大多数读者会把这个 `else` 误读成
+> 「循环结束后总要执行的收尾」。团队协作、面试白板上，标志变量或函数封装更稳妥。
+
+---
+
+## 6　循环性能：Python 里最贵的东西
+
+一条经验数据：**CPython 的纯 Python 循环大约每秒执行 $10^7$ 次简单操作**（带列表索引和算术）。
+时限 1 秒（Python 通常给 2 秒）的题，循环总次数超过 $10^7$ 就要开始担心。
+
+| 总循环次数 | Python 预期 | 对策 |
+| --- | --- | --- |
+| $\le 10^6$ | 稳过 | 随便写 |
+| $10^6 \sim 10^7$ | 1–3 秒，取决于循环体 | 把逻辑塞进函数、减少属性查找 |
+| $10^7 \sim 10^8$ | 大概率 TLE | 改用内建函数 / `map` / 位运算压状态 |
+| $> 10^8$ | 必然 TLE | 换算法 |
+
+### 优化一：`enumerate` 而不是 `range(len(a))`
+
+```python
+for i in range(len(a)):        # ❌ 每次迭代要做一次列表索引 a[i]
+    use(i, a[i])
+
+for i, x in enumerate(a):      # ✅ 索引在 C 层完成，快约 20%–30%
+    use(i, x)
+```
+
+`enumerate(a, start)` 可以指定起始编号，处理 1-indexed 的题目很方便：
+
+```python
+for i, x in enumerate(a, 1):   # i 从 1 开始
+    ...
+```
+
+只用元素不用下标时，**连 `enumerate` 都别要**：
+
+```python
+for x in a:                    # 最快
+```
+
+| 写法 | 相对耗时 |
+| --- | --- |
+| `for x in a` | 1.0× |
+| `for i, x in enumerate(a)` | 约 1.3× |
+| `for i in range(len(a))` + `a[i]` | 约 1.8× |
+
+### 优化二：把循环交给内建函数
+
+能用一个 C 层调用解决的，绝不写 Python 循环：
+
+```python
+s = 0
+for x in a:
+    s += x                       # ❌ 约 5× 慢
+s = sum(a)                       # ✅
+
+mx = -inf
+for x in a:
+    if x > mx: mx = x            # ❌
+mx = max(a)                      # ✅
+
+cnt = 0
+for x in a:
+    if x == v: cnt += 1          # ❌
+cnt = a.count(v)                 # ✅
+```
+
+### 优化三：把热点循环放进函数
+
+模块级的全局变量访问走字典（`LOAD_GLOBAL`），函数内的局部变量走数组下标（`LOAD_FAST`）。
+把主逻辑包进 `main()` 通常能白捡 20%–30%。
+
+高频调用的全局名字也可以「缓存成局部变量」：
+
+```python
+def main():
+    push = stack.append           # 把方法查找提到循环外
+    for x in a:
+        push(x)                   # 比 stack.append(x) 快
+```
+
+### 优化四：循环不变量外提
+
+```python
+for i in range(n):
+    for j in range(m):
+        g[i][j] += base[i]        # ❌ 每次都要索引 g[i] 和 base[i]
+
+for i in range(n):
+    row, b = g[i], base[i]        # ✅ 提到外层
+    for j in range(m):
+        row[j] += b
+```
+
+这在二维 DP 里效果显著。更多技巧见
+[复杂度与Python性能](../toolkit/complexity.md)。
+
+---
+
+## 7　例题
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+
+### BISHI16　计算一年中的第几天（入门，模拟）
+
+> 输入年、月、日（$1 \le Y \le 3000$，$1 \le M \le 12$，$1 \le D \le 31$），
+> 输出该日期是当年的第几天。**输入可能有多组数据**，读到文件末尾为止。
+> 题面见 [原题](https://www.nowcoder.com/practice/178aa3dafb144bb8b0445edb5e9b812a)。
+
+这题考三件事：**EOF 多组读入**、**闰年判定**、**前缀累加**。
+
+```python
+import sys
+
+# 每个月的天数（非闰年），下标 0 占位，方便按 1..12 直接取
+DAYS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+
+def main():
+    out = []
+    for line in sys.stdin:
+        if not line.split():                 # 跳过空行，容错
+            continue
+        y, m, d = map(int, line.split())
+        leap = (y % 4 == 0 and y % 100 != 0) or y % 400 == 0
+        total = sum(DAYS[1:m]) + d           # 前 m-1 个月的天数 + 当月的 d 天
+        if leap and m > 2:                   # 过了 2 月才加闰日
+            total += 1
+        out.append(total)
+    sys.stdout.write("\n".join(map(str, out)) + "\n")
+
+
+main()
+```
+
+三个要点：
+
+- **闰年公式**：`(y % 4 == 0 and y % 100 != 0) or y % 400 == 0`。
+  「四年一闰，百年不闰，四百年再闰」，三个条件缺一不可。
+- **`sum(DAYS[1:m])` 代替循环**。`DAYS[1:m]` 是 $m-1$ 个元素的切片，
+  `sum` 在 C 层完成。虽然这里 $m \le 12$ 无所谓性能，但这是应该形成的肌肉记忆。
+- **`if leap and m > 2`**，不是 `m >= 2`。1 月和 2 月的日期不受闰日影响，
+  因为 2 月 29 日排在 2 月内部所有日期之后。这是本题最常见的差一错误。
+
+如果坚持用循环写累加（更贴近 C++ 的思路）：
+
+```python
+total = d
+for i in range(1, m):                        # 注意是 range(1, m)，不含 m
+    total += DAYS[i]
+```
+
+> **多组数据是这题的隐藏坑**。题目描述里「输入可能有多组测试数据」写在**输出描述**那一段，
+> 极易漏读，只处理一组就 WA。竞赛中养成习惯：**输出描述也要逐字读完**。
+
+### BISHI19　乒乓球（简单，模拟）
+
+> 给一串 `W`/`L` 记录（$1 \le |s| \le 10^5$），分别按 **11 分制**和 **21 分制**统计每局比分。
+> 一局结束的条件是：某方得分 $\ge 11$（或 $21$）**且**双方分差 $\ge 2$。
+> 读取结束时若当前局未结束，也要输出当前比分。两部分之间用空行分隔。
+> 题面见 [原题](https://www.nowcoder.com/practice/78660925b1cd49b6b2e43cb375ed7945)。
+
+同一套逻辑跑两遍，只有「胜负分数线」不同——**把它抽成参数，写一个函数**：
+
+```python
+import sys
+
+
+def play(record, limit):
+    """按 limit 分制统计每局比分，返回结果行的列表。"""
+    res = []
+    w = l = 0
+    for ch in record:
+        if ch == "W":
+            w += 1
+        else:
+            l += 1
+        if (w >= limit or l >= limit) and abs(w - l) >= 2:
+            res.append("%d:%d" % (w, l))
+            w = l = 0                        # 新局比分归零
+    res.append("%d:%d" % (w, l))             # 末尾未结束的一局也要输出
+    return res
+
+
+def main():
+    s = sys.stdin.read()
+    record = [c for c in s if c in "WL"]     # 过滤掉换行、空格等杂字符
+    out = play(record, 11) + [""] + play(record, 21)
+    sys.stdout.write("\n".join(out) + "\n")
+
+
+main()
+```
+
+本题涉及的循环要点：
+
+- **结束判定必须在每次得分后立刻做**，不能攒到最后。这就是「循环体内先更新状态、再判断」的标准结构，
+  和 [输入输出处理](../toolkit/io.md) 里零尾模式的
+  「先取值、再判哨兵」是同一个套路。
+- **`or` 和 `and` 的优先级**：`and` 比 `or` 紧，所以
+  `w >= limit or l >= limit and abs(w-l) >= 2` 会被解析成
+  `w >= limit or (l >= limit and abs(w-l) >= 2)`，**完全是另一个意思**。
+  外层括号不能省。这类条件一律加括号，规则同位运算。
+- **末尾那一局无条件输出**（哪怕是 `0:0`）。这是 NOIP 原题的判定惯例，
+  漏掉最后一行是本题通过率只有 34% 的主要原因。
+- **不要用 `if` 判断分制写两遍代码**。抽成带参数的函数，既短又不会出现「改了一处忘了另一处」。
+- 输入长度 $10^5$，一趟循环 $10^5$ 次、跑两趟，共 $2 \times 10^5$，Python 毫无压力。
+  但注意**不要在循环里 `print`**——$10^5$ 次 `print` 的开销比循环本身还大。
+
+完整题解：[`solutions/nowcoder/BISHI16/sol.py`](../solutions/BISHI16.md)、[`solutions/nowcoder/BISHI19/sol.py`](../solutions/BISHI19.md)
+
+---
+
+## 8　本章速查
+
+| 要点 | 结论 |
+| --- | --- |
+| `else if` | Python 写 **`elif`** |
+| 条件括号 | 不写，冒号不能忘 |
+| `switch` | 3.10 才有 `match`，**目标环境 3.9 不能用**；用 `elif` 链或字典分派 |
+| `do-while` | 没有，用 `while True` + 尾部 `break` |
+| C 式 `for` | 没有，用 `range(start, stop, step)` |
+| 倒序下标 | `range(len(a) - 1, -1, -1)`，`stop` 是 **-1** 不是 0 |
+| `range` | 是对象不是列表，`x in range(...)` 是 $O(1)$，别 `list(range(10**9))` |
+| 遍历时改容器 | 列表会跳元素，字典直接抛 `RuntimeError` |
+| 跳出多层循环 | 没有 `goto`；**首选包成函数用 `return`** |
+| **`for-else`** | `else` = **「没 `break` 才执行」**，读作 `nobreak` |
+| 空循环 + `else` | 一次都没进循环，`else` **照样执行** |
+| 遍历下标+元素 | `enumerate(a)`，比 `range(len(a))` 快 20%–30% |
+| 只要元素 | 直接 `for x in a`，最快 |
+| 求和/求最值 | `sum(a)` / `max(a)`，别写循环 |
+| 循环上限 | 纯 Python 循环约 $10^7$ 次/秒，超 $10^7$ 就要想办法 |
+| 热点循环 | 包进函数、把方法查找和不变量提到循环外 |

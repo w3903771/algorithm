@@ -1,0 +1,578 @@
+/* ==========================================================================
+   算法笔记 · 站点样式
+   视觉取自判题机：等宽题号、AC 绿、克制的墨蓝。
+   只覆盖 Material 的设计令牌与本站自有组件，不改主题结构。
+   ========================================================================== */
+
+:root {
+  /* 字体：不加载 Google Fonts，直接用系统里已有的中英文字体 */
+  --md-text-font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    "Source Han Sans SC", sans-serif;
+  --md-code-font-family:
+    "JetBrains Mono", "Cascadia Code", "SF Mono", "Menlo", "Consolas",
+    "Sarasa Mono SC", ui-monospace, monospace;
+
+  /* 判题配色 */
+  --alg-ink: #1c2b3a;
+  --alg-ink-deep: #101a24;
+  --alg-rule: #e3e7ec;
+  --alg-muted: #5a6b7c;
+  --alg-ac: #00875a;         /* 已验证 / 通过 */
+  --alg-ac-soft: #e6f4ee;
+  --alg-warn: #b45309;       /* 坑点 / PyPy3 */
+  --alg-warn-soft: #fdf2e4;
+  --alg-surface: #f7f9fb;
+
+}
+
+/* palette 里写的是 primary/accent: custom，配色在这里给 */
+/* 注意：scheme / primary 属性挂在 <body> 上，:root（<html>）里写同名变量会被它盖掉，
+   所以链接色这类令牌必须写在同一批选择器里。 */
+[data-md-color-primary="custom"] {
+  --md-typeset-a-color: #1b5fa8;
+  --md-primary-fg-color: var(--alg-ink);
+  --md-primary-fg-color--light: #2f4356;
+  --md-primary-fg-color--dark: var(--alg-ink-deep);
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: var(--alg-ac);
+  --md-accent-fg-color--transparent: var(--alg-ac-soft);
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-scheme="slate"] {
+  --alg-ink: #0f1720;
+  --alg-rule: #2a3644;
+  --alg-muted: #98a7b6;
+  --alg-ac: #4cc38a;
+  --alg-ac-soft: rgba(76, 195, 138, 0.14);
+  --alg-warn: #e3a008;
+  --alg-warn-soft: rgba(227, 160, 8, 0.14);
+  --alg-surface: rgba(255, 255, 255, 0.04);
+
+  --md-accent-fg-color: var(--alg-ac);
+}
+
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-typeset-a-color: #8ab4f8;
+}
+
+/* --- 正文可读性 ------------------------------------------------------- */
+
+.md-typeset {
+  line-height: 1.78;                    /* 中文密度高，行距给足 */
+  letter-spacing: 0.01em;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* Material 默认把 h1 调淡，章标题是这本书的骨架，压回正文色 */
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+  margin-top: 2.4em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--alg-rule);
+}
+
+/* 章号、题号一律等宽等距，扫读时数字对齐 */
+.md-typeset h1,
+.md-nav__link,
+.md-typeset table :is(td, th) {
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset blockquote {
+  border-left-color: var(--alg-ac);
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset table:not([class]) {
+  font-size: 0.76rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--alg-surface);
+}
+
+/* 行内代码不抢戏 */
+.md-typeset code {
+  font-size: 0.86em;
+  border-radius: 3px;
+}
+
+/* MathJax 公式在窄屏上可横向滚动，不撑破版心 */
+.md-typeset mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}
+
+/* --- 首页 ------------------------------------------------------------- */
+
+.hero {
+  margin: 0 0 3.2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--alg-rule);
+}
+
+/* 图标压在 eyebrow 之上，当视觉锚点用；不参与文字基线，所以单独给下边距 */
+.hero__logo {
+  display: block;
+  width: 88px;
+  height: 88px;
+  margin: 0 0 1rem;
+}
+
+.hero__eyebrow {
+  font-family: var(--md-code-font-family);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--alg-ac);
+  margin: 0 0 0.6rem;
+}
+
+.md-typeset .hero__title {
+  color: var(--md-default-fg-color);
+  font-size: 2.5rem;
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+}
+
+.md-typeset .hero__lede {
+  max-width: 34em;
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 1.4rem;
+}
+
+/* Material 的 .md-typeset ul:not([hidden]) 权重更高，这里补到同等权重 */
+.md-typeset ul.hero__stats:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2.2rem;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ul.hero__stats li {
+  margin: 0.4rem 0 0;
+  list-style: none;
+}
+
+.hero__num {
+  display: block;
+  font-family: var(--md-code-font-family);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--alg-ink);
+}
+
+[data-md-color-scheme="slate"] .hero__num {
+  color: var(--md-default-fg-color);
+}
+
+.hero__num--ac { color: var(--alg-ac); }
+
+.hero__label {
+  font-size: 0.66rem;
+  color: var(--alg-muted);
+}
+
+.md-typeset .hero .md-button {
+  margin: 0 0.4rem 0.4rem 0;
+}
+
+/* --- 首页三组卡片：为什么值得读 / 怎么读 / 三卷 ------------------------- */
+
+/* 三组都是「等宽卡片顺着排」，所以共用一套栅格。用 auto-fit + minmax 而不是
+   固定列数：窄屏自动掉到一列，不必写断点。 */
+.proof,
+.readpath {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2.4rem;
+}
+
+.proof__card,
+.readpath__card {
+  border: 1px solid var(--alg-rule);
+  border-radius: 0.2rem;
+  padding: 1.1rem 1.2rem 1.2rem;
+  background: var(--alg-surface);
+}
+
+[data-md-color-scheme="slate"] .proof__card,
+[data-md-color-scheme="slate"] .readpath__card {
+  background: transparent;
+  border-color: var(--md-default-fg-color--lightest);
+}
+
+/* 卡片里的 h3 是卡片标题，不该带 Material 默认的大上边距 */
+.md-typeset .proof__card > h3,
+.md-typeset .readpath__card > h3 {
+  margin: 0.35rem 0 0.6rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset .proof__card > p:last-child,
+.md-typeset .readpath__card > p:last-child {
+  margin-bottom: 0;
+}
+
+/* 卡片的第一段只装那个纯 span 的标签／序号，markdown 会给它加段落间距 */
+.md-typeset .proof__card > p:first-child,
+.md-typeset .readpath__card > p:first-child {
+  margin: 0;
+  line-height: 1;
+}
+
+.md-typeset .proof__card p,
+.md-typeset .readpath__card p {
+  font-size: 0.75rem;
+  line-height: 1.75;
+  color: var(--md-default-fg-color--light);
+}
+
+/* 「题解 / 正文 / 路线」小标签：和 eyebrow 同一套等宽大写字形 */
+.proof__tag {
+  display: inline-block;
+  font-family: var(--md-code-font-family);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--alg-ac);
+  background: var(--alg-ac-soft);
+  border-radius: 0.15rem;
+  padding: 0.1rem 0.4rem;
+}
+
+[data-md-color-scheme="slate"] .proof__tag {
+  background: transparent;
+  border: 1px solid var(--alg-ac);
+}
+
+/* 「01 / 02 / 03」序号：压在标题上方，当装饰用 */
+.readpath__no {
+  display: block;
+  font-family: var(--md-code-font-family);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--alg-rule);
+}
+
+[data-md-color-scheme="slate"] .readpath__no {
+  color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .readpath__card .md-button {
+  margin: 0.2rem 0 0;
+  font-size: 0.66rem;
+  padding: 0.25em 0.8em;
+}
+
+/* --- 三卷：一行一卷，数字挂左边 ---------------------------------------- */
+
+.volumes {
+  margin: 1.2rem 0 2.4rem;
+  border-top: 1px solid var(--alg-rule);
+}
+
+/* 两列：左边是数字块，右边是文字。数字与「章」必须包在自己的 div 里——
+   markdown 会把裸 span 连同后面的文字一起裹进同一个 <p>，那样栅格就落空了。 */
+.volume {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  align-items: baseline;
+  column-gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--alg-rule);
+}
+
+.volume__num {
+  text-align: right;
+  line-height: 1;
+}
+
+[data-md-color-scheme="slate"] .volumes,
+[data-md-color-scheme="slate"] .volume {
+  border-color: var(--md-default-fg-color--lightest);
+}
+
+.volume__n {
+  display: block;
+  font-family: var(--md-code-font-family);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+  color: var(--alg-ink);
+}
+
+[data-md-color-scheme="slate"] .volume__n { color: var(--md-default-fg-color); }
+
+.volume__k {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.62rem;
+  color: var(--alg-muted);
+}
+
+.md-typeset .volume p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--md-default-fg-color--light);
+}
+
+/* 窄屏：数字改成横排在文字上方，别让 3.2rem 那一列吃掉半个屏 */
+@media screen and (max-width: 44.9375em) {
+  .volume { grid-template-columns: 1fr; row-gap: 0.4rem; }
+  .volume__num { text-align: left; }
+  .volume__n,
+  .volume__k { display: inline; }
+  .volume__k { margin-left: 0.2rem; }
+}
+
+/* --- 章节盘：整本书的地图 ---------------------------------------------- */
+
+/* 十个部分章数从 3 到 16 不等，用网格会按最高的一行对齐、留下大片空白，
+   多栏布局则是顺着流排，紧凑得多。 */
+.chapter-map {
+  column-width: 17rem;
+  column-gap: 2rem;
+  margin: 1.2rem 0 2rem;
+}
+
+.cm-part {
+  break-inside: avoid;
+  margin-bottom: 1.6rem;
+}
+
+/* 部分索引页里只有一段，不分栏，按顺序读 */
+.chapter-map--single { column-width: auto; column-count: 1; }
+
+.cm-part__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 0 0 0.5rem !important;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--alg-ink);
+  font-size: 0.8rem !important;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .cm-part__title {
+  border-bottom-color: var(--alg-rule);
+}
+
+.cm-part__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cm-part__title a:hover { color: var(--alg-ac); }
+
+.cm-part__count {
+  flex: none;
+  font-family: var(--md-code-font-family);
+  font-size: 0.62rem;
+  font-weight: 400;
+  color: var(--alg-muted);
+}
+
+.md-typeset ol.cm-list,
+.md-typeset ul.cm-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset .cm-item {
+  margin: 0;
+  list-style: none;
+}
+
+.cm-item a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.28rem 0.4rem 0.28rem 0;
+  border-bottom: 1px solid var(--alg-rule);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  transition: background-color 120ms, padding-left 120ms;
+}
+
+.cm-item a:hover {
+  background: var(--alg-surface);
+  padding-left: 0.35rem;
+  color: var(--alg-ac);
+}
+
+.cm-item__no {
+  flex: none;
+  width: 2.1rem;
+  font-family: var(--md-code-font-family);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.66rem;
+  color: var(--alg-muted);
+}
+
+.cm-item a:hover .cm-item__no { color: var(--alg-ac); }
+
+.cm-item__title {
+  flex: 1 1 auto;
+  font-size: 0.76rem;
+}
+
+.cm-item__ex {
+  flex: none;
+  font-family: var(--md-code-font-family);
+  font-size: 0.6rem;
+  color: var(--alg-muted);
+  opacity: 0.75;
+}
+
+/* --- 元信息小标签 ------------------------------------------------------ */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: -0.4rem 0 1rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.08rem 0.42rem;
+  border: 1px solid var(--alg-rule);
+  border-radius: 2px;
+  font-family: var(--md-code-font-family);
+  font-size: 0.6rem;
+  line-height: 1.6;
+  color: var(--alg-muted);
+  white-space: nowrap;
+}
+
+.chip--ok {
+  border-color: transparent;
+  background: var(--alg-ac-soft);
+  color: var(--alg-ac);
+  font-weight: 600;
+}
+
+.chip--lang {
+  border-color: transparent;
+  background: var(--alg-surface);
+  color: var(--md-default-fg-color--light);
+}
+
+.chip--diff-中等,
+.chip--diff-较难,
+.chip--diff-困难 {
+  border-color: transparent;
+  background: var(--alg-warn-soft);
+  color: var(--alg-warn);
+  font-weight: 600;
+}
+
+/* --- 题解总览的筛选框 --------------------------------------------------- */
+
+.q-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.8rem 0 0.4rem;
+}
+
+.q-filter__input {
+  flex: 1 1 auto;
+  max-width: 22rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--alg-rule);
+  border-radius: 3px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-family: inherit;
+  font-size: 0.7rem;
+}
+
+.q-filter__input:focus {
+  outline: 2px solid var(--alg-ac);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.q-filter__count {
+  font-family: var(--md-code-font-family);
+  font-size: 0.62rem;
+  color: var(--alg-muted);
+  white-space: nowrap;
+}
+
+.q-table table:not([class]) { width: 100%; }
+
+/* 「✅ 已验证」「python3」这类状态别断成两行 */
+.q-table td:last-child { white-space: nowrap; }
+
+/* --- 题解页页脚翻页 ----------------------------------------------------- */
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.4rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--alg-rule);
+  font-family: var(--md-code-font-family);
+  font-size: 0.7rem;
+}
+
+/* --- 侧栏与顶栏 -------------------------------------------------------- */
+
+.md-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.md-nav__item .md-nav__link--active {
+  font-weight: 600;
+}
+
+/* 长题解目录不至于把侧栏撑得没边 */
+.md-nav--secondary .md-nav__list { font-size: 0.68rem; }
+
+@media (max-width: 44.98em) {
+  .md-typeset .hero__title { font-size: 1.9rem; }
+  .chapter-map { column-count: 1; column-width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cm-item a { transition: none; }
+}

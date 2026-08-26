@@ -1,0 +1,399 @@
+---
+id: ds/queue
+title: 队列与双端队列
+volume: 1
+lang: py
+---
+
+# 第 33 章　队列与双端队列
+
+<!-- CHAPTER-EXAMPLES -->
+> **前置**：[序列与数组](array.md)、[栈](stack.md)
+
+队列是先进先出（FIFO）的容器。一个贴切的比喻：
+
+> 队列中的元素先入先出，可以类比到食堂打饭，先到先得。
+
+这一章有一条铁律，请先记住：
+
+> **在 Python 里，`list.pop(0)` 是 $O(n)$。用 `list` 当队列 = $O(n^2)$ = TLE。**
+
+这是 Python 算法题第二高频的 TLE 原因（第一是 `x in list`）。
+
+---
+
+## 1　为什么 `list.pop(0)` 是灾难
+
+回到 [序列与数组](array.md)：`list` 是**连续内存的动态数组**。
+删掉第 0 个元素，后面 $n-1$ 个指针必须全部前移一格。
+
+```python
+q = []
+q.append(x)         # O(1) ✅
+x = q.pop(0)        # O(n) ❌ 后面全体前移
+```
+
+$10^5$ 次出队 $\Rightarrow$ 约 $5 \times 10^9$ 次元素搬移。
+即使是 C 层的 `memmove`，这个量级也要好几秒。
+
+**三种正确写法**，按推荐度排序：
+
+| 写法 | 出队 | 入队 | 随机访问 | 何时用 |
+| --- | --- | --- | --- | --- |
+| `collections.deque` | $O(1)$ | $O(1)$ | **$O(n)$** | 默认选择，尤其是 BFS |
+| `list` + 头指针 | $O(1)$ | $O(1)$ | $O(1)$ | 还要按下标访问历史元素时 |
+| 定长循环队列 | $O(1)$ | $O(1)$ | $O(1)$ | 队列长度有明确上界、要抠内存时 |
+
+---
+
+## 2　写法一：`collections.deque`
+
+```python
+from collections import deque
+
+q = deque()
+q.append(x)          # 尾部入队    O(1)
+x = q.popleft()      # 队首出队    O(1)
+q.appendleft(x)      # 头部插入    O(1)
+x = q.pop()          # 尾部弹出    O(1)
+q[0]                 # 队首        O(1)
+q[-1]                # 队尾        O(1)
+len(q)               # 长度        O(1)
+q.clear()            # 清空        O(n)
+deque(iterable)      # 从可迭代对象构造
+deque(maxlen=k)      # 定长队列，超长自动从另一端挤出
+```
+
+### `deque` 的实现与代价
+
+CPython 的 `deque` 是**双向链表串起来的定长块**（每块 64 个指针），
+不是纯链表也不是纯数组。所以：
+
+| 操作 | 复杂度 | 原因 |
+| --- | --- | --- |
+| 两端 append/pop | $O(1)$ | 只碰头尾两个块 |
+| `len(d)` | $O(1)$ | 长度是字段 |
+| `d[0]`、`d[-1]` | $O(1)$ | 头尾块直接取 |
+| **`d[i]` 一般下标** | **$O(n)$** | 要从最近的一端逐块走过去 |
+| `d.insert(i, x)` | $O(n)$ | |
+| `x in d` | $O(n)$ | |
+
+> **最关键的取舍**（[复杂度与Python性能](../toolkit/complexity.md) 已强调过）：
+>
+> - 需要两端操作 → `deque`
+> - 需要随机下标访问 → `list`
+> - **两者都要 → 用「`list` + 头指针」，或者重新想算法**
+>
+> 千万不要在循环里写 `d[i]`——那会把 $O(n)$ 的算法变成 $O(n^2)$。
+
+### `maxlen` 的妙用
+
+```python
+from collections import deque
+
+win = deque(maxlen=k)      # 自动维护「最近 k 个元素」
+for x in a:
+    win.append(x)          # 超过 k 个时自动丢掉最左边的
+```
+
+滑动窗口的「窗口本体」可以用它，但**求窗口最值**要用单调队列
+（[单调队列](monotonic-queue.md)），因为 `max(win)` 是 $O(k)$。
+
+---
+
+## 3　写法二：`list` + 头指针（**竞赛最快**）
+
+思路：**出队不真删，只把头指针往后挪一格**。
+
+```python
+q = []                      # 元素只追加，从不真正删除
+head = 0                    # 队头下标；它左边的元素都已出队
+
+q.append(x)                 # 入队
+x = q[head]; head += 1      # 出队：取值后指针右移一格，不搬移元素
+size = len(q) - head        # 当前元素个数
+empty = head >= len(q)      # 判空：head 追上队尾就没元素了
+```
+
+| 优点 | 缺点 |
+| --- | --- |
+| 比 `deque` 快约 1.5–2 倍（纯 `list` 索引，无块跳转） | 空间不回收，队列开过多大就一直占多大 |
+| **`q[i]` 仍是 $O(1)$**，能回看任意历史元素 | 需要自己维护 `head` |
+
+**BFS 特别适合这种写法**：BFS 里每个点最多入队一次，
+所以总空间就是 $O(n)$，不回收完全没问题；
+而且 BFS 结束后 `q` 里正好保存着**完整的访问顺序**，很多题会用到。
+
+```python
+# BFS 标准模板（list + 头指针版）
+def bfs(start, g, n):
+    dist = [-1] * n               # -1 兼任「未访问」标记，省掉一个 visited 数组
+    dist[start] = 0               # 起点距离为 0，赋值的同时就算标记过了
+    q = [start]                   # 队列同时就是访问序列，出队不删元素
+    head = 0                      # 队头下标
+    while head < len(q):          # head 追上队尾即队空；q 会变长，len 每轮重算
+        u = q[head]; head += 1    # 出队只挪指针，O(1)
+        du = dist[u] + 1          # 提到内层循环外算一次，每条边省一次加法与查表
+        for v in g[u]:
+            if dist[v] < 0:       # 只在首次到达时入队，保证每点至多入队一次
+                dist[v] = du      # 入队时就定距离；等出队再定会让同一点重复入队
+                q.append(v)
+    return dist, q                # q 就是 BFS 序，很多题会直接复用
+```
+
+> 如果队列会**无限增长**（比如某些模拟题里元素反复出入队），
+> 头指针法会 OOM。这时要么定期压缩 `q = q[head:]; head = 0`，要么改用 `deque`。
+
+---
+
+## 4　写法三：循环队列
+
+C 里的做法是：数组大小固定为 $n$，用 `head` 和 `tail` 两个指针，
+**碰到边界就绕回数组开头**。
+
+> 类似于在一个圆环上兜圈。
+
+```text
+int head = 0
+int tail = -1
+int queue[n]
+
+function push(int x):
+    tail++
+    if (tail == n) tail = 0
+    queue[tail] = x
+
+function pop():
+    head++
+    if (head == n) head = 0
+```
+
+Python 版模板：
+
+```python
+class CircularQueue:
+    """定长循环队列，容量 cap。全部操作 O(1)。
+
+    在 Python 里唯一的用途是「队列长度有严格上界且要抠内存/常数」，
+    一般情况下 deque 或头指针法更省心。
+    """
+
+    def __init__(self, cap):
+        self.buf = [0] * cap             # 定长缓冲，全程不扩容也不缩容
+        self.cap = cap
+        self.head = 0                    # 队首元素所在的下标
+        self.size = 0                    # 额外维护个数，绕开 head == tail 的判空判满歧义
+
+    def push(self, x):
+        assert self.size < self.cap, "queue overflow"
+        t = self.head + self.size        # 队尾后面的空位 = 队首 + 长度，可能越过数组末尾
+        # head 与 size 都小于 cap，和最多越界一圈，减一次 cap 就够，比取模快
+        if t >= self.cap:                # 越过末尾就绕回数组开头
+            t -= self.cap
+        self.buf[t] = x
+        self.size += 1                   # 入队只改 size，head 不动
+
+    def pop(self):
+        assert self.size > 0, "queue underflow"
+        x = self.buf[self.head]          # 取出队首；槽位不必清空，size 已经把它排除在外
+        self.head += 1                   # 队首前移一格
+        if self.head == self.cap:        # 走到数组末尾就绕回 0，这就是「循环」的含义
+            self.head = 0
+        self.size -= 1                   # 长度同步减一
+        return x
+
+    def front(self):
+        return self.buf[self.head]       # 只看队首，不出队
+
+    def __len__(self):
+        return self.size
+```
+
+> **判满 / 判空的经典歧义**：只用 `head` 和 `tail` 两个指针时，
+> 「队空」和「队满」都表现为 `head == tail`，必须二选一：
+> 牺牲一个格子（`(tail + 1) % cap == head` 表示满），或**额外维护 `size`**。
+> 上面的模板用了后者，最不容易错。
+
+---
+
+## 5　`queue.Queue` 千万别用
+
+Python 标准库还有一个 `queue.Queue`：
+
+```python
+from queue import Queue        # ❌ 竞赛中绝对不要用
+```
+
+它是为**多线程**设计的，每次 `put`/`get` 都要加锁、检查条件变量，
+比 `deque` 慢 **20 倍以上**。名字最像队列的那个类反而最不能用，这是个经典陷阱。
+
+| 类 | 用途 | 竞赛可用性 |
+| --- | --- | --- |
+| `collections.deque` | 双端队列 | ✅ 首选 |
+| `list` + 头指针 | 队列 | ✅ 最快 |
+| `heapq` | 优先队列 | ✅（[优先队列与堆](heap.md)） |
+| `queue.Queue` | 线程安全队列 | ❌ 慢 20 倍 |
+| `queue.PriorityQueue` | 线程安全优先队列 | ❌ 同上 |
+| `asyncio.Queue` | 协程队列 | ❌ |
+
+---
+
+## 6　双端队列能做什么
+
+`deque` 和 `vector` 的实现思路是一样的，只是**循环使用数组**，
+所以两端都能均摊 $O(1)$。它在竞赛里有四个固定用途：
+
+| 用途 | 说明 | 讲解位置 |
+| --- | --- | --- |
+| 普通队列 / BFS | 只用 `append` + `popleft` | 本章、[BFS](../search/bfs.md) |
+| **单调队列** | 滑动窗口最值、DP 优化 | [单调队列](monotonic-queue.md) |
+| **0-1 BFS** | 边权为 0 的从队首入、为 1 的从队尾入 | [BFS](../search/bfs.md) |
+| 回文 / 双向消除 | 两端同时取元素比较 | [回文](../string/manacher.md) |
+
+下面这份 C++ 代码就是单调队列求滑动窗口最大值：
+
+```cpp
+for(i=2;i<=n;i++) {
+    while(a[i]>a[q.back()]) q.pop_back();     // 从队尾弹掉比新元素小的
+    q.push_back(i);
+    while(q.front() < i-p) q.pop_front();     // 队首过期
+    if(a[q.front()]>ans) ans=a[q.front()];
+}
+```
+
+> ⚠️ 这段 C++ 代码有个经典 bug：`while(a[i]>a[q.back()])` 没有判队空，
+> 队列被弹空后 `q.back()` 是未定义行为。Python 里对应的写法必须写成
+> `while q and a[i] > a[q[-1]]:`——**短路求值是免费的保险**。
+
+### 0-1 BFS 一瞥
+
+```python
+from collections import deque
+
+def bfs01(start, g, n):
+    """边权只有 0 和 1 的最短路，O(V + E)。"""
+    INF = float("inf")                  # 无穷大当初值，任何真实距离都比它小
+    dist = [INF] * n                    # dist 就是唯一状态，不另设 visited
+    dist[start] = 0                     # 起点到自己的距离为 0
+    dq = deque([start])                 # 队列里的距离始终只有相邻两种取值
+    while dq:
+        u = dq.popleft()                # 队首永远是当前距离最小的点
+        for v, w in g[u]:
+            nd = dist[u] + w            # 沿这条边走过去的候选距离
+            if nd < dist[v]:            # 只在能变短时才松弛并入队，同一点可能改进多次
+                dist[v] = nd
+                if w == 0:
+                    dq.appendleft(v)    # 权 0：与 u 同层，放队首才保得住队列的单调性
+                else:
+                    dq.append(v)        # 权 1：比 u 远一层，放队尾
+    return dist
+```
+
+这是双端队列**不可替代**的场景：用堆做要 $O(E \log V)$，用双端队列只要 $O(E)$。
+
+---
+
+## 7　例题
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+
+### BISHI3 【模板】队列操作（简单）
+
+> $n \le 10^5$ 次操作：`1 x` 入队；`2` 若非空则**仅**队头出队，否则输出 `ERR_CANNOT_POP`；
+> `3` 输出队首，空队列输出 `ERR_CANNOT_QUERY`；`4` 输出当前元素数量。
+> 题面见 [原题](https://www.nowcoder.com/practice/1137c8f6ffac4d5d94cc1b0cb08723f9)。
+
+这题就是本章铁律的直接考察。用 `list.pop(0)` 是 $O(n^2)$，用头指针/`deque` 是 $O(n)$。
+
+题解选了**头指针法**而不是 `deque`，理由是：
+除了出队，本题还要频繁执行操作 4（求大小），
+头指针法的 `len(q) - head` 是纯整数减法，比 `len(deque)` 少一层调用。
+两者复杂度相同，头指针略快且更直观。
+
+```python
+import sys
+
+
+def main():
+    # 操作 1 带参数、2/3/4 不带，行长不固定，只能整读后按 token 消费
+    data = sys.stdin.buffer.read().split()
+    n = int(data[0])                         # 操作条数
+    i = 1                                    # token 游标，data[0] 已被 n 取走
+    q = []                                   # 元素只追加，出队靠 head 前移
+    head = 0                                 # 队头下标，出队只移动指针，O(1)
+    out = []                                 # 输出先攒着，结尾一次写出
+    for _ in range(n):
+        op = data[i]                         # 操作码保持 bytes，直接与 b"..." 比较
+        i += 1                               # 操作码消费掉，游标停在它的参数位上
+        if op == b"1":
+            q.append(data[i])                # 存 bytes，省掉 int/str 往返
+            i += 1                           # 入队的那个参数也消费掉
+        elif op == b"2":                     # 出队：成功时什么都不输出
+            if head < len(q):                # head 追上队尾即队空，这是唯一的判空口径
+                head += 1                    # 队首右移一格即完成出队，O(1)
+            else:
+                out.append("ERR_CANNOT_POP")
+        elif op == b"3":                     # 查询队首，不出队
+            # 输出前才 decode，入队时省下的那次转换在这里只对被查到的元素付一次
+            out.append(q[head].decode() if head < len(q) else "ERR_CANNOT_QUERY")
+        else:                                # 4：当前元素个数
+            out.append(str(len(q) - head))   # 纯整数减法，比 len(deque) 少一层调用
+    sys.stdout.write("\n".join(out) + "\n")  # 一次写出，逐行 print 会被 IO 拖垮
+
+
+main()
+```
+
+**四个坑**：
+
+1. 操作 2 **只有队列为空时才输出**，正常出队什么都不输出；
+2. 两个错误串**不一样**（`ERR_CANNOT_POP` / `ERR_CANNOT_QUERY`），复制粘贴容易串；
+3. 操作 2/3/4 是单 token，只有操作 1 带参数，必须用游标解析；
+4. 元素范围到 $\pm 10^9$，**有负数**——虽然 Python 无所谓，但别在 `split` 时按「非负整数」做假设。
+
+空间上不回收已出队的槽位，$10^5$ 个元素完全够用；若 $n$ 更大可在 `head` 过大时切片压缩一次。
+
+题解见 [`solutions/nowcoder/BISHI3/sol.py`](../solutions/BISHI3.md)。
+
+### 对照：同一题的 `deque` 写法
+
+```python
+from collections import deque
+
+q = deque()                                  # 真正删除元素，空间随之回收
+q.append(x)                                  # 入队
+if q:                                        # deque 空时 popleft 会抛 IndexError
+    q.popleft()                              # 出队
+    front = q[0]                             # 队首  O(1)
+    size = len(q)                            # 大小  O(1)
+```
+
+两种写法都能过。**记住区别**：头指针法保留全部历史元素（`q[i]` 可访问，空间不回收），
+`deque` 真正删除（空间回收，但历史元素找不回来了）。
+
+---
+
+## 8　本章速查
+
+| 要点 | 结论 |
+| --- | --- |
+| **`list.pop(0)`** | **$O(n)$，队列绝对不能用** |
+| 队列首选 | `collections.deque` 或 `list` + 头指针 |
+| `deque` 两端操作 | $O(1)$ |
+| **`deque[i]` 随机访问** | **$O(n)$，不能当数组用** |
+| `deque[0]` / `deque[-1]` | $O(1)$，只有头尾是快的 |
+| 头指针法 | 最快，且 `q[i]` 仍是 $O(1)$，但空间不回收 |
+| BFS 用哪个 | 头指针法（顺带得到 BFS 序） |
+| `queue.Queue` | ❌ 线程安全，慢 20 倍，永远别用 |
+| 循环队列判满 | 额外维护 `size`，别只靠 `head == tail` |
+| 弹队列前 | 一律 `while q and ...`（短路判空） |
+| 0-1 BFS | 权 0 走 `appendleft`，权 1 走 `append` |
+| 滑动窗口最值 | 单调队列，不是 `max(win)`（[单调队列](monotonic-queue.md)） |
+
+| 需求 | 容器 |
+| --- | --- |
+| 只在尾部进出 | `list`（栈） |
+| 尾进头出 | `deque` / 头指针 |
+| 两端都进出 | `deque` |
+| 两端进出 **且** 随机访问 | 头指针法，或换算法 |
+| 按优先级出 | `heapq`（[优先队列与堆](heap.md)） |

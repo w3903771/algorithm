@@ -1,0 +1,567 @@
+---
+id: toolkit/io
+title: 输入输出处理
+volume: 1
+lang: py
+---
+
+# 第 20 章　输入输出处理
+
+<!-- CHAPTER-EXAMPLES -->
+
+<!-- CHAPTER-EXAMPLE-TABLE -->
+> **前置**：[字符串](../python/string.md)、[推导式](../python/comprehension.md)
+
+算法题的第一道坎不是算法，是**把数据正确、快速地读进来**。用 C++ 的人靠 `scanf`/`cin` 就够了，
+Python 选手在这里翻车的概率高得多——不是写错，而是**写对了但超时**。
+
+这一章把竞赛里会遇到的全部输入形态和输出格式过一遍，每种形态对应一道 PIO 真题。
+
+---
+
+## 1　三种读入方式，以及为什么必须区分
+
+Python 读标准输入有三条路，性能差一个数量级：
+
+| 写法 | 相对速度 | 适用场景 |
+| --- | --- | --- |
+| `input()` | 1× （最慢） | 数据量 < 1000 行 |
+| `sys.stdin.readline()` | 约 5–10× | 需要按行读、且行内含空格 |
+| `sys.stdin.buffer.read().split()` | 约 20–50× | 数据量大且按空白切分即可 |
+
+`input()` 慢的原因有两个：它每次都要处理提示符逻辑，且会**自动去掉行尾换行符**（多一次字符串操作）。
+`readline()` 保留换行符，所以要自己 `rstrip()`。
+
+最快的范式是**一次性把整个 stdin 读成字节串，切成 token 列表，再用游标推进**：
+
+```python
+import sys
+
+# read() 一次系统调用取走整个 stdin；split() 不带参数按任意空白切分，
+# 换行、空格、制表符一视同仁——输入文件怎么折行都不影响切出来的 token 列表
+data = sys.stdin.buffer.read().split()   # 全部 token，元素类型是 bytes
+p = 0                                    # 游标：下一个待消费 token 的下标
+n = int(data[p]); p += 1                 # 取一个就推进一格，是这套范式的固定动作
+```
+
+`buffer.read()` 拿到的是 `bytes`，`int(b"123")` 是合法的（Python 会自动解码 ASCII），
+所以数字不需要额外 `decode()`；**只有字符串才需要 `.decode()`**。
+
+> **陷阱**：`data` 里的元素是 `bytes`，直接 `print(data[0])` 会输出 `b'123'`。
+
+---
+
+## 2　单组数据
+
+### PIO2　单组_A+B
+
+> 第一行有两个整数 $a, b$，输出 $a+b$。
+
+数据量极小，`input()` 完全够用：
+
+```python
+a, b = map(int, input().split())          # split() 不带参数 = 按任意空白切分
+print(a + b)
+```
+
+三个语言点：
+
+- `input().split()` 默认按**任意空白**切分，连续空格、制表符都能正确处理，不需要指定分隔符。
+- `map(int, ...)` 返回的是迭代器（惰性求值），可以直接解包给 `a, b`。
+- 解包时左右个数必须相等，否则 `ValueError`。
+
+### PIO1　只有输出
+
+> 本题无输入，输出 `Hello Nowcoder!`。
+
+```python
+print("Hello Nowcoder!")                  # 无输入题：只输出，绝不去读 stdin
+```
+
+看似废话，但有个真实的坑：**无输入题不要去 `read()`**。有些评测机在无输入时不关闭 stdin，
+`input()` 会一直阻塞直到 TLE。
+
+---
+
+## 3　多组数据的三种形态
+
+多组数据是笔试题的默认形态，共三种，读法各不相同。
+
+### 形态一：T 组形式（首行给出组数）
+
+#### PIO4　多组_A+B_T组形式
+
+> 第一行 $t\ (t \le 10^5)$，随后 $t$ 行每行两个整数。
+
+$t$ 可达 $10^5$，这时 `input()` 就危险了。用游标范式：
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+t = int(data[0])                          # 首个 token 是组数，其后每组固定占 2 个
+out = []                                  # 答案先攒进列表，循环里一次 IO 都不做
+for i in range(t):
+    a = int(data[1 + 2 * i])              # 跳过 data[0] 这个组数，再偏移 2i 个 token
+    b = int(data[2 + 2 * i])              # 同组的第二个数紧挨着第一个
+    out.append(a + b)
+# 拼成一个大字符串再写：只走一次系统调用，省掉 t 次 print 的单次调用开销
+sys.stdout.write("\n".join(map(str, out)) + "\n")
+```
+
+注意输出也做了优化：**攒到列表里最后一次性写出**，而不是循环里 `print()`。
+`print()` 每次调用都有 flush 判断和格式化开销，$10^5$ 次 `print` 的耗时相当可观。
+
+> **口诀**：输入用 `buffer.read().split()`，输出用 `"\n".join()` 一次写完。
+
+### 形态二：EOF 形式（读到文件末尾）
+
+#### PIO3　多组_A+B_EOF形式
+
+> 每行两个整数，读至文件末尾为止。
+
+很多教程教的是这种写法：
+
+```python
+while True:
+    try:
+        a, b = map(int, input().split())  # 读到文件末尾时 input() 抛 EOFError
+    except EOFError:
+        break                             # 只有 EOF 会被接住，空行抛的是 ValueError
+    print(a + b)
+```
+
+**能过，但不推荐**：异常机制本身有开销，而且遇到空行会抛 `ValueError` 而不是 `EOFError`，直接崩。
+
+Python 里 `sys.stdin` 本身就是可迭代对象，迭代到 EOF 自然结束：
+
+```python
+import sys
+
+out = []
+for line in sys.stdin:                    # sys.stdin 本身可迭代，读到 EOF 自然停
+    if not line.split():                  # 空行切出空列表，跳过，不会崩在解包上
+        continue
+    a, b = map(int, line.split())         # 每行只有两个数，按行切分即可
+    out.append(a + b)
+sys.stdout.write("\n".join(map(str, out)) + "\n")   # 末尾补换行，判题机通常要求
+```
+
+更简洁、更快、且天然容忍尾部空行。
+
+### 形态三：零尾模式（哨兵结束）
+
+#### PIO5　多组_A+B_零尾模式
+
+> 最后一组数据为 `0 0`，作为输入的结尾。
+
+关键点：**哨兵本身不参与输出**。
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+out = []
+i = 0
+while i + 1 < len(data):                  # 还剩至少两个 token 才够凑一组
+    a, b = int(data[i]), int(data[i + 1])
+    i += 2                                # 先把游标推过这一组，再判断它是不是哨兵
+    if a == 0 and b == 0:                 # 哨兵只标记结束，本身不产生输出
+        break
+    out.append(a + b)
+sys.stdout.write("\n".join(map(str, out)) + "\n")
+```
+
+先取值、推进游标，**再**判断哨兵——顺序反了就会漏读或死循环。
+
+---
+
+## 4　数组的读入
+
+### 一维数组
+
+#### PIO6　单组_一维数组
+
+> 第一行 $n$，第二行 $n$ 个整数，求和。
+
+```python
+input()                                   # 读掉 n 这一行：值用不上，但不读就会错位
+print(sum(map(int, input().split())))     # 转换与求和全在 C 层，比 for 累加快数倍
+```
+
+这里体现了 Python 相对 C++ 的一个优势：**`n` 往往是多余的**。
+C++ 需要 `n` 来控制循环次数，Python 直接把整行 split 掉就行。但 `n` 那一行**必须读掉**，否则错位。
+
+`sum(map(int, ...))` 全程在 C 层执行，比 `for` 循环累加快数倍。
+
+#### PIO7　多组_一维数组_T组形式
+
+> $t$ 组，每组先给 $n$ 再给 $n$ 个数，保证 $\sum n \le 10^5$。
+
+多组 + 大数据量，游标范式的典型用法——每组读完后游标跳过 $n$ 个 token：
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+p = 0
+t = int(data[p]); p += 1                  # 组数
+out = []
+for _ in range(t):
+    n = int(data[p]); p += 1              # 本组的元素个数
+    out.append(sum(map(int, data[p:p + n])))   # 切片 [p, p+n) 正好圈出本组数据
+    p += n                                # 游标整块跳过刚消费掉的 n 个 token
+sys.stdout.write("\n".join(map(str, out)) + "\n")
+```
+
+`data[p:p + n]` 是切片，产生一个新列表——这里可以接受，因为 $\sum n \le 10^5$。
+如果数据量再大一个量级，可以用 `itertools.islice` 避免复制。
+
+### 二维数组
+
+#### PIO8　单组_二维数组
+
+> $n$ 行 $m$ 列，求所有元素之和。
+
+**不要真的建二维表**。既然只求总和，把剩下的 $n \times m$ 个 token 一口气加起来就行：
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+n, m = int(data[0]), int(data[1])
+# 矩阵元素从下标 2 开始，一共 n*m 个；只求总和就不必还原成二维结构
+print(sum(map(int, data[2:2 + n * m])))
+```
+
+这就是「token 流」思维的价值：**输入的换行位置对读取毫无影响**，
+一行 12 个数和 3 行各 4 个数，切出来的 token 列表完全一样。
+
+如果确实需要二维结构（比如后面要按行列访问），正确写法是：
+
+```python
+# 第 i 行的 m 个 token 落在下标区间 [2 + i*m, 2 + (i+1)*m) 上
+g = [list(map(int, data[2 + i * m: 2 + (i + 1) * m])) for i in range(n)]
+```
+
+> **绝对不要写** `g = [[0] * m] * n`。这会让 $n$ 行**指向同一个列表对象**，
+> 改 `g[0][0]` 会导致每一行的第 0 个元素全变。正确写法是 `[[0] * m for _ in range(n)]`。
+> 详见 [列表](../python/list.md#浅拷贝陷阱)。
+
+#### PIO9　多组_二维数组_T组形式
+
+> $t$ 组，每组 $n \times m$，保证 $\sum n \cdot m \le 10^6$。
+
+同 PIO7，只是每组跳过 $n \times m$ 个 token：
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+p = 0
+t = int(data[p]); p += 1                  # 组数
+out = []
+for _ in range(t):
+    n, m = int(data[p]), int(data[p + 1]); p += 2   # 行数、列数各占一个 token
+    cnt = n * m                           # 本组矩阵的元素总数
+    out.append(sum(map(int, data[p:p + cnt])))
+    p += cnt                              # 一次跳过整个矩阵，不关心它原本折成几行
+sys.stdout.write("\n".join(map(str, out)) + "\n")
+```
+
+$10^6$ 个 token 的规模，用 `input()` 逐行读几乎必然 TLE，用这种写法在 1 秒内完成。
+
+---
+
+## 5　字符串的读入
+
+字符串读入的核心判断只有一条：**串内是否含空格**。
+
+### 不含空格 → 按 token 读
+
+#### PIO10　单组_字符串
+
+> 读入长度 $n$ 的小写字符串，倒置输出。
+
+```python
+input()                                   # 读掉 n 这一行
+print(input().strip()[::-1])              # strip() 清掉可能残留的 CR；[::-1] 步长 -1 倒置
+```
+
+- `s[::-1]` 是切片倒置，步长 -1，$O(n)$ 且常数极小，比 `"".join(reversed(s))` 快。
+- **`strip()` 不能省**。`input()` 虽然去掉了行尾 `\n`，但如果输入文件是 Windows 换行（`\r\n`），
+  会残留一个 `\r`，导致输出多一个不可见字符而 WA。
+
+#### PIO11　多组_字符串_T组形式
+
+$t \le 10^5$，改用 token 流。因为串内无空格，字符串本身就是一个 token：
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+t = int(data[0])
+out = []
+p = 1                                     # data[0] 是组数，正文从下标 1 开始
+for _ in range(t):
+    p += 1                                # 跳过 n：串长在 Python 里用不上
+    out.append(data[p].decode()[::-1])    # 先解码成 str 再倒置，否则 join 会类型不符
+    p += 1                                # 跳过刚取走的字符串本身
+sys.stdout.write("\n".join(out) + "\n")
+```
+
+注意 `.decode()`：`data` 里存的是 `bytes`，`bytes[::-1]` 倒置的是**字节**，
+对 ASCII 恰好等价，但 `join` 时会因类型不符报错，所以必须先解码成 `str`。
+
+#### PIO12　单组_二维字符数组
+
+> $n$ 行 $m$ 列的字符矩阵，行和列都倒置。
+
+「行列都倒置」= 每行内部反转 + 行的顺序反转，两步都用切片：
+
+```python
+import sys
+
+data = sys.stdin.buffer.read().split()
+n, m = int(data[0]), int(data[1])
+# 每行不含空格 ⇒ 一整行就是一个 token，第 i 行稳定落在 data[2 + i]
+rows = [data[2 + i].decode() for i in range(n)]
+# r[::-1] 反转行内字符，reversed(rows) 反转行的先后，合起来就是「行列都倒置」
+sys.stdout.write("\n".join(r[::-1] for r in reversed(rows)) + "\n")
+```
+
+`reversed()` 返回迭代器不复制列表，配合生成器表达式喂给 `join`，全程不产生中间大列表。
+
+### 含空格 → 必须按行读
+
+#### PIO13　多组_带空格的字符串_T组形式
+
+> 字符串含空格，去掉空格后倒置。
+
+**这里 token 流会彻底失效**——`split()` 会把 `"one space"` 切成两个 token，
+行的边界信息丢失，无法还原。必须按行读：
+
+```python
+import sys
+
+inp = sys.stdin                           # 绑成局部名，省掉每轮的模块属性查找
+t = int(inp.readline())
+out = []
+for _ in range(t):
+    inp.readline()                        # 读掉 n 这一行
+    s = inp.readline().rstrip("\n")       # 只削行尾换行，首尾空格属于数据本身
+    out.append(s.replace(" ", "")[::-1])  # 先删掉全部空格，再整串倒置
+sys.stdout.write("\n".join(out) + "\n")
+```
+
+- 用 `sys.stdin.readline` 而非 `input()`，快 5–10 倍。
+- `rstrip("\n")` 只去掉换行符，**不能用 `strip()`**——题目说保证首尾不是空格，
+  但如果哪天不保证了，`strip()` 会把有意义的首尾空格一起吃掉。
+
+> **判断口诀**：串内可能有空格 → `readline()`；确定无空格 → token 流。
+
+---
+
+## 6　输出格式
+
+### 保留小数位数
+
+#### PIO14　单组_保留小数位数
+
+> 保留 3 位小数，不足补 0，超出四舍五入。
+
+这题看着简单，是 PIO 里最容易 WA 的一道。最自然的写法是：
+
+```python
+print("%.3f" % float(input()))            # ← 有坑
+```
+
+**坑在于 Python 的浮点格式化用的是「四舍六入五成双」（banker's rounding）**，
+而不是数学上的四舍五入：
+
+```python
+>>> "%.0f" % 2.5
+'2'          # 数学上应该是 3
+>>> "%.0f" % 3.5
+'4'          # 这个又对了
+>>> round(0.125, 2)
+0.12         # 应该是 0.13
+```
+
+雪上加霜的是，`float("1.005")` 在二进制里实际是 `1.00499999999...`，
+所以即便舍入规则对了，值本身也已经不准。
+
+正确做法是用 `decimal`，并且**直接从字符串构造** `Decimal`（跳过 float 这一步）：
+
+```python
+from decimal import Decimal, ROUND_HALF_UP
+
+# 直接从字符串构造，中途不经过 float，十进制值一位不丢
+n = Decimal(input().strip())
+# "0.000" 的小数位数决定保留几位并自动补零；ROUND_HALF_UP 才是数学四舍五入
+print(n.quantize(Decimal("0.000"), rounding=ROUND_HALF_UP))
+```
+
+`Decimal("1.005")` 精确表示十进制 1.005，`ROUND_HALF_UP` 就是数学四舍五入。
+`quantize(Decimal("0.000"))` 里的 `"0.000"` 决定保留几位，同时自动补零。
+
+> 什么时候可以偷懒用 `%.3f`？当题目是 special judge（允许误差）时。见下面 PIO17。
+
+### 补充前导零
+
+#### PIO15　单组_补充前导零
+
+> 保留 9 个数位，不足补前导零。
+
+```python
+print(input().strip().zfill(9))           # 左侧补零到 9 位，负号会被留在最前面
+```
+
+三种等价写法，按推荐度排序：
+
+```python
+s.zfill(9)          # 字符串方法，最直白；能正确处理负号（"-12".zfill(5) → "-0012"）
+f"{n:09d}"          # f-string，需要 n 是 int
+"%09d" % n          # 旧式，同上
+```
+
+`zfill` 直接作用于字符串，连转 `int` 都省了。
+
+### Special Judge：答案不唯一
+
+#### PIO16　单组_spj判断YES与NO
+
+> 奇数输出 YES，偶数输出 NO，**大小写任意**。
+
+```python
+n = int(input())
+print("YES" if n & 1 else "NO")           # n & 1 取二进制最低位，为 1 即奇数
+```
+
+`n & 1` 取最低位，等价于 `n % 2` 但更快（详见 [位运算](../basic/bit.md)）。
+既然大小写任意，就固定输出大写，不要自作聪明。
+
+#### PIO17　单组_spj判断浮点误差
+
+> 求半径为 $r$ 的圆面积，误差不超过 $10^{-3}$ 即可。
+
+```python
+import math
+
+r = int(input())
+# math.pi 带满双精度有效数字；输出 6 位小数远严于题目要求的 1e-3 误差
+print("%.6f" % (math.pi * r * r))
+```
+
+两个要点：
+
+- **用 `math.pi`，别自己写 `3.14159`**。$r = 1000$ 时 $\pi r^2 \approx 3.14 \times 10^6$，
+  $\pi$ 少写两位小数，误差就到了 $10$ 的量级，远超 $10^{-3}$。
+- **输出位数宁多勿少**。题目要求误差 $10^{-3}$，输出 6 位小数绝对安全；
+  只输出 2 位就可能因截断而超差。多输出几位永远不会错。
+
+#### PIO18　单组_spj判断数组之和
+
+> 构造长度为 $n$ 的正整数数组，元素和为 $m$（保证 $n \le m$）。
+
+spj 题的思维方式和普通题不同：**不必猜标程输出什么，只要满足约束即可**。
+所以选最好写的构造——前 $n-1$ 个填 1，最后一个兜底：
+
+```python
+n, m = map(int, input().split())
+# 前 n-1 个全填 1，最后一个兜住剩下的 m-(n-1)；因为保证 n <= m，它至少是 1
+print(" ".join(["1"] * (n - 1) + [str(m - (n - 1))]))
+```
+
+因为保证 $n \le m$，所以 $m - (n-1) \ge 1$，最后一个数必然是正整数。
+
+> 样例输出的是 `1 2 3`，上面的程序输出 `1 1 4`——都对。
+> 遇到 spj 题时，如果按样例逐字符比对反而会误判自己写错了。
+
+---
+
+## 7　递归深度
+
+这不是输入输出问题，但归属于「Python 竞赛环境配置」，放在这里一并说。
+
+Python 默认递归深度上限是 **1000**，而算法题里 DFS 深度到 $10^5$ 是家常便饭。
+不改就是 `RecursionError`：
+
+```python
+import sys
+
+sys.setrecursionlimit(300000)             # 只抬高解释器的软限制，物理栈大小不变
+```
+
+但**改了也可能崩**——`setrecursionlimit` 只解除了解释器的软限制，
+真正的物理限制是**线程栈大小**，超了会直接段错误（评测机显示 RE 而非 RecursionError）。
+
+稳妥做法是开一个大栈的线程跑主逻辑：
+
+```python
+import sys
+import threading
+
+
+def main():
+    ...                                   # 全部逻辑写在这里
+
+
+if __name__ == "__main__":
+    sys.setrecursionlimit(1 << 20)        # 软限制抬到约 100 万层
+    threading.stack_size(1 << 26)         # 新线程栈设为 64 MB，这才是真正的物理容量
+    t = threading.Thread(target=main)     # 主线程的栈事后改不了，只能另开一个线程
+    t.start()
+    t.join()                              # 等它跑完，否则主线程会先退出
+```
+
+更彻底的办法是把递归改写成显式栈的迭代版本，见 [DFS深度优先搜索](../search/dfs.md#4-递归改迭代)。
+
+---
+
+## 8　本章速查表
+
+| 输入形态 | 判断依据 | 推荐写法 |
+| --- | --- | --- |
+| 无输入 | 题目明说 | 直接 `print`，不要读 |
+| 单组小数据 | 行数 < 1000 | `input().split()` |
+| T 组 / 大数据 | 首行给组数、$n \ge 10^5$ | `sys.stdin.buffer.read().split()` + 游标 |
+| EOF 形式 | 「读至文件末尾」 | `for line in sys.stdin` |
+| 哨兵形式 | 「最后一组为 0 0」 | 游标 + 先取值后判哨兵 |
+| 串内含空格 | 「带空格的字符串」 | `sys.stdin.readline().rstrip("\n")` |
+| 串内无空格 | 普通字符串 | token 流 + `.decode()` |
+
+| 输出需求 | 写法 | 备注 |
+| --- | --- | --- |
+| 大量行 | `sys.stdout.write("\n".join(...))` | 别在循环里 `print` |
+| 保留 $k$ 位小数（严格） | `Decimal(...).quantize(..., ROUND_HALF_UP)` | 避开 banker's rounding |
+| 保留 $k$ 位小数（spj） | `"%.6f" %` | 位数宁多勿少 |
+| 补前导零 | `s.zfill(k)` | 或 `f"{n:0kd}"` |
+| YES/NO | 固定大写 | spj 题不必纠结大小写 |
+| 构造类 spj | 挑最好写的构造 | 不必与样例一致 |
+
+## 9　完整题解索引
+
+| 题号 | 标题 | 考点 | 题解 |
+| --- | --- | --- | --- |
+| PIO1 | 只有输出 | 无输入 | [`solutions/nowcoder/PIO1/sol.py`](../solutions/PIO1.md) |
+| PIO2 | 单组_A+B | `input().split()` | [`solutions/nowcoder/PIO2/sol.py`](../solutions/PIO2.md) |
+| PIO3 | 多组_A+B_EOF形式 | 迭代 `sys.stdin` | [`solutions/nowcoder/PIO3/sol.py`](../solutions/PIO3.md) |
+| PIO4 | 多组_A+B_T组形式 | token 流 + 游标 | [`solutions/nowcoder/PIO4/sol.py`](../solutions/PIO4.md) |
+| PIO5 | 多组_A+B_零尾模式 | 哨兵判断 | [`solutions/nowcoder/PIO5/sol.py`](../solutions/PIO5.md) |
+| PIO6 | 单组_一维数组 | `sum(map(int, ...))` | [`solutions/nowcoder/PIO6/sol.py`](../solutions/PIO6.md) |
+| PIO7 | 多组_一维数组_T组形式 | 游标跳 $n$ | [`solutions/nowcoder/PIO7/sol.py`](../solutions/PIO7.md) |
+| PIO8 | 单组_二维数组 | 换行无关性 | [`solutions/nowcoder/PIO8/sol.py`](../solutions/PIO8.md) |
+| PIO9 | 多组_二维数组_T组形式 | 游标跳 $n \times m$ | [`solutions/nowcoder/PIO9/sol.py`](../solutions/PIO9.md) |
+| PIO10 | 单组_字符串 | `s[::-1]`、`strip()` | [`solutions/nowcoder/PIO10/sol.py`](../solutions/PIO10.md) |
+| PIO11 | 多组_字符串_T组形式 | `bytes.decode()` | [`solutions/nowcoder/PIO11/sol.py`](../solutions/PIO11.md) |
+| PIO12 | 单组_二维字符数组 | 双重反转 | [`solutions/nowcoder/PIO12/sol.py`](../solutions/PIO12.md) |
+| PIO13 | 多组_带空格的字符串 | `readline()` | [`solutions/nowcoder/PIO13/sol.py`](../solutions/PIO13.md) |
+| PIO14 | 单组_保留小数位数 | `Decimal` + `ROUND_HALF_UP` | [`solutions/nowcoder/PIO14/sol.py`](../solutions/PIO14.md) |
+| PIO15 | 单组_补充前导零 | `zfill` | [`solutions/nowcoder/PIO15/sol.py`](../solutions/PIO15.md) |
+| PIO16 | 单组_spj判断YES与NO | spj、`n & 1` | [`solutions/nowcoder/PIO16/sol.py`](../solutions/PIO16.md) |
+| PIO17 | 单组_spj判断浮点误差 | `math.pi`、位数冗余 | [`solutions/nowcoder/PIO17/sol.py`](../solutions/PIO17.md) |
+| PIO18 | 单组_spj判断数组之和 | 构造类 spj | [`solutions/nowcoder/PIO18/sol.py`](../solutions/PIO18.md) |
+
+> 全部 18 题已通过 `uv run python scripts/verify.py PIO` 的官方样例验证，
+> 结果见 [`solutions/_verify_report.md`](https://github.com/w3903771/algorithm/blob/main/solutions/_verify_report.md)。
