@@ -229,6 +229,10 @@ def lazy_pop():
 需要「有序集合」（`std::set` 的完整功能）时，Python 没有内建替代品，
 方案见 [平衡树与有序集合](../ds/balanced-tree.md)。
 
+本节讲的是**怎么调这个库**。堆本身是什么、为什么这几个操作能做到 $O(\log n)$、
+它还能解哪一类题，有独立的一章 [优先队列与堆](../ds/heap.md)——
+那一章在卷二。现在按上面的接口用就行，不必先读完那一章。
+
 > **不要用 `queue.PriorityQueue`**。它是为多线程设计的，每次操作都要加锁，
 > **比 `heapq` 慢 3–5 倍**。`queue` 模块整个在竞赛里都不该出现。
 > 同理，`queue.Queue` 也不要用，队列用 `collections.deque`。
@@ -236,6 +240,19 @@ def lazy_pop():
 ---
 
 ## 4　`bisect` — 有序数组二分
+
+**什么时候会想起它。** 下面这四种场景占了竞赛里 `bisect` 用法的绝大多数：
+
+- **离散化之后查排名**——把值映射成「它在去重排序表里的下标」，
+  这是树状数组、线段树的标准入口。
+- **维护一个有序表并反复查询**——注意插入是 $O(n)$（见下面第 1 个坑），
+  只适合「先全部读进来排好、之后只查不插」，或者数据量不大的场合。
+- **最长上升子序列的 $O(n \log n)$ 写法**——用 `bisect_left` 在「长度 → 最小结尾」
+  的数组上定位该替换哪一格。
+- **统计落在某个区间里的元素个数**——就是下面第 4 条。
+
+要和**二分答案**分开：那是在「答案的取值范围」上二分，被二分的东西根本不是一个数组，
+`bisect` 帮不上忙，见 [二分](../basic/binary-search.md)。
 
 ```python
 import bisect
@@ -289,15 +306,42 @@ bisect_right(a, r) - bisect_left(a, l)
 >    ```
 >    对元组数组还有个技巧：`bisect_left(a, (x,))` 利用元组比较找第一个第 0 项 $\ge x$ 的位置。
 
-二分答案（对答案而非数组二分）是另一回事，见 [二分](../basic/binary-search.md)。
-
 ---
 
 ## 5　`itertools`
 
 全部返回**迭代器**（惰性），需要列表要显式 `list(...)`。
 
+下面用到的函数，签名先列在这里——本节的例子大量用到可选参数与第二个位置参数，
+不写出签名就看不出哪个是 `func`、哪个是关键字参数：
+
+| 签名 | 说明 |
+| --- | --- |
+| `accumulate(iterable, func=operator.add, *, initial=None)` | `func` 是**第二个位置参数**，`initial` 只能写成关键字（3.8+） |
+| `chain(*iterables)` / `chain.from_iterable(iterable)` | 前者收多个序列，后者收一个「序列的序列」 |
+| `permutations(iterable, r=None)` | `r` 省略时取全长 |
+| `combinations(iterable, r)` | `r` **必填** |
+| `combinations_with_replacement(iterable, r)` | 同上 |
+| `product(*iterables, repeat=1)` | `repeat` 只能写成关键字；`product(a, b)` 与 `product(a, repeat=2)` 是两回事 |
+| `groupby(iterable, key=None)` | `key` 可位置可关键字 |
+| `islice(iterable, stop)` / `islice(iterable, start, stop[, step])` | 两种形态，靠参数个数区分 |
+| `count(start=0, step=1)` · `cycle(iterable)` · `repeat(obj, times=None)` | `times` 省略即无限 |
+| `zip_longest(*iterables, fillvalue=None)` | `fillvalue` 只能写成关键字 |
+
 ### 累积与展平
+
+这一组解决的是两件常见的事，名字听着抽象，其实都很具体：
+
+- **累积**（`accumulate`）：把一个序列变成**它自己的「一路算下来的中间结果」**。
+  输入 `[1, 2, 3, 4]`，它不是只返回总和 10，而是把每一步都留下来：
+  `1`、`1+2`、`1+2+3`、`1+2+3+4`，即 `[1, 3, 6, 10]`。
+  默认的「一路算下来」是加法，所以最常见的用途就是**前缀和**；
+  换成 `max` 就是「前缀最大值」，换成乘法就是「前缀积」——
+  规则由第二个参数决定，形状不变：**输入 $n$ 个，输出 $n$ 个，第 $i$ 个是前 $i$ 个的合并结果**。
+- **展平**（`chain`）：把**多个序列接成一个**，但不真的拼出新列表。
+  `chain(a, b, c)` 可以像遍历一个序列那样依次走完三个；
+  `chain.from_iterable(mat)` 收的是「序列的序列」，于是二维列表被摊成一维。
+  和 `a + b + c` 的区别在于它不复制数据，只是依次转交。
 
 ```python
 from itertools import accumulate, chain
@@ -511,7 +555,8 @@ d.quantize(Decimal("0.00"), rounding=ROUND_HALF_UP)   # 严格四舍五入到 2 
 竞赛用途：**严格保留小数位数**（`round` 和 `%f` 用的是银行家舍入，见 PIO14）、
 高精度小数运算。
 
-**`Decimal` 比 `float` 慢 50–100 倍**，只在真正需要精确时用。
+**`Decimal` 比 `float` 慢，但基本算术只慢 2–4 倍**（CPython 3.3 起 `decimal` 是 C 扩展，不是纯 Python），拖慢它的是高 `prec` 与 $10^6$ 级内层循环里的对象构造。
+实测数据与取舍见 [浮点与科学计数法 §4](../toolkit/float.md#4-什么时候该换掉-float)。
 
 ### `fractions` — 精确分数
 

@@ -173,9 +173,18 @@ max(a, key=lambda p: p[1])   # 按第二维取最大的那个元素
 同时要最大值和它的下标：
 
 ```python
-i = max(range(n), key=lambda i: a[i])         # 下标
+i = max(range(n), key=lambda i: a[i])         # 下标（并列时取下标小的）
 mx, i = max((x, i) for i, x in enumerate(a))  # 值和下标（并列时取下标大的）
 ```
+
+两行的思路不同。第一行**遍历的是下标**，`key` 只是告诉 `max` 拿 `a[i]` 去比，
+返回的仍是下标本身。第二行**遍历的是 `(值, 下标)` 元组**，靠元组按位比较：
+先比值，值相等时接着比下标。
+
+**注意两行的平局方向正好相反**：`max` 遇到相等的候选一律**保留最先遇到的**，
+所以第一行给出下标**最小**的那个；而第二行相等时会继续比第二项，
+下标大的元组更大，于是给出下标**最大**的那个。题目要求「最靠前的位置」时
+用第一行，要求「最靠后」时用第二行——**这个差别不写出来是看不出来的**。
 
 ### `sorted(iterable, key=None, reverse=False)` — $O(n \log n)$
 
@@ -381,6 +390,10 @@ a = [int(next(it)) for _ in range(n)]        # 读 n 个
 first = next((x for x in a if x > 0), -1)    # 找第一个正数，没有则 -1
 ```
 
+这里的 `buffer.read()` 只是为了造出一个 token 流，本节的主角是 `next`。
+读入方式本身的取舍见 [输入输出处理](../toolkit/io.md)，学 `iter` / `next` 时
+把它换成 `iter(input().split())` 也一样成立。
+
 **`next` 一定要带默认值**，否则耗尽时抛 `StopIteration`。
 `iter(callable, sentinel)` 的两参数形式竞赛用不上。
 
@@ -475,7 +488,7 @@ main()
 三个要点：
 
 - **用 `math.isqrt(n)`，别用 `int(n ** 0.5)`**。
-  float 只有 53 位有效位（约 $9 	imes 10^{15}$），超过这个范围的整数转成 float 时先被舍入，
+  float 只有 53 位有效位（约 $9 \times 10^{15}$），超过这个范围的整数转成 float 时先被舍入，
   开方结果可能比真值大、也可能比真值小：
 
   ```python

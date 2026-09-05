@@ -1,5 +1,5 @@
 {
-  "_comment": "题单来源注册表——新增/下线一套题单，只改这里。scripts/gen_index.py 与 hooks/build_pages.py 都读它。放在 docs/ 下是因为 sources/ 与 scripts/ 都不入库，而站点构建（CI 上只有 docs/ solutions/ hooks/）必须拿得到分组信息；mkdocs.yml 的 exclude_docs 已排除 _*.json，不会被当成页面发布。",
+  "_comment": "题单来源注册表——新增/下线一套题单，只改这里。scripts/gen_index.py 与 hooks/build_pages.py 都读它。放在仓库根的 data/ 下是因为 sources/ 与 dev/ 都不入库，而站点构建（CI 上只有 docs/ solutions/ hooks/ data/）必须拿得到分组信息。P-S① 之前它在 docs/ 下、靠 mkdocs.yml 的 exclude_docs 排除；exclude_docs 已于 P-M② 整条删除，data/ 本就不在 docs_dir 里，不会被当成页面发布。",
   "_fields": {
     "key": "题单短名，同时是 <key>_list.json 的文件名前缀",
     "prefix": "题号字母前缀，必须全局唯一——solutions/ 是扁平目录，靠前缀分组",

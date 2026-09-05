@@ -122,7 +122,7 @@ print("%.6f" % lo)                     # 区间已经窄到远小于输出精度
 为什么这么设计？因为大批量数据下，「逢五进一」会系统性地偏大，
 向偶数舍入在统计上无偏。但**算法题要的是数学上的四舍五入**。
 
-正确做法：
+正确做法是换掉整套小数运算，用 `decimal` 模块：
 
 ```python
 from decimal import Decimal, ROUND_HALF_UP
@@ -131,6 +131,46 @@ from decimal import Decimal, ROUND_HALF_UP
 Decimal("1.2345").quantize(Decimal("0.000"), rounding=ROUND_HALF_UP)   # 1.235
 Decimal("2.5").quantize(Decimal("1"), rounding=ROUND_HALF_UP)          # 3，不是默认的 2
 ```
+
+这行代码里有三个名字，各管一件事：
+
+**`Decimal`** 是**十进制**小数类型。`float` 用二进制存数，`0.1` 存不进去（§1）；
+`Decimal` 直接存十进制数字序列和一个指数，`Decimal("0.1")` 就是不多不少的 0.1。
+代价是它比 `float` 慢，但没有想象中那么夸张——具体倍数见 §4。
+
+**`quantize`** 是「**把小数位数量化到指定精度**」，也就是严格意义上的「保留 n 位小数」。
+名字里的 quantize 是「对齐到刻度」的意思——参数给的那个 `Decimal` 就是刻度：
+
+```python
+Decimal("1.2345").quantize(Decimal("0.01"))   # 1.23   刻度 0.01 → 保留 2 位
+Decimal("1.2345").quantize(Decimal("0.001"))  # 1.234  刻度 0.001 → 保留 3 位
+Decimal("1.2").quantize(Decimal("0.000"))     # 1.200  位数不够会补零
+Decimal("1.6").quantize(Decimal("1"))         # 2      刻度 1 → 舍入到整数
+```
+
+**参数只看有几位小数，不看具体数值**，所以 `Decimal("0.01")` 和 `Decimal("9.99")`
+效果完全一样，惯例是写 `Decimal("0.01")` 这种一眼能数清位数的形式。
+它和 `round()` 的区别在于：`quantize` 的结果**位数是固定的**，
+`Decimal("1.2").quantize(Decimal("0.000"))` 会补成 `1.200`，
+而 `round(1.2, 3)` 还是 `1.2`——输出「保留 3 位小数」时这一条直接决定对错。
+
+**`ROUND_HALF_UP`** 是舍入模式，即「**遇到恰好一半时往上走**」，
+也就是数学课上的四舍五入。名字拆开看：`HALF` 指「正好卡在中间的那一档」，
+`UP` 指「往绝对值大的方向走」。对照着 Python 默认的 `ROUND_HALF_EVEN`
+（一半时靠向偶数）：
+
+```python
+from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
+
+q = Decimal("1")
+[Decimal(x).quantize(q, rounding=ROUND_HALF_UP)   for x in ("0.5", "1.5", "2.5", "3.5")]
+# [1, 2, 3, 4]                               ← 全部进位，符合数学直觉
+[Decimal(x).quantize(q, rounding=ROUND_HALF_EVEN) for x in ("0.5", "1.5", "2.5", "3.5")]
+# [0, 2, 2, 4]                                 ← 靠向偶数，round() 就是这个
+```
+
+**不写 `rounding=` 就是 `ROUND_HALF_EVEN`**（准确说是取当前上下文的默认值，
+默认值就是它）。所以「用了 `Decimal` 还是答案不对」的第一嫌疑，是漏了这个参数。
 
 **两个关键细节**：
 
@@ -176,7 +216,24 @@ print(a)                          # 0.333333333333333333333333333333333333333333
 ```
 
 `Decimal` 支持 `+ - * / **`、比较、`sqrt()`，也原生支持科学计数法输入。
-**代价是慢**——比 `float` 慢一到两个数量级，只在真正需要精度时用。
+
+**代价是慢，但要慢得有分寸。** CPython 3.3 起 `decimal` 由 C 扩展 `_decimal`
+（底层是 libmpdec）实现，不再是纯 Python 版本。
+3.9 环境下各跑 20 万次、取相对 `float` 的倍数：
+
+| 运算 | `Decimal` 相对 `float` |
+| --- | --- |
+| `a * b` / `a + b` | 约 2–3 倍 |
+| `a / b` | 约 3 倍 |
+| 从字符串构造 | 约 1.5–2 倍 |
+| 保留 2 位小数（`quantize` 对 `round`） | **约 0.9 倍，反而略快** |
+
+也就是**基本算术慢 2–4 倍**，而不是一个数量级；`quantize` 甚至比 `round` 还略快。
+（只记倍数不记毫秒，是因为绝对耗时随机器变，倍数关系稳定。）
+真正会把 `Decimal` 拖垮的是把 `getcontext().prec` 调到几百位——精度越高越慢，
+以及在 $10^6$ 级别的内层循环里逐个构造 `Decimal` 对象。
+**结论不是「能不用就不用」，而是「别拿它当默认数值类型」**：
+输入解析、最终舍入这类一次性的地方放心用，主循环里的算术还是走 `int`。
 
 ### fractions
 
@@ -290,6 +347,35 @@ if r >= 10:                                     # 进位溢出，如 9.95 -> 10.
 print("{}*10^{}".format(r, c))
 ```
 
+#### 另一种写法：根本不碰小数
+
+上面那份代码用 `Decimal` 是为了把「四舍五入」这件事交给标准库，写法通用——
+换成保留 3 位小数只要改一个 `Decimal("0.001")`。
+但**这题保留的是固定 1 位小数**，进位规则可以直接手写，于是全程只有整数：
+
+```python
+import sys
+
+N = sys.stdin.readline().strip()
+a, b, c = int(N[0]), int(N[1]), len(N) - 1   # 首位、次位、指数 = 位数 - 1
+if int(N[2]) >= 5:                           # 第 3 位决定次位是否进位（HALF_UP 的定义）
+    b += 1
+if b == 10:                                  # 次位进位溢出，向首位借
+    b = 0
+    a += 1
+if a == 10:                                  # 首位也溢出：9.95 这类，规格化成 1.0
+    a, b = 1, 0
+    c += 1
+print(f"{a}.{b}*10^{c}")
+```
+
+两份代码等价，`Decimal` 那份的 `quantize` 在这里退化成了「看第 3 位、必要时向前借位」
+这三个 `if`。**能这么改写，是因为「保留 1 位」意味着整个小数部分只有一个数字**，
+它的进位可以用整数加法表达；保留位数一多，手写进位链就不如 `quantize` 稳当。
+
+选哪个的判据：**位数固定且很少**（1–2 位）时手写整数更短、更快、也不依赖 `decimal`；
+**位数由输入决定**，或者还要参与其它小数运算，就用 `Decimal`。
+
 > 完整实现见 [`solutions/nowcoder/BISHI14/sol.py`](../solutions/BISHI14.md)，
 > 已通过官方样例验证。该题面对尾数保留位数的描述存在歧义，
 > 题解文件的 docstring 里记录了歧义的两种读法及取舍依据。
@@ -304,7 +390,9 @@ print("{}*10^{}".format(r, c))
 | 分数比大小 | 交叉相乘，全程整数 |
 | 整数开方 | `math.isqrt(n)`，绝不用 `n ** 0.5` |
 | 实数二分 | 固定 100 次迭代，不要用 `while r-l > EPS` |
-| 严格四舍五入 | `Decimal(字符串).quantize(..., ROUND_HALF_UP)` |
+| 严格四舍五入 | `Decimal(字符串).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)` |
+| `quantize` 的参数 | 只看它有几位小数，就是保留几位，且会补零 |
+| 漏写 `rounding=` | 退回银行家舍入，等于白用 `Decimal` |
 | `round()` / `%.nf` | 是银行家舍入，`round(2.5) == 2` |
 | `Decimal` 构造 | **必须传字符串**，传 float 白搭 |
 | 精确分数 | `fractions.Fraction`，但分母会膨胀 |

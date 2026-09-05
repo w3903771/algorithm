@@ -16,7 +16,8 @@ uv sync
 uv run mkdocs serve      # http://127.0.0.1:8000
 ```
 
-需要 Python 3.9+ 与 [uv](https://docs.astral.sh/uv/)。CI 跑的是 3.11。
+需要 Python 3.9+ 与 [uv](https://docs.astral.sh/uv/)。
+**CI 跑的也是 3.9**——全书代码承诺兼容 3.9，验它的那道闸门就得站在 3.9 上。
 
 ## 二、改什么，在哪改
 

@@ -57,12 +57,12 @@ s.clear()
 
 | 运算 | 写法 | 复杂度 |
 | --- | --- | --- |
-| 并 | `s \| t`、`s.union(t)` | $O(n+m)$ |
+| 并 | <code>s &#124; t</code>、`s.union(t)` | $O(n+m)$ |
 | 交 | `s & t`、`s.intersection(t)` | $O(\min(n,m))$ |
 | 差 | `s - t` | $O(n)$ |
 | 对称差 | `s ^ t` | $O(n+m)$ |
 | 子集判定 | `s <= t`、`s.issubset(t)` | $O(n)$ |
-| 就地并 | `s \|= t`、`s.update(t)` | $O(m)$ |
+| 就地并 | <code>s &#124;= t</code>、`s.update(t)` | $O(m)$ |
 
 > **陷阱一**：`{}` 是**空字典**，空集合只能写 `set()`。
 >

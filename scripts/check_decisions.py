@@ -364,6 +364,62 @@ def probe_examples_generated(_a: dict) -> tuple[bool, str]:
     return True, f"手写残留 0 处；{n} 个有例题的章章首 token 全在"
 
 
+def probe_io_pointer(_a: dict) -> tuple[bool, str]:
+    """入门段用了快读的章，必须有一处把读者指向 `toolkit/io.md`（`R2-14-5`）。
+
+    读者的原话是「入门段自己就铺满了快读，对初次学习反而是负担」。量化依据：
+    讲这套写法的正主 `toolkit/io.md` 是 **20 章**，排在 `python/` 全部 16 章之后，
+    而 `python/` 里 13 个文件在它之前就用上了 `sys.stdin.buffer.read()`。
+
+    **判据是「有没有指路」，不是「用不用快读」**（`Q23-3`）。逐处过完 36 个位置，
+    没有一处属于「讲算法本身的教学片段」——要么是例题的完整题解（必须能过判题机），
+    要么本身就在讲 I/O。所以要还的债是指引，不是把代码降档。
+
+    **看不见的**：它只问链接在不在，不问它离那段代码有多远，也不问措辞对不对。
+    这两样没有闸门，靠写作纪律（09 教训四）。
+    """
+    d = ROOT / "docs" / "python"
+    miss = [p.name for p in sorted(d.glob("*.md"))
+            if "buffer.read" in (b := p.read_text(encoding="utf-8"))
+            and "toolkit/io.md" not in b]
+    n = sum(1 for p in d.glob("*.md") if "buffer.read" in p.read_text(encoding="utf-8"))
+    if miss:
+        return False, f"python/ 下 {len(miss)} 个文件用了快读却没有指路：{miss}"
+    return True, f"python/ 下用快读的 {n} 个文件各有一处指向 toolkit/io.md"
+
+
+def probe_reports_fresh(_a: dict) -> tuple[bool, str]:
+    """闸门报告本身会过期，而**只有 `check_prose` 会喊自己过期**。
+
+    `P-N②` 锁定复核实测：`dev/audit/模板代码盘点.md` 写着 Python 顶格代码块
+    **1092** 段，而现算是 **1108**——落后 16 段，跨了四个批次没人发现。
+    `check_prose` 有 `overview_stale()`，跑一次就会打印 `[过期]`；
+    其余八个闸门的报告**没有任何过期检测**，只有重新生成才会暴露。
+
+    这里按教训二十六办：**两个判据指向同一个对象时，把「它们不一致」也当成一个指标**。
+    `check_templates` 与 `check_prose.code_stats()` 数的是同一件事
+    （顶格 ` ```python ` 块），拿报告里落盘的那个数与现算比一次即可。
+
+    **看不见的**：只盯这一个数。报告里别的段落过期了照样看不出来——
+    真正的解法是收尾时把生成脚本全部重跑一遍（`08 §2.3` 第 4 步）。
+    """
+    rel = "dev/audit/模板代码盘点.md"
+    body = text(rel)
+    if body is None:
+        return False, f"报告不存在：{rel}　→ 跑一次 scripts/check_templates.py"
+    m = re.search(r"^\|\s*Python\s*\|\s*(\d+)\s*\|", body, re.M)
+    if not m:
+        return False, f"{rel} 里找不到「Python | 顶格代码块」那一行，格式变了"
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import check_prose
+    now = check_prose.code_stats()["total"]
+    was = int(m.group(1))
+    if was != now:
+        return False, (f"{rel} 过期：写着 Python {was} 段，现算 {now} 段"
+                       f"　→ 跑一次 scripts/check_templates.py")
+    return True, f"模板盘点报告与现算一致（Python 顶格代码块 {now} 段）"
+
+
 def probe_redirects_sync(_a: dict) -> tuple[bool, str]:
     """`dev/_redirects.yml` 与 `mkdocs.yml` 的 `redirect_maps` 必须逐行一致。
 
@@ -967,6 +1023,8 @@ PROBES = {
     "problem_links": probe_problem_links,
     "problem_count_consistent": probe_problem_count_consistent,
     "anchors_registered": probe_anchors_registered,
+    "io_pointer": probe_io_pointer,
+    "reports_fresh": probe_reports_fresh,
 }
 
 

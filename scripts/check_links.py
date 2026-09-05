@@ -30,6 +30,21 @@ HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 SITE = ROOT / "_site_check"
 ID_ATTR = re.compile(r'<h[1-6][^>]*\sid="([^"]+)"')
 
+# 悬空指路：「见 [某章](x.md) 的 **Y 一节**」里的 `Y` 不是散文，是一个**承诺**——
+# 它说目标章里有这么一节。而上面那套检查只认 `[text](file.md#anchor)` 里的 `#anchor`：
+# 目标文件存在、链接有效，于是这句话即使指向一个不存在的小节也全绿
+# （09 号文件 教训四十：闸门验的是「解析得了吗」，不是「承诺还在吗」）。
+#
+# 判据故意宽松（教训十四：补漏报，不放宽别的）——只在**紧跟链接**且带
+# 「一节 / 一章 / 小节」这类明确指称时才检查，目标章有任何一个标题**包含**
+# 那段文字就算兑现。全库现有 3 处，两处兑现、一处落空。
+# 兑现不了又不想补那一节时，改法是把话说得不那么具体（去掉「的 X 一节」），
+# 不是把这条判据调松。
+PROMISE = re.compile(
+    r"\[(?:[^\]]*)\]\(([^)\s]+?\.md)(?:#[^)\s]*)?\)"
+    r"\s*(?:的|中的|里的)\s*[「\[]?([^，。；、\s「」]{2,24}?)[」\]]?\s*"
+    r"(?:一节|一章|小节|那一节|那一章)")
+
 
 def build_site() -> bool:
     """跑一次 mkdocs build，把锚点的唯一权威来源准备好。"""
@@ -82,6 +97,58 @@ def anchors_of(path: Path) -> set:
         if m:
             out.add(slugify(strip_md(m.group(2))))
     return out
+
+
+def heading_texts(path: Path) -> list:
+    """该页所有标题的纯文本（剥掉 Markdown 标记与 `##` 前的局部序号）。
+
+    比的是**文字**不是锚点：承诺写的是「切比雪夫距离一节」，
+    读者去目标页找的也是这几个字，不是 slug。
+    """
+    out, in_fence = [], False
+    for line in path.read_text(encoding="utf-8").split("\n"):
+        if FENCE.match(line):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        m = HEADING.match(line)
+        if m:
+            out.append(strip_md(m.group(2)).replace("　", " "))
+    return out
+
+
+def scan_promises(md_files: list) -> list:
+    """`[(文件, 行号, 目标, 承诺的小节名)]`——目标章里找不到同名标题的那些。
+
+    **看不见的**（两条都是潜在盲区，`P-N②` 锁定复核时实测各 0 处）：
+
+    ① **目标是构建期生成的页**（如 `solutions/BISHI4.md`）——磁盘上没有 `.md`，
+       这里直接跳过。链接本身有效，所以 `bad_target` 也不会报，
+       于是指向题解页某一节的承诺**没有任何闸门在看**。
+    ② **承诺跨行**——链接在行尾、「的 X 一节」落到下一行时匹配不到。
+       本函数逐行匹配，不做跨行拼接。
+    """
+    cache = {}
+    bad = []
+    for p in md_files:
+        in_fence = False
+        for lineno, line in enumerate(p.read_text(encoding="utf-8").split("\n"), 1):
+            if FENCE.match(line):
+                in_fence = not in_fence
+                continue
+            if in_fence:
+                continue
+            for m in PROMISE.finditer(line):
+                dest = (p.parent / m.group(1)).resolve()
+                if not dest.is_file():
+                    continue          # 文件本身不存在，上面那套已经报过了
+                if dest not in cache:
+                    cache[dest] = heading_texts(dest)
+                claim = m.group(2).strip("`").strip()
+                if not any(claim in h for h in cache[dest]):
+                    bad.append((p, lineno, m.group(1), claim))
+    return bad
 
 
 def iter_links(path: Path):
@@ -158,10 +225,20 @@ def main(argv) -> int:
         if changed:
             p.write_text(text, encoding="utf-8")
 
+    bad_promise = scan_promises(md_files)
+
     L = ["# 链接校验报告\n",
          "> 由 `scripts/check_links.py` 生成。锚点规则与 `mkdocs.yml` 的 slugify 一致。\n",
-         "**失效文件链接 {} 处　失效锚点 {} 处　自动修正 {} 处**\n".format(
-             len(bad_target), len(bad_anchor), len(fixed))]
+         "**失效文件链接 {} 处　失效锚点 {} 处　悬空指路 {} 处　自动修正 {} 处**\n".format(
+             len(bad_target), len(bad_anchor), len(bad_promise), len(fixed))]
+    if bad_promise:
+        L += ["## 悬空指路（承诺的小节不存在）\n",
+              "「见 [某章](x.md) 的 **Y 一节**」里的 `Y`，在目标章的标题里找不到。",
+              "链接本身有效——坏掉的是承诺，不是语法。\n",
+              "| 文件 | 行 | 目标 | 承诺的小节 |", "| --- | --- | --- | --- |"]
+        L += ["| {} | {} | `{}` | **{}** |".format(p.relative_to(DOCS), n, t, c)
+              for p, n, t, c in bad_promise]
+        L.append("")
     if bad_target:
         L += ["## 指向不存在的文件\n", "| 文件 | 行 | 链接 |", "| --- | --- | --- |"]
         L += ["| {} | {} | `{}` |".format(p.relative_to(DOCS), n, h)
@@ -177,10 +254,13 @@ def main(argv) -> int:
               for p, n, a, b in fixed]
     REPORT.write_text("\n".join(L) + "\n", encoding="utf-8")
 
-    print("失效文件链接 {}，失效锚点 {}，自动修正 {}".format(
-        len(bad_target), len(bad_anchor), len(fixed)))
+    print("失效文件链接 {}，失效锚点 {}，悬空指路 {}，自动修正 {}".format(
+        len(bad_target), len(bad_anchor), len(bad_promise), len(fixed)))
+    for p, n, t, c in bad_promise:
+        print("[悬空指路] {}:{} 承诺 `{}` 的「{}」一节，目标章无此标题".format(
+            p.relative_to(DOCS), n, t, c))
     print("报告 -> {}".format(REPORT))
-    return 1 if (bad_target or bad_anchor) else 0
+    return 1 if (bad_target or bad_anchor or bad_promise) else 0
 
 
 if __name__ == "__main__":

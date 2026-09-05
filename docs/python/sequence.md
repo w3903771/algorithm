@@ -384,6 +384,9 @@ $$a_i - i = a_j - j$$
 
 $$\text{ans} = \sum_{v} \binom{\text{cnt}[v]}{2}$$
 
+下面用的是最快的一档读入（三档读法的取舍见 [输入输出处理](../toolkit/io.md)），
+真正要看的是 `enumerate` 与那个 $b_i = a_i - i$ 的变换。
+
 ```python
 import sys
 

@@ -164,7 +164,11 @@ STRUCT = [
     ("SC1", "段落截断（以逗号/顿号收尾，后面直接是分隔线或标题）"),
     ("SC2", "代码围栏个数为奇数"),
     ("SC3", "文件以引用块结尾"),
-    ("SC4", "表格缺表头行（`| --- |` 上面不是表格行）"),
+    # 说明文字会被原样写进报告的表格单元格里，**不能含裸的 `|`**——
+    # 原文写的是「`| --- |` 上面不是表格行」，那一行因此有 7 个竖线而不是 5 个，
+    # 把「逐条现状」整张表撑坏了，而九个闸门一条都不报（09 教训四十）。
+    ("SC4", "表格缺表头行（分隔行 `---` 上面不是表格行）"),
+    ("SC5", "引用块中间掉了 `>` 前缀（靠惰性续行撑着）"),
 ]
 
 FENCE = re.compile(r"^\s*(```|~~~)")
@@ -287,6 +291,30 @@ def scan_struct(files: list) -> dict:
         last = next((x for x in reversed(lines) if x.strip()), "")
         if last.startswith(">"):
             hits["SC3"].setdefault(rel, []).append((len(lines), last.strip()[:24]))
+
+        # SC5：引用块中间掉了 `>`（09 号文件 教训四十）。
+        # CommonMark 的**惰性续行**会把这样的行仍然收进引用块，所以渲染出来往往
+        # 是对的——`mkdocs build --strict` 与 SC1–SC4 一条都不报。但它是靠一条
+        # 脆弱的规则撑着：只要上一行改成列表项、表格行，或中间多出一个空行，
+        # 这段就会当场掉出引用框。**写的是承诺，撑住它的是巧合。**
+        #
+        # 判据是「一段**连续**的非 `>` 非空行夹在两段 `>` 之间」，不是三行窗口——
+        # `set.md:512-513` 这个活样本恰好断了**两行**，三行窗口报不出它（教训十八：
+        # 反过来验证，别问「我写了吗」，问「本该命中的样本命中了吗」）。
+        i = 0
+        while i < len(lines):
+            if flags[i] or not lines[i].lstrip().startswith(">"):
+                i += 1
+                continue
+            j = i + 1
+            while (j < len(lines) and not flags[j] and lines[j].strip()
+                   and not lines[j].lstrip().startswith(">")):
+                j += 1
+            if j > i + 1 and j < len(lines) and not flags[j] \
+                    and lines[j].lstrip().startswith(">"):
+                hits["SC5"].setdefault(rel, []).append(
+                    (i + 2, lines[i + 1].strip()[:24]))
+            i = j
     return hits
 
 

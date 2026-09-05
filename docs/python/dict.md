@@ -105,9 +105,11 @@ d["a"] = 1              # 存在则改，不存在则增，O(1)
 d.update({"b": 2})      # 批量更新
 d.update(b=2, c=3)
 d.update(zip(keys, vals))
-d2 = {**d, "b": 9}      # 合并成新字典（3.5+）
-d3 = d | {"b": 9}       # 合并运算符（3.9+）
-d |= {"b": 9}           # 原地合并（3.9+）
+
+# 三种合并写法，设此处 d = {"a": 1, "b": 2}。重名的键一律**右边赢**
+d2 = {**d, "b": 9}      # {'a': 1, 'b': 9}    新字典，d 不变（3.5+）
+d3 = d | {"b": 9}       # {'a': 1, 'b': 9}    同上，写法更短（3.9+）
+d |= {"b": 9}           # d 自己变成 {'a': 1, 'b': 9}，不产生新字典（3.9+）
 ```
 
 ### 删
@@ -297,28 +299,36 @@ for k, v in sorted(d.items(), key=lambda kv: (-kv[1], kv[0])):   # 值降序 + �
 
 ### 用法一：计数
 
+题设统一是「统计序列 `a` 里每个元素出现了几次」：`cnt` 是结果字典，
+`x` 是**被数的那个元素**，来自外层循环——两者不是同一个东西。
 五种写法，从慢到快：
 
 ```python
+cnt = {}
+
 # ① 最笨
-if x in cnt:
-    cnt[x] += 1
-else:
-    cnt[x] = 1
+for x in a:
+    if x in cnt:
+        cnt[x] += 1
+    else:
+        cnt[x] = 1
 
 # ② get，一行
-cnt[x] = cnt.get(x, 0) + 1
+for x in a:
+    cnt[x] = cnt.get(x, 0) + 1
 
 # ③ setdefault
-cnt.setdefault(x, 0)
-cnt[x] += 1
+for x in a:
+    cnt.setdefault(x, 0)
+    cnt[x] += 1
 
 # ④ defaultdict
 from collections import defaultdict
 cnt = defaultdict(int)
-cnt[x] += 1
+for x in a:
+    cnt[x] += 1
 
-# ⑤ Counter，最短
+# ⑤ Counter，最短——它自己就把这层循环包掉了
 from collections import Counter
 cnt = Counter(a)
 ```
@@ -335,7 +345,10 @@ cnt = Counter(a)
 
 ### 用法二：记忆化
 
-把指数级的重复递归压成多项式：
+下面这段算的是**网格路径计数**：只能向下或向右走，`f(i, j)` 是从起点走到格子 $(i, j)$ 的方案数。
+不加 `memo` 时，`f(i-1, j)` 和 `f(i, j-1)` 会各自再去算 `f(i-1, j-1)`——
+**同一个 $(i, j)$ 被不同的路径反复算到**，规模一大就退化成指数级。
+`memo` 做的事只有一件：同一个 $(i, j)$ 只真算一次，把指数级压成 $O(nm)$。
 
 ```python
 memo = {}
@@ -345,7 +358,7 @@ def f(i, j):
     key = (i, j)                    # 元组当复合键，见第 6 章
     if key in memo:
         return memo[key]
-    if i == 0:
+    if i == 0 or j == 0:            # 贴着边走只有一条路
         res = 1
     else:
         res = f(i - 1, j) + f(i, j - 1)
@@ -373,6 +386,9 @@ def f(i, j):
 
 ### 用法三：映射与判重
 
+这一类的共同点是**拿值当键、拿下标当值**，把「这个值出现过吗、在哪出现的」
+从 $O(n)$ 的扫描变成 $O(1)$ 的查表。
+
 ```python
 pos = {x: i for i, x in enumerate(a)}       # 值 → 下标（重复值只留最后一个）
 seen = {}                                    # 记录「第一次出现的位置」
@@ -382,6 +398,10 @@ for i, x in enumerate(a):
     else:
         seen[x] = i
 ```
+
+两种写法的区别在**建表的时机**：推导式是一次建好，所以同一个值只剩最后一个下标；
+边遍历边写的 `seen` 只在没见过时才记，留下的是**第一次**出现的位置。
+要「最早的那一对」就得用后者。
 
 ---
 
@@ -526,7 +546,8 @@ main()
    而题目要求**字典序**。样例里 `game` 和 `kou` 都出现 3 次，
    `kou` 先出现，`most_common` 会把 `kou` 排在前面 —— 直接 WA。
 
-4. **`bytes` 要 `.decode()`**。从 `buffer.read()` 读出来的是 `bytes`，
+4. **`bytes` 要 `.decode()`**。这题用的是最快的一档读入（取舍见
+   [输入输出处理](../toolkit/io.md)）；从 `buffer.read()` 读出来的是 `bytes`，
    排序用 `bytes` 也没问题（ASCII 下字典序一致），
    但 `"\n".join` 要求元素是 `str`。这里在建元组时就顺手解码了。
 
@@ -548,6 +569,11 @@ print("\n".join(w for _, w in keys))
 
 > **举一反三**：「按频次降序 + 同频按字典序」是词频题的标准输出要求，
 > 记住 `sorted((-c, k) for ...)` 这个模板，以后照抄。
+>
+> 它和速查表里的 `sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))` 是**同一件事的两种写法**：
+> 后者排的仍是原来的 `(键, 值)` 对，靠 `key` 现算排序键，排完直接就能用；
+> 前者**把排序键本身当成元素**，所以排完要 `for _, k in` 把键取回来。
+> 需要在建元组时顺手做点加工（这里的 `.decode()`）就用前者，否则用后者更直白。
 
 ---
 
@@ -569,7 +595,8 @@ print("\n".join(w for _, w in keys))
 | 遍历键值 | `for k, v in d.items():` |
 | 遍历时删键 | 先 `for k in list(d):` 固化快照 |
 | 按键排序输出 | `for k in sorted(d):` |
-| 按值降序 + 键升序 | `sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))` |
+| 按值降序 + 键升序 | `sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))`，排完还是 `(k, v)` 对 |
+| 同上，另一种写法 | `sorted((-v, k) for k, v in d.items())`，排完要 `for _, k in` 取回 |
 | 键的要求 | 必须可哈希；`1`/`1.0`/`True` 是同一个键 |
 | 有序表需求 | **Python 没有 `std::map`**，见[平衡树与有序集合](../ds/balanced-tree.md) |
 | 被卡哈希 | 键异或一个随机数 `x ^ RND` |

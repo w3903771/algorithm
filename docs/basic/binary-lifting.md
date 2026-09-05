@@ -510,7 +510,7 @@ main()
 | 静态区间最值 | **ST 表**，$O(n\log n)$ 建 + $O(1)$ 查 |
 | ST 表建表 | `list(map(max, prev, prev[half:]))`，整层 C 层完成 |
 | $\lfloor\log_2 x\rfloor$ | **`x.bit_length() - 1`**，不要用 `math.log2` |
-| ST 表适用运算 | 需**幂等**：`max`/`min`/`gcd`/`&`/`\|`；加法不行 |
+| ST 表适用运算 | 需**幂等**：`max`/`min`/`gcd`/`&`/<code>&#124;</code>；加法不行 |
 | 区间和 | 前缀和，不是 ST 表 |
 | 滑窗最值 | 单调队列，不是 ST 表 |
 | LCA | 倍增；$n$ 大时 BFS 求深度，**别递归** |
