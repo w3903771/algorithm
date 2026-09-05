@@ -1,4 +1,12 @@
 # MkDocs site deployment. GitHub Actions only loads files from .github/workflows/.
+#
+# action 版本：2026-09-05 全部升到 node24 那一代（checkout v7 / setup-python v7 /
+# upload-pages-artifact v5 / deploy-pages v5）。旧版是 node20，GitHub 已在强制
+# 把它们跑在 node24 上并每次都打警告——现在能跑，但那是倒计时不是常态。
+# 升级前逐条核过：checkout v7 的 fork-PR 限制只作用于 pull_request_target /
+# workflow_run（本文件都没用）；setup-python v7 删掉的是 pip-install 输入（没用）；
+# Python 3.9 虽已 EOL，但 actions/python-versions 清单里 3.9.25 仍在、含
+# ubuntu-24.04 x64，所以下面钉死的 3.9 照旧装得到。
 name: Deploy algorithm site
 
 on:
@@ -31,8 +39,8 @@ jobs:
       group: prose-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.9"
       - name: Check Python 3.9 syntax
@@ -55,8 +63,8 @@ jobs:
       group: pages
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.9"
       - name: Install documentation toolchain
@@ -69,9 +77,12 @@ jobs:
         run: |
           printf 'algorithm.ebook.ttzg.site\n' > _site/CNAME
           touch _site/.nojekyll
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+          # v4 起**默认不收 dotfile**，而上一步 touch 的 .nojekyll 正是一个。
+          # 不加这一行，产物里就没有它——这不是「警告消失」，是行为悄悄变了。
+          include-hidden-files: true
 
   deploy:
     needs: build
@@ -81,4 +92,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
